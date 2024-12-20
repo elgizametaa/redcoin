@@ -392,7 +392,7 @@
 
 .confetti-effect {
     position: fixed;
-    top: 40px; /* تحت الإشعار مباشرة */
+    top: 25px; /* تحت الإشعار مباشرة */
     left: 0;
     width: 100%; /* تملأ العرض بالكامل */
     height: auto; /* تحافظ على نسبة الصورة */
