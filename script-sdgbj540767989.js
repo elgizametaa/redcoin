@@ -2024,48 +2024,7 @@ function closePromoModal() {
     document.getElementById('promocodeoverlay').style.display = 'none'; // إخفاء الشفافية
 }
 
-
 /////////////////////////////////////////
-
-
-
-// استلام رابط الدعوة عند الانضمام
-function handleInvite() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const referrerId = urlParams.get('start');  // استلام معرف الداعي من الرابط
-    const currentUserId = window.Telegram.WebApp.user.id; // استلام معرف المستخدم الحالي
-
-    if (referrerId && referrerId !== currentUserId) {
-        // منح مكافأة للداعي والمدعو
-        rewardReferral(referrerId, currentUserId);
-    }
-}
-
-// منح المكافأة
-function rewardReferral(referrerId, invitedId) {
-    // أضف 5000 عملة لكلا الطرفين في قاعدة البيانات أو حسب الحالة
-    // هذا مثال على العملية في واجهة المستخدم
-    gameState.balance += 5000;  // مكافأة للمدعو
-    updateUI();
-    showNotification(uiElements.purchaseNotification, 'You received 5,000 coins from your friend!');
-    
-    // مكافأة للداعي
-    // يمكن إرسال مكافأة للداعي أيضًا هنا
-    gameState.balance += 5000;  // مكافأة للداعي
-    updateUserData();
-    saveGameState();
-    
-    // إرسال إشعار للطرفين
-    showNotificationWithStatus(uiElements.purchaseNotification, `You received 5,000 coins for inviting a friend!`);
-}
-
-// استدعاء الدالة عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', handleInvite);
-
-
-
-//////////////////////////////////////////////////////////
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
