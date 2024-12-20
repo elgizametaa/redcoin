@@ -611,6 +611,9 @@ function showNotificationWithStatus(notificationElement, message, status = '') {
     if (status === 'win') {
         notificationElement.classList.add('win');
         imageUrl = 'i/done.png'; // رابط الصورة لحالة الفوز
+
+        // إضافة صورة الفرقعة للاحتفال
+        showConfettiEffect();
     } else if (status === 'lose') {
         notificationElement.classList.add('lose');
         imageUrl = 'i/mistake.png'; // رابط الصورة لحالة الخسارة
@@ -631,9 +634,26 @@ function showNotificationWithStatus(notificationElement, message, status = '') {
     // إخفاء الإشعار بعد 4 ثوانٍ
     setTimeout(() => {
         notificationElement.classList.remove('show');
+        hideConfettiEffect(); // إزالة تأثير الاحتفال بعد انتهاء الإشعار
     }, 4000);
 }
 
+// دالة لإظهار صورة الفرقعة
+function showConfettiEffect() {
+    // إنشاء العنصر للصورة
+    const confetti = document.createElement('img');
+    confetti.src = 'i/confetti.webp';
+    confetti.className = 'confetti-effect';
+    document.body.appendChild(confetti);
+}
+
+// دالة لإخفاء صورة الفرقعة
+function hideConfettiEffect() {
+    const confetti = document.querySelector('.confetti-effect');
+    if (confetti) {
+        confetti.remove();
+    }
+}
 
 
 
