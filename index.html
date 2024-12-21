@@ -46,15 +46,21 @@
             </div>
           </div>
             
+             <div id="enrContainer">
+                <img src="i/enr.png" alt="UsImage" class="userrr-imagee">
+                <div id="energyInfo">500/500</div>
+            </div>
+            
              <!-- زر المحفظة -->
             <div id="Buttoncontainer">
              <button data-target="walletPage" class="wallet-button">
                 <i class="fa-solid fa-wallet"></i>
              </button>
                 <!-- زر الألعاب -->
-             <button data-target="gamePage" class="Play-game-button">
+            <!-- <button data-target="gamePage" class="Play-game-button">
                  <i class="fa-solid fa-dice"></i>
-             </button>
+             </button>-->
+                
              <!-- زر الإعدادات -->
              <button data-target="SettingsPage" class="settings-button">
                 <i class="fa-solid fa-user-gear"></i>
@@ -67,60 +73,27 @@
                 <div id="balanceAmount">
                  <span id="mainDigits" class="main-digits"></span>
                  <span id="remainingDigits" class="remaining-digits"></span>
-            </div>
-            <!-- <div class="Title">$S4W</div>-->
+             </div>
           </div>
 
              <div class="clickable-image">
                <img id="clickableImg" src="i/coinss.png" alt="Clickable Image">
              </div>
              
-            <div class="energy-bar-container">
-              <div id="energyInfo"> 500/500 </div>
-                <div class="progress-bar">
-                <div class="progress-bar-inner" id="energyBar"></div>
-             </div>
-          </div>
-                
-         <!--  <div id="minee2" class="minee-2">
-              <a href="https://t.me/SAW_COIN" class="community-button">
-                <i class="fa-solid fa-users"></i>
-                  <span class="text">Join our community </span>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-community">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            <div id="clickSection">
+              <div class="energy-bar-container">
+               <div class="circular-energy-bar">
+                 <i class="fa-solid energy-icon fa-bolt"></i>
+                   <svg class="progress-ring" width="40" height="40">
+                 <circle id="energyBar" class="progress-ring__circle" stroke-width="4" fill="transparent" r="18" cx="20" cy="20" />
                   </svg>
-                </a>
-             </div>-->
-            
-    <!--  <div class="container-gate">
-        <div class="portal">
-            <img src="i/gate1.jpeg" alt="Speed Portal">
-            <div class="portal-content">
-                <h2 class="portal-title">بوابة السرعة</h2>
-                <p class="portal-description">اكتشف سرعة اتصالك بالعوالم الغامضة للحصول على مكافآت مذهلة.</p>
-            </div>
-        </div>
-        <div class="portal">
-            <img src="i/gate2.jpeg" alt="Puzzle Portal">
-            <div class="portal-content">
-                <h2 class="portal-title">بوابة الشيفرة</h2>
-                <p class="portal-description">حل الشيفرة السرية لفتح البوابة وكشف الغموض.</p>
-            </div>
-        </div>
-        <div class="portal">
-            <img src="i/gate3.jpeg" alt="Task Portal">
-            <div class="portal-content">
-                <h2 class="portal-title">بوابة المهام</h2>
-                <p class="portal-description">أكمل المهام الموكلة إليك وافتح بوابة التحديات الكبرى.</p>
-            </div>
-        </div>
-        <div class="portal">
-            <img src="i/gate4.jpeg" alt="Mystery Portal">
-            <div class="portal-content">
-                <h2 class="portal-title">بوابة الغموض</h2>
-                <p class="portal-description">ادخل عالم الغموض واكتشف أسرار بوابة ساو المجهولة.</p>
-              </div>
-          </div>-->
+                </div>
+             </div>
+             <div id="clickDisplay">
+                <span id="clickCountDisplay">0</span>
+             </div>
+              <button id="claimButton">Claim</button>
+         </div>
      </main>
   </div>
      
