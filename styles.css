@@ -1080,28 +1080,27 @@ img {
 }
 
 #userName {
-    font-size: 15px;
+    font-size: 13px;
     color: #fff; /* لون أفتح قليلاً لتمييز الاسم */
-    margin-right: 10px;
+    margin-right: 5px;
     margin-left: 5px;
     animation: popIn 0.4s ease forwards;
 }
 
-/*.user-details-i {
-    position: absolute; 
-    top: 18px; 
-    left: 24px; 
-    z-index: 100; 
-    animation: popIn 0.4s ease forwards;
-}*/
-
 .userrr-image {
+    width: 28px; /* عرض الصورة */
+    height: 28px; /* ارتفاع الصورة */
+    border-radius: 50%; /* جعل الصورة دائرية */
+    object-fit: cover; /* تأكد من احتواء الصورة داخل الدائرة */
+}
+
+.userrr-imagee {
     width: 30px; /* عرض الصورة */
     height: 30px; /* ارتفاع الصورة */
     border-radius: 50%; /* جعل الصورة دائرية */
     object-fit: cover; /* تأكد من احتواء الصورة داخل الدائرة */
-    border: 1px solid #161616; /* إضافة إطار أبيض حول الصورة */
-}
+    border: 1px solid #1c1c1c;
+} 
 
 
 .right-section { 
@@ -1109,4 +1108,3 @@ img {
     color:#2D83EC;
     margin-right: 1px;
 }    
-
