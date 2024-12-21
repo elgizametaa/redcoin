@@ -111,10 +111,10 @@
   font-weight: bold;
   border-radius: 20px;
   width: 20%;
-  height: 95%;
+  height: 80%;
   font-size: 15px;
   margin-left: auto;
-  margin-right: 1px;
+  margin-right: 2px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
