@@ -10,13 +10,6 @@
     z-index: 0;
 } 
 
-/*.walletTon-image {
-    width: 100px;
-    height: 100px;
-    margin: 15px auto;
-    display: block;
-}*/
-
 .wallet-image {
     width: 140px;
     height: auto;
@@ -37,11 +30,11 @@
 
 #Buttoncontainer {
   position: absolute;
-  width: 40%;
+  width: 28%;
   height: 30px;
   border-radius: 20px; 
   top: 15px; /* المسافة من الأعلى */
-  right: 20px; /* المسافة من اليمين */
+  right: 15px; /* المسافة من اليمين */
   display: flex;
   gap: 15px; /* المسافة بين الأزرار */
   z-index: 1000; /* التأكد من أن الأزرار في المقدمة */
@@ -83,13 +76,15 @@
 }
 
 .wallet-box {
+    position: absolute;
+    top: 15px; 
     background-color: rgba(0, 0, 0, 0.0007); /* لون خلفية أغمق لتحسين التباين */
     border-radius: 15px; /* تدوير أكبر للحواف */
-    padding: 20px; /* زيادة الحشوة */
+    padding: 20px;
     width: 85%; /* تحديد العرض بشكل مناسب */
-    max-width: 400px; /* تحديد عرض أقصى ليتماشى مع مختلف الأجهزة */
+    max-width: 400px;/* تحديد عرض أقصى ليتماشى مع مختلف الأجهزة */
     margin: 0 auto; /* لضمان توسيط الحاوية */
-    height: 60vh;
+    height: 30px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -119,7 +114,7 @@
     color: #fff;
     font-size: 16px;
     font-weight: bold;
-    padding: 23px 65px;
+    padding: 15px 40px;
     border-radius: 20px;
     cursor: pointer;
     width: 100%; /* جعل الزر بعرض الصندوق */
