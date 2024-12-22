@@ -1,8 +1,9 @@
 /* التصميم الأساسي */
 .toggle-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px; /* مسافة بين النص والزر */
+    gap: 50px; /* مسافة بين النص والزر */
 }
 
 #vibrationText {
