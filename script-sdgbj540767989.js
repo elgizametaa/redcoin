@@ -2102,7 +2102,7 @@ function confirmUpgradeAction() {
         if (gameState.balance >= cost) {
             gameState.balance -= cost;
             gameState.boostLevel++;
-            gameState.clickMultiplier += 2;
+            gameState.clickMultiplier += 1;
 
             // حفظ الترقية
             saveUpgradeState();
