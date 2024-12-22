@@ -438,9 +438,9 @@ img {
 
 .menu-item.active .icon-wrapper {
     background-color: #2D83EC;
-    box-shadow: 0 0 5px rgba(45, 131, 236, 0.7), 
+    box-shadow: 0 0 2px rgba(45, 131, 236, 0.7), 
                 inset 0 0 2px rgba(255, 255, 255, 0.5), 
-                inset 0 0 7px rgba(45, 131, 236, 0.8); /* تأثير الإضاءة الداخلية */
+                inset 0 0 3px rgba(45, 131, 236, 0.8); /* تأثير الإضاءة الداخلية */
     position: relative;
     transform: scale(1.1); /* تكبير بسيط للدائرة لإبراز التأثير */
 }
