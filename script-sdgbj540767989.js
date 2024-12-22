@@ -69,8 +69,6 @@ let gameState = {
     boostLevel: 1,
     coinBoostLevel: 1,
     energyBoostLevel: 1,
-    currentLevel: 1,
-    achievedLevels: [],
     friends: 0,
     invites: [],
     completedTasks: [],
@@ -141,11 +139,9 @@ async function saveGameState() {
         balance: gameState.balance,
         energy: gameState.energy,
         max_energy: gameState.maxEnergy,
-        current_level: gameState.currentLevel,
         friends: gameState.friends,
         invites: gameState.invites,
         puzzles_progress: gameState.puzzlesProgress,
-        achieved_Levels: gameState.achievedLevels,
     };
 
     try {
@@ -201,19 +197,19 @@ async function restoreEnergy() {
 
 
 // الاستماع إلى التغييرات في قاعدة البيانات
-function listenToRealtimeChanges() {
-    const userId = uiElements.userTelegramIdDisplay.innerText;
+//function listenToRealtimeChanges() {
+  //  const userId = uiElements.userTelegramIdDisplay.innerText;
 
-    supabase
-        .channel('public:users')
-        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'users', filter: `telegram_id=eq.${userId}` }, payload => {
-            console.log('Change received!', payload);
-            gameState = { ...gameState, ...payload.new };
-            updateUI();
-            saveGameState();
-        })
-        .subscribe();
-}
+  //  supabase
+     //   .channel('public:users')
+      //  .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'users', filter: `telegram_id=eq.${userId}` }, payload => {
+        //    console.log('Change received!', payload);
+         //   gameState = { ...gameState, ...payload.new };
+          //  updateUI();
+          //  saveGameState();
+      //  })
+      //  .subscribe();
+//}
 
 // تهيئة التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', async () => {
@@ -222,57 +218,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     startEnergyRecovery();
     updateGameStateInDatabase(); 
     updateUI(); 
-    listenToRealtimeChanges();   
+   // listenToRealtimeChanges();   
     await initializeApp();  
 });
-
-
-// مستويات اللعبة المتناسقة
-const levelThresholds = [
-    { level: 1, threshold: 0, name: 'Platinum Pioneer' }, 
-    { level: 2, threshold: 500000, name: 'Silver Strategist' },
-    { level: 3, threshold: 2000000, name: 'Golden Guardian' }, 
-    { level: 4, threshold: 8000000, name: 'Diamond Defender' }, 
-    { level: 5, threshold: 20000000, name: 'Elite Emperor' }, 
-];
-
-// التحقق من الترقية إلى مستوى أعلى
-async function checkForLevelUp() {
-    for (let i = 0; i < levelThresholds.length; i++) {
-        const levelData = levelThresholds[i];
-
-        // تحقق من شروط الترقية
-        if (
-            gameState.balance >= levelData.threshold &&  // تحقق إذا كان الرصيد يكفي
-            gameState.currentLevel < levelData.level &&  // تحقق إذا كان المستوى الحالي أقل
-            !gameState.achievedLevels.includes(levelData.level)  // تحقق إذا لم يتم الوصول إلى هذا المستوى مسبقًا
-        ) {
-            // ترقية المستخدم إلى المستوى الجديد
-            gameState.currentLevel = levelData.level;
-
-            // تسجيل المستوى الجديد
-            gameState.achievedLevels.push(levelData.level);
-
-            // تحديث واجهة المستخدم
-            updateUI();
-
-            // تحديث قاعدة البيانات
-            const updatedData = {
-                currentLevel: gameState.currentLevel,
-                achieved_levels: gameState.achievedLevels,
-            };
-
-            const isUpdated = await updateGameStateInDatabase(updatedData);
-
-            if (!isUpdated) {
-                console.error('Failed to update levels in the database.');
-            }
-
-            // كسر الحلقة لأن المستخدم تمت ترقيته
-            break;
-        }
-    }
-}
 
 
 // دالة تهيئة التطبيق
@@ -291,7 +239,7 @@ async function initializeApp() {
 
         
         // استمع إلى التغييرات في البيانات
-        listenToRealtimeChanges();
+        //listenToRealtimeChanges();
 
         // إعداد واجهة المستخدم
         updateUI();
@@ -909,7 +857,7 @@ function startEnergyRecovery() {
         // التأكد من وجود طاقة أقل من الحد الأقصى
         if (currentEnergy < gameState.maxEnergy) {
             // زيادة الطاقة
-            localEnergyConsumed = Math.max(localEnergyConsumed - 200, 0);
+            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
 
             // تحديث واجهة المستخدم
             updateEnergyUI();
@@ -918,93 +866,6 @@ function startEnergyRecovery() {
             localStorage.setItem('energyConsumed', localEnergyConsumed);
         }
     }, 5000); // تنفيذ الدالة كل 4 ثوانٍ
-}
-
-
-//////////////////////////////////
-
-
-function updateLevelDisplay() {
-    checkForLevelUp(); // تحقق من الترقية
-
-    const currentLevelData = levelThresholds.find(lvl => lvl.level === gameState.currentLevel);
-    const nextLevelData = levelThresholds.find(lvl => lvl.level === gameState.currentLevel + 1);
-
-    if (currentLevelData && nextLevelData) {
-        const currentBalance = gameState.balance;
-        const nextLevelThreshold = nextLevelData.threshold;
-        const remainingAmount = Math.max(nextLevelThreshold - currentBalance, 0);
-
-        // تحديث العناصر الرئيسية
-        const mainLevelCoinsElement = document.getElementById('currentLevelCoins');
-        const mainEnergyFill = document.getElementById('levelEnergyFill');
-        const remainingAmountElement = document.getElementById('remainingAmount'); // عنصر للمبلغ المتبقي
-
-        if (mainLevelCoinsElement) {
-            mainLevelCoinsElement.innerText = `Balance: ${formatNumber(currentBalance)}`;
-        }
-
-        if (remainingAmountElement) {
-            remainingAmountElement.innerText = `Remaining: ${formatNumber(remainingAmount)}`;
-        }
-
-        if (mainEnergyFill) {
-            mainEnergyFill.style.width = `${(currentBalance / nextLevelThreshold) * 100}%`; // عرض الشريط التقدمي
-        }
-
-        // تحديث صفحة المستويات
-        const levelPageName = document.getElementById('levelPageCurrentLevelName');
-        const levelPageCoinsElement = document.getElementById('levelPageCurrentLevelCoins');
-        const levelPageEnergyFill = document.getElementById('levelPageEnergyFill');
-
-        if (levelPageName && levelPageCoinsElement && levelPageEnergyFill) {
-            levelPageName.innerText = `Lvl: ${currentLevelData.name}`;
-            applyGradientToLevel(levelPageName, gameState.currentLevel);
-
-            levelPageCoinsElement.innerText = `Required: ${formatNumber(nextLevelThreshold)}`;
-            levelPageEnergyFill.style.width = `${(currentBalance / nextLevelThreshold) * 100}%`;
-        }
-
-        // تحديث الزر العائم
-        const floatingButtonName = document.getElementById('currentLevelName');
-
-        if (floatingButtonName) {
-            floatingButtonName.innerText = `Lvl: ${currentLevelData.name}`;
-
-            floatingButtonName.classList.remove('gradient-level-1', 'gradient-level-2', 'gradient-level-3', 'gradient-level-4', 'gradient-level-5');
-        }
-    }
-
-    // تحديد العنصر النشط
-    document.querySelectorAll('.level-item').forEach(item => {
-        item.classList.remove('current-level');
-    });
-
-    const currentLevelElement = document.getElementById(`level${gameState.currentLevel}`);
-    if (currentLevelElement) {
-        currentLevelElement.classList.add('current-level');
-    }
-}
-
-
-
-///////////////////
-
-
-function applyGradientToLevel(element, level) {
-    element.className = ""; // إزالة جميع الفئات الحالية
-
-    if (level <= 10) {
-        element.classList.add('gradient-level-1');
-    } else if (level <= 20) {
-        element.classList.add('gradient-level-2');
-    } else if (level <= 30) {
-        element.classList.add('gradient-level-3');
-    } else if (level <= 40) {
-        element.classList.add('gradient-level-4');
-    } else if (level <= 50) {
-        element.classList.add('gradient-level-5');
-    }
 }
 
 
@@ -1162,12 +1023,10 @@ async function updateUserData() {
             balance: gameState.balance,
             energy: gameState.energy,
             max_energy: gameState.maxEnergy,
-            current_level: gameState.currentLevel,
             friends: gameState.friends,
             invites: gameState.invites,
             completed_tasks: gameState.completedTasks, 
             puzzles_progress: gameState.puzzlesprogress, 
-            achieved_Levels: gameState.achievedLevels, 
         })
         .eq('telegram_id', userId);
 
@@ -1864,9 +1723,6 @@ document.getElementById('puzzle1').addEventListener('click', function() {
 });
 
 
-///////////////////////////////////////////////////
-
-
 
 /////////////////////////////////////////////////
 
@@ -1882,24 +1738,6 @@ async function connectToWallet() {
     console.log(connectedWallet);
 }
 
-async function checkConnection() {
-    try {
-        const isConnected = await tonConnectUI.isWalletConnected();
-        
-        if (!isConnected) {
-            // إذا لم يتم الربط، أظهر واجهة الربط
-            await connectToWallet();
-        } else {
-            console.log("Wallet is already connected.");
-        }
-    } catch (error) {
-        console.error("Error checking wallet connection:", error);
-    }
-}
-
-// استدعاء دالة التحقق عند تحميل الصفحة
-checkConnection();
-
 tonConnectUI.uiOptions = {
     twaReturnUrl: 'https://t.me/SAWCOIN_BOT/GAME'
 };
@@ -1909,34 +1747,25 @@ tonConnectUI.uiOptions = {
 /////////////////////////////////////////
 
 
-//تحديثات الاعدادات
+// تحديثات الإعدادات
 
 function updateAccountSummary() {
   // تحديث العناصر الأساسية
   const invitedCountElement = document.getElementById('invitedCount');
-  const currentLevelNameElement = document.getElementById('currentLevelName');
 
   // تحديث النسخ داخل لوحة الإعدادات
   const settingsInvitedCount = document.getElementById('settingsInvitedCount');
-  const settingsCurrentLevelName = document.getElementById('settingsCurrentLevelName');
-
-  const currentLevelIndex = gameState.currentLevel - 1;
-  const currentLevelName = levelThresholds[currentLevelIndex]?.name || 'Unknown';
 
   if (invitedCountElement) invitedCountElement.innerText = gameState.invites.length;
-  if (currentLevelNameElement) currentLevelNameElement.innerText = currentLevelName;
 
   // تحديث النسخ في لوحة الإعدادات
   if (settingsInvitedCount) settingsInvitedCount.innerText = gameState.invites.length;
-  if (settingsCurrentLevelName) settingsCurrentLevelName.innerText = currentLevelName;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   loadGameState();
   updateAccountSummary();
 });
-
-
 
 ///////////////////////////////////////////
 
