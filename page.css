@@ -35,7 +35,7 @@
 
 /* زر بحالة التشغيل */
 .toggle-btn.active {
-    background-color: #4caf50;
+    background-color: #4375ca;
 }
 
 .toggle-btn.active .toggle-ball {
@@ -44,7 +44,7 @@
 
 /* زر بحالة الإيقاف */
 .toggle-btn.inactive {
-    background-color: #f44336;
+    background-color: red;
 }
 
 
