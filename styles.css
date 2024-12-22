@@ -329,7 +329,7 @@ img {
     align-items: center;
     justify-content: center;
     margin-top: 0; 
-    margin-bottom: 80px;
+    margin-bottom: 75px;
     flex: 1;
     animation: popIn 0.4s ease forwards;
 } 
@@ -538,11 +538,13 @@ img {
 
 .game-button {
     border-radius: 20px;
-    width: 100%; /* التأكد من أن الأزرار تأخذ عرض الحاوية */
+    width: 80%; /* التأكد من أن الأزرار تأخذ عرض الحاوية */
     height: 40px;
     color: #fff;
+    font-size: 15px; 
+    font-weight: bold;
     background-color: rgba(0, 0, 0, 0.9);
-    margin: 10px 0; /* المسافة بين الأزرار */
+    margin: 10px auto; /* المسافة بين الأزرار */
 }
 
 
