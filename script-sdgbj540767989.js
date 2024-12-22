@@ -386,28 +386,6 @@ function updateUI() {
         }
     });
 
-    // تحديث شريط الطاقة
-   // if (uiElements.energyBar) {
-      //  const energyPercent = (gameState.energy / gameState.maxEnergy) * 100;
-      //  uiElements.energyBar.style.width = `${energyPercent}%`;
-  //  }
-
-    // تحديث معلومات الطاقة
-    //if (uiElements.energyInfo) {
-     //   uiElements.energyInfo.innerText = `${formatNumber(gameState.energy)}/${formatNumber(gameState.maxEnergy)}⚡`;
-  //  }
-
-    // تحديث اسم المستوى الحالي
-   // if (uiElements.currentLevelName) {
-      //  const currentLevelName = levelThresholds[gameState.currentLevel - 1]?.name || "Unknown";
-       // uiElements.currentLevelName.innerText = currentLevelName;
-   // }
-
-    // تحديث المستوى المعروض
-   // if (uiElements.displayedLevel) {
-    //   uiElements.displayedLevel.innerText = ` ${gameState.currentLevel}`;
-   // }
-
     // تحديث مضاعف النقرة
     if (uiElements.clickMultiplierDisplay) {
         uiElements.clickMultiplierDisplay.innerText = gameState.clickMultiplier;
@@ -420,11 +398,8 @@ function updateUI() {
 
     // حفظ حالة اللعبة محليًا
     saveGameState();
-
     // تحديث شاشات التحسينات والمستويات
     updateBoostsDisplay();
-   // updateLevelDisplay();
-
     // إرسال البيانات الجديدة إلى قاعدة البيانات
     updateGameStateInDatabase({
         balance: gameState.balance,
@@ -2115,7 +2090,7 @@ async function showUpgradeModal(upgradeType) {
     document.getElementById('upgradeIconContainer').innerHTML = upgrade.icon;
     document.getElementById('upgradeTitle').innerText = upgrade.title;
     document.getElementById('currentLevel').innerText = upgrade.current;
-    document.getElementById('upgradeCost').innerText = `Cost: ${upgrade.cost} $SAW`;
+    document.getElementById('upgradeCost').innerText = ` ${upgrade.cost} $SAW`;
 }
 
 // إغلاق النافذة المنبثقة
@@ -2134,7 +2109,7 @@ function confirmUpgradeAction() {
         if (gameState.balance >= cost) {
             gameState.balance -= cost;
             gameState.boostLevel++;
-            gameState.clickMultiplier += 1;
+            gameState.clickMultiplier += 2;
 
             // حفظ الترقية
             saveUpgradeState();
@@ -2149,7 +2124,7 @@ function confirmUpgradeAction() {
         if (gameState.balance >= cost) {
             gameState.balance -= cost;
             gameState.coinBoostLevel++;
-            gameState.maxEnergy += 500;
+            gameState.maxEnergy += 1000;
 
             // حفظ الترقية
             saveUpgradeState();
