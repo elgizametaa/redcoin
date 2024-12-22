@@ -985,7 +985,6 @@ img {
     color: #fff; /* لون أفتح قليلاً لتمييز الاسم */
     margin-right: 5px;
     margin-left: 5px;
-    animation: popIn 0.4s ease forwards;
 }
 
 .userrr-image {
