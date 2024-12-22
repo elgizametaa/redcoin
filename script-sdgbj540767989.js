@@ -587,11 +587,11 @@ vibrationToggle.addEventListener('click', () => {
 // تحديث النص ومظهر الزر
 function updateVibrationButton() {
     if (isVibrationEnabled) {
-        vibrationText.textContent = 'Vibration: On';
+        vibrationText.textContent = 'Vibration : On';
         vibrationToggle.classList.remove('inactive');
         vibrationToggle.classList.add('active');
     } else {
-        vibrationText.textContent = 'Vibration: Off';
+        vibrationText.textContent = 'Vibration : Off';
         vibrationToggle.classList.remove('active');
         vibrationToggle.classList.add('inactive');
     }
