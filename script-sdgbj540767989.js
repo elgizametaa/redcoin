@@ -139,10 +139,6 @@ async function saveGameState() {
         balance: gameState.balance,
         energy: gameState.energy,
         max_energy: gameState.maxEnergy,
-       // friends: gameState.friends,
-        //invites: gameState.invites,
-       // completed_tasks: gameState.completedTasks, 
-       // puzzles_progress: gameState.puzzlesProgress,
     };
 
     try {
@@ -180,8 +176,6 @@ async function restoreEnergy() {
         localStorage.setItem('lastFillTime', gameState.lastFillTime);
 
         updateEnergyUI();
-        // حفظ حالة اللعبة
-       // await saveGameState(); // حفظ حالة اللعبة (ما عدا lastFillTime)
 
         console.log('Energy restored successfully.');
     } catch (err) {
@@ -970,7 +964,6 @@ async function loadFriendsList() {
         uiElements.friendsListDisplay.innerHTML = `<li>Error: Unexpected issue occurred while loading friends.</li>`;
     }
 }
-
 
 
 // نسخ رابط الدعوة
