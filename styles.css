@@ -438,8 +438,19 @@ img {
 
 .menu-item.active .icon-wrapper {
     background-color: #2D83EC;
+    box-shadow: 0 0 5px rgba(45, 131, 236, 0.7), 
+                inset 0 0 2px rgba(255, 255, 255, 0.5), 
+                inset 0 0 7px rgba(45, 131, 236, 0.8); /* تأثير الإضاءة الداخلية */
+    position: relative;
+    transform: scale(1.1); /* تكبير بسيط للدائرة لإبراز التأثير */
 }
 
+.menu-item.active i {
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 
+                 0 -1px 2px rgba(255, 255, 255, 0.5); /* تأثير الظلال للأيقونة */
+}
+  
 .menu-label.active {
     color: #fff;
 }
