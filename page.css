@@ -1,3 +1,54 @@
+/* التصميم الأساسي */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* مسافة بين النص والزر */
+}
+
+#vibrationText {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* زر التبديل */
+.toggle-btn {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* الكرة داخل الزر */
+.toggle-ball {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.3s ease;
+}
+
+/* زر بحالة التشغيل */
+.toggle-btn.active {
+    background-color: #4caf50;
+}
+
+.toggle-btn.active .toggle-ball {
+    left: 26px;
+}
+
+/* زر بحالة الإيقاف */
+.toggle-btn.inactive {
+    background-color: #f44336;
+}
+
+
+
 #enrContainer {
     display: flex;
     justify-content: space-between;
@@ -234,29 +285,6 @@
     backdrop-filter: blur(5px); 
 } 
 
-/* تصميم الزر الأساسي */
-.toggle-btn {
-    background-color: transparent; /* خلفية شفافة */
-    border: 1px solid transparent; /* إطار شفاف */
-    border-radius: 20px; /* حواف دائرية */
-    padding: 5px 18px; /* مسافات داخلية */
-    font-size: 14px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: color 0.3s, border-color 0.3s; /* تأثيرات الانتقال */
-}
-
-/* الحالة المفعّلة للزر */
-.toggle-btn.active {
-    color: #2D83EC; /* لون النص عند التشغيل */
-    border-color: #2D83EC; /* لون الإطار */
-}
-
-/* الحالة الموقوفة للزر */
-.toggle-btn.inactive {
-    color: #f44336; /* لون النص عند الإيقاف */
-    border-color: #f44336; /* لون الإطار */
-}
 
 #leaderboardPage {
     padding-top: 50px;
