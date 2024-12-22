@@ -567,8 +567,9 @@ function hideConfettiEffect() {
 /////////////////////////////////////////
 
 
-    // تحديد الزر
+    // تحديد العناصر
 const vibrationToggle = document.getElementById('vibrationToggle');
+const vibrationText = document.getElementById('vibrationText');
 
 // الحالة الافتراضية
 let isVibrationEnabled = JSON.parse(localStorage.getItem('vibrationEnabled')) ?? true; 
@@ -583,19 +584,18 @@ vibrationToggle.addEventListener('click', () => {
     updateVibrationButton(); // تحديث المظهر
 });
 
-// تحديث نص ومظهر الزر
+// تحديث النص ومظهر الزر
 function updateVibrationButton() {
     if (isVibrationEnabled) {
-        vibrationToggle.textContent = 'Vibration: On';
+        vibrationText.textContent = 'Vibration: On';
         vibrationToggle.classList.remove('inactive');
         vibrationToggle.classList.add('active');
     } else {
-        vibrationToggle.textContent = 'Vibration: Off';
+        vibrationText.textContent = 'Vibration: Off';
         vibrationToggle.classList.remove('active');
         vibrationToggle.classList.add('inactive');
     }
 }
-
 
 
 
