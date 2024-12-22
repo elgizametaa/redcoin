@@ -397,15 +397,15 @@ function updateUI() {
   //  }
 
     // تحديث اسم المستوى الحالي
-    if (uiElements.currentLevelName) {
-        const currentLevelName = levelThresholds[gameState.currentLevel - 1]?.name || "Unknown";
-        uiElements.currentLevelName.innerText = currentLevelName;
-    }
+   // if (uiElements.currentLevelName) {
+      //  const currentLevelName = levelThresholds[gameState.currentLevel - 1]?.name || "Unknown";
+       // uiElements.currentLevelName.innerText = currentLevelName;
+   // }
 
     // تحديث المستوى المعروض
-    if (uiElements.displayedLevel) {
-        uiElements.displayedLevel.innerText = ` ${gameState.currentLevel}`;
-    }
+   // if (uiElements.displayedLevel) {
+    //   uiElements.displayedLevel.innerText = ` ${gameState.currentLevel}`;
+   // }
 
     // تحديث مضاعف النقرة
     if (uiElements.clickMultiplierDisplay) {
@@ -422,7 +422,7 @@ function updateUI() {
 
     // تحديث شاشات التحسينات والمستويات
     updateBoostsDisplay();
-    updateLevelDisplay();
+   // updateLevelDisplay();
 
     // إرسال البيانات الجديدة إلى قاعدة البيانات
     updateGameStateInDatabase({
