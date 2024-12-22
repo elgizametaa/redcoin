@@ -75,15 +75,13 @@
 }
 
 .wallet-box {
-    position: absolute;
-    top: 15px; 
     background-color: rgba(0, 0, 0, 0.0007); /* لون خلفية أغمق لتحسين التباين */
     border-radius: 15px; /* تدوير أكبر للحواف */
-    padding: 20px;
+    padding: 20px; /* زيادة الحشوة */
     width: 85%; /* تحديد العرض بشكل مناسب */
-    max-width: 400px;/* تحديد عرض أقصى ليتماشى مع مختلف الأجهزة */
+    max-width: 400px; /* تحديد عرض أقصى ليتماشى مع مختلف الأجهزة */
     margin: 0 auto; /* لضمان توسيط الحاوية */
-    height: 30px;
+    height: 60vh;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -113,7 +111,7 @@
     color: #fff;
     font-size: 16px;
     font-weight: bold;
-    padding: 15px 40px;
+    padding: 23px 65px;
     border-radius: 20px;
     cursor: pointer;
     width: 100%; /* جعل الزر بعرض الصندوق */
@@ -125,3 +123,4 @@
 #ton-connect button:hover {
     background-color: #1a1a1a;
 }
+ 
