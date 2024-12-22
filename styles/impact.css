@@ -2,7 +2,7 @@
     animation: slideInLeft 0.4s ease forwards;
 }
 
-#gameC-2, #bost1, #daily2, .user-ranking,  {
+#gameC-2, #bost1, #daily2, .user-ranking, #Buttoncontainer {
     animation: slideInRight 0.4s ease forwards;
 }
 
