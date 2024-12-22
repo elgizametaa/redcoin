@@ -866,7 +866,7 @@ function startEnergyRecovery() {
             // تحديث البيانات المحلية
             localStorage.setItem('energyConsumed', localEnergyConsumed);
         }
-    }, 5000); // تنفيذ الدالة كل 4 ثوانٍ
+    }, 10000); // تنفيذ الدالة كل 4 ثوانٍ
 }
 
 
