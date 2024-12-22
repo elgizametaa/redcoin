@@ -139,10 +139,10 @@ async function saveGameState() {
         balance: gameState.balance,
         energy: gameState.energy,
         max_energy: gameState.maxEnergy,
-        friends: gameState.friends,
-        invites: gameState.invites,
-        completed_tasks: gameState.completedTasks, 
-        puzzles_progress: gameState.puzzlesProgress,
+       // friends: gameState.friends,
+        //invites: gameState.invites,
+       // completed_tasks: gameState.completedTasks, 
+       // puzzles_progress: gameState.puzzlesProgress,
     };
 
     try {
@@ -1013,32 +1013,6 @@ function openTelegramChat() {
     const inviteLink = `https://t.me/share/url?text=Join Saw Token Game and earn 5,000 $SAW!&url=https://t.me/SAWCOIN_BOT?start=${uiElements.userTelegramIdDisplay?.innerText || ''}`;
     window.open(inviteLink, '_blank');
 }
-
-// تحديث بيانات المستخدم في Supabase
-async function updateUserData() {
-    const userId = uiElements.userTelegramIdDisplay.innerText;
-
-    const { error } = await supabase
-        .from('users')
-        .update({
-            balance: gameState.balance,
-            energy: gameState.energy,
-            max_energy: gameState.maxEnergy,
-            friends: gameState.friends,
-            invites: gameState.invites,
-            completed_tasks: gameState.completedTasks, 
-            puzzles_progress: gameState.puzzlesprogress, 
-        })
-        .eq('telegram_id', userId);
-
-    if (error) {
-        console.error('Error updating user data:', error);
-    }
-}
-
-
-
-
 
 
 ////////////////////////////////////////////////
