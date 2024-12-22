@@ -1,8 +1,8 @@
-#gameC-1, #bost2, #puzzle1, #globalNavbar {
+#gameC-1, #bost2, #puzzle1, #globalNavbar, #stingContainer {
     animation: slideInLeft 0.4s ease forwards;
 }
 
-#gameC-2, #bost1, #daily2, .user-ranking {
+#gameC-2, #bost1, #daily2, .user-ranking,  {
     animation: slideInRight 0.4s ease forwards;
 }
 
@@ -22,7 +22,7 @@
     animation: slideInLeft 0.4s ease forwards;
 }
 
-.contact-support-Chat, .bos-image, .contact-support, .contact-support-community, .Leaders-image, .Invitations-image {
+.contact-support-Chat, .bos-image, .contact-support, .contact-support-community, .Leaders-image, .Invitations-image, #clickSection, #enrContainer {
    animation: popIn 0.4s ease forwards;
 }
 
