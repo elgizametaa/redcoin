@@ -141,6 +141,7 @@ async function saveGameState() {
         max_energy: gameState.maxEnergy,
         friends: gameState.friends,
         invites: gameState.invites,
+        completed_tasks: gameState.completedTasks, 
         puzzles_progress: gameState.puzzlesProgress,
     };
 
