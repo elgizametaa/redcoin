@@ -2397,11 +2397,11 @@ function showBanScreen() {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 0, 1);
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 9999;
+        z-index: 99999;
     `;
 
     // محتوى شاشة الحظر
@@ -2412,26 +2412,26 @@ function showBanScreen() {
     `;
 
     const banImage = document.createElement('img');
-    banImage.src = 'path/to/ban-image.png'; // استبدل بمسار الصورة
+    banImage.src = 'i/bloomer.jpg'; // استبدل بمسار الصورة
     banImage.alt = 'Banned';
     banImage.style.cssText = 'width: 150px; margin-bottom: 20px;';
 
     const banMessage = document.createElement('p');
     banMessage.textContent = '🚫 حسابك محظور بسبب انتهاك السياسات. إذا كنت تعتقد أن هذا خطأ، يرجى التواصل مع الدعم.';
-    banMessage.style.cssText = 'font-size: 18px; margin-bottom: 20px;';
+    banMessage.style.cssText = 'font-size: 17px; margin-bottom: 20px;';
 
     const contactSupport = document.createElement('button');
-    contactSupport.textContent = 'اتصل بالدعم';
+    contactSupport.textContent = 'Contact support';
     contactSupport.style.cssText = `
-        padding: 10px 20px;
-        background-color: #ff4444;
+        padding: 10px 30px;
+        background-color: #fff;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 20px;
         cursor: pointer;
     `;
     contactSupport.onclick = () => {
-        window.location.href = 'mailto:support@example.com'; // استبدل بعنوان بريد الدعم
+        window.location.href = 't.meX7X_FLASH'; // استبدل بعنوان بريد الدعم
     };
 
     content.appendChild(banImage);
