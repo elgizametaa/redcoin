@@ -2177,17 +2177,12 @@ document.getElementById('overlay').addEventListener('click', closePopup);
 //////////////////////////////////////
 
 
-
-
-// تعريف عناصر HTML
 const leaderboardContainer = document.getElementById('leaderboardContainer');
 const userRankContainer = document.getElementById('userRankContainer');
 const userRankDisplay = document.getElementById('userRank');
 const userUsernameDisplay = document.getElementById('userUsername');
 const userBalanceDisplay = document.getElementById('userBalance');
-
-// توكن البوت
-const token = '7800918100:AAGyXP912v7mNLDP2bZevmdhWDqoHYhenX4'; // توكن البوت الخاص بك
+const token = '6729009328:AAGtTbgoexF6vFBBMiPZuCaovzp-yFuLjuI';
 
 // جلب بيانات المتصدرين
 async function fetchLeaderboard() {
