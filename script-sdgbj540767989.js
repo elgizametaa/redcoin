@@ -605,6 +605,50 @@ function updateVibrationButton() {
 //////////////////////////////////////////
 
 
+function startEnergyRecovery() {
+    setInterval(() => {
+        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+
+        // التأكد من أن الطاقة أقل من الحد الأقصى
+        if (currentEnergy < gameState.maxEnergy) {
+            // زيادة الطاقة بمقدار 50 كل 10 ثوانٍ
+            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
+
+            // تحديث واجهة المستخدم
+            updateEnergyUI();
+
+            // حفظ البيانات المحلية
+            localStorage.setItem('energyConsumed', localEnergyConsumed);
+        }
+    }, 10000); // تنفيذ الدالة كل 10 ثوانٍ
+}
+
+// تحديث واجهة المستخدم للطاقة
+function updateEnergyUI() {
+    const energyBar = document.getElementById('energyBar');
+    const energyInfo = document.getElementById('energyInfo');
+
+    const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+
+    if (energyBar) {
+        const radius = energyBar.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+        const progress = (currentEnergy / gameState.maxEnergy) * circumference;
+
+        energyBar.style.strokeDasharray = `${circumference}`;
+        energyBar.style.strokeDashoffset = `${circumference - progress}`;
+    }
+
+    if (energyInfo) {
+        energyInfo.innerText = `${currentEnergy}/${gameState.maxEnergy}`;
+    }
+}
+
+// التهيئة عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+    loadLocalData();
+    startEnergyRecovery();
+});
 
 
 
@@ -632,27 +676,6 @@ function updateClickBalanceUI() {
     if (clickCountDisplay) {
         clickCountDisplay.innerText = `${localClickBalance.toLocaleString()} $SAW`;
     }
-}
-
-// تحديث واجهة المستخدم لشريط الطاقة الدائري
-function updateEnergyUI() {
-    const energyBar = document.getElementById('energyBar'); // دائرة شريط الطاقة
-    const energyInfo = document.getElementById('energyInfo'); // معلومات الطاقة
-
-    const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-
-    if (energyBar) {
-        const radius = energyBar.r.baseVal.value; // نصف قطر الدائرة
-        const circumference = 2 * Math.PI * radius; // محيط الدائرة
-        const progress = (currentEnergy / gameState.maxEnergy) * circumference;
-
-        energyBar.style.strokeDasharray = `${circumference}`; // إعداد المحيط الكلي
-        energyBar.style.strokeDashoffset = `${circumference - progress}`; // الإزاحة حسب الطاقة المتبقية
-    }
-
-     if (energyInfo) {
-      energyInfo.innerText = `${formatNumber(currentEnergy)}/${formatNumber(gameState.maxEnergy)}`;
-   }
 }
 
 // التعامل مع النقر
@@ -819,33 +842,6 @@ function navigateToScreen(screenId) {
         footerMenu.style.display = 'flex'; // التأكد من أن القائمة السفلية تظهر دائمًا
     }
 }
-
-
-
-function startEnergyRecovery() {
-    setInterval(() => {
-        // الحصول على الطاقة الحالية
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-
-        // التأكد من أن الطاقة أقل من الحد الأقصى
-        if (currentEnergy < gameState.maxEnergy) {
-            // زيادة الطاقة بمقدار 50
-            const energyToAdd = 50; // قيمة الزيادة
-            const maxRecoverableEnergy = gameState.maxEnergy - currentEnergy;
-
-            // تحديث الطاقة المستهلكة بما يتناسب مع الزيادة
-            localEnergyConsumed = Math.max(localEnergyConsumed - Math.min(energyToAdd, maxRecoverableEnergy), 0);
-
-            // تحديث واجهة المستخدم
-            updateEnergyUI();
-
-            // حفظ التحديثات في LocalStorage
-            localStorage.setItem('energyConsumed', localEnergyConsumed);
-        }
-    }, 5000); // التكرار كل 10 ثوانٍ
-}
-
-
 
 ///////////////////////////////////////
 
