@@ -377,13 +377,13 @@ img {
     align-items: center;
     height: 50px;
     position: fixed;
-    bottom: 18px;
+    bottom: 0px;
     border-radius: 20px;
-    width: 89%;
+    width: 100%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-    padding-bottom: 20px; /* لإعطاء مساحة للنصوص */
+    padding-bottom: 30px; /* لإعطاء مساحة للنصوص */
     background-color: #101010;
     border-top: 1px solid #1c1c1c;
 }
