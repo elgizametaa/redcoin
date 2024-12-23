@@ -93,21 +93,21 @@
   transform: translateX(-50%);
   width: 89%;
   height: 55px;
-background-image: 
+  background-image: 
     radial-gradient(circle at 24% 23%, rgba(167, 167, 167,0.06) 0%, rgba(167, 167, 167,0.06) 25%,rgba(148, 148, 148,0.06) 25%, rgba(148, 148, 148,0.06) 50%,rgba(129, 129, 129,0.06) 50%, rgba(129, 129, 129,0.06) 75%,rgba(110, 110, 110,0.06) 75%, rgba(110, 110, 110,0.06) 100%),
     radial-gradient(circle at 58% 30%, rgba(14, 14, 14,0.06) 0%, rgba(14, 14, 14,0.06) 25%,rgba(60, 60, 60,0.06) 25%, rgba(60, 60, 60,0.06) 50%,rgba(107, 107, 107,0.06) 50%, rgba(107, 107, 107,0.06) 75%,rgba(153, 153, 153,0.06) 75%, rgba(153, 153, 153,0.06) 100%),
     radial-gradient(circle at 79% 53%, rgba(225, 225, 225,0.06) 0%, rgba(225, 225, 225,0.06) 25%,rgba(189, 189, 189,0.06) 25%, rgba(189, 189, 189,0.06) 50%,rgba(152, 152, 152,0.06) 50%, rgba(152, 152, 152,0.06) 75%,rgba(116, 116, 116,0.06) 75%, rgba(116, 116, 116,0.06) 100%),
     linear-gradient(221deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3));
-    background-size: cover;
-    background-position: center;
-  border-right: 1px solid #1c1c1c;
-  border-top: 1px solid #1c1c1c;
+  background-size: cover;
+  background-position: center;
+  /*border-right: 1px solid #1c1c1c;
+  border-top: 1px solid #1c1c1c;*/
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 20px;
   padding-left: 10px;
-  padding-right: 5px; 
+  padding-right: 0; 
   box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -188,11 +188,11 @@ background-image:
   border: none;
   font-weight: bold;
   border-radius: 20px;
-  width: 25%;
-  height: 80%;
+  width: 22%;
+  height: 70%;
   font-size: 15px;
   margin-left: auto;
-  margin-right: 2px;
+  margin-right: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
