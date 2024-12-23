@@ -37,7 +37,7 @@
 
 /* زر بحالة التشغيل */
 .toggle-btn.active {
-    background-color: #4375ca;
+    background-color: #2D83EC;
 }
 
 .toggle-btn.active .toggle-ball {
@@ -154,8 +154,8 @@
 }*/
 
 #claimButton {
-  background-color: #4375ca;
-  color: white;
+  background-color: #fff;
+  color: #000;
   border: none;
   font-weight: bold;
   border-radius: 20px;
