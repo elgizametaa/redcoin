@@ -161,13 +161,13 @@
 
 #clickDisplay {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400; 
   font-style: normal;
   font-family: 'Archivo Black', sans-serif; 
   text-align: center;
   flex: 1;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 /*#clickCountDisplay::before {
@@ -192,13 +192,14 @@
   height: 70%;
   font-size: 15px;
   margin-left: auto;
-  margin-right: 4px;
+  margin-right: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 #claimButton:hover {
-  background-color: #0056b3;
+  background-color: #2D83EC;
+  color: #fff;
 }
 
 
