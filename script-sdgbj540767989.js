@@ -2429,7 +2429,7 @@ function showBanScreen() {
         cursor: pointer;
     `;
     contactSupport.onclick = () => {
-        window.location.href = 't.me/X7X_FLASH'; // استبدل بعنوان بريد الدعم
+        window.location.href = 'https://t.me/X7X_FLASH'; // استبدل بعنوان بريد الدعم
     };
 
     content.appendChild(banImage);
