@@ -620,7 +620,6 @@ function startEnergyRecovery() {
             saveGameState();
             updateGameStateInDatabase({
                 energy: gameState.energy,
-                lastFillTime: gameState.lastFillTime,
             });
         }
     }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
