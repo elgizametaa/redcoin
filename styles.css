@@ -375,9 +375,9 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 57px;
+    height: 60px;
     position: fixed;
-    bottom: 35px;
+    bottom: 32px;
     border-radius: 20px;
     width: 89.5%;
     left: 50%;
@@ -390,7 +390,7 @@ img {
     border-right: 1px solid #1c1c1c;
 }
 
-.menu-list{
+.menu-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -440,7 +440,7 @@ img {
 }
 
 .menu-item i {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #808080;
     transition: color 0.3s ease;
 }
