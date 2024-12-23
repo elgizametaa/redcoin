@@ -2412,7 +2412,7 @@ function showBanScreen() {
     const banImage = document.createElement('img');
     banImage.src = 'i/bloomer.jpg'; // استبدل بمسار الصورة
     banImage.alt = 'Banned';
-    banImage.style.cssText = 'width: 150px; margin-bottom: 20px;';
+    banImage.style.cssText = 'width: 170px; margin-bottom: 20px;';
 
     const banMessage = document.createElement('p');
     banMessage.textContent = 'Your account has been banned for violating policies If you think this is an error please contact support';
@@ -2425,6 +2425,7 @@ function showBanScreen() {
         background-color: #fff;
         color: #000;
         border: none;
+        font-weight: bold;
         border-radius: 20px;
         cursor: pointer;
     `;
