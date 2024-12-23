@@ -69,6 +69,7 @@ let gameState = {
     boostLevel: 1,
     coinBoostLevel: 1,
     energyBoostLevel: 1,
+    lastFillTime: Date.now(),
     friends: 0,
     invites: [],
     completedTasks: [],
@@ -160,6 +161,7 @@ async function saveGameState() {
 
 
 
+
 async function restoreEnergy() {
     try {
         // استعادة وقت آخر ملء للطاقة من التخزين المحلي
@@ -191,6 +193,7 @@ async function restoreEnergy() {
 }
 
 
+
 // الاستماع إلى التغييرات في قاعدة البيانات
 //function listenToRealtimeChanges() {
   //  const userId = uiElements.userTelegramIdDisplay.innerText;
@@ -208,6 +211,8 @@ async function restoreEnergy() {
 
 // تهيئة التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', async () => {
+    const isBanned = await checkAndHandleBan();
+    if (isBanned) return; 
     await loadGameState();   
     await restoreEnergy();
     startEnergyRecovery();
@@ -567,8 +572,9 @@ function hideConfettiEffect() {
 /////////////////////////////////////////
 
 
-    // تحديد الزر
+    // تحديد العناصر
 const vibrationToggle = document.getElementById('vibrationToggle');
+const vibrationText = document.getElementById('vibrationText');
 
 // الحالة الافتراضية
 let isVibrationEnabled = JSON.parse(localStorage.getItem('vibrationEnabled')) ?? true; 
@@ -583,14 +589,14 @@ vibrationToggle.addEventListener('click', () => {
     updateVibrationButton(); // تحديث المظهر
 });
 
-// تحديث نص ومظهر الزر
+// تحديث النص ومظهر الزر
 function updateVibrationButton() {
     if (isVibrationEnabled) {
-        vibrationToggle.textContent = 'Vibration: On';
+        vibrationText.textContent = 'Vibration : On';
         vibrationToggle.classList.remove('inactive');
         vibrationToggle.classList.add('active');
     } else {
-        vibrationToggle.textContent = 'Vibration: Off';
+        vibrationText.textContent = 'Vibration : Off';
         vibrationToggle.classList.remove('active');
         vibrationToggle.classList.add('inactive');
     }
@@ -598,9 +604,7 @@ function updateVibrationButton() {
 
 
 
-
 //////////////////////////////////////////
-
 
 
 
@@ -627,7 +631,7 @@ function loadLocalData() {
 function updateClickBalanceUI() {
     const clickCountDisplay = document.getElementById('clickCountDisplay');
     if (clickCountDisplay) {
-        clickCountDisplay.innerText = localClickBalance.toLocaleString();
+        clickCountDisplay.innerText = `${localClickBalance.toLocaleString()} $SAW`;
     }
 }
 
@@ -795,6 +799,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+function startEnergyRecovery() {
+    setInterval(() => {
+        // حساب الطاقة الحالية من اللعبة
+        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+
+        // التأكد من وجود طاقة أقل من الحد الأقصى
+        if (currentEnergy < gameState.maxEnergy) {
+            // زيادة الطاقة
+            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
+
+            // تحديث واجهة المستخدم
+            updateEnergyUI();
+
+            // تحديث البيانات المحلية
+            localStorage.setItem('energyConsumed', localEnergyConsumed);
+        }
+    }, 10000); // تنفيذ الدالة كل 4 ثوانٍ
+}
+
+
 
 //////////////////////////////////////////////////
 
@@ -816,28 +840,6 @@ function navigateToScreen(screenId) {
         footerMenu.style.display = 'flex'; // التأكد من أن القائمة السفلية تظهر دائمًا
     }
 }
-
-
-
-function startEnergyRecovery() {
-    setInterval(() => {
-        // حساب الطاقة الحالية من اللعبة
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-
-        // التأكد من وجود طاقة أقل من الحد الأقصى
-        if (currentEnergy < gameState.maxEnergy) {
-            // زيادة الطاقة
-            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
-
-            // تحديث واجهة المستخدم
-            updateEnergyUI();
-
-            // تحديث البيانات المحلية
-            localStorage.setItem('energyConsumed', localEnergyConsumed);
-        }
-    }, 10000); // تنفيذ الدالة كل 4 ثوانٍ
-}
-
 
 ///////////////////////////////////////
 
@@ -2352,6 +2354,97 @@ function truncateUsername(username, maxLength = 8) {
 }
 
 //////////////////////
+
+
+async function checkAndHandleBan() {
+    const userId = uiElements.userTelegramIdDisplay.innerText;
+
+    try {
+        // جلب حالة الحظر من قاعدة البيانات
+        const { data, error } = await supabase
+            .from('users')
+            .select('is_banned')
+            .eq('telegram_id', userId)
+            .single();
+
+        if (error) {
+            console.error('Error checking ban status:', error.message);
+            return false;
+        }
+
+        if (data?.is_banned) {
+            showBanScreen(); // إذا كان المستخدم محظورًا، عرض شاشة الحظر
+            return true; // المستخدم محظور
+        }
+
+        return false; // المستخدم غير محظور
+    } catch (err) {
+        console.error('Unexpected error while checking ban status:', err);
+        return false;
+    }
+}
+
+
+function showBanScreen() {
+    // إنشاء طبقة تغطي الشاشة بالكامل لمنع التفاعل
+    const overlay = document.createElement('div');
+    overlay.id = 'banOverlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+    `;
+
+    // محتوى شاشة الحظر
+    const content = document.createElement('div');
+    content.style.cssText = `
+        text-align: center;
+        color: white;
+    `;
+
+    const banImage = document.createElement('img');
+    banImage.src = 'i/bloomer.jpg'; // استبدل بمسار الصورة
+    banImage.alt = 'Banned';
+    banImage.style.cssText = 'width: 150px; margin-bottom: 20px;';
+
+    const banMessage = document.createElement('p');
+    banMessage.textContent = 'Your account has been banned for violating policies If you think this is an error please contact support';
+    banMessage.style.cssText = 'font-size: 17px; margin-bottom: 20px;';
+
+    const contactSupport = document.createElement('button');
+    contactSupport.textContent = 'Contact support';
+    contactSupport.style.cssText = `
+        padding: 10px 30px;
+        background-color: #fff;
+        color: #000;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    `;
+    contactSupport.onclick = () => {
+        window.location.href = 'https://t.me/X7X_FLASH'; // استبدل بعنوان بريد الدعم
+    };
+
+    content.appendChild(banImage);
+    content.appendChild(banMessage);
+    content.appendChild(contactSupport);
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+
+    // تعطيل التفاعل مع بقية الشاشة
+    document.body.style.overflow = 'hidden';
+}
+
+////////////////////////////////////
+
+
 
 
 

@@ -94,7 +94,11 @@ body {
 }
  
  
-
+/*.container i { 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 
+                 0 -1px 2px rgba(255, 255, 255, 0.5); 
+}*/
+    
  @media only screen and (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -371,28 +375,33 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 60px;
     position: fixed;
-    bottom: 18px;
+    bottom: 32px;
     border-radius: 20px;
-    width: 89%;
+    width: 89.5%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-    padding-bottom: 40px; /* لإعطاء مساحة للنصوص */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: #101010;
+    /*padding-bottom: 30px;*//* لإعطاء مساحة للنصوص */
+    border-bottom: 1px solid #1c1c1c;
+    border-right: 1px solid #1c1c1c;
 }
 
-.menu-list{
+.menu-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 100%;
+    margin: 10px auto; 
    /* border-top: 1px solid #1c1c1c;*/
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.00009);
-    backdrop-filter: blur(5px); 
+   /* background-color: rgba(255, 255, 255, 0.00009);
+    backdrop-filter: blur(5px);*/
     border-radius: 20px;
-    width: 100%;
+    width: 95%;
     z-index: 100;
 }
  
@@ -431,16 +440,16 @@ img {
 }
 
 .menu-item i {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #808080;
     transition: color 0.3s ease;
 }
 
 .menu-item.active .icon-wrapper {
     background-color: #2D83EC;
-    box-shadow: 0 0 5px rgba(45, 131, 236, 0.7), 
+    box-shadow: 0 0 2px rgba(45, 131, 236, 0.7), 
                 inset 0 0 2px rgba(255, 255, 255, 0.5), 
-                inset 0 0 7px rgba(45, 131, 236, 0.8); /* تأثير الإضاءة الداخلية */
+                inset 0 0 3px rgba(45, 131, 236, 0.8); /* تأثير الإضاءة الداخلية */
     position: relative;
     transform: scale(1.1); /* تكبير بسيط للدائرة لإبراز التأثير */
 }
@@ -460,6 +469,7 @@ img {
     top: 60px; /* إخراج النص من حدود القائمة */
     font-size: 12px;
     color: #808080;
+    margin-top: 5px; 
     text-align: center;
     transition: color 0.3s ease;
 }
