@@ -824,21 +824,27 @@ function navigateToScreen(screenId) {
 
 function startEnergyRecovery() {
     setInterval(() => {
-        // حساب الطاقة الحالية من اللعبة
+        // الحصول على الطاقة الحالية
         const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-        // التأكد من وجود طاقة أقل من الحد الأقصى
+
+        // التأكد من أن الطاقة أقل من الحد الأقصى
         if (currentEnergy < gameState.maxEnergy) {
-            // زيادة الطاقة
-            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
+            // زيادة الطاقة بمقدار 50
+            const energyToAdd = 50; // قيمة الزيادة
+            const maxRecoverableEnergy = gameState.maxEnergy - currentEnergy;
+
+            // تحديث الطاقة المستهلكة بما يتناسب مع الزيادة
+            localEnergyConsumed = Math.max(localEnergyConsumed - Math.min(energyToAdd, maxRecoverableEnergy), 0);
 
             // تحديث واجهة المستخدم
             updateEnergyUI();
 
-            // تحديث البيانات المحلية
+            // حفظ التحديثات في LocalStorage
             localStorage.setItem('energyConsumed', localEnergyConsumed);
         }
-    }, 10000); // تنفيذ الدالة كل 4 ثوانٍ
+    }, 5000); // التكرار كل 10 ثوانٍ
 }
+
 
 
 ///////////////////////////////////////
