@@ -66,15 +66,13 @@
     backdrop-filter: blur(5px); 
 } 
 
-#clickSection {
+/*#clickSection {
   position: fixed;
   bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   width: 89%;
   height: 55px;
-/* background: linear-gradient(135deg, #101010, #000);*/
-  /*background: #101010;*/
   background-color: #101010;
   border-right: 1px solid #1c1c1c;
   border-top: 1px solid #1c1c1c;
@@ -83,6 +81,29 @@
   align-items: center;
   border-radius: 20px;
   padding-left: 10px ;
+  padding-right: 5px; 
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}*/
+
+#clickSection {
+  position: fixed;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 89%;
+  height: 55px;
+  background-image: url('i/ggg.jpg'); /* استبدل المسار بالصورة الخاصة بك */
+  background-size: contain; /* لضمان عدم تقليص أو تمديد الصورة */
+  background-repeat: no-repeat; /* منع تكرار الصورة */
+  background-position: center; /* تمركز الصورة في المنتصف */
+  border-right: 1px solid #1c1c1c;
+  border-top: 1px solid #1c1c1c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  padding-left: 10px;
   padding-right: 5px; 
   box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
