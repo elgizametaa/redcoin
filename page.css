@@ -73,8 +73,8 @@
   transform: translateX(-50%);
   width: 89%;
   height: 51px;
-  background: linear-gradient(135deg, #101010, #1E2337, #101010);
-  /*background: linear-gradient(135deg, #101010, #4375ca);*/
+/* background: linear-gradient(135deg, #101010, #1E2337, #101010);*/
+  background: #1E2337;
 /* background-color: rgba(255, 255, 255, 0.0000009);
   backdrop-filter: blur(5px);*/
   display: flex;
@@ -82,7 +82,7 @@
   align-items: center;
   border-radius: 20px;
   padding-left: 12px ;
-  padding-right: 7px; 
+  padding-right: 1px; 
   box-sizing: border-box;
 }
 
@@ -141,18 +141,17 @@
   flex: 1;
 }
 
-#clickCountDisplay::before {
-    content: ""; /* لا نحتاج نصًا هنا */
+/*#clickCountDisplay::before {
+    content: "";
     display: inline-block;
-    width: 30px; /* تحديد عرض الصورة */
-    height: 30px; /* تحديد ارتفاع الصورة */
-    background-image: url('i/coinss.png'); /* مسار الصورة */
-    background-size: cover; /* لتغطية العنصر بالصورة بشكل جيد */
-    margin-right: 3px; /* مسافة بين الصورة والنص */
+    width: 30px; 
+    height: 30px; 
+    background-image: url('i/coinss.png'); 
+    background-size: cover; 
+    margin-right: 3px; 
     margin-left: 0;
-    vertical-align: middle; /* لضبط المحاذاة العمودية */
-}
-
+    vertical-align: middle; 
+}*/
 
 #claimButton {
   background-color: #4375ca;
