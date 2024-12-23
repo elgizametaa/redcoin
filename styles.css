@@ -378,11 +378,12 @@ img {
     height: 50px;
     position: fixed;
     bottom: 0px;
-    border-radius: 20px;
+   /* border-radius: 20px;*/
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
+    margin-bottom: 20px;
     padding-bottom: 30px; /* لإعطاء مساحة للنصوص */
     background-color: #101010;
     border-top: 1px solid #1c1c1c;
