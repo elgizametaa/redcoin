@@ -375,9 +375,9 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 60px;
     position: fixed;
-    bottom: 19px;
+    bottom: 35px;
     border-radius: 20px;
     width: 89%;
     left: 50%;
