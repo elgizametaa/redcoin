@@ -161,20 +161,22 @@ async function saveGameState() {
 
 
 
-
 async function restoreEnergy() {
     try {
-        // استعادة وقت آخر ملء للطاقة من التخزين المحلي
         const lastFillTime = parseInt(localStorage.getItem('lastFillTime'), 10) || Date.now();
         const currentTime = Date.now();
         const timeDiff = currentTime - lastFillTime;
 
-        // حساب الطاقة المستعادة
-        const recoveredEnergy = Math.floor(timeDiff / (4 * 60 * 1000)); // استعادة الطاقة كل 4 دقائق
-        gameState.energy = Math.min(gameState.maxEnergy, gameState.energy + recoveredEnergy);
+        // حساب عدد المرات التي يجب استعادة الطاقة فيها
+        const recoverableTimes = Math.floor(timeDiff / (5 * 1000)); // كل 5 ثوانٍ
+        const recoveredEnergy = recoverableTimes * 5;
 
-        // تحديث وقت آخر استعادة للطاقة
-        gameState.lastFillTime = currentTime;
+        // استعادة الطاقة بدون تجاوز الحد الأقصى
+        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+        gameState.energy = Math.min(gameState.maxEnergy, currentEnergy + recoveredEnergy);
+
+        // تحديث وقت آخر استعادة
+        gameState.lastFillTime = currentTime - (timeDiff % (5 * 1000)); // الاحتفاظ بالوقت المتبقي
         localStorage.setItem('lastFillTime', gameState.lastFillTime);
 
         updateEnergyUI();
@@ -183,7 +185,6 @@ async function restoreEnergy() {
     } catch (err) {
         console.error('Error restoring energy:', err.message);
 
-        // إشعار بفشل الاستعادة
         showNotificationWithStatus(
             uiElements.purchaseNotification,
             `Failed to restore energy. Please reload.`,
@@ -191,7 +192,6 @@ async function restoreEnergy() {
         );
     }
 }
-
 
 
 // الاستماع إلى التغييرات في قاعدة البيانات
@@ -603,17 +603,15 @@ function updateVibrationButton() {
 }
 
 
-
-//////////////////////////////////////////
-
-
+/////////////////////////////////////////
 
 
 // استدعاء الصورة القابلة للنقر
 const img = document.getElementById('clickableImg');
 let localClickBalance = 0; // رصيد النقرات المحلي
 let localEnergyConsumed = 0; // الطاقة المستهلكة محليًا
-const energyUpdateThreshold = 100; // الحد الأدنى لتحديث الطاقة في قاعدة البيانات
+let lastDatabaseUpdateTime = Date.now(); // وقت آخر تحديث لقاعدة البيانات
+const updateInterval = 30000; // الفاصل الزمني للتحديث (30 ثانية)
 let isUpdatingDatabase = false; // منع التحديث المتكرر للبيانات
 
 // تحميل البيانات المحلية عند بدء التطبيق
@@ -675,49 +673,42 @@ img.addEventListener('pointerdown', (event) => {
 });
 
 
-// منطق النقر الفردي
 function handleSingleTouch(event) {
     event.preventDefault();
 
-    // التأكد من أن النقر يتم بواسطة إصبع واحد فقط
     if (event.touches && event.touches.length > 1) {
         console.warn('Multiple touch points detected. Ignoring extra touches.');
         return;
     }
 
-    const clickValue = gameState.clickMultiplier || 1; // قيمة النقرة بناءً على الترقيات
-    const requiredEnergy = clickValue; // الطاقة المطلوبة تساوي قيمة النقرة
+    const clickValue = gameState.clickMultiplier || 1;
+    const requiredEnergy = clickValue;
     const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
 
-    // تحقق من الطاقة المتوفرة
     if (currentEnergy < requiredEnergy) {
         showNotification(uiElements.purchaseNotification, 'Not enough energy!');
         return;
     }
 
-    // تحديث رصيد النقرات والطاقة المستهلكة مرة واحدة فقط
     localClickBalance += clickValue;
     localEnergyConsumed += requiredEnergy;
 
-    // تخزين البيانات محليًا
     localStorage.setItem('clickBalance', localClickBalance);
     localStorage.setItem('energyConsumed', localEnergyConsumed);
 
-    // تحديث واجهة المستخدم
     updateClickBalanceUI();
     updateEnergyUI();
-
-    // إنشاء تأثير الألماس
     createDiamondCoinEffect(event.pageX, event.pageY);
 
-    // تفعيل الاهتزاز إذا كان مفعّلاً
     if (isVibrationEnabled && navigator.vibrate) {
         navigator.vibrate(80);
     }
 
-    // تحديث قاعدة البيانات عند تجاوز الحد الأدنى
-    if (localEnergyConsumed >= energyUpdateThreshold && !isUpdatingDatabase) {
+    // تحديث قاعدة البيانات بناءً على الوقت
+    const currentTime = Date.now();
+    if (currentTime - lastDatabaseUpdateTime >= updateInterval && !isUpdatingDatabase) {
         updateEnergyInDatabase();
+        lastDatabaseUpdateTime = currentTime; // تحديث وقت آخر تحديث
     }
 }
 
@@ -743,14 +734,13 @@ function createDiamondCoinEffect(x, y) {
 }
 
 
-// تحديث الطاقة في قاعدة البيانات
 async function updateEnergyInDatabase() {
     isUpdatingDatabase = true;
 
     try {
         const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
         await updateGameStateInDatabase({ energy: currentEnergy });
-        localEnergyConsumed = 0;
+        localEnergyConsumed = 0; // إعادة تعيين الطاقة المستهلكة
         localStorage.setItem('energyConsumed', localEnergyConsumed);
         console.log('Energy updated in database successfully.');
     } catch (error) {
@@ -759,6 +749,7 @@ async function updateEnergyInDatabase() {
         isUpdatingDatabase = false;
     }
 }
+
 
 // التعامل مع زر المطالبة
 async function handleClaim() {
@@ -788,6 +779,7 @@ async function handleClaim() {
     }
 }
 
+
 // تهيئة التطبيق
 document.addEventListener('DOMContentLoaded', () => {
     loadLocalData();
@@ -801,13 +793,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function startEnergyRecovery() {
     setInterval(() => {
-        // حساب الطاقة الحالية من اللعبة
+        // حساب الطاقة الحالية بناءً على الطاقة المستهلكة
         const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
 
-        // التأكد من وجود طاقة أقل من الحد الأقصى
+        // التحقق إذا كانت الطاقة أقل من الحد الأقصى
         if (currentEnergy < gameState.maxEnergy) {
-            // زيادة الطاقة
-            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
+            // زيادة الطاقة بمقدار 5 إذا لم يتم تجاوز الحد الأقصى
+            localEnergyConsumed = Math.max(localEnergyConsumed - 5, 0);
 
             // تحديث واجهة المستخدم
             updateEnergyUI();
@@ -815,13 +807,12 @@ function startEnergyRecovery() {
             // تحديث البيانات المحلية
             localStorage.setItem('energyConsumed', localEnergyConsumed);
         }
-    }, 10000); // تنفيذ الدالة كل 4 ثوانٍ
+    }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
 }
 
 
 
 //////////////////////////////////////////////////
-
 
 
 
