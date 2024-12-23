@@ -384,7 +384,7 @@ img {
     transform: translateX(-50%);
     z-index: 100;
     background-color: #101010;
-    padding-bottom: 30px; /* لإعطاء مساحة للنصوص */
+    /*padding-bottom: 30px;*//* لإعطاء مساحة للنصوص */
     /*border-top: 1px solid #1c1c1c;*/
 }
 
