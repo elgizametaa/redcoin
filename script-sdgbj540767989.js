@@ -2417,7 +2417,7 @@ function showBanScreen() {
     banImage.style.cssText = 'width: 150px; margin-bottom: 20px;';
 
     const banMessage = document.createElement('p');
-    banMessage.textContent = '🚫 حسابك محظور بسبب انتهاك السياسات. إذا كنت تعتقد أن هذا خطأ، يرجى التواصل مع الدعم.';
+    banMessage.textContent = 'Your account has been banned for violating policies If you think this is an error please contact support';
     banMessage.style.cssText = 'font-size: 17px; margin-bottom: 20px;';
 
     const contactSupport = document.createElement('button');
@@ -2425,13 +2425,13 @@ function showBanScreen() {
     contactSupport.style.cssText = `
         padding: 10px 30px;
         background-color: #fff;
-        color: white;
+        color: #000;
         border: none;
         border-radius: 20px;
         cursor: pointer;
     `;
     contactSupport.onclick = () => {
-        window.location.href = 't.meX7X_FLASH'; // استبدل بعنوان بريد الدعم
+        window.location.href = 't.me/X7X_FLASH'; // استبدل بعنوان بريد الدعم
     };
 
     content.appendChild(banImage);
@@ -2445,6 +2445,8 @@ function showBanScreen() {
 }
 
 ////////////////////////////////////
+
+
 
 
 
