@@ -607,63 +607,55 @@ function updateVibrationButton() {
 
 function startEnergyRecovery() {
     setInterval(() => {
-        // التأكد من وجود طاقة أقل من الحد الأقصى
+        // إذا كانت الطاقة أقل من الحد الأقصى
         if (gameState.energy < gameState.maxEnergy) {
-            // إذا كانت الطاقة صفر أو أقل من الحد الأقصى، يتم زيادتها بمقدار 10
+            // تعبئة الطاقة بمقدار 50
             gameState.energy = Math.min(gameState.maxEnergy, gameState.energy + 50);
 
-            // تحديث الوقت الأخير لملء الطاقة
-            gameState.lastFillTime = Date.now();
+            // تحديث واجهة المستخدم
+            updateEnergyUI();
 
-            // تحديث واجهة المستخدم وحفظ البيانات
-            updateEnergyUI(); 
+            // حفظ البيانات في قاعدة البيانات
             saveGameState();
-            updateGameStateInDatabase({
-                energy: gameState.energy,
-            });
         }
-    }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
+    }, 10000); // تنفيذ كل 10 ثوانٍ
 }
 
 
-// تحديث واجهة المستخدم للطاقة
+
 function updateEnergyUI() {
     const energyBar = document.getElementById('energyBar');
     const energyInfo = document.getElementById('energyInfo');
 
-    const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-
     if (energyBar) {
         const radius = energyBar.r.baseVal.value;
         const circumference = 2 * Math.PI * radius;
-        const progress = (currentEnergy / gameState.maxEnergy) * circumference;
+        const progress = (gameState.energy / gameState.maxEnergy) * circumference;
 
         energyBar.style.strokeDasharray = `${circumference}`;
         energyBar.style.strokeDashoffset = `${circumference - progress}`;
     }
 
     if (energyInfo) {
-        energyInfo.innerText = `${currentEnergy}/${gameState.maxEnergy}`;
+        energyInfo.innerText = `${gameState.energy}/${gameState.maxEnergy}`;
     }
 }
+
+
+
 
 
 // استدعاء الصورة القابلة للنقر
 const img = document.getElementById('clickableImg');
 let localClickBalance = 0; // رصيد النقرات المحلي
-let localEnergyConsumed = 0; // الطاقة المستهلكة محليًا
-const energyUpdateThreshold = 100; // الحد الأدنى لتحديث الطاقة في قاعدة البيانات
 let isUpdatingDatabase = false; // منع التحديث المتكرر للبيانات
 
 // تحميل البيانات المحلية عند بدء التطبيق
 function loadLocalData() {
     const storedClicks = localStorage.getItem('clickBalance');
-    const storedEnergy = localStorage.getItem('energyConsumed');
     localClickBalance = storedClicks ? parseInt(storedClicks, 10) : 0;
-    localEnergyConsumed = storedEnergy ? parseInt(storedEnergy, 10) : 0;
 
     updateClickBalanceUI();
-    updateEnergyUI();
 }
 
 // تحديث واجهة المستخدم لعرض رصيد النقرات
@@ -676,7 +668,6 @@ function updateClickBalanceUI() {
 
 // التعامل مع النقر
 img.addEventListener('pointerdown', (event) => {
-   // event.preventDefault();
     handleSingleTouch(event);
 
     // تطبيق تأثير الإمالة
@@ -692,7 +683,6 @@ img.addEventListener('pointerdown', (event) => {
     }, 300);
 });
 
-
 // منطق النقر الفردي
 function handleSingleTouch(event) {
     event.preventDefault();
@@ -704,26 +694,15 @@ function handleSingleTouch(event) {
     }
 
     const clickValue = gameState.clickMultiplier || 1; // قيمة النقرة بناءً على الترقيات
-    const requiredEnergy = clickValue; // الطاقة المطلوبة تساوي قيمة النقرة
-    const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
 
-    // تحقق من الطاقة المتوفرة
-    if (currentEnergy < requiredEnergy) {
-        showNotification(uiElements.purchaseNotification, 'Not enough energy!');
-        return;
-    }
-
-    // تحديث رصيد النقرات والطاقة المستهلكة مرة واحدة فقط
+    // تحديث رصيد النقرات
     localClickBalance += clickValue;
-    localEnergyConsumed += requiredEnergy;
 
     // تخزين البيانات محليًا
     localStorage.setItem('clickBalance', localClickBalance);
-    localStorage.setItem('energyConsumed', localEnergyConsumed);
 
     // تحديث واجهة المستخدم
     updateClickBalanceUI();
-    updateEnergyUI();
 
     // إنشاء تأثير الألماس
     createDiamondCoinEffect(event.pageX, event.pageY);
@@ -732,14 +711,9 @@ function handleSingleTouch(event) {
     if (isVibrationEnabled && navigator.vibrate) {
         navigator.vibrate(80);
     }
-
-    // تحديث قاعدة البيانات عند تجاوز الحد الأدنى
-    if (localEnergyConsumed >= energyUpdateThreshold && !isUpdatingDatabase) {
-        updateEnergyInDatabase();
-    }
 }
 
-
+// إنشاء تأثير الألماس
 function createDiamondCoinEffect(x, y) {
     const diamondText = document.createElement('div');
     diamondText.classList.add('diamond-text');
@@ -758,24 +732,6 @@ function createDiamondCoinEffect(x, y) {
         diamondText.style.opacity = '0';
         setTimeout(() => diamondText.remove(), 800);
     }, 50);
-}
-
-
-// تحديث الطاقة في قاعدة البيانات
-async function updateEnergyInDatabase() {
-    isUpdatingDatabase = true;
-
-    try {
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-        await updateGameStateInDatabase({ energy: currentEnergy });
-        localEnergyConsumed = 0;
-        localStorage.setItem('energyConsumed', localEnergyConsumed);
-        console.log('Energy updated in database successfully.');
-    } catch (error) {
-        console.error('Error updating energy in database:', error);
-    } finally {
-        isUpdatingDatabase = false;
-    }
 }
 
 // التعامل مع زر المطالبة
@@ -815,6 +771,9 @@ document.addEventListener('DOMContentLoaded', () => {
         claimButton.addEventListener('click', handleClaim);
     }
 });
+
+
+
 
 
 
