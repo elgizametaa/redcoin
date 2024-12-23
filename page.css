@@ -91,7 +91,7 @@
   bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 89%;
+  width: 88%;
   height: 55px;
   background-image: 
     radial-gradient(circle at 24% 23%, rgba(167, 167, 167,0.06) 0%, rgba(167, 167, 167,0.06) 25%,rgba(148, 148, 148,0.06) 25%, rgba(148, 148, 148,0.06) 50%,rgba(129, 129, 129,0.06) 50%, rgba(129, 129, 129,0.06) 75%,rgba(110, 110, 110,0.06) 75%, rgba(110, 110, 110,0.06) 100%),
