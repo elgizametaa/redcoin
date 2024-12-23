@@ -607,21 +607,25 @@ function updateVibrationButton() {
 
 function startEnergyRecovery() {
     setInterval(() => {
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+        // التأكد من وجود طاقة أقل من الحد الأقصى
+        if (gameState.energy < gameState.maxEnergy) {
+            // إذا كانت الطاقة صفر أو أقل من الحد الأقصى، يتم زيادتها بمقدار 10
+            gameState.energy = Math.min(gameState.maxEnergy, gameState.energy + 50);
 
-        // التأكد من أن الطاقة أقل من الحد الأقصى
-        if (currentEnergy < gameState.maxEnergy) {
-            // زيادة الطاقة بمقدار 50 كل 10 ثوانٍ
-            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
+            // تحديث الوقت الأخير لملء الطاقة
+            gameState.lastFillTime = Date.now();
 
-            // تحديث واجهة المستخدم
-            updateEnergyUI();
-
-            // حفظ البيانات المحلية
-            localStorage.setItem('energyConsumed', localEnergyConsumed);
+            // تحديث واجهة المستخدم وحفظ البيانات
+            updateEnergyUI(); 
+            saveGameState();
+            updateGameStateInDatabase({
+                energy: gameState.energy,
+                lastFillTime: gameState.lastFillTime,
+            });
         }
-    }, 10000); // تنفيذ الدالة كل 10 ثوانٍ
+    }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
 }
+
 
 // تحديث واجهة المستخدم للطاقة
 function updateEnergyUI() {
@@ -643,13 +647,6 @@ function updateEnergyUI() {
         energyInfo.innerText = `${currentEnergy}/${gameState.maxEnergy}`;
     }
 }
-
-// التهيئة عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', () => {
-    loadLocalData();
-    startEnergyRecovery();
-});
-
 
 
 // استدعاء الصورة القابلة للنقر
