@@ -383,7 +383,9 @@ img {
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-    padding-bottom: 40px; /* لإعطاء مساحة للنصوص */
+    padding-bottom: 20px; /* لإعطاء مساحة للنصوص */
+    background-color: #101010;
+    border-top: 1px solid #1c1c1c;
 }
 
 .menu-list{
