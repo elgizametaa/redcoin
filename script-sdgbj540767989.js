@@ -160,7 +160,6 @@ async function saveGameState() {
 }
 
 
-
 async function restoreEnergy() {
     try {
         const lastFillTime = parseInt(localStorage.getItem('lastFillTime'), 10) || Date.now();
@@ -799,7 +798,7 @@ function startEnergyRecovery() {
         // التحقق إذا كانت الطاقة أقل من الحد الأقصى
         if (currentEnergy < gameState.maxEnergy) {
             // زيادة الطاقة بمقدار 5 إذا لم يتم تجاوز الحد الأقصى
-            localEnergyConsumed = Math.max(localEnergyConsumed - 5, 0);
+            localEnergyConsumed = Math.max(localEnergyConsumed - 20, 0);
 
             // تحديث واجهة المستخدم
             updateEnergyUI();
