@@ -69,6 +69,7 @@ let gameState = {
     boostLevel: 1,
     coinBoostLevel: 1,
     energyBoostLevel: 1,
+    lastFillTime: Date.now(),
     friends: 0,
     invites: [],
     completedTasks: [],
@@ -160,6 +161,7 @@ async function saveGameState() {
 
 
 
+
 async function restoreEnergy() {
     try {
         // استعادة وقت آخر ملء للطاقة من التخزين المحلي
@@ -191,6 +193,7 @@ async function restoreEnergy() {
 }
 
 
+
 // الاستماع إلى التغييرات في قاعدة البيانات
 //function listenToRealtimeChanges() {
   //  const userId = uiElements.userTelegramIdDisplay.innerText;
@@ -208,10 +211,8 @@ async function restoreEnergy() {
 
 // تهيئة التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', async () => {
-    
     const isBanned = await checkAndHandleBan();
-    if (isBanned) return; // إذا كان المستخدم محظورًا، لا يتم تحميل بقية التطبيق
-
+    if (isBanned) return; 
     await loadGameState();   
     await restoreEnergy();
     startEnergyRecovery();
@@ -608,7 +609,6 @@ function updateVibrationButton() {
 
 
 
-
 // استدعاء الصورة القابلة للنقر
 const img = document.getElementById('clickableImg');
 let localClickBalance = 0; // رصيد النقرات المحلي
@@ -631,7 +631,7 @@ function loadLocalData() {
 function updateClickBalanceUI() {
     const clickCountDisplay = document.getElementById('clickCountDisplay');
     if (clickCountDisplay) {
-        clickCountDisplay.innerText = localClickBalance.toLocaleString();
+        clickCountDisplay.innerText = `${localClickBalance.toLocaleString()} $SAW`;
     }
 }
 
@@ -799,6 +799,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+function startEnergyRecovery() {
+    setInterval(() => {
+        // حساب الطاقة الحالية من اللعبة
+        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+
+        // التأكد من وجود طاقة أقل من الحد الأقصى
+        if (currentEnergy < gameState.maxEnergy) {
+            // زيادة الطاقة
+            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
+
+            // تحديث واجهة المستخدم
+            updateEnergyUI();
+
+            // تحديث البيانات المحلية
+            localStorage.setItem('energyConsumed', localEnergyConsumed);
+        }
+    }, 10000); // تنفيذ الدالة كل 4 ثوانٍ
+}
+
+
 
 //////////////////////////////////////////////////
 
@@ -820,28 +840,6 @@ function navigateToScreen(screenId) {
         footerMenu.style.display = 'flex'; // التأكد من أن القائمة السفلية تظهر دائمًا
     }
 }
-
-
-
-function startEnergyRecovery() {
-    setInterval(() => {
-        // حساب الطاقة الحالية من اللعبة
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-
-        // التأكد من وجود طاقة أقل من الحد الأقصى
-        if (currentEnergy < gameState.maxEnergy) {
-            // زيادة الطاقة
-            localEnergyConsumed = Math.max(localEnergyConsumed - 50, 0);
-
-            // تحديث واجهة المستخدم
-            updateEnergyUI();
-
-            // تحديث البيانات المحلية
-            localStorage.setItem('energyConsumed', localEnergyConsumed);
-        }
-    }, 10000); // تنفيذ الدالة كل 4 ثوانٍ
-}
-
 
 ///////////////////////////////////////
 
@@ -2431,7 +2429,7 @@ function showBanScreen() {
         cursor: pointer;
     `;
     contactSupport.onclick = () => {
-        window.location.href = 't.me/X7X_FLASH'; // استبدل بعنوان بريد الدعم
+        window.location.href = 'https://t.me/X7X_FLASH'; // استبدل بعنوان بريد الدعم
     };
 
     content.appendChild(banImage);
