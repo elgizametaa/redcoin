@@ -69,6 +69,7 @@ let gameState = {
     boostLevel: 1,
     coinBoostLevel: 1,
     energyBoostLevel: 1,
+    lastFillTime: Date.now(),
     friends: 0,
     invites: [],
     completedTasks: [],
@@ -208,10 +209,8 @@ async function restoreEnergy() {
 
 // تهيئة التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', async () => {
-    
     const isBanned = await checkAndHandleBan();
-    if (isBanned) return; // إذا كان المستخدم محظورًا، لا يتم تحميل بقية التطبيق
-
+    if (isBanned) return; 
     await loadGameState();   
     await restoreEnergy();
     startEnergyRecovery();
@@ -827,7 +826,6 @@ function startEnergyRecovery() {
     setInterval(() => {
         // حساب الطاقة الحالية من اللعبة
         const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-
         // التأكد من وجود طاقة أقل من الحد الأقصى
         if (currentEnergy < gameState.maxEnergy) {
             // زيادة الطاقة
