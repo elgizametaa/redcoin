@@ -75,7 +75,7 @@
   transform: translateX(-50%);
   width: 89%;
   height: 51px;
-  background: linear-gradient(135deg, #101010, #2a4f91, #4375ca);
+  background: linear-gradient(45deg, #101010, #2a4f91, #4375ca);
   /*background: linear-gradient(135deg, #101010, #4375ca);*/
 /* background-color: rgba(255, 255, 255, 0.0000009);
   backdrop-filter: blur(5px);*/
