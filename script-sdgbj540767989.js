@@ -2354,6 +2354,43 @@ function truncateUsername(username, maxLength = 8) {
 //////////////////////
 
 
+async function checkUserBanStatus() {
+    const userId = uiElements.userTelegramIdDisplay.innerText;
+
+    try {
+        const { data, error } = await supabase
+            .from('users')
+            .select('banned')
+            .eq('telegram_id', userId)
+            .single();
+
+        if (error) {
+            console.error('Error checking ban status:', error);
+            return false;
+        }
+
+        // إذا كان المستخدم محظورًا
+        if (data && data.banned) {
+            document.body.style.backgroundColor = 'black'; // عرض واجهة سوداء
+            document.body.innerHTML = ''; // إزالة أي محتوى
+            return true;
+        }
+
+        return false;
+    } catch (err) {
+        console.error('Unexpected error:', err);
+        return false;
+    }
+}
+
+// استدعاء التحقق عند تحميل التطبيق
+document.addEventListener('DOMContentLoaded', async () => {
+    const isBanned = await checkUserBanStatus();
+    if (!isBanned) {
+        // تابع تحميل التطبيق
+        await initializeApp();
+    }
+});
 
 
 
