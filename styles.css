@@ -377,16 +377,14 @@ img {
     align-items: center;
     height: 50px;
     position: fixed;
-    bottom: 0px;
-   /* border-radius: 20px;*/
-    width: 100%;
+    bottom: 19px;
+    border-radius: 20px;
+    width: 89%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-    /*margin-bottom: 20px;*/
     padding-bottom: 40px; /* لإعطاء مساحة للنصوص */
-    background-color: #101010;
-    border-top: 1px solid #1c1c1c;
+    /*border-top: 1px solid #1c1c1c;*/
 }
 
 .menu-list{
@@ -394,7 +392,6 @@ img {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    margin-bottom: 10px;
    /* border-top: 1px solid #1c1c1c;*/
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 0.00009);
