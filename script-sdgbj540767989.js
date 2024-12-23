@@ -208,6 +208,10 @@ async function restoreEnergy() {
 
 // تهيئة التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', async () => {
+    
+    const isBanned = await checkAndHandleBan();
+    if (isBanned) return; // إذا كان المستخدم محظورًا، لا يتم تحميل بقية التطبيق
+
     await loadGameState();   
     await restoreEnergy();
     startEnergyRecovery();
@@ -2354,43 +2358,95 @@ function truncateUsername(username, maxLength = 8) {
 //////////////////////
 
 
-async function checkUserBanStatus() {
+async function checkAndHandleBan() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
 
     try {
+        // جلب حالة الحظر من قاعدة البيانات
         const { data, error } = await supabase
             .from('users')
-            .select('banned')
+            .select('is_banned')
             .eq('telegram_id', userId)
             .single();
 
         if (error) {
-            console.error('Error checking ban status:', error);
+            console.error('Error checking ban status:', error.message);
             return false;
         }
 
-        // إذا كان المستخدم محظورًا
-        if (data && data.banned) {
-            document.body.style.backgroundColor = 'black'; // عرض واجهة سوداء
-            document.body.innerHTML = ''; // إزالة أي محتوى
-            return true;
+        if (data?.is_banned) {
+            showBanScreen(); // إذا كان المستخدم محظورًا، عرض شاشة الحظر
+            return true; // المستخدم محظور
         }
 
-        return false;
+        return false; // المستخدم غير محظور
     } catch (err) {
-        console.error('Unexpected error:', err);
+        console.error('Unexpected error while checking ban status:', err);
         return false;
     }
 }
 
-// استدعاء التحقق عند تحميل التطبيق
-document.addEventListener('DOMContentLoaded', async () => {
-    const isBanned = await checkUserBanStatus();
-    if (!isBanned) {
-        // تابع تحميل التطبيق
-        await initializeApp();
-    }
-});
+
+function showBanScreen() {
+    // إنشاء طبقة تغطي الشاشة بالكامل لمنع التفاعل
+    const overlay = document.createElement('div');
+    overlay.id = 'banOverlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    `;
+
+    // محتوى شاشة الحظر
+    const content = document.createElement('div');
+    content.style.cssText = `
+        text-align: center;
+        color: white;
+    `;
+
+    const banImage = document.createElement('img');
+    banImage.src = 'path/to/ban-image.png'; // استبدل بمسار الصورة
+    banImage.alt = 'Banned';
+    banImage.style.cssText = 'width: 150px; margin-bottom: 20px;';
+
+    const banMessage = document.createElement('p');
+    banMessage.textContent = '🚫 حسابك محظور بسبب انتهاك السياسات. إذا كنت تعتقد أن هذا خطأ، يرجى التواصل مع الدعم.';
+    banMessage.style.cssText = 'font-size: 18px; margin-bottom: 20px;';
+
+    const contactSupport = document.createElement('button');
+    contactSupport.textContent = 'اتصل بالدعم';
+    contactSupport.style.cssText = `
+        padding: 10px 20px;
+        background-color: #ff4444;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    `;
+    contactSupport.onclick = () => {
+        window.location.href = 'mailto:support@example.com'; // استبدل بعنوان بريد الدعم
+    };
+
+    content.appendChild(banImage);
+    content.appendChild(banMessage);
+    content.appendChild(contactSupport);
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+
+    // تعطيل التفاعل مع بقية الشاشة
+    document.body.style.overflow = 'hidden';
+}
+
+////////////////////////////////////
+
+
 
 
 
