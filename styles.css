@@ -375,18 +375,18 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 58px;
+    height: 57px;
     position: fixed;
     bottom: 45px;
     border-radius: 20px;
-    width: 89%;
+    width: 89.5%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     background-color: #101010;
     /*padding-bottom: 30px;*//* لإعطاء مساحة للنصوص */
-    border-top: 1px solid #1c1c1c;
+    border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;
 }
 
