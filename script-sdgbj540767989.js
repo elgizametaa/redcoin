@@ -980,7 +980,7 @@ function openTelegramChat() {
 
 document.addEventListener('DOMContentLoaded', () => {
     // تهيئة الإعلانات بعد تحميل الصفحة
-    const AdController = window.Adsgram.init({ blockId: "int-5511" });
+    const AdController = window.Adsgram.init({ blockId: "int-6541" });
     const button = document.getElementById('ad');
     const purchaseNotification = uiElements.purchaseNotification; // تأكد من وجود هذا العنصر
 
@@ -1733,7 +1733,7 @@ function showContent(contentId) {
     if (!applyButton || !promoCodeInput) return;
 
     const enteredCode = promoCodeInput.value.trim();
-    const AdController = window.Adsgram.init({ blockId: "int-5511" });
+    const AdController = window.Adsgram.init({ blockId: "int-6541" });
 
     // إخفاء نص الزر وعرض دائرة التحميل
     applyButton.innerHTML = '';
