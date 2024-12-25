@@ -109,8 +109,7 @@
 } 
 
 .invite-more:hover {
-    background: #161616;
-    border: 1px solid #1a1a1a;
+    background: #2D83EC;
     color: #fff;
 } 
 
@@ -138,11 +137,12 @@
 
 .invite-copy i {
     font-size: 1.2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 
+                 0 -1px 2px rgba(255, 255, 255, 0.5); /* تأثير الظلال للأيقونة */
 }   
-
+ 
 .invite-copy:hover {
-   background: #161616;
-   border: 1px solid #1a1a1a;
+   background: #2D83EC;
    color: #fff;
 } 
 
