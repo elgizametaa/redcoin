@@ -998,7 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // المستخدم شاهد الإعلان حتى النهاية أو تفاعل معه
             // مكافأة المستخدم
             rewardUser(rewardAmount);
-            showNotificationWithStatus(purchaseNotification, `You got me ${rewardAmount} $SWT for watching the ad`, 'win');
+            showNotificationWithStatus(purchaseNotification, `You got me ${rewardAmount} $SAW for watching the ad`, 'win');
         }).catch((result) => {
             // معالجة الحالة إذا حدثت مشكلة في عرض الإعلان
             console.error('mistake ', result);
