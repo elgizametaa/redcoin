@@ -1,7 +1,7 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './Scripts/config.js';
+//import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+//import { SUPABASE_URL, SUPABASE_ANON_KEY } from './Scripts/config.js';
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+//const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // تعريف عناصر DOM
 const uiElements = {
@@ -976,6 +976,13 @@ function openTelegramChat() {
 
 
 ////////////////////////////////////////////////
+
+
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './Scripts/config.js';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
