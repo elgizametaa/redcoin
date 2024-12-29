@@ -3,8 +3,8 @@ document.addEventListener("contextmenu", function(event) {
     event.preventDefault();
 });
 
-// 2. تعطيل الضغط المطوّل على العناصر
-document.querySelectorAll("img, p, div, span").forEach(element => {
+// 2. تعطيل الضغط المطوّل على الصور فقط
+document.querySelectorAll("img").forEach(element => {
     element.addEventListener("mousedown", e => e.preventDefault());
     element.addEventListener("touchstart", e => e.preventDefault());
 });
@@ -22,23 +22,33 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-// 4. تعطيل السحب والإفلات على العناصر
-document.querySelectorAll("img, p, div, span").forEach(element => {
+// 4. تعطيل السحب والإفلات على الصور فقط
+document.querySelectorAll("img").forEach(element => {
     element.setAttribute("draggable", "false");
     element.addEventListener("dragstart", e => e.preventDefault());
 });
 
-// 5. منع تحديد النصوص
+// 5. منع تحديد النصوص (باستثناء الأزرار)
 document.addEventListener("selectstart", function(event) {
-    event.preventDefault();
+    if (event.target.tagName !== "BUTTON" && event.target.tagName !== "A") {
+        event.preventDefault();
+    }
 });
 
-// 6. منع النسخ واللصق
+// 6. منع النسخ واللصق (باستثناء الحقول النصية)
 document.addEventListener("copy", function(event) {
-    event.preventDefault();
-    alert("forbidden.");
+    if (event.target.tagName !== "INPUT" && event.target.tagName !== "TEXTAREA") {
+        event.preventDefault();
+        alert("forbidden.");
+    }
 });
 
+document.addEventListener("paste", function(event) {
+    if (event.target.tagName !== "INPUT" && event.target.tagName !== "TEXTAREA") {
+        event.preventDefault();
+        alert("forbidden.");
+    }
+});
 
 // 7. اكتشاف أدوات المطور
 (function() {
@@ -65,4 +75,3 @@ document.addEventListener("keydown", function(event) {
         alert("forbidden");
     }
 });
-
