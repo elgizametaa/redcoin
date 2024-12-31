@@ -9,13 +9,14 @@ body {
 }
 
 .update-notification {
+    
     text-align: center;
     padding: 5px;
     background-color: #161616;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     margin: 5px auto;
-    height: 200px;
+    height: 150px;
     width: 90%;
     
 }
