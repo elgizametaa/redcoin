@@ -10,11 +10,11 @@ body {
 
 .update-notification {
     text-align: center;
-    padding: 20px;
+    padding: 18px;
     background-color: #161616;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    width: 400px;
+    width: 350px;
 }
 
 .update-notification h2 {
