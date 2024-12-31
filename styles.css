@@ -446,7 +446,7 @@ img {
 }
 
 .menu-item.active .icon-wrapper {
-    background-color: linear-gradient(45deg, #2D83EC, #1AC9FF);
+    background: linear-gradient(45deg, #2D83EC, #1AC9FF);
    /* background-color: #2D83EC;*/
     box-shadow: 0 0 2px rgba(45, 131, 236, 0.7), 
                 inset 0 0 2px rgba(255, 255, 255, 0.5), 
