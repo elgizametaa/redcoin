@@ -14,7 +14,9 @@ body {
     background-color: #161616;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    width: 350px;
+    margin: 5px auto;
+    width: 90%;
+    
 }
 
 .update-notification h2 {
