@@ -350,7 +350,6 @@
     margin: 0 auto;
     margin-bottom: 15px;
     height: 59px;
-    border: 1px solid #1c1c1c;
     border-radius: 20px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-image: 
