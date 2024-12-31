@@ -160,11 +160,6 @@
 }
 
 #clickDisplay {
-  background: #fff;
-    background-color: transparent;
-    -webkit-background-clip: text; 
-    background-clip: text;
-    color: transparent;
   font-size: 16px;
   font-weight: 300; 
   font-style: normal;
@@ -330,11 +325,6 @@
 }   
 
 #Leaders-txt {
-    background: #fff;
-    background-color: transparent;
-    -webkit-background-clip: text; 
-    background-clip: text;
-    color: transparent;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 25px; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
