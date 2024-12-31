@@ -160,7 +160,7 @@
 }
 
 #clickDisplay {
-  background: linear-gradient(45deg, #2D83EC, #1AC9FF);
+  background: #fff;
     background-color: transparent;
     -webkit-background-clip: text; 
     background-clip: text;
@@ -330,7 +330,7 @@
 }   
 
 #Leaders-txt {
-    background: linear-gradient(45deg, #2D83EC, #1AC9FF);
+    background: #fff;
     background-color: transparent;
     -webkit-background-clip: text; 
     background-clip: text;
