@@ -249,7 +249,11 @@
 .invite-header h3 {
   font-size: 18px;
   margin-bottom: 5px;
-  color: #fff; /* لون النص البارز */
+  background: linear-gradient(45deg, #2D83EC, #1AC9FF);
+  background-color: transparent;
+  -webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent;
 }
 
 .invite-content p {
