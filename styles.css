@@ -296,9 +296,9 @@ img {
 #balanceAmount::before {
     content: "";
     display: inline-block;
-    width: 42px; /* عرض الصورة */
-    height: 42px; /* ارتفاع الصورة */
-    background-image: url('i/coinss.png'); /* رابط الصورة */
+    width: 44px; /* عرض الصورة */
+    height: 44px; /* ارتفاع الصورة */
+    background-image: url('https://image-six-tawny.vercel.app/coinnc.png'); /* رابط الصورة */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; /* تمركز الصورة */
@@ -307,7 +307,7 @@ img {
 }
 
 .main-digits {
-    font-size: 36px; 
+    font-size: 37px; 
     color: #fff;
     line-height: 1; /* لضمان التناسق بين النصوص */
 } 
@@ -339,8 +339,8 @@ img {
 } 
  
 .clickable-image img {
-    width: 292px;
-    height: 292px;
+    width: 310px;
+    height: 310px;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -385,7 +385,7 @@ img {
     z-index: 100;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     background-color: #101010;
-    /*padding-bottom: 30px;*//* لإعطاء مساحة للنصوص */
+    /*padding-bottom: 30px;*/
     border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;
 }
