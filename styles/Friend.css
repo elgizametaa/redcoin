@@ -11,10 +11,6 @@
     margin-right: auto; /* يدفع العنصر إلى أقصى اليسار */
     width: 90%; /* لضبط العرض لتجنب حدود الشاشة */
     padding: 8px; 
-   /* background: radial-gradient(circle at bottom right, 
-  #2D83EC, 
-  #2D83EC 5%, 
-  #101010 80%);*/
     background-color: #101010;
     border-radius: 20px;
     border-bottom: 1px solid #1c1c1c;
@@ -78,8 +74,10 @@
 }
 
 .friends-list li {
-    margin-left: 10px;
+    margin-left: 90px;
+    margin-top: 40px;
 }
+  
  
 .invite-more {
     display: flex;
