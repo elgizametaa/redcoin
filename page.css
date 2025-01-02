@@ -546,9 +546,9 @@
 #miningnavbarBalanceDisplay::before {
     content: ""; /* لا نحتاج نصًا هنا */
     display: inline-block;
-    width: 28px; /* تحديد عرض الصورة */
-    height: 28px; /* تحديد ارتفاع الصورة */
-    background-image: url('i/coinss.png'); /* مسار الصورة */
+    width: 32px; /* تحديد عرض الصورة */
+    height: 32px; /* تحديد ارتفاع الصورة */
+    background-image: url('https://image-six-tawny.vercel.app/coinnc.png'); /* مسار الصورة */
     background-size: cover; /* لتغطية العنصر بالصورة بشكل جيد */
     margin-right: 2px; /* مسافة بين الصورة والنص */
     margin-left: 0;
