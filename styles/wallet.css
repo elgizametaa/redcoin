@@ -149,7 +149,7 @@
     font-weight: bold;
     height: 55%; /* ثلاث أرباع ارتفاع الحاوية */
     border-radius: 20px;
-    padding: 5px; 
+    padding: 25px 70px; 
     width: 100%; /* عرض الزر مساوي لعرض الحاوية */
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
