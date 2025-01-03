@@ -60,7 +60,7 @@
 
 .wallet-button i {
     font-size: 1.2rem;
-    background: linear-gradient(to bottom, #2D83EC, #4375ca);
+    background: linear-gradient(to bottom, #2D83EC, #4375ca); 
     -webkit-background-clip: text; /* تطبيق التدرج على النص */
     -webkit-text-fill-color: transparent; /* جعل النص شفافًا ليظهر التدرج */
 } 
@@ -74,26 +74,26 @@
     height: 100vh; /* استخدام كامل الارتفاع */
 }
 
-.wallet-box {
-    background-color: rgba(0, 0, 0, 0.0007); /* لون خلفية أغمق لتحسين التباين */
-    border-radius: 15px; /* تدوير أكبر للحواف */
-    padding: 20px; /* زيادة الحشوة */
-    width: 85%; /* تحديد العرض بشكل مناسب */
-    max-width: 400px; /* تحديد عرض أقصى ليتماشى مع مختلف الأجهزة */
-    margin: 0 auto; /* لضمان توسيط الحاوية */
+/*.wallet-box {
+    background-color: rgba(0, 0, 0, 0.0007);
+    border-radius: 15px; 
+    padding: 20px; 
+    width: 85%;
+    max-width: 400px; 
+    margin: 0 auto;
     height: 60vh;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* تأكيد محاذاة المحتوى عموديًا */
+    justify-content: center; 
 }
 
 .wallet-box p {
-    font-size: 15px; /* تكبير حجم الخط */
+    font-size: 15px; 
     font-weight: bold;
-    color: #808080; /* جعل النص أبيض ليتناسب مع الخلفية */
+    color: #808080; 
     margin-bottom: 10px;
-}
+}*/
 
 #ton-connect {
     width: 100%; /* جعل الزر يمتد بعرض الصندوق */
@@ -104,23 +104,22 @@
 }
 
 #ton-connect button {
-    background: #2D83EC;
-   /* backdrop-filter: blur(2px);*/
+    background: #101010;
     border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
-    padding: 23px 65px;
+    max-width: 400px;
+    padding: 10px;
     border-radius: 20px;
+    width: 95%;
     cursor: pointer;
-    width: 100%; /* جعل الزر بعرض الصندوق */
-    max-width: 300px; /* تحديد عرض أقصى للزر */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     animation: popIn 0.4s ease forwards;
 }
 
 #ton-connect button:hover {
-    background-color: #1a1a1a;
+    background-color: #2D83EC;
 }
  
