@@ -126,7 +126,8 @@
 .wallet-box {
     width: 100%; /* تأخذ 100px من الجانبين */
     height: 70px;
-    margin: 10px auto; /* لتوسيط الحاوية */
+    margin: 0 auto; /* لتوسيط الحاوية */
+    padding: 0; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,6 +149,7 @@
     font-weight: bold;
     height: 55%; /* ثلاث أرباع ارتفاع الحاوية */
     border-radius: 20px;
+    padding: 5px; 
     width: 100%; /* عرض الزر مساوي لعرض الحاوية */
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
