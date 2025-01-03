@@ -136,6 +136,7 @@
 
 #ton-connect {
     width: 100%;
+    padding: 10px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,13 +144,12 @@
 
 #ton-connect button {
     background: #101010;
-    border: 1px solid #1c1c1c;
     color: #fff;
     font-size: 15px;
     font-weight: bold;
     height: 60%; /* ثلاث أرباع ارتفاع الحاوية */
     border-radius: 20px;
-    padding: 12px 85px; 
+    padding: 12px 80px; 
     width: 100%; /* عرض الزر مساوي لعرض الحاوية */
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
