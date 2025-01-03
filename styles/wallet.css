@@ -126,13 +126,11 @@
 .wallet-box {
     width: 100%; /* تأخذ 100px من الجانبين */
     height: 70px;
-    margin: 0 auto; /* لتوسيط الحاوية */
+    margin: 10px auto; /* لتوسيط الحاوية */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.0007);
-    border-radius: 10px; /* زوايا مستديرة للحاوية */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* تأثير ظل */
+    background-color: rgba(0, 0, 0, 0.0007); 
 }
 
 #ton-connect {
