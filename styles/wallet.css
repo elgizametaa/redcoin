@@ -142,13 +142,13 @@
 }
 
 #ton-connect button {
-    background: #101010;
+    background: #2D83EC;
     color: #fff;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     height: 60%; /* ثلاث أرباع ارتفاع الحاوية */
     border-radius: 20px;
-    padding: 15px 80px; 
+    padding: 14px 80px; 
     width: 100%; /* عرض الزر مساوي لعرض الحاوية */
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -156,5 +156,5 @@
 }
 
 #ton-connect button:hover {
-    background-color: #2D83EC;
+    background-color: #101010;
 } 
