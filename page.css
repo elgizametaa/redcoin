@@ -1,6 +1,7 @@
 /* التصميم الأساسي */
 .toggle-container {
     display: flex;
+    margin-top: 15px;
     justify-content: space-between;
     align-items: center;
     gap: 150px; /* مسافة بين النص والزر */
