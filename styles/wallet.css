@@ -103,7 +103,7 @@
     margin-top: 0; 
 }*/
 
-#ton-connect button {
+/*#ton-connect button {
     background: #101010;
     border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;
@@ -115,10 +115,47 @@
     width: 100%;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-   /* animation: popIn 0.4s ease forwards;*/
 }
 
 #ton-connect button:hover {
     background-color: #2D83EC;
+}*/
+
+
+
+.wallet-box {
+    width: calc(100% - 200px); /* تأخذ 100px من الجانبين */
+    height: 70px;
+    margin: 0 auto; /* لتوسيط الحاوية */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4; /* لون الخلفية */
+    border-radius: 10px; /* زوايا مستديرة للحاوية */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* تأثير ظل */
 }
- 
+
+#ton-connect {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ton-connect button {
+    background: #101010;
+    border: 1px solid #1c1c1c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    height: 75%; /* ثلاث أرباع ارتفاع الحاوية */
+    border-radius: 20px;
+    width: 100%; /* عرض الزر مساوي لعرض الحاوية */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+#ton-connect button:hover {
+    background-color: #2D83EC;
+} 
