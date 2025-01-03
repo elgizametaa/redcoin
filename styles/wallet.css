@@ -130,7 +130,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f4f4f4; /* لون الخلفية */
+    background-color: rgba(0, 0, 0, 0.0007);
     border-radius: 10px; /* زوايا مستديرة للحاوية */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* تأثير ظل */
 }
