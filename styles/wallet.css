@@ -112,10 +112,10 @@
     font-weight: bold;
     height: 40px;
     border-radius: 20px;
-    width: 95%;
+    width: 100%;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    animation: popIn 0.4s ease forwards;
+   /* animation: popIn 0.4s ease forwards;*/
 }
 
 #ton-connect button:hover {
