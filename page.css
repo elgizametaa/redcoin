@@ -17,8 +17,8 @@
 /* زر التبديل */
 .toggle-btn {
     position: relative;
-    width: 45px;
-    height: 21px;
+    width: 43px;
+    height: 22px;
     background-color: #ccc;
     border-radius: 25px;
     cursor: pointer;
