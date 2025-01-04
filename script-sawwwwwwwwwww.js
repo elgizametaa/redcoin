@@ -520,7 +520,7 @@ function showNotificationWithStatus(notificationElement, message, status = '') {
         notificationElement.classList.add('win');
         imageUrl = 'i/done.png'; // رابط الصورة لحالة الفوز
 
-        // إضافة صورة الفرقعة للاحتفال
+        // إضافة تأثير القصاصات الورقية للاحتفال
         showConfettiEffect();
     } else if (status === 'lose') {
         notificationElement.classList.add('lose');
@@ -542,27 +542,33 @@ function showNotificationWithStatus(notificationElement, message, status = '') {
     // إخفاء الإشعار بعد 4 ثوانٍ
     setTimeout(() => {
         notificationElement.classList.remove('show');
-        hideConfettiEffect(); // إزالة تأثير الاحتفال بعد انتهاء الإشعار
     }, 4000);
 }
 
-// دالة لإظهار صورة الفرقعة
+// دالة لإظهار تأثير القصاصات الورقية
 function showConfettiEffect() {
-    // إنشاء العنصر للصورة
-    const confetti = document.createElement('img');
-    confetti.src = 'i/confetti.webp';
-    confetti.className = 'confetti-effect';
-    document.body.appendChild(confetti);
-}
+    const duration = 2 * 1000; // مدة التأثير (2 ثانية)
+    const end = Date.now() + duration;
 
-// دالة لإخفاء صورة الفرقعة
-function hideConfettiEffect() {
-    const confetti = document.querySelector('.confetti-effect');
-    if (confetti) {
-        confetti.remove();
-    }
-}
+    (function frame() {
+        confetti({
+            particleCount: 7, // عدد الجزيئات في كل دفعة
+            angle: 90,        // زاوية التساقط (عمودية)
+            spread: 160,      // زاوية الانتشار
+            startVelocity: 40, // سرعة البداية
+            gravity: 0.7,     // الجاذبية
+            origin: {
+                x: Math.random(), // انطلاق من أماكن عشوائية
+                y: 0              // البداية من أعلى الشاشة
+            },
+            colors: ['#FF5733', '#FFC300', '#DAF7A6', '#C70039', '#581845']
+        });
 
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    })();
+}
 
 
 /////////////////////////////////////////
