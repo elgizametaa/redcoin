@@ -4,11 +4,12 @@
     margin-top: 0;
     justify-content: space-between;
     align-items: center;
+    margin-left: 10px;
     gap: 150px; /* مسافة بين النص والزر */
 }
 
 #vibrationText {
-    font-size: 15px;
+    font-size: 14px;
     white-space: nowrap;
     font-weight: bold;
 }
@@ -16,8 +17,8 @@
 /* زر التبديل */
 .toggle-btn {
     position: relative;
-    width: 50px;
-    height: 25px;
+    width: 45px;
+    height: 20px;
     background-color: #ccc;
     border-radius: 25px;
     cursor: pointer;
@@ -29,8 +30,8 @@
     position: absolute;
     top: 2px;
     left: 2px;
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
     background-color: white;
     border-radius: 50%;
     transition: left 0.3s ease;
