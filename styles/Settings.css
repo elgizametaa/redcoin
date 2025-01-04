@@ -155,7 +155,7 @@
     display: flex;
     align-items: center;
     width: 90%;
-    height: 40px;
+    height: 35px;
     border: 1px solid #1c1c1c;
     padding: 3px;
     margin-top: 10px;
@@ -187,7 +187,7 @@
 
 .user-name,
 .user-id {
-    font-size: 14px;
+    font-size: 12px;
     background: linear-gradient(45deg, #2D83EC, #1AC9FF);
     background-color: transparent;
     -webkit-background-clip: text; 
@@ -199,6 +199,8 @@
 .user-box {
     width: 90%;
     height: auto;
+    padding: 5px;
+    margin-top: 30px;
 /*   background-color: #101010;
     border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;
@@ -213,8 +215,7 @@
     display: flex;
     justify-content: space-between;
     /*border-bottom: 0.5px solid #343434;*/
-    padding-top: 1px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom:0;
 }
 
