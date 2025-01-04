@@ -195,15 +195,19 @@
     gap: 5px;
 }
 
-.user-name,
-.user-id {
-    font-size: 12px;
+.user-name {
+    font-size: 13px;
     background: linear-gradient(45deg, #2D83EC, #1AC9FF);
     background-color: transparent;
     -webkit-background-clip: text; 
     background-clip: text;
     color: transparent;
 }
+
+.user-id {
+    font-size: 10px;
+    color: #808080;
+} 
 
 /* الحاوية للتفاصيل الإضافية */
 .user-box {
