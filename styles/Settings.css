@@ -142,6 +142,9 @@
     align-items: center;
     gap: 10px;
     padding: 20px;
+    width: 95%;
+    background-color: #101010;
+    height: 400px;
 }
 
 /* كارت معلومات الحساب */
