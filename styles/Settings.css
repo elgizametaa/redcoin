@@ -1,3 +1,13 @@
+#acc {
+    color: #fff; 
+    font-size: 17px; 
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+
 @keyframes popIn {
   0% {
     opacity: 0;
