@@ -81,7 +81,7 @@ const createTreasurePopup = () => {
 
 // Initialize the button and popup
 document.addEventListener('DOMContentLoaded', () => {
-    const promocodeButton = document.getElementById('promocodeBtu');
+    const promocodeButton = document.getElementById('tasknavbarBalanceDisplay');
     const { popup, overlay } = createTreasurePopup();
 
     let timer;
