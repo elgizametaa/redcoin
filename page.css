@@ -529,6 +529,7 @@
 #leaderboardnavbarBalanceDisplay, #miningnavbarBalanceDisplay, #BoostnavbarBalanceDisplay, #tasknavbarBalanceDisplay, #navbarBalanceDisplay,
 #lvlnavbarBalanceDisplay, #puzzlenavbarBalanceDisplay, #AccountnavbarBalanceDisplay, #gnavbarBalanceDisplay {
     font-size: 14px;
+    cursor: pointer;
     margin-left: 0;
     margin-right: 15px;
     left: 40px;
@@ -568,6 +569,7 @@
     width: auto;
     height: 27px;
     z-index: 500;
+    cursor: pointer;
    /* border: 1px solid #1c1c1c;*/
     border-radius: 20px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
