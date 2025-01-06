@@ -378,7 +378,7 @@ img {
     height: 60px;
     position: fixed;
     bottom: 32px;
-    border-radius: 20px;
+    border-radius: 25px;
     width: 89.5%;
     left: 50%;
     transform: translateX(-50%);
