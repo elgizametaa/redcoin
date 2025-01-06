@@ -191,7 +191,8 @@ img {
 }
 
 .loading-spinnerr {
-    border: 7px solid rgba(255, 255, 255, 0.3); /* الحواف الشفافة */
+    backdrop-filter: blur(5px);
+    border: 7px solid rgba(0, 0, 0, 0.3); /* الحواف الشفافة */
     border-top: 7px solid #fff; /* اللون الأبيض في الجزء العلوي */
     border-radius: 50%; /* جعل الشكل دائريًا */
     width: 55px;
