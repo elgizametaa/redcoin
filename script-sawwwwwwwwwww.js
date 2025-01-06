@@ -1901,6 +1901,7 @@ document.getElementById('overlay').addEventListener('click', closePopup);
 
 //////////////////////////////////////
 
+
 const leaderboardContainer = document.getElementById('leaderboardContainer');
 const userRankContainer = document.getElementById('userRankContainer');
 const userRankDisplay = document.getElementById('userRank');
@@ -1914,7 +1915,7 @@ async function fetchLeaderboard() {
             .from('users')
             .select('username, balance, telegram_id')
             .order('balance', { ascending: false })
-            .limit(20); 
+            .limit(20);
 
         if (error) throw error;
 
@@ -1927,33 +1928,26 @@ async function fetchLeaderboard() {
 
 async function fetchUserRank() {
     try {
-        // قراءة معرف المستخدم الحالي
-        const userTelegramId = uiElements.userTelegramIdDisplay.innerText; // الحصول على Telegram ID من واجهة المستخدم
+        const userTelegramId = uiElements.userTelegramIdDisplay.innerText; // قراءة Telegram ID من الواجهة
         if (!userTelegramId) throw new Error("Telegram ID is missing or invalid.");
 
         console.log("Fetching rank for Telegram ID:", userTelegramId);
 
-        // استدعاء الدالة المخزنة RPC
         const { data, error } = await supabase.rpc('get_user_rank', { user_id: userTelegramId });
 
         if (error) {
             console.error('Error fetching user rank from RPC:', error.message);
-            return; // إنهاء التنفيذ بدون عرض بيانات
+            return;
         }
 
-        console.log("Rank data fetched:", data);
-
-        // التحقق من وجود بيانات صحيحة
         if (!data || data.length === 0) {
             console.warn('No rank data found for the user.');
-            return; // إنهاء التنفيذ بدون عرض بيانات
+            return;
         }
 
-        // استخراج البيانات المحدثة
         const rankData = data[0];
         console.log("Rank Data Object:", rankData);
 
-        // تحديث الواجهة
         updateUserRankDisplay(rankData.rank, rankData.username, rankData.balance);
     } catch (err) {
         console.error('Error in fetchUserRank:', err.message);
@@ -1966,43 +1960,20 @@ function updateUserRankDisplay(rank, username, balance) {
         userUsernameDisplay.innerText = truncateUsername(username);
         userBalanceDisplay.innerText = `${formatNumber(balance)} $SAW`;
 
-        // تحديث صورة الملف الشخصي باستخدام WebApp
-        updateUserProfilePhoto().then((avatarUrl) => {
-            document.getElementById('userAvatar').src = avatarUrl;
-        });
+        updateUserImage(rank, 'userAvatar'); // تحديث صورة المستخدم
 
-        userRankContainer.style.display = 'flex'; // إظهار الحاوية
-    }
-}
-
-// جلب صورة الملف الشخصي باستخدام WebAppUser
-async function updateUserProfilePhoto() {
-    try {
-        if (window.Telegram && window.Telegram.WebApp) {
-            const user = window.Telegram.WebApp.user;
-            if (user && user.photo_url) {
-                return user.photo_url; // الحصول على الصورة من WebApp
-            }
-        }
-
-        // صورة افتراضية في حالة عدم وجود صورة
-        return 'https://sawcoin.vercel.app/i/users.jpg';
-    } catch (error) {
-        console.error("Error fetching profile photo:", error);
-        return 'https://sawcoin.vercel.app/i/users.jpg'; // صورة افتراضية في حال حدوث خطأ
+        userRankContainer.style.display = 'flex';
     }
 }
 
 async function updateLeaderboardDisplay(leaderboard) {
-    leaderboardContainer.innerHTML = ''; // مسح المحتوى السابق
+    leaderboardContainer.innerHTML = '';
 
     for (let index = 0; index < leaderboard.length; index++) {
         const user = leaderboard[index];
-
         const userRow = document.createElement('div');
         userRow.classList.add('leaderboard-row');
 
-        // شارة لأعلى 3 مراكز
         const badge = index === 0 ? '#1' : index === 1 ? '#2' : index === 2 ? '#3' : `#${index + 1}`;
 
         userRow.innerHTML = `
@@ -2014,49 +1985,46 @@ async function updateLeaderboardDisplay(leaderboard) {
 
         leaderboardContainer.appendChild(userRow);
 
-        // جلب صورة المستخدم بعد عرض القائمة
-        updateUserProfilePhoto().then((avatarUrl) => {
-            document.getElementById(`avatar-${user.telegram_id}`).src = avatarUrl;
-        });
+        updateUserImage(user.telegram_id, `avatar-${user.telegram_id}`);
     }
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  await fetchLeaderboard(); 
-  await fetchUserRank();
-});
-
-//////////////////////
-
 async function updateUserImage(telegramId, imageElementId) {
     try {
-        // جلب صورة المستخدم باستخدام WebApp
-        const avatarUrl = await updateUserProfilePhoto();
-        
-        // تحديث العنصر المحدد
+        const avatarUrl = await getUserProfilePhoto(telegramId);
+
         const imageElement = document.getElementById(imageElementId);
         if (imageElement) {
-            imageElement.src = avatarUrl; // تعيين الرابط للصورة
+            imageElement.src = avatarUrl;
         }
     } catch (error) {
         console.error("Error updating user image:", error);
     }
 }
 
-// استدعاء الوظيفة لتحديث الصور في العناصر المطلوبة
-document.addEventListener("DOMContentLoaded", () => {
-    const userTelegramId = document.getElementById('userTelegramId').innerText; // قراءة Telegram ID من الواجهة
-    
-    if (userTelegramId) {
-        updateUserImage(userTelegramId, "userDetailsImage");
-        updateUserImage(userTelegramId, "stingUserImage");
+async function getUserProfilePhoto(telegramId) {
+    try {
+        if (window.Telegram && window.Telegram.WebApp) {
+            const user = window.Telegram.WebApp.user;
+            if (user && user.id === telegramId && user.photo_url) {
+                return user.photo_url;
+            }
+        }
+        return 'https://sawcoin.vercel.app/i/users.jpg';
+    } catch (error) {
+        console.error("Error fetching profile photo:", error);
+        return 'https://sawcoin.vercel.app/i/users.jpg';
     }
-});
+}
 
-// مساعد لقطع أسماء المستخدمين الطويلة
 function truncateUsername(username, maxLength = 8) {
     return username.length > maxLength ? `${username.slice(0, maxLength)}...` : username;
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await fetchLeaderboard();
+    await fetchUserRank();
+});
 
 /////////////////////////
 
