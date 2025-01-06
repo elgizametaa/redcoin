@@ -44,16 +44,15 @@
     padding: 10px;
     margin: 10px auto;
     font-size: 0.85rem; 
-    background-color: #101010;
-    /*background: rgba(255, 255, 255, 0.1); 
-    backdrop-filter: blur(5px); */
-    border-radius: 20px; /* زوايا مستديرة */
-    border-bottom: 1px solid #1a1a1a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 25px; /* زوايا مستديرة */
+   /* border-bottom: 1px solid #1a1a1a;
     border-left: 1px solid #1a1a1a; 
-    border-right: 1px solid #1a1a1a; 
+    border-right: 1px solid #1a1a1a;*/
     box-sizing: border-box; /* لحساب الحواف ضمن الأبعاد */
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 } 
 
 .daily-itemm i {
