@@ -185,8 +185,8 @@
 }*/
 
 #claimButton {
-  background-color: #F7F9FB;
-  color: #000;
+  background-color: #2D83EC;
+  color: #fff;
   border: none;
   font-weight: bold;
   border-radius: 20px;
@@ -200,8 +200,8 @@
 }
 
 #claimButton:hover {
-  background-color: #2D83EC;
-  color: #fff;
+  background-color: #F7F9FB;
+  color: #000;
 }
 
 
