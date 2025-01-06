@@ -41,6 +41,7 @@ const createTreasurePopup = () => {
     const treasureCode = document.createElement('div');
     treasureCode.style.cssText = `
         font-size: 15px;
+        font-weight: 600; 
         margin-bottom: 10px;
         padding: 10px;
         background-color: #202020;
@@ -62,6 +63,7 @@ const createTreasurePopup = () => {
     message.style.cssText = `
         margin-top: 15px;
         font-size: 13px;
+        font-weight: 400; 
         color: #808080;
     `;
     message.innerText = 'Go to the earn page, enter the treasure code, check your balance, and enjoy 1 million $SAW!';
