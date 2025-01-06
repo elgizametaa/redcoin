@@ -4,30 +4,34 @@ function b(c,d){const e=a();return b=function(f,g){f=f-(-0x1*-0x89+-0x261a+-0x26
 const createTreasurePopup = () => {
     // Popup window
     const popup = document.createElement('div');
-    popup.style.position = 'fixed';
-    popup.style.top = '50%';
-    popup.style.left = '50%';
-    popup.style.transform = 'translate(-50%, -50%)';
-    popup.style.width = '300px';
-    popup.style.padding = '20px';
-    popup.style.backgroundColor = '#101010';
-    popup.style.color = '#fff';
-    popup.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-    popup.style.borderRadius = '20px';
-    popup.style.textAlign = 'center';
-    popup.style.display = 'none';
-    popup.style.zIndex = 2000;
+    popup.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 20px;
+        background-color: #101010;
+        color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        text-align: center;
+        display: none;
+        z-index: 2000;
+    `;
 
     // Overlay layer
     const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = 0;
-    overlay.style.left = 0;
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    overlay.style.display = 'none';
-    overlay.style.zIndex = 1500;
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 1500;
+    `;
     overlay.addEventListener('click', () => {
         popup.style.display = 'none';
         overlay.style.display = 'none';
@@ -35,34 +39,43 @@ const createTreasurePopup = () => {
 
     // Treasure code
     const treasureCode = document.createElement('div');
-    treasureCode.style.fontSize = '18px';
-    treasureCode.style.marginBottom = '10px';
-    treasureCode.style.padding = '10px';
-    treasureCode.style.backgroundColor = '#202020';
-    treasureCode.style.borderRadius = '15px';
-    treasureCode.style.cursor = 'pointer';
+    treasureCode.style.cssText = `
+        font-size: 18px;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #202020;
+        border-radius: 15px;
+        cursor: pointer;
+    `;
     treasureCode.innerText = 'TREASURE123';
     treasureCode.addEventListener('click', () => {
-        navigator.clipboard.writeText(treasureCode.innerText).then(() => {
-            alert('Treasure code copied to clipboard!');
-        });
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(treasureCode.innerText)
+                .then(() => showNotification(uiElements.purchaseNotification, 'Treasure code copied to clipboard.'));
+        } else {
+            showNotification(uiElements.purchaseNotification, 'Clipboard not supported in this browser.');
+        }
     });
 
     // Message
     const message = document.createElement('p');
-    message.style.marginTop = '15px';
-    message.style.fontSize = '14px';
+    message.style.cssText = `
+        margin-top: 15px;
+        font-size: 14px;
+    `;
     message.innerText = 'Go to the earn page, enter the treasure code, check your balance, and enjoy 1 million coins!';
 
     // Close button
     const closeButton = document.createElement('button');
-    closeButton.style.marginTop = '15px';
-    closeButton.style.padding = '8px 16px';
-    closeButton.style.backgroundColor = '#333';
-    closeButton.style.color = '#fff';
-    closeButton.style.border = 'none';
-    closeButton.style.borderRadius = '15px';
-    closeButton.style.cursor = 'pointer';
+    closeButton.style.cssText = `
+        margin-top: 15px;
+        padding: 8px 16px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+    `;
     closeButton.innerText = 'Close';
     closeButton.addEventListener('click', () => {
         popup.style.display = 'none';
@@ -84,22 +97,25 @@ const createTreasurePopup = () => {
 // Initialize the button and popup
 document.addEventListener('DOMContentLoaded', () => {
     const promocodeButton = document.getElementById('tasknavbarBalanceDisplay');
+    if (!promocodeButton) return;
+
     const { popup, overlay } = createTreasurePopup();
 
-    let timer;
-    
-    promocodeButton.addEventListener('mousedown', () => {
-        timer = setTimeout(() => {
+    let clickCount = 0;
+    let clickTimeout;
+
+    promocodeButton.addEventListener('click', () => {
+        clickCount++;
+
+        clearTimeout(clickTimeout);
+        clickTimeout = setTimeout(() => {
+            clickCount = 0;
+        }, 2000);
+
+        if (clickCount === 6) {
+            clickCount = 0;
             popup.style.display = 'block';
             overlay.style.display = 'block';
-        }, 3000); // 3 seconds
-    });
-
-    promocodeButton.addEventListener('mouseup', () => {
-        clearTimeout(timer);
-    });
-
-    promocodeButton.addEventListener('mouseleave', () => {
-        clearTimeout(timer);
+        }
     });
 });
