@@ -40,9 +40,9 @@
     align-items: center; /* محاذاة المحتوى عموديًا */
     justify-content: space-between; /* توزيع العناصر بالتساوي */
     width: 95%; /* عرض العنصر */
-    height: 55px;
+    height: 58px;
     padding: 10px;
-    margin: 7px auto;
+    margin: 5px auto;
     font-size: 0.85rem; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
