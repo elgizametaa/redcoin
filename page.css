@@ -353,7 +353,7 @@
     margin: 0 auto;
     margin-bottom: 15px;
     height: 59px;
-    border-radius: 20px; /* زوايا مستديرة في الأسفل فقط */
+    border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-image: 
     radial-gradient(circle at 24% 23%, rgba(167, 167, 167,0.06) 0%, rgba(167, 167, 167,0.06) 25%,rgba(148, 148, 148,0.06) 25%, rgba(148, 148, 148,0.06) 50%,rgba(129, 129, 129,0.06) 50%, rgba(129, 129, 129,0.06) 75%,rgba(110, 110, 110,0.06) 75%, rgba(110, 110, 110,0.06) 100%),
@@ -372,11 +372,10 @@
     margin: 0 auto;
     margin-bottom: 15px;
     height: 60px;
-    background-color: #101010;
-    border-radius: 20px;
-    border-bottom: 1px solid #1a1a1a;
-    border-right: 1px solid #1a1a1a;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
 } 
 
 .leaderboard-avatar {
