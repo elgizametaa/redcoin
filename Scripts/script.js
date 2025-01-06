@@ -40,14 +40,14 @@ const createTreasurePopup = () => {
     // Treasure code
     const treasureCode = document.createElement('div');
     treasureCode.style.cssText = `
-        font-size: 18px;
+        font-size: 15px;
         margin-bottom: 10px;
         padding: 10px;
         background-color: #202020;
-        border-radius: 15px;
+        border-radius: 25px;
         cursor: pointer;
     `;
-    treasureCode.innerText = 'TREASURE123';
+    treasureCode.innerText = 'CODE1A1V3';
     treasureCode.addEventListener('click', () => {
         if (navigator.clipboard) {
             navigator.clipboard.writeText(treasureCode.innerText)
@@ -61,9 +61,10 @@ const createTreasurePopup = () => {
     const message = document.createElement('p');
     message.style.cssText = `
         margin-top: 15px;
-        font-size: 14px;
+        font-size: 13px;
+        color: #808080;
     `;
-    message.innerText = 'Go to the earn page, enter the treasure code, check your balance, and enjoy 1 million coins!';
+    message.innerText = 'Go to the earn page, enter the treasure code, check your balance, and enjoy 1 million $SAW!';
 
     // Close button
     const closeButton = document.createElement('button');
