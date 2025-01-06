@@ -101,19 +101,20 @@
     height: 60px;
     max-width: 400px;
     margin: 12px 0;
-    border-radius: 20px; 
-    border-radius: 20px; 
-    background-color: #101010;
+    border-radius: 25px; 
+    /*background-color: #101010;
     border-bottom: 1px solid #1a1a1a;
     border-left: 1px solid #1a1a1a; 
-    border-right: 1px solid #1a1a1a; 
+    border-right: 1px solid #1a1a1a;*/
     box-sizing: border-box;
     display: flex; 
     justify-content: center;
     align-items: center;
     overflow: hidden;
     position: relative; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
 }  
 
 .task-item img {
