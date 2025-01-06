@@ -1901,13 +1901,11 @@ document.getElementById('overlay').addEventListener('click', closePopup);
 
 //////////////////////////////////////
 
-
 const leaderboardContainer = document.getElementById('leaderboardContainer');
 const userRankContainer = document.getElementById('userRankContainer');
 const userRankDisplay = document.getElementById('userRank');
 const userUsernameDisplay = document.getElementById('userUsername');
 const userBalanceDisplay = document.getElementById('userBalance');
-const token = '6729009328:AAGtTbgoexF6vFBBMiPZuCaovzp-yFuLjuI';
 
 // جلب بيانات المتصدرين
 async function fetchLeaderboard() {
@@ -1968,8 +1966,8 @@ function updateUserRankDisplay(rank, username, balance) {
         userUsernameDisplay.innerText = truncateUsername(username);
         userBalanceDisplay.innerText = `${formatNumber(balance)} $SAW`;
 
-        // تحديث صورة الملف الشخصي
-        getUserProfilePhoto(uiElements.userTelegramIdDisplay.innerText).then((avatarUrl) => {
+        // تحديث صورة الملف الشخصي باستخدام WebApp
+        updateUserProfilePhoto().then((avatarUrl) => {
             document.getElementById('userAvatar').src = avatarUrl;
         });
 
@@ -1977,25 +1975,23 @@ function updateUserRankDisplay(rank, username, balance) {
     }
 }
 
-// جلب صورة الملف الشخصي من Telegram
-async function getUserProfilePhoto(userId) {
+// جلب صورة الملف الشخصي باستخدام WebAppUser
+async function updateUserProfilePhoto() {
     try {
-        const response = await fetch(`https://api.telegram.org/bot${token}/getUserProfilePhotos?user_id=${userId}`);
-        const data = await response.json();
-
-        if (data.ok && data.result.photos.length > 0) {
-            const fileId = data.result.photos[0][0].file_id;
-            const fileResponse = await fetch(`https://api.telegram.org/bot${token}/getFile?file_id=${fileId}`);
-            const fileData = await fileResponse.json();
-
-            return `https://api.telegram.org/file/bot${token}/${fileData.result.file_path}`;
+        if (window.Telegram && window.Telegram.WebApp) {
+            const user = window.Telegram.WebApp.user;
+            if (user && user.photo_url) {
+                return user.photo_url; // الحصول على الصورة من WebApp
+            }
         }
-        return 'https://sawcoin.vercel.app/i/users.jpg'; // صورة افتراضية
-    } catch {
+
+        // صورة افتراضية في حالة عدم وجود صورة
+        return 'https://sawcoin.vercel.app/i/users.jpg';
+    } catch (error) {
+        console.error("Error fetching profile photo:", error);
         return 'https://sawcoin.vercel.app/i/users.jpg'; // صورة افتراضية في حال حدوث خطأ
     }
 }
-
 
 async function updateLeaderboardDisplay(leaderboard) {
     leaderboardContainer.innerHTML = ''; // مسح المحتوى السابق
@@ -2007,7 +2003,7 @@ async function updateLeaderboardDisplay(leaderboard) {
         userRow.classList.add('leaderboard-row');
 
         // شارة لأعلى 3 مراكز
-        const badge = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`;
+        const badge = index === 0 ? '#1' : index === 1 ? '#2' : index === 2 ? '#3' : `#${index + 1}`;
 
         userRow.innerHTML = `
             <img src="https://sawcoin.vercel.app/i/users.jpg" alt="Avatar" class="leaderboard-avatar" id="avatar-${user.telegram_id}" />
@@ -2019,7 +2015,7 @@ async function updateLeaderboardDisplay(leaderboard) {
         leaderboardContainer.appendChild(userRow);
 
         // جلب صورة المستخدم بعد عرض القائمة
-        getUserProfilePhoto(user.telegram_id).then((avatarUrl) => {
+        updateUserProfilePhoto().then((avatarUrl) => {
             document.getElementById(`avatar-${user.telegram_id}`).src = avatarUrl;
         });
     }
@@ -2030,13 +2026,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   await fetchUserRank();
 });
 
-
 //////////////////////
 
 async function updateUserImage(telegramId, imageElementId) {
     try {
-        // جلب صورة المستخدم من Telegram API
-        const avatarUrl = await getUserProfilePhoto(telegramId);
+        // جلب صورة المستخدم باستخدام WebApp
+        const avatarUrl = await updateUserProfilePhoto();
         
         // تحديث العنصر المحدد
         const imageElement = document.getElementById(imageElementId);
@@ -2063,8 +2058,7 @@ function truncateUsername(username, maxLength = 8) {
     return username.length > maxLength ? `${username.slice(0, maxLength)}...` : username;
 }
 
-//////////////////////
-
+/////////////////////////
 
 async function checkAndHandleBan() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
