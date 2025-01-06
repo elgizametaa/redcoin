@@ -65,8 +65,8 @@
     border: 1px solid #1c1c1c;
     border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.00009);
-    backdrop-filter: blur(5px); 
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
 } 
 
 /*#clickSection {
@@ -305,8 +305,8 @@
     border: 1px solid #1c1c1c;
     border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.00009);
-    backdrop-filter: blur(5px); 
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
 } 
 
 
@@ -567,14 +567,14 @@
     top: 13px;
     left: 20px; 
     width: auto;
-    height: 27px;
+    height: 28px;
     z-index: 500;
     cursor: pointer;
    /* border: 1px solid #1c1c1c;*/
     border-radius: 20px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.00009);
-    backdrop-filter: blur(5px); 
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
 }
 
 #balanceContainer {
