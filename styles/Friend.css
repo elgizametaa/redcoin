@@ -86,10 +86,10 @@
     gap: 8px; /* مسافة بين الصورة والنص */
     width: 90%; 
     height: 50px;
-    background-color: #F7F9FB;
+    background: #2D83EC;
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;*/
-    color: #000;
+    color: #fff;
     padding: 20px;
     font-size: 16px;
     font-weight: bold;
@@ -107,8 +107,8 @@
 } 
 
 .invite-more:hover {
-    background: #2D83EC;
-    color: #fff;
+    background-color: #F7F9FB;
+    color: #000;
 } 
 
 .invite-copy {
@@ -118,8 +118,8 @@
     gap: 8px; /* مسافة بين الصورة والنص */
     width: 25%; 
     height: 50px;
-    background-color: #F7F9FB;
-    color: #000;
+    background: #2D83EC;
+    color: #fff;
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;*/
     padding: 7px;
@@ -140,8 +140,8 @@
 }   
  
 .invite-copy:hover {
-   background: #2D83EC;
-   color: #fff;
+   background-color: #F7F9FB;
+   color: #000;
 } 
 
 #invitedCount {
