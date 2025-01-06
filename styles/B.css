@@ -163,7 +163,7 @@
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;
     background: #101010;*/
-    border-radius: 20px; /* زوايا مستديرة */
+    border-radius: 25px; /* زوايا مستديرة */
     box-sizing: border-box; /* لحساب الحواف ضمن الأبعاد */
     overflow: hidden;
     white-space: nowrap;
