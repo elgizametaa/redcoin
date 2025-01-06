@@ -129,7 +129,7 @@
 }
 
 .progress-ring__circle {
-  stroke: #4375ca;
+  stroke: #2D83EC;
   stroke-dasharray: 125.6; /* المحيط = 2 * π * نصف القطر */
   stroke-dashoffset: 0; /* قيمة البداية (الكامل) */
   transition: stroke-dashoffset 0.5s ease;
