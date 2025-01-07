@@ -9,16 +9,17 @@
 @keyframes popIn {
   0% {
     opacity: 0;
-    transform: scale(0.8); /* تصغير العنصر بشكل خفيف */
+    transform: translateX(-50%) scale(0.8); /* إضافة translateX مع scale */
   }
   60% {
     opacity: 1;
-    transform: scale(1.1); /* تكبير بسيط لإضافة إحساس بالحيوية */
+    transform: translateX(-50%) scale(1.1); /* إضافة نفس التأثير */
   }
   100% {
-    transform: scale(1); /* العودة للحجم الطبيعي */
+    transform: translateX(-50%) scale(1); /* العودة إلى الوضع الطبيعي مع translateX */
   }
 }
+
 
 
 /*@keyframes popIn {
