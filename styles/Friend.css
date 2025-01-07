@@ -15,30 +15,23 @@
 #i {
   color: #fff;
   font-size: 13px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 17px;
+  margin-right: 17px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
 }
 
-/*#invitedText {
-  margin-right: 15px;
-}
-
 #invitedCount {
-  margin-right: 15px;
-}*/
+  margin-left: 8px;
+}
 
 #refreshIcon {
   transition: transform 0.5s linear; 
   margin-left: auto; /* يضع الأيقونة على اليمين */
   cursor: pointer;
 }
-
-
-
 
 .Invitations-image { 
     width: 150px;
