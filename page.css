@@ -542,7 +542,7 @@
     padding-top: 50px; 
     overflow-y: auto; 
     background-clip: padding-box;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 
@@ -606,7 +606,7 @@
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 100px; /* مسافة سفلية */
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 
@@ -615,7 +615,7 @@
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 180px; /* مسافة سفلية */
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 
@@ -624,7 +624,7 @@
     overflow-y: auto;
     padding-top: 50px; /* يمكنك تغيير القيمة حسب الحاجة */
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 #gamePage {
@@ -633,7 +633,7 @@
     overflow-y: auto;
     background-clip: padding-box;
     position: relative;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 
@@ -644,7 +644,7 @@
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 120px; /* مسافة سفلية */
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 
@@ -654,7 +654,7 @@
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 40px; /* مسافة سفلية */
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 
@@ -663,7 +663,7 @@
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 0; /* مسافة سفلية */
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 #DailyPage {
@@ -671,7 +671,7 @@
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 180px; /* مسافة سفلية */
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 #SettingsPage {
@@ -679,7 +679,7 @@
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 50px; /* مسافة سفلية */
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
 #miningPage {
@@ -688,6 +688,6 @@
     overflow-y: auto;
     background-clip: padding-box;
     position: relative;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
