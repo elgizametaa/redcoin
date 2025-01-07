@@ -1,3 +1,42 @@
+#WrapperFriends {
+  border-radius: 25px;
+  margin: 10px auto;
+  width: 95%;
+  height: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  font-weight: 500; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#i {
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+#invitedText {
+  margin-right: 15px;
+}
+
+#invitedCount {
+  margin-right: 15px;
+}
+
+#refreshIcon {
+  transition: transform 0.5s linear; 
+  margin-left: auto; /* يضع الأيقونة على اليمين */
+  cursor: pointer;
+}
+
+
+
+
 .Invitations-image { 
     width: 150px;
     margin: 10px auto;
@@ -143,37 +182,14 @@
    color: #000;
 } 
 
-#invitedCount {
-    color: #fff;
-    font-size: 16px;
-    margin-left: 2px;
-}
 
-#i {
-    color: #fff;
-    font-size: 16px;
-    /*margin-top: 20px;
-    margin-left: 22px;*/
-   /* position: relative;
-    display: inline-block;*//* تجعل العناصر تأخذ موقعها المناسب */
-    text-align: left;
-}
-
-#refreshIcon {
-    color: #fff;
-    font-size: 16px;
-    margin-left: 10px;
-    cursor: pointer;
-    /*position: absolute;
-    right: -140px;
-    top: 0;*/
-    transition: transform 0.5s linear; /* تأثير دوران سريع */
-}
 
 /* إضافة تأثير دوران عند النقر */
 #refreshIcon:active {
     transform: rotate(360deg); /* تأثير دوران كامل */
 }
+
+
 
 .friend-item {
     display: flex;
