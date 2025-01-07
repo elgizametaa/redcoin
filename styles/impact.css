@@ -22,7 +22,7 @@
     animation: slideInLeft 0.4s ease forwards;
 }
 
-.contact-support-Chat, .bos-image, .contact-support, .contact-support-community, .Leaders-image, .Invitations-image {
+#leaderboardWrapper, .contact-support-Chat, .bos-image, .contact-support, .contact-support-community, .Leaders-image, .Invitations-image {
    animation: popIn 0.4s ease forwards;
 }
 
