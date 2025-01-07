@@ -245,40 +245,43 @@
 }
 
 
-.contact-support {
-  top: 18px;
-  right: 25px; /* البدء من منتصف الشاشة */
+.support_container {
+  display: flex;
+  justify-content: space-between; /* توزيع العناصر أفقياً */
+  align-items: center; /* تمركز العناصر عمودياً */
+  bottom: 20px;
+  left: 50%; 
+  transform: translateX(-50%); 
+  border-radius: 25px;
+  margin: 0 auto;
+  width: 50%;
+  height: 37px; /* زِد ارتفاع الحاوية إذا لزم الأمر */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   position: absolute; 
   z-index: 100; /* التأكد من ظهور العنصر فوق باقي العناصر */
-} 
+}
 
+.support_container > div {
+  display: flex;
+  align-items: center; /* محاذاة الأيقونات عمودياً */
+  justify-content: center; /* محاذاة الأيقونات أفقياً */
+  flex: 1; /* توزيع متساوٍ لكل عنصر داخل الحاوية */
+}
+
+.support-link i {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+/* تخصيص الألوان لكل قسم */
 .contact-support i {
-    font-size: 1.3rem;
     color: #2D83EC;
-}  
-
-.contact-support-community {
-  top: 18px;
-  left: 75px; /* البدء من منتصف الشاشة */
-  position: absolute; 
-  z-index: 100; /* التأكد من ظهور العنصر فوق باقي العناصر */
-} 
-
+}
 .contact-support-community i {
-    font-size: 1.3rem;
+    color: #fff;
+} 
+.contact-support-Chat i {
     color: #fff;
 }  
- 
-
-.contact-support-Chat i{
-    font-size: 1.3rem;
-    color: #fff;
-}   
-
-.contact-support-Chat {
-  top: 18px;
-  left: 25px; /* البدء من منتصف الشاشة */
-  position: absolute; 
-  z-index: 100; /* التأكد من ظهور العنصر فوق باقي العناصر */
-}  
-
