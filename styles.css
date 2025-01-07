@@ -1013,6 +1013,7 @@ img {
     height: 28px; /* ارتفاع الصورة */
     border-radius: 50%; /* جعل الصورة دائرية */
     object-fit: cover; /* تأكد من احتواء الصورة داخل الدائرة */
+    border: 0.2px solid #161616;
 }
 
 .userrr-imagee {
@@ -1020,7 +1021,7 @@ img {
     height: 30px; /* ارتفاع الصورة */
     border-radius: 50%; /* جعل الصورة دائرية */
     object-fit: cover; /* تأكد من احتواء الصورة داخل الدائرة */
-    border: 1px solid #1c1c1c;
+    border: 0.2px solid #161616;
 } 
 
 
