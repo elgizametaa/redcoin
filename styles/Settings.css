@@ -249,7 +249,7 @@
   display: flex;
   justify-content: space-between; /* توزيع العناصر أفقياً */
   align-items: center; /* تمركز العناصر عمودياً */
-  bottom: 130px;
+  bottom: 150px;
   left: 50%; 
   transform: translateX(-50%); 
   border-radius: 25px;
