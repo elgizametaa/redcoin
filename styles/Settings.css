@@ -110,7 +110,7 @@
 
 .settings-button {
     position: absolute;
-    top: 14px; /* المسافة من الأعلى */
+    top: 13.5px; /* المسافة من الأعلى */
     right: 20px;
     border: 0.2px solid #161616;
     border-radius: 20px; /* زوايا مستديرة في الأسفل فقط */
