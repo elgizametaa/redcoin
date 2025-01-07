@@ -660,27 +660,6 @@ img {
     text-align: center;
  }
 
-#Daily-earning {
-    color: #808080; 
-    font-size: 15px; 
-    text-align: left;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-right: auto;
-    margin-left: 20px;
-}
-
-#t {
-    z-index: 100;
-    color: #808080; 
-    font-size: 15px; 
-    text-align: left;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-right: auto;
-    margin-left: 18px;
-}
-
 #puzzlessText {
     color: #808080; 
     font-size: 15px; 
@@ -1003,3 +982,31 @@ img {
     color:#2D83EC;
     margin-right: 1px;
 }    
+
+
+
+#Daily-earning {
+    color: #808080; 
+    font-size: 15px; 
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+#t {
+    z-index: 100;
+    color: #808080; 
+    font-size: 15px; 
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: 18px;
+    background-color: #f0f0f0; /* لون الخلفية */
+    border-radius: 25px; /* الزوايا الدائرية */
+    padding: 5px; /* مسافة داخلية بين النص وحواف الخلفية */
+}
+
+
