@@ -9,14 +9,14 @@
 @keyframes popIn {
   0% {
     opacity: 0;
-    transform: translateX(-50%) scale(0.8); /* إضافة translateX مع scale */
+    transform: scale(0.8); /* تصغير العنصر بشكل خفيف */
   }
   60% {
     opacity: 1;
-    transform: translateX(-50%) scale(1.1); /* إضافة نفس التأثير */
+    transform: scale(1.1); /* تكبير بسيط لإضافة إحساس بالحيوية */
   }
   100% {
-    transform: translateX(-50%) scale(1); /* العودة إلى الوضع الطبيعي مع translateX */
+    transform: scale(1); /* العودة للحجم الطبيعي */
   }
 }
 
