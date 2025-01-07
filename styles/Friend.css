@@ -95,7 +95,7 @@
  
 
 .friends-list {
-    margin: 10px auto; /* يضبط الهامش العلوي والسفلي بـ 5px ويجعل العنصر في المنتصف أفقيًا */
+    /*margin: 10px auto;*//* يضبط الهامش العلوي والسفلي بـ 5px ويجعل العنصر في المنتصف أفقيًا */
     width: 88%; /* العرض المحدد للحاوية */
     height: auto;
     list-style: none;
@@ -177,14 +177,10 @@
    color: #000;
 } 
 
-
-
 /* إضافة تأثير دوران عند النقر */
 #refreshIcon:active {
     transform: rotate(360deg); /* تأثير دوران كامل */
 }
-
-
 
 .friend-item {
     display: flex;
@@ -194,7 +190,7 @@
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     padding: 10px;
-    margin-bottom: 10px; 
+   /* margin-bottom: 10px;*/
     width: 100%;
     border-radius: 25px;
     transition: background-color 0.3s ease;
