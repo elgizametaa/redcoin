@@ -71,31 +71,6 @@ body {
     background-position: center;
 }
 
-.container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 20px; /* ارتفاع الظل */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
-    pointer-events: none;
-}
-
-.container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 20px; /* عرض الظل */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
-    pointer-events: none;
-} 
-
-
-
-
  @media only screen and (max-width: 768px) {
   .container {
     flex-direction: column;
