@@ -3,7 +3,7 @@
     margin-top: 10px;
     margin-bottom: 0; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
     font-weight: bold;
-    font-size: 20px; 
+    font-size: 24px; 
 }
 
 #upgradeTitle {
@@ -182,7 +182,7 @@
 
 .icon-boosts { 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 25px;
     transition: box-shadow 0.3s ease;
 } 
 
@@ -190,7 +190,7 @@
     width: 40px;
     height: 40px;
     box-shadow: 0 0 3px rgba(255, 255, 255, 0.5), 0 0 6px rgba(255, 255, 255, 0.3), 0 0 9px rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border-radius: 25px;
     transition: box-shadow 0.3s ease;
 }
 
