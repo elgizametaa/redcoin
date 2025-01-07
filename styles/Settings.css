@@ -254,7 +254,7 @@
   transform: translateX(-50%); 
   border-radius: 25px;
   margin: 0 auto;
-  width: 50%;
+  width: 54%;
   height: 37px; /* زِد ارتفاع الحاوية إذا لزم الأمر */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.3);
