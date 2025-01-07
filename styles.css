@@ -79,7 +79,7 @@ body {
     left: 0;
     width: 100%;
     height: 25%; /* زيد الارتفاع للأسفل */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
     pointer-events: none;
 }
 
@@ -91,7 +91,7 @@ body {
     left: 0;
     width: 100%;
     height: 25%; /* زيد الارتفاع للأعلى */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
     pointer-events: none;
 }
 
