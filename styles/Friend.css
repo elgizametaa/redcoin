@@ -107,10 +107,11 @@
     display: block;
 }
 
-/*.friends-list li {
-    margin-left: 90px;
-    margin-top: 40px;
-}*/
+.friends-list li {
+    margin: 5px auto; 
+   /* margin-left: 90px;
+    margin-top: 40px;*/
+}
   
  
 .invite-more {
@@ -195,7 +196,7 @@
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     padding: 10px;
-    margin-bottom: 7px; 
+    margin-bottom: 10px; 
     width: 100%;
     border-radius: 25px;
     transition: background-color 0.3s ease;
