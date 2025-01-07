@@ -611,7 +611,7 @@
 
 
 #accountPage {
-    padding-top: 60px; /* يمكنك تغيير القيمة حسب الحاجة */
+    padding-top: 50px; /* يمكنك تغيير القيمة حسب الحاجة */
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 180px; /* مسافة سفلية */
@@ -675,7 +675,7 @@
 }
 
 #SettingsPage {
-    padding-top: 90px; /* يمكنك تغيير القيمة حسب الحاجة */
+    padding-top: 20px; /* يمكنك تغيير القيمة حسب الحاجة */
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 50px; /* مسافة سفلية */
