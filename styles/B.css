@@ -3,11 +3,11 @@
     margin-top: 10px;
     margin-bottom: 0; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
     font-weight: bold;
-    font-size: 24px; 
+    font-size: 20px; 
 }
 
 #upgradeTitle {
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 5px;
     margin-bottom: 15px;
 }
