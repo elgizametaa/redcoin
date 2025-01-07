@@ -95,7 +95,7 @@
  
 
 .friends-list {
-    /*margin: 10px auto;*//* يضبط الهامش العلوي والسفلي بـ 5px ويجعل العنصر في المنتصف أفقيًا */
+    margin: 10px auto; /* يضبط الهامش العلوي والسفلي بـ 5px ويجعل العنصر في المنتصف أفقيًا */
     width: 88%; /* العرض المحدد للحاوية */
     height: auto;
     list-style: none;
@@ -192,7 +192,7 @@
     /*padding: 10px;*
    /* margin-bottom: 10px;*/
     width: 100%;
-    height: 50px;
+    height: 55px;
     border-radius: 25px;
     transition: background-color 0.3s ease;
 }
