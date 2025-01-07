@@ -335,7 +335,7 @@
     margin-top: 15px;
     margin-left: 20px;
     margin-bottom: 10px; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
-    font-weight: bold;
+    font-weight: 400; 
     font-size: 15px; 
 }
 
