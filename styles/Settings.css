@@ -150,7 +150,7 @@
     align-items: center;
     gap: 10px;
     padding: 2.5px;
-    padding-top: 5px;
+    padding-top: 20px;
     width: 95%;
     border-radius: 25px; 
     margin: 10px auto;
@@ -249,12 +249,12 @@
   display: flex;
   justify-content: space-between; /* توزيع العناصر أفقياً */
   align-items: center; /* تمركز العناصر عمودياً */
-  bottom: 150px;
+  bottom: 180px;
   left: 50%; 
   transform: translateX(-50%); 
   border-radius: 25px;
   margin: 0 auto;
-  width: 54%;
+  width: 55%;
   height: 37px; /* زِد ارتفاع الحاوية إذا لزم الأمر */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.3);
