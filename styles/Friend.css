@@ -98,7 +98,6 @@
     margin: 10px auto; /* يضبط الهامش العلوي والسفلي بـ 5px ويجعل العنصر في المنتصف أفقيًا */
     width: 88%; /* العرض المحدد للحاوية */
     height: auto;
-    /*padding: 8px;*/
     list-style: none;
     color: #808080;
     font-size: 14px;
@@ -109,7 +108,7 @@
 
 .friends-list li {
     margin-bottom: 10px; 
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .invite-more {
@@ -214,26 +213,24 @@
     height: 35px;
     border-radius: 50%;
     margin-right: 10px;
-    border: 1px solid #161616;
+    border: 0.2px solid #161616;
 }
 
 .friend-name {
     font-size: 14px;
     color: #fff;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .friend-balance {
     font-size: 12px;
     color: #808080; /* لون مميز للرصيد */
-    font-weight: bold;
+    font-weight: 500;
     text-align: right; /* محاذاة الرصيد إلى اليمين */
 }
 
 
 .invite-card {
-/* background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);*/
   background-color: rgba(0, 0, 0,0.00001);
   color: #fff;
   border-radius: 10px;
@@ -243,7 +240,6 @@
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);*/
 }
 
 .invite-header h3 {
