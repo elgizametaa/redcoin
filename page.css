@@ -5,13 +5,13 @@
 
 .competition-container {
   width: 92%;
-  height: 60px;
+  height: 65px;
   background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
-  border-radius: 30px;
+  border-radius: 25px;
   text-align: center;
-  margin: 15px auto;
+  margin: 18px auto;
   cursor: pointer; /* لإظهار مؤشر يد عند التمرير */
 }
 
