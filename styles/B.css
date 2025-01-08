@@ -206,6 +206,7 @@
     flex-direction: row; /* ترتيب الليفيل والتكلفة أفقيًا */
     justify-content: space-between; /* توزيع العناصر بالتساوي */
     color: #808080;
+    font-weight: 500; 
     font-size: 11px; /* حجم النص أصغر قليلاً */
 }
 
