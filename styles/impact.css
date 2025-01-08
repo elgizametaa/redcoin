@@ -2,7 +2,7 @@
     animation: slideInLeft 0.4s ease forwards;
 }
 
-#gameC-2, #bost1, .user-ranking {
+.competition-container, #gameC-2, #bost1, .user-ranking {
     animation: slideInRight 0.4s ease forwards;
 }
 
