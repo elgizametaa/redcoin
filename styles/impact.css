@@ -22,7 +22,7 @@
     animation: slideInLeft 0.4s ease forwards;
 }
 
-#leaderboardWrapper, .bos-image, .Leaders-image, .Invitations-image {
+.bos-image, .Leaders-image, .Invitations-image {
    animation: popIn 0.4s ease forwards;
 }
 
