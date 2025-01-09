@@ -125,7 +125,7 @@
     border-right: 1px solid #1c1c1c;*/
     color: #fff;
     padding: 20px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     border-radius: 25px;
     margin-top: 10px;
@@ -157,7 +157,7 @@
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;*/
     padding: 7px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     border-radius: 25px;
     margin-top: 10px;
@@ -218,7 +218,7 @@
 
 .friend-name {
     margin-left: 5px; 
-    font-size: 14px;
+    font-size: 13.5px;
     color: #fff;
     font-weight: 600;
 }
