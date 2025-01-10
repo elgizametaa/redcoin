@@ -424,7 +424,7 @@
 } 
 
 .leaderboard-avatar {
-    width: 36px;
+    width: 35px;
     height: auto;
     border-radius: 50%;
     margin-left: 10px;
@@ -435,19 +435,19 @@
 
 .leaderboard-username {
     flex: 1;
-    font-size: 14px;
+    font-size: 13px;
     margin-left: 10px;
 } 
 
 .leaderboard-balance {
-    font-size: 13px;
+    font-size: 12px;
     color: #fff;
     text-align: center;
     margin-right: 10px;
 }
 
 .leaderboard-rank {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     margin-right: 10px;
     background: linear-gradient(45deg, #2D83EC, #1AC9FF);
