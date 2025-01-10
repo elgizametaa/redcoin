@@ -182,8 +182,7 @@
 }
 
 .modal-labl {
-    border-radius:0 20px 0 20px;
     height: 0.8px; /* سمك الفاصل */
-    background-color: #808080; /* لون الفاصل */
+    background-color: #141414; /* لون الفاصل */
     width: 100%; /* عرض الفاصل */
 } 
