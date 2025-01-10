@@ -11,7 +11,7 @@ const createTreasurePopup = () => {
         transform: translate(-50%, -50%);
         width: 300px;
         padding: 20px;
-        background-color: #101010;
+        background-color: #181818;
         color: #fff;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         border-radius: 25px;
@@ -62,8 +62,8 @@ const createTreasurePopup = () => {
     const message = document.createElement('p');
     message.style.cssText = `
         margin-top: 15px;
-        font-size: 13px;
-        font-weight: 500; 
+        font-size: 12px;
+        font-weight: 450; 
         color: #808080;
     `;
     message.innerText = 'Go to the earn page, enter the treasure code, check your balance, and enjoy 1 million $SAW!';
@@ -72,8 +72,10 @@ const createTreasurePopup = () => {
     const closeButton = document.createElement('button');
     closeButton.style.cssText = `
         margin-top: 15px;
-        padding: 8px 16px;
-        background-color: #333;
+        padding: 10px 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
         color: #fff;
         border: none;
         border-radius: 25px;
