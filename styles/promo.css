@@ -101,7 +101,7 @@
     border: 1px solid #000;
     width: 94%;
     height: 45px; /* تأكد من أن البوكس يحتوي على الحجم المطلوب */
-    border-radius: 25px;
+    border-radius: 30px;
     margin-bottom: 150px;
 }
 
@@ -114,11 +114,13 @@
 }
 
 .promo-input {
-    background-color: rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
     width: 100%; /* جعل العرض 100% لكي يتم التغطية بالكامل */
     height: 100%;
-    font-size: 15px;
-    border-radius: 25px;
+    font-size: 13px;
+    border-radius: 30px;
    /* border: 1px solid #343434;*/
     color: white;
     text-align: left;
@@ -133,7 +135,7 @@
     background: #fff;
     color: transparent;
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 25px;
     /*border: 1px solid #343434;*/
     cursor: pointer;
     width: 20%; /* عرض الزر */
