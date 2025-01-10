@@ -14,9 +14,16 @@
 
 #upgradeIconContainer {
     display: flex;
+    justify-content: space-around; /* توزيع العناصر بشكل متساوٍ */
+    align-items: center; /* محاذاة العناصر بشكل عمودي */
+    gap: 15px; /* مسافة بين العناصر */
+    margin-top: 20px;
+}
+
+   /* display: flex;
     justify-content: center;
     margin: 15px 0;
-}
+}*/
 
 #upgradeCost {
     text-align: center;
