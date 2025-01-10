@@ -14,13 +14,6 @@
     "image": "i/IMG_form.jpg"
   },
   {
-    "id": 42,
-    "url": "https://t.me/coinegg_miner_bot/miniapp?startapp=kBNoWEHfEAAXbVw3q5b",
-    "reward": 1000,
-    "description": "Join our CoinEgg ",
-    "image": "i/IMG.jpg"
-  },
-  {
     "id": 41,
     "url": "https://t.me/gamee/start?startapp=ref_6793556284",
     "reward": 10000,
@@ -42,16 +35,9 @@
     "image": "i/task/IMG_202.jpg"
   },
   {
-    "id": 31,
-    "url": "https://t.me/SAWCOIN_NEWS",
-    "reward": 1000,
-    "description": "Join our Saw News ",
-    "image": "i/task/tloo.jpg"
-  },
-  {
     "id": 33,
-    "url": "https://t.me/SAW_COIN",
-    "reward": 2000,
+    "url": "https://t.me/addlist/cZaAH6Y-nrljNDQ8",
+    "reward": 20000,
     "description": "Join our Saw community ",
     "image": "i/task/tloo.jpg"
   },
