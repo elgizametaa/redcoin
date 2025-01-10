@@ -229,11 +229,13 @@
  .loginclaim-btn {
     width: 95%;  /* ليأخذ العرض الكامل */
     padding: 15px;
-    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     color: #ffffff;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
     margin: 0 auto;
     margin-top: 10px;  /* مسافة فوق الزر */
@@ -241,7 +243,7 @@
 }
 
 .loginclaim-btn:hover {
-    background-color: #1c1c1c;  /* تغيير اللون عند التمرير فوق الزر */
+    background-color: #161616;  /* تغيير اللون عند التمرير فوق الزر */
 } 
 
 #login1 {
