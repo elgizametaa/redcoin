@@ -1,3 +1,27 @@
+#upgradeContainer {
+    display: flex;
+    flex-direction: row-reverse; /* عرض العناصر من اليمين إلى اليسار */
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0; /* لون الخلفية */
+    padding: 10px; /* الحشوة الداخلية */
+    border-radius: 8px; /* زوايا مستديرة */
+    margin-top: 20px;
+}
+
+#upgradeCost,
+#currentLevel,
+#currentCoins {
+    margin: 0 10px; /* مسافة بين العناصر */
+    text-align: center;
+    font-size: 13px;
+    background-color: #ffffff; /* خلفية العنصر */
+    padding: 5px 10px;
+    border-radius: 5px; /* زوايا مستديرة */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+}
+
+
 #boos-txt {
     text-align: center;
     margin-top: 10px;
@@ -20,26 +44,19 @@
     margin-top: 20px;
 }
 
-   /* display: flex;
-    justify-content: center;
-    margin: 15px 0;
-}*/
-
-#upgradeCost {
+/*#upgradeCost {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 13px;
 }
-
-
 #currentLevel,
 #currentCoins {
     text-align: center;
     margin-top: 5px;
     margin-bottom: 10px;
     font-size: 13px;
-}
+}*/
 
 
 .badgee {
