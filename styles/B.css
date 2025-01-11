@@ -4,20 +4,20 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 1);
-    backdrop-filter: blur(5px);
     border-radius: 35px; /* زوايا مستديرة */
     margin-top: 20px;
+    border: 1px solid #343434;
     width: 50%;
     height: 30px;
+    margin: 10px auto; 
 }
 
 #upgradeCost,
 #currentLevel,
 #currentCoins {
-    padding: 2px;
+    padding: 3px;
     white-space: nowrap;
-    margin: 10px; /* مسافة بين العناصر */
+    margin: 5px auto; /* مسافة بين العناصر */
     text-align: center;
     font-size: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
