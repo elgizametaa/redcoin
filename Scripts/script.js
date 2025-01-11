@@ -66,7 +66,7 @@ const createTreasurePopup = () => {
         font-weight: 450; 
         color: #808080;
     `;
-    message.innerText = 'Go to the earn page, enter the treasure code, check your balance, and enjoy 1 million $SAW!';
+    message.innerText = 'Go to the earn page, enter the treasure code, check your balance, and enjoy 5 million $SAW!';
 
     // Close button
     const closeButton = document.createElement('button');
