@@ -48,7 +48,7 @@ const createTreasurePopup = () => {
         border-radius: 25px;
         cursor: pointer;
     `;
-    treasureCode.innerText = 'CODE1A1V3';
+    treasureCode.innerText = '5-million';
     treasureCode.addEventListener('click', () => {
         if (navigator.clipboard) {
             navigator.clipboard.writeText(treasureCode.innerText)
@@ -101,7 +101,7 @@ const createTreasurePopup = () => {
 
 // Initialize the button and popup
 document.addEventListener('DOMContentLoaded', () => {
-    const promocodeButton = document.getElementById('tasknavbarBalanceDisplay');
+    const promocodeButton = document.getElementById('vibrationToggle');
     if (!promocodeButton) return;
 
     const { popup, overlay } = createTreasurePopup();
