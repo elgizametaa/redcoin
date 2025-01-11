@@ -8,17 +8,18 @@
     backdrop-filter: blur(5px);
     border-radius: 35px; /* زوايا مستديرة */
     margin-top: 20px;
-    width: 70%;
+    width: 50%;
     height: 30px;
 }
 
 #upgradeCost,
 #currentLevel,
 #currentCoins {
-    padding: 5px;
-    margin: 0 10px; /* مسافة بين العناصر */
+    padding: 2px;
+    white-space: nowrap;
+    margin: 10px; /* مسافة بين العناصر */
     text-align: center;
-    font-size: 13px;
+    font-size: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
