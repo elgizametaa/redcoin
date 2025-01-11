@@ -7,7 +7,7 @@
     border-radius: 35px; /* زوايا مستديرة */
     margin-top: 20px;
     border: 1px solid #101010;
-    width: 60%;
+    width: auto;
     height: 25px;
     margin: 10px auto; 
 }
@@ -17,7 +17,7 @@
 #currentCoins {
     padding: 3px;
     white-space: nowrap;
-    margin: 5px auto; /* مسافة بين العناصر */
+    margin: 8px auto; /* مسافة بين العناصر */
     text-align: center;
     font-size: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
