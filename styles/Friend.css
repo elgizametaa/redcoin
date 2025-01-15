@@ -28,7 +28,7 @@
 #WrapperFriends {
   border-radius: 25px;
   margin: 10px auto;
-  width: 94%;
+  width: 100%;
   height: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.3);
@@ -71,7 +71,7 @@
     position: relative; /* يتيح التحكم بالموقع داخل الحاوية */
     margin-left: auto; /* يدفع العنصر إلى أقصى اليمين */
     margin-right: auto; /* يدفع العنصر إلى أقصى اليسار */
-    width: 90%; /* لضبط العرض لتجنب حدود الشاشة */
+    width: 95%; /* لضبط العرض لتجنب حدود الشاشة */
     padding: 8px; 
     height: auto;
     border-radius: 25px;
@@ -124,7 +124,7 @@
 
 .friends-list {
     margin: 10px auto; /* يضبط الهامش العلوي والسفلي بـ 5px ويجعل العنصر في المنتصف أفقيًا */
-    width: 94%; /* العرض المحدد للحاوية */
+    width: 100%; /* العرض المحدد للحاوية */
     height: auto;
     list-style: none;
     color: #808080;
@@ -220,7 +220,7 @@
     backdrop-filter: blur(5px);
     /*padding: 10px;*
    /* margin-bottom: 10px;*/
-    width: 100%;
+    width: 98%;
     height: 55px;
     border-radius: 25px;
     transition: background-color 0.3s ease;
@@ -264,7 +264,7 @@
   background-color: rgba(0, 0, 0,0.00001);
   color: #fff;
   border-radius: 10px;
-  width: 87%;
+  width: 90%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
