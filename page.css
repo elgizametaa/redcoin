@@ -19,7 +19,7 @@
 }
 
 .competition-container {
-  width: 100%;
+  width: 98%;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -172,7 +172,7 @@
 
 #clickSection {
   position: fixed;
-  bottom: 110px;
+  bottom: 90px;
   left: 50%;
   transform: translateX(-50%);
   width: 92%;
