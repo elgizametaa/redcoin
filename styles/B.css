@@ -181,7 +181,7 @@
     flex-direction: row; /* ترتيب المحتوى داخل العنصر أفقيًا */
     align-items: center; /* محاذاة المحتوى عموديًا */
     justify-content: space-between; /* توزيع العناصر بالتساوي */
-    width: 100%; /* عرض العنصر */
+    width: 98%; /* عرض العنصر */
     height: 62px;
     padding: 10px;
     margin: 6px auto;
