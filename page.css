@@ -1,10 +1,25 @@
+.user-ranking {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; 
+    margin: 0 auto;
+    margin-bottom: 13px;
+    height: 59px;
+    border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+} 
+
+
 .competition-link {
   display: block;
   text-decoration: none; /* لإزالة الخط السفلي من الرابط */
 }
 
 .competition-container {
-  width: 92%;
+  width: 100%;
   height: 65px;
   background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -25,7 +40,7 @@
 #leaderboardWrapper {
   border-radius: 25px;
   margin: 10px auto;
-  width: 95%;
+  width: 100%;
   height: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.3);
@@ -160,7 +175,7 @@
   bottom: 110px;
   left: 50%;
   transform: translateX(-50%);
-  width: 88%;
+  width: 92%;
   height: 55px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.3);
@@ -371,8 +386,8 @@
 
 
 #leaderboardPage {
-    padding-top: 40px;
-    padding-bottom: 100px;
+    padding-top: 50px;
+    padding-bottom: 135px;
     overflow-y: auto;
     background-clip: padding-box;
     position: relative;
@@ -395,25 +410,11 @@
     font-size: 20px; 
 }
 
-.user-ranking {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 95%; 
-    margin: 0 auto;
-    margin-bottom: 13px;
-    height: 59px;
-    border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-} 
-
 .leaderboard-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 95%; 
+    width: 100%; 
     margin: 0 auto;
     margin-bottom: 10px;
     height: 60px;
