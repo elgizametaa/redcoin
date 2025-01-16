@@ -3,16 +3,17 @@
     text-align: left;
     padding-top: 3px;
     z-index: 50;
-    margin-top: 3px;
-    margin-left: 7px;
+    margin-left: 8px;
+    margin-top: 0;
+    margin-bottom: 10px;
     position: relative; /* لإبقاء النص في موضعه فوق الصورة */
 }
 
 .taskk-title {
-    font-size: 24px;
+    text-shadow: 2px 2px #181818;
+    font-size: 22px;
     color: #fff; /* تأكد من أن النص يظهر بوضوح على الصورة */
     z-index: 100; /* تأكد من أن النص فوق الصورة */
-    animation: popIn 0.4s ease forwards;
 }
 
 .TASKS-image {
