@@ -213,7 +213,7 @@
     background: rgba(0, 0, 0, 0.05); /* شفافية */
     backdrop-filter: blur(2px); 
     display: none; 
-    z-index: 999; /* أعلى من باقي العناصر */
+    z-index: 400; /* أعلى من باقي العناصر */
 }
 
 .minee-container {
