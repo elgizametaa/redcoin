@@ -24,11 +24,12 @@
 
 
 #boos-txt {
+    text-shadow: 3px 3px #181818;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 0; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
     font-weight: bold;
-    font-size: 20px; 
+    font-size: 22px; 
 }
 
 #upgradeTitle {
