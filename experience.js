@@ -253,7 +253,7 @@ async function fetchUserDataFromTelegram() {
         // عرض الاسم المختصر
         const userNameElement = document.getElementById("userName");
         if (userNameElement) {
-            const maxLength = 4;
+            const maxLength = 8;
             const truncatedName = userTelegramName.length > maxLength
                 ? userTelegramName.slice(0, maxLength) + "..."
                 : userTelegramName;
