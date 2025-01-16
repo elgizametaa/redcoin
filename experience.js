@@ -541,11 +541,11 @@ function startConfettiEffect() {
     // تشغيل تأثير القصاصات الورقية
     confettiInterval = setInterval(() => {
         confetti({
-            particleCount: 8, // عدد الجزيئات في كل دفعة
+            particleCount: 30, // عدد الجزيئات في كل دفعة
             angle: 90,        // زاوية التساقط (عمودية)
             spread: 160,      // زاوية الانتشار
             startVelocity: 40, // سرعة البداية
-            gravity: 0.8,     // الجاذبية
+            gravity: 1,     // الجاذبية
             origin: {
                 x: Math.random(), // انطلاق من أماكن عشوائية
                 y: 0              // البداية من أعلى الشاشة
