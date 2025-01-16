@@ -825,45 +825,41 @@ function navigateToScreen(screenId) {
 
 
 
- // تحسين عرض قائمة الأصدقاء مع حد أقصى 10 أصدقاء
 async function loadFriendsList() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
+    const noFriendsMessage = document.getElementById('noFriendsMessage');
+    const friendsListDisplay = uiElements.friendsListDisplay;
 
     if (!userId) {
         console.error("User ID is missing.");
-        uiElements.friendsListDisplay.innerHTML = `<li>Error: Unable to load friends list. Please try again later.</li>`;
+        friendsListDisplay.innerHTML = `<li>Error: Unable to load friends list. Please try again later.</li>`;
         return;
     }
 
     try {
-        // جلب قائمة الأصدقاء من قاعدة البيانات
         const { data, error } = await supabase
             .from('users')
-            .select('invites') // عمود الدعوات الذي يحتوي على قائمة المعرفات
+            .select('invites')
             .eq('telegram_id', userId)
             .single();
 
         if (error) {
             console.error('Error fetching friends list:', error.message);
-            uiElements.friendsListDisplay.innerHTML = `<li>Error: Unable to fetch friends at the moment.</li>`;
+            friendsListDisplay.innerHTML = `<li>Error: Unable to fetch friends at the moment.</li>`;
             return;
         }
 
-        // التأكد من أن الدعوات تحتوي على معرّفات الأصدقاء
         if (data && data.invites && Array.isArray(data.invites) && data.invites.length > 0) {
-            uiElements.friendsListDisplay.innerHTML = ''; // مسح القائمة القديمة
+            friendsListDisplay.innerHTML = '';
+            noFriendsMessage.style.display = 'none';
 
-            // إزالة المعرّفات المكررة باستخدام Set
             const uniqueInvites = [...new Set(data.invites)];
-
-            // تحديد الحد الأقصى إلى 10 أصدقاء فقط
             const limitedInvites = uniqueInvites.slice(0, 10);
 
-            // جلب بيانات الأصدقاء بما في ذلك الرصيد لكل معرف
             const friendsPromises = limitedInvites.map(async (friendId) => {
                 const { data: friendData, error: friendError } = await supabase
                     .from('users')
-                    .select('telegram_id, username, balance') // إضافة اسم المستخدم
+                    .select('telegram_id, username, balance')
                     .eq('telegram_id', friendId)
                     .single();
 
@@ -872,80 +868,52 @@ async function loadFriendsList() {
                     return null;
                 }
 
-                return friendData; // إرجاع البيانات الخاصة بالصديق
+                return friendData;
             });
 
-            // الانتظار حتى يتم جلب جميع بيانات الأصدقاء
             const friendsData = await Promise.all(friendsPromises);
 
-            // عرض الأصدقاء مع رصيدهم
             friendsData.forEach((friend) => {
                 if (friend) {
                     const li = document.createElement('li');
-                    li.classList.add('friend-item'); // إضافة الـ CSS
+                    li.classList.add('friend-item');
 
-                    // إنشاء عنصر الصورة الفعلية أو الافتراضية
                     const img = document.createElement('img');
-                    img.src = friend.username 
-                        ? `https://t.me/i/userpic/320/${friend.username}.svg` 
-                        : 'i/users.jpg'; // الصورة الافتراضية إذا لم يكن هناك اسم مستخدم
+                    img.src = friend.username
+                        ? `https://t.me/i/userpic/320/${friend.username}.svg`
+                        : 'i/users.jpg';
                     img.alt = `${friend.telegram_id} Avatar`;
                     img.classList.add('friend-avatar');
 
-                    // إضافة معرّف الصديق
                     const span = document.createElement('span');
                     span.classList.add('friend-name');
                     span.textContent = `ID : ${friend.telegram_id}`;
 
-                    // إنشاء عنصر لعرض الرصيد
                     const balanceSpan = document.createElement('span');
                     balanceSpan.classList.add('friend-balance');
-                    balanceSpan.textContent = `${formatNumber(friend.balance)} $SAW`; // عرض الرصيد
+                    balanceSpan.textContent = `${formatNumber(friend.balance)} $SAW`;
 
-                    // إنشاء div يحتوي على الصورة واسم الصديق
                     const friendInfoDiv = document.createElement('div');
                     friendInfoDiv.classList.add('friend-info');
                     friendInfoDiv.appendChild(img);
                     friendInfoDiv.appendChild(span);
 
-                    // إضافة الصورة واسم الصديق إلى الـ li
                     li.appendChild(friendInfoDiv);
-
-                    // إضافة الرصيد على اليمين
                     li.appendChild(balanceSpan);
-
-                    // إضافة الصديق إلى القائمة
-                    uiElements.friendsListDisplay.appendChild(li);
+                    friendsListDisplay.appendChild(li);
                 }
             });
 
-            // تحديث العدد الإجمالي للأصدقاء
             const totalFriendsCount = uniqueInvites.length;
-            const invitedCountElement = document.getElementById('invitedCount');
-            const settingsInvitedCountElement = document.getElementById('settingsInvitedCount');
-
-            if (invitedCountElement) {
-                invitedCountElement.innerText = totalFriendsCount; // عرض العدد الإجمالي للأصدقاء
-            }
-            if (settingsInvitedCountElement) {
-                settingsInvitedCountElement.innerText = totalFriendsCount; // عرض العدد الإجمالي في الإعدادات
-            }
+            document.getElementById('invitedCount').innerText = totalFriendsCount || 0;
+            document.getElementById('settingsInvitedCount').innerText = totalFriendsCount || 0;
         } else {
-            uiElements.friendsListDisplay.innerHTML = '<li>No friends invited yet.</li>';
-
-            const invitedCountElement = document.getElementById('invitedCount');
-            const settingsInvitedCountElement = document.getElementById('settingsInvitedCount');
-
-            if (invitedCountElement) {
-                invitedCountElement.innerText = 0; // إذا لم يكن هناك أصدقاء مدعوون
-            }
-            if (settingsInvitedCountElement) {
-                settingsInvitedCountElement.innerText = 0; // إذا لم يكن هناك أصدقاء مدعوون
-            }
+            friendsListDisplay.innerHTML = '';
+            noFriendsMessage.style.display = 'block';
         }
     } catch (err) {
         console.error("Unexpected error loading friends list:", err);
-        uiElements.friendsListDisplay.innerHTML = `<li>Error: Unexpected issue occurred while loading friends.</li>`;
+        friendsListDisplay.innerHTML = `<li>Error: Unexpected issue occurred while loading friends.</li>`;
     }
 }
 
