@@ -4,7 +4,7 @@
   background-image: url('i/Lucky.png'); /* استبدل path-to-your-image.jpg بمسار الصورة */
   background-size: cover; /* لجعل الصورة تغطي العنصر بالكامل */
   background-position: center; /* لتوسيط الصورة */
-  backdrop-filter: blur(1px); /* للحفاظ على التأثير الضبابي */
+/*  backdrop-filter: blur(1px);*/ /* للحفاظ على التأثير الضبابي */
   width: 90%;
   height: 120px;
   flex: 0 0 auto;
