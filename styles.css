@@ -966,8 +966,8 @@ img {
 }
 
 .userrr-imagee {
-    width: 37px; /* عرض الصورة */
-    height: 37px; /* ارتفاع الصورة */
+    width: 35px; /* عرض الصورة */
+    height: 35px; /* ارتفاع الصورة */
     border-radius: 50%; /* جعل الصورة دائرية */
     object-fit: cover; /* تأكد من احتواء الصورة داخل الدائرة */
     border: 0.5px solid #181818;
