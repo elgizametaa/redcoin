@@ -236,7 +236,7 @@ img {
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-top: 40px;
+    margin-top: 45px;
 }
 
 .Title {
@@ -264,8 +264,8 @@ img {
 #balanceAmount::before {
     content: "";
     display: inline-block;
-    width: 44px; /* عرض الصورة */
-    height: 44px; /* ارتفاع الصورة */
+    width: 45px; /* عرض الصورة */
+    height: 45px; /* ارتفاع الصورة */
     background-image: url('https://image-six-tawny.vercel.app/Jsl.png'); /* رابط الصورة */
     background-size: contain;
     background-repeat: no-repeat;
@@ -275,13 +275,13 @@ img {
 }
 
 .main-digits {
-    font-size: 37px; 
+    font-size: 38px; 
     color: #fff;
     line-height: 1; /* لضمان التناسق بين النصوص */
 } 
 
 .remaining-digits {
-    font-size: 36px; /* باقي الأرقام بنفس الحجم */
+    font-size: 35px; /* باقي الأرقام بنفس الحجم */
     color: #fff;
     line-height: 1; /* لتقليل الفراغ بين النصوص */
 }
