@@ -72,9 +72,10 @@
     margin-left: auto; /* يدفع العنصر إلى أقصى اليمين */
     margin-right: auto; /* يدفع العنصر إلى أقصى اليسار */
     width: 95%; /* لضبط العرض لتجنب حدود الشاشة */
-    padding: 8px; 
+    padding: 5px; 
     height: auto;
     border-radius: 25px;
+    border: 0.5px solid #1c1c1c;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
