@@ -10,7 +10,7 @@
 }
 
 .taskk-title {
-    text-shadow: 2px 2px #181818;
+    text-shadow: 3px 3px #181818;
     font-size: 22px;
     color: #fff; /* تأكد من أن النص يظهر بوضوح على الصورة */
     z-index: 100; /* تأكد من أن النص فوق الصورة */
