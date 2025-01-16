@@ -1,1 +1,650 @@
-<!doctypehtml><html dir=ltr lang=en><meta charset=UTF-8><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"name=viewport><meta content=SgT4PAGADooer2kIL_VItepZXIvIqUBTNGJVRuF8Cz0 name=google-site-verification><link href=json/manifest.json rel=manifest><link href=i/log.jpg rel=icon type=image/png><title>Saw Token Game</title><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&family=Raleway:wght@700&family=Rammetto+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css rel=stylesheet><script src=Scripts/css.js></script><script src=https://telegram.org/js/telegram-web-app.js></script><script src=https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js></script><script src=https://sad.adsgram.ai/js/sad.min.js></script><script src=https://cdn.jsdelivr.net/npm/canvas-confetti></script><div class=splash-screen><p class=splash-subtitle><div class=loading-container><div class=loading-spinnerr></div></div></div><div class=container style=display:none><div class="screen-content active"id=mainPage><main class=main-content><div class=balance-container id=balanceContainer></div><div id=stingContainer><div class="animated-element user-details-i"><img alt="User Image"src=i/users.jpg class=userrr-image id=stingUserImage></div><div id=hourlyEarningsContainer><div id=welcomeMessage><div id=welcomeText></div><div id=userName></div></div></div></div><div id=enrContainer><img alt=UsImage src=i/enr.png class=userrr-imagee><div id=energyInfo>500/500</div></div><button class=settings-button data-target=SettingsPage><i class="fa-solid fa-user-gear"></i></button><div class=balance-c id=balanceC><div class=Title>Total Balance</div><div id=balanceAmount><span id=mainDigits class=main-digits></span> <span id=remainingDigits class=remaining-digits></span></div></div><div class=clickable-image><img alt="Clickable Image"src=https://image-six-tawny.vercel.app/Jsl.png id=clickableImg></div><div id=clickSection><div class=energy-bar-container><div class=circular-energy-bar><i class="fa-solid energy-icon fa-bolt"></i> <svg class=progress-ring height=40 width=40><circle class=progress-ring__circle cx=20 cy=20 fill=transparent id=energyBar r=18 stroke-width=4 /></svg></div></div><div id=clickDisplay><span id=clickCountDisplay>0</span></div><button id=claimButton>Claim</button></div></main></div><div class="screen-content scrollable"id=SettingsPage><div class=settings-container><p id=acc>ACCOUNT SUMMARY<div class="animated-element user-details-card"><img alt="User Image"src=i/users.jpg class=user-image id=userDetailsImage><div class=user-details-text><div class=user-name>NAME: <span id=userTelegramName></span></div><div class=user-id>ID: <span id=userTelegramId></span></div></div></div><div class=wallet-box><div id=ton-connect></div></div><div class=user-box><div class="animated-element account-summary"><p><span class=detail-label>Premium Status:</span> <span id=userPremiumStatus class=detail-value>Loading...</span><p><span class=detail-label>Total Friends:</span> <span id=settingsInvitedCount class=detail-value>0</span><p><span class=detail-label>Total Coins:</span> <span id=settingsBalanceDisplay class=detail-value>0</span><p><span class=detail-label>Current Level:</span> <span id=settingsCurrentLevelName class=detail-value>Platinum</span></div></div><div class=toggle-container><span id=vibrationText>Vibration : On</span><div class=toggle-btn id=vibrationToggle><div class=toggle-ball></div></div></div></div><div class=support_container><div class=contact-support-community><a class=support-link href=https://t.me/SAW_COIN target=_blank><i class="fa-brands fa-telegram"></i></a></div><div class=contact-support-Chat><a class=support-link href=https://t.me/SAW_Chat target=_blank><i class="fa-brands fa-telegram"></i></a></div><div class=contact-support><a class=support-link href=https://t.me/X7X_FLASH target=_blank><i class="fa-solid fa-circle-question"></i></a></div><div class=contact-suppority><a class=support-link href=https://x.com/SAW_COIN target=_blank><i class="fa-brands fa-x-twitter"></i></a></div><div class=contact-shat><a class=support-link href="https://youtube.com/@saw_token?si=0Au29BO863W7YRYr"target=_blank><i class="fa-brands fa-youtube"></i></a></div></div></div><div class=overlay id=logindailyOverlay style=display:none></div><div class="hidden logindaily-container"id=logindailyContainer><div class="hidden logindaily-content"><i class="fa-solid close fa-xmark"id=logindailycloseModal></i><p id=login1>Daily reward<div class=promo-labl><div class=modal-labl></div></div><p id=login>Log in to get the reward<div class=daily-rewards><div class=daily-item id=day1><p id=text-day>Day 1<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon>100</div><div class=daily-item id=day2><p id=text-day>Day 2<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 500</div><div class=daily-item id=day3><p id=text-day>Day 3<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 2k</div><div class=daily-item id=day4><p id=text-day>Day 4<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 5k</div><div class=daily-item id=day5><p id=text-day>Day 5<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 8k</div><div class=daily-item id=day6><p id=text-day>Day 6<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 15k</div><div class=daily-item id=day7><p id=text-day>Day 7<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 30k</div><div class=daily-item id=day8><p id=text-day>Day 8<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 50k</div><div class=daily-item id=day9><p id=text-day>Day 9<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 100k</div><div class=daily-item id=day10><p id=text-day>Day 10<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 200k</div><div class=daily-item id=day11><p id=text-day>Day 11<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 300k</div><div class=daily-item id=day12><p id=text-day>Day 12<p id=reward-day><img alt=logindaily src=https://image-six-tawny.vercel.app/m.png class=logindaily-icon> 500k</div></div><button class=loginclaim-btn id=loginclaimBtn>Claim Rewards</button></div></div><div class="screen-content scrollable"id=accountPage><div id=globalNavbar><div id=balanceContainer><span id=AccountnavbarBalanceDisplay>0.00</span></div></div><div class=invite><div class=invite-card><div class=invite-header><h3>+5,000 $SAW for Invite</h3></div><div class=invite-content><ul class=invite-list><li>Invite a friend and you will both get 5,000 $SAW.<li>Don't miss out on this great opportunity!<li>More invitations mean more rewards.</ul></div></div><div class=invite-section><button class=invite-more id=inviteFriendsBtn><i class="fa-solid fa-user-plus"></i> Invite Friends</button> <button class=invite-copy id=copyInviteLinkBtn><i class="fa-solid fa-copy"></i></button></div></div><div id=WrapperFriends><p id=icInvitations><span id=invitedText>(Invited Friends) :</span> <span id=invitedCount>0</span> <i class="fa-solid fa-arrows-rotate"id=refreshIcon></i></div><ul class=friends-list id=friendsList></ul></div><div class="screen-content scrollable"id=tasksPage><div id=globalNavbar><div id=balanceContainer><span id=tasknavbarBalanceDisplay>0.00</span></div></div><div class=Morsecountdown-display id=MorseCiphersCountdown></div><div class=countdown-display id=puzzleCountdown></div><svg fill=none stroke=currentColor stroke-width=1 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg class=TASKS-image height=55 stroke-linecap=round stroke-linejoin=round width=55><defs><linearGradient id=gradient x1=0% x2=100% y1=0% y2=100%><stop offset=0% style=stop-color:#101010;stop-opacity:1 /><stop offset=100% style=stop-color:#202020;stop-opacity:1 /></linearGradient></defs><path d="M0 0h24v24H0z"fill=none stroke=none /><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z"fill=currentColor /></svg><div class=description-taskk><p class=taskk-title>TASKS & EARNING</div><div id=task-earn><a class=competition-link href=https://t.me/SAWCOIN_BOT/race><div class=competition-container><img alt=Image src=https://image-six-tawny.vercel.app/ffg.png class=competition-image></div></a><div id=DContainer><p id=Daily-earning>Daily earning<div class="animated-element daily-itemm"id=daily2><i class="fa-calendar-check fa-regular"></i><p class=Daily-title>Daily reward<p class=Daily-titlee>+500,000 $SAW<div class=Daily-meta><svg fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg id=Dailyaew><path d="m8.25 4.5 7.5 7.5-7.5 7.5"stroke-linecap=round stroke-linejoin=round /></svg></div></div><div class=daily-itemm id=ad><i class="fa-solid fa-play"></i><p class=Daily-title>Watch the ads<p class=Daily-titlee>+1,000 $SAW<div class=Daily-meta><svg fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg id=Dailyaew><path d="m8.25 4.5 7.5 7.5-7.5 7.5"stroke-linecap=round stroke-linejoin=round /></svg></div></div><div class=daily-itemm id=promocodeBtu><i class="fa-solid fa-gift"></i><p class=Daily-title>Treasure Codes<p class=Daily-titlee>+1,000 $SAW<div class=Daily-meta><svg fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg id=Dailyaew><path d="m8.25 4.5 7.5 7.5-7.5 7.5"stroke-linecap=round stroke-linejoin=round /></svg></div></div></div><section class=task-container id=taskcontainer><p id=t>Daily Tasks</section></div></div><div class="screen-content scrollable"id=boostsPage><div id=globalNavbar><div id=balanceContainer><span id=BoostnavbarBalanceDisplay>0.00</span></div></div><img alt="Boost Image"src=i/rocket.png class=bos-image><p id=boos-txt>BOOSTS<section class=boosts-container><div class="animated-element boost-item"id=bost1><svg fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg class=icon-boosts height=40 stroke-linecap=round stroke-linejoin=round width=40><path d="M0 0h24v24H0z"fill=none stroke=none /><path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"/><path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5"/><path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"/><path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"/><path d="M5 3l-1 -1"/><path d="M4 7h-1"/><path d="M14 3l1 -1"/><path d="M15 6h1"/></svg><div class=description><p class=boost-title>Hand clicks<div class=boost-meta><p><span id=boostUpgradeCost>10,000</span> $SAW<div class=separatorrrr></div><p>lvl : ×<span id=clickMultiplier>0</span></div></div><svg fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg class=arrow><path d="M8.25 4.5l7.5 7.5-7.5 7.5"stroke-linecap=round stroke-linejoin=round /></svg></div><div class="animated-element boost-item"id=bost2><svg fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg class=icon-boosts height=40 stroke-linecap=round stroke-linejoin=round width=40><path d="M0 0h24v24H0z"fill=none stroke=none /><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg><div class=description><p class=boost-title>Energy limits<div class=boost-meta><p><span id=coinUpgradeCost>10,000</span> $SAW<div class=separatorrrr></div><p>lvl : <span id=coinBoostLevel>0</span></div></div><svg fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24"xmlns=http://www.w3.org/2000/svg class=arrow><path d="M8.25 4.5l7.5 7.5-7.5 7.5"stroke-linecap=round stroke-linejoin=round /></svg></div></section></div><div class="screen-content scrollable"id=levelPage><div id=globalNavbar><div id=balanceContainer><span id=lvlnavbarBalanceDisplay>0.00</span></div></div><div class=levels-info><div class=level-texxt><p id=levelPageCurrentLevelName>Level Name <span id=displayedLevel>1</span><div id=currentLevelCoins></div><div id=remainingAmount></div><div class=energy-barrr-container><div class=level-energy-fiill id=levelPageEnergyFill></div></div></div></div><section class=level-container><div class=level-item id=level1><div class=level-text><p class=level-phase>Lvl 1<p class=level-name>( Platinum Legend )<p class=coin-name>0 - 500K</div></div><div class=level-item id=level2><div class=level-text><p class=level-phase>Lvl 2<p class=level-name>( Silver Champion )<p class=coin-name>500K - 2M</div></div><div class=level-item id=level3><div class=level-text><p class=level-phase>Lvl 3<p class=level-name>( Golden Elite )<p class=coin-name>2M - 8M</div></div><div class=level-item id=level4><div class=level-text><p class=level-phase>Lvl 4<p class=level-name>( Diamond Master )<p class=coin-name>8M - 20M</div></div><div class=level-item id=level5><div class=level-text><p class=level-phase>Lvl 5<p class=level-name>( Supreme Leader )<p class=coin-name>20M - 50M</div></div></section></div><div class="notification top-notification"id=copyInviteNotification>Invite link copied!</div><div class="notification top-notification"id=purchaseNotification></div><div class=overlay id=promocodeoverlay style=display:none></div><div class=hidden id=promoContainer><div class=promo-content><i class="fa-solid close fa-xmark"id=promocloseModal></i><p id=task>Daily Treasure Codes<div class=promo-labl><div class=modal-labl></div></div><div class=promo-container id=promoContainer><div class=promo-input-container><div class=promo-box><input class=promo-input id=promoCodeInput placeholder="Enter Treasure code"> <button class=apply_PromoCode id=applyPromoCode>Apply</button></div></div></div></div></div><div class=overlay id=overlay style=display:none></div><div class=confirmation-modal id=upgradeConfirmation style=display:none><i class="fa-solid close fa-xmark"id=closeModal></i><div class=modal-header><h2 id=upgradeTitle>Upgrade</h2><div class=promo-labl><div class=modal-labl></div></div><div id=upgradeIconContainer></div></div><div id=upgradeContainer><p id=upgradeCost><div class=separ></div><p id=currentLevel></div><div class=confirmation-buttons><button class=game-button id=confirmUpgradeBtn>Upgrade</button></div></div><div class="screen-content hidden"id=leaderboardPage><div id=globalNavbar><div id=balanceContainer><span id=leaderboardnavbarBalanceDisplay>0.00</span></div></div><img alt="Leaders Image"src=i/Leaderboard.png class=Leaders-image><p id=Leaders-txt>LEADERBOARD<div class=user-ranking id=userRankContainer><img alt="User Avatar"src=https://sawcoin.vercel.app/i/users.jpg class=leaderboard-avatar id=userAvatar> <span id=userUsername class=leaderboard-username></span> <span id=userBalance class=leaderboard-balance></span> <span id=userRank class=leaderboard-rank></span></div><div id=leaderboardWrapper><p class="leaderboard-item right">Name<p id=Leaders-txxt>TOP 20<p class="leaderboard-item left">Rank</div><div class=leaderboard-container id=leaderboardContainer></div></div><nav class=menu><div class=menu-list><div class=menu-item-container><button class=menu-item data-target=boostsPage><div class=icon-wrapper><i class="fa-solid fa-rocket"></i></div></button> <span class=menu-label></span></div><div class=menu-item-container><button class=menu-item data-target=accountPage><div class=icon-wrapper><i class="fa-solid fa-user-friends"></i></div></button> <span class=menu-label></span></div><div class=menu-item-container><button class=menu-item data-target=mainPage><div class=icon-wrapper><i class="fa-solid fa-house-chimney"></i></div></button> <span class=menu-label></span></div><div class=menu-item-container><button class=menu-item data-target=leaderboardPage><div class=icon-wrapper><i class="fa-solid fa-ranking-star"></i></div></button> <span class=menu-label></span></div><div class=menu-item-container><button class=menu-item data-target=tasksPage><div class=icon-wrapper><i class="fa-solid fa-coins"></i></div></button> <span class=menu-label></span></div></div></nav><script src=experience.js type=module></script><script src=Scripts/script.js type=module></script>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="SgT4PAGADooer2kIL_VItepZXIvIqUBTNGJVRuF8Cz0" />
+    <link rel="manifest" href="json/manifest.json">
+    <link rel="icon" type="image/png" href="i/log.jpg" />
+    <title> Saw Token Game </title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Quicksand:wght@300..700&family=Raleway:wght@700&family=Rammetto+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <script src="Scripts/css.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <!--<script>
+        eruda.init();
+    </script>-->
+</head>
+
+<body>
+    <div class="splash-screen">
+        <p class="splash-subtitle"></p>
+        <div class="loading-container">
+            <div class="loading-spinnerr"></div>
+        </div>
+    </div>
+
+    <div class="container" style="display: none;">
+        <div id="mainPage" class="screen-content active">
+            <main class="main-content">
+                <div id="balanceContainer" class="balance-container"></div>
+
+                <div id="stingContainer">
+                    <div class="user-details-i animated-element" id="openSettingsButton">
+                        <img src="i/users.jpg" alt="User Image" class="userrr-image" id="stingUserImage">
+                    </div>
+                    <div id="hourlyEarningsContainer">
+                        <div id="welcomeMessage">
+                            <div id="welcomeText"></div>
+                            <div id="userName"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="enrContainer">
+                    <img src="i/enr.png" alt="UsImage" class="userrr-imagee">
+                    <div id="energyInfo">500/500</div>
+                </div>
+
+                <div id="balanceC" class="balance-c">
+                    <div class="Title">Total Balance</div>
+                    <div id="balanceAmount">
+                        <span id="mainDigits" class="main-digits"></span>
+                        <span id="remainingDigits" class="remaining-digits"></span>
+                    </div>
+                </div>
+
+                <div class="clickable-image">
+                    <img id="clickableImg" src="https://image-six-tawny.vercel.app/Jsl.png" alt="Clickable Image">
+                </div>
+
+                <div id="clickSection">
+                    <div class="energy-bar-container">
+                        <div class="circular-energy-bar">
+                            <i class="fa-solid energy-icon fa-bolt"></i>
+                            <svg class="progress-ring" width="40" height="40">
+                                <circle id="energyBar" class="progress-ring__circle" stroke-width="4" fill="transparent" r="18" cx="20" cy="20" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="clickDisplay">
+                        <span id="clickCountDisplay">0</span>
+                    </div>
+                    <button id="claimButton">Claim</button>
+                </div>
+            </main>
+        </div>
+
+        <div id="UsersettingsOverlay" class="overlay" style="display: none;"></div>
+        <div id="UsersettingsContainer" class="Usersettings-container hidden">
+            <div class="Usersettings-content hidden">
+                <div class="settings-container">
+                    <i id="closeSettingsButton" class="fa-solid fa-xmark close"></i>
+                    <p id="acc">ACCOUNT SUMMARY</p>
+                    <div class="user-details-card animated-element">
+                        <img src="i/users.jpg" alt="User Image" class="user-image" id="userDetailsImage">
+                        <div class="user-details-text">
+                            <div class="user-name">NAME: <span id="userTelegramName"></span>
+                            </div>
+                            <div class="user-id">ID: <span id="userTelegramId"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wallet-box">
+                        <div id="ton-connect"> </div>
+                    </div>
+
+                    <div class="user-box">
+                        <div class="account-summary animated-element">
+                            <p>
+                                <span class="detail-label">Premium Status:</span>
+                                <span id="userPremiumStatus" class="detail-value">Loading...</span>
+                            </p>
+                            <p>
+                                <span class="detail-label">Total Friends:</span>
+                                <span id="settingsInvitedCount" class="detail-value">0</span>
+                            </p>
+                            <p>
+                                <span class="detail-label">Total Coins:</span>
+                                <span id="settingsBalanceDisplay" class="detail-value">0</span>
+                            </p>
+                            <p>
+                                <span class="detail-label">Current Level:</span>
+                                <span id="settingsCurrentLevelName" class="detail-value">Platinum</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="toggle-container">
+                        <span id="vibrationText">Vibration : On</span>
+                        <div id="vibrationToggle" class="toggle-btn">
+                            <div class="toggle-ball"></div>
+                        </div>
+                    </div>
+                    <div class="support_container">
+                        <div class="contact-support-community">
+                            <a href="https://t.me/SAW_COIN" target="_blank" class="support-link">
+                                <i class="fa-brands fa-telegram"></i>
+                            </a>
+                        </div>
+                        <div class="contact-support-Chat">
+                            <a href="https://t.me/SAW_Chat" target="_blank" class="support-link">
+                                <i class="fa-brands fa-telegram"></i>
+                            </a>
+                        </div>
+                        <div class="contact-support">
+                            <a href="https://t.me/X7X_FLASH" target="_blank" class="support-link">
+                                <i class="fa-solid fa-circle-question"></i>
+                            </a>
+                        </div>
+                        <div class="contact-suppority">
+                            <a href="https://x.com/SAW_COIN" target="_blank" class="support-link">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </div>
+                        <div class="contact-shat">
+                            <a href="https://youtube.com/@saw_token?si=0Au29BO863W7YRYr" target="_blank" class="support-link">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="logindailyOverlay" class="overlay" style="display: none;"></div>
+        <div id="logindailyContainer" class="logindaily-container hidden">
+            <div class="logindaily-content hidden">
+                <i id="logindailycloseModal" class="fa-solid fa-xmark close"></i>
+                <p id="login1">Daily reward </p>
+                <div class="promo-labl">
+                    <div class="modal-labl"></div>
+                </div>
+                <p id="login">Log in to get the reward</p>
+                <div class="daily-rewards">
+                    <div class="daily-item" id="day1">
+                        <p id="text-day">Day 1</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon">100</p>
+                    </div>
+                    <div class="daily-item" id="day2">
+                        <p id="text-day">Day 2</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 500 </p>
+                    </div>
+                    <div class="daily-item" id="day3">
+                        <p id="text-day">Day 3</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 2k</p>
+                    </div>
+                    <div class="daily-item" id="day4">
+                        <p id="text-day">Day 4</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 5k</p>
+                    </div>
+                    <div class="daily-item" id="day5">
+                        <p id="text-day">Day 5</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 8k</p>
+                    </div>
+                    <div class="daily-item" id="day6">
+                        <p id="text-day">Day 6</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 15k</p>
+                    </div>
+                    <div class="daily-item" id="day7">
+                        <p id="text-day">Day 7</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 30k</p>
+                    </div>
+                    <div class="daily-item" id="day8">
+                        <p id="text-day">Day 8</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 50k</p>
+                    </div>
+                    <div class="daily-item" id="day9">
+                        <p id="text-day">Day 9</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 100k</p>
+                    </div>
+                    <div class="daily-item" id="day10">
+                        <p id="text-day">Day 10</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 200k</p>
+                    </div>
+                    <div class="daily-item" id="day11">
+                        <p id="text-day">Day 11</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 300k</p>
+                    </div>
+                    <div class="daily-item" id="day12">
+                        <p id="text-day">Day 12</p>
+                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 500k</p>
+                    </div>
+                </div>
+                <button id="loginclaimBtn" class="loginclaim-btn">Claim Rewards</button>
+            </div>
+        </div>
+
+
+        <!-- Account Page -->
+        <div id="accountPage" class="screen-content scrollable">
+            <div class="invite">
+                <div class="invite-card">
+                    <div class="invite-header">
+                        <h3>+5,000 $SAW for Invite</h3>
+                    </div>
+                    <div class="invite-content">
+                        <ul class="invite-list">
+                            <li>Invite a friend via your invite link. </li>
+                            <li>Your friend enters by inviting you!</li>
+                            <li>You get 5,000 $SAW.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="invite-section">
+                    <button class="invite-more" id="inviteFriendsBtn">
+                        <i class="fa-solid fa-user-plus"></i> Invite Friends
+                    </button>
+
+                    <button class="invite-copy" id="copyInviteLinkBtn">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="WrapperFriends">
+                <p id="icInvitations">
+                    <span id="invitedText"> ( Invited Friends ) :</span>
+                    <span id="invitedCount">0</span>
+                    <i id="refreshIcon" class="fa-solid fa-arrows-rotate"></i>
+                </p>
+            </div>
+            <ul id="friendsList" class="friends-list"></ul>
+        </div>
+
+        <!-- Tasks Page -->
+        <div id="tasksPage" class="screen-content scrollable">
+            <div class="description-taskk">
+                <p class="taskk-title">TASKS & EARNING</p>
+            </div>
+
+            <div id="task-earn">
+                <div id="competition-wrapper">
+                    <button id="left-arrow" class="scroll-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+
+                    <div id="competition">
+                        <div class="competition-item" id="task-1">
+                            <i class="fa-solid fa-gift"></i>
+                            <p class="competition-title">Subscribe to the competition</p>
+                            <div class="competition-bottom">
+                                <p class="competition-saw">+500,000 $SAW</p>
+                                <svg class="action-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="competition-item" id="task-2">
+                            <i class="fa-solid fa-gift"></i>
+                            <p class="competition-title">Get a VIP subscription to the competition</p>
+                            <div class="competition-bottom">
+                                <p class="competition-saw">+1,000,000 $SAW</p>
+                                <svg class="action-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="right-arrow" class="scroll-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- <a href="https://t.me/SAWCOIN_BOT/race" class="competition-link">
+               <div class="competition-container">
+                  <img src="https://image-six-tawny.vercel.app/ffg.png" alt="Image" class="competition-image">
+               </div>
+             </a>-->
+
+                <div id="DContainer">
+                    <p id="Daily-earning"> Daily earning </p>
+                    <div class="daily-itemm animated-element" id="daily2">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <p class="Daily-title">Daily reward</p>
+                        <p class="Daily-titlee">+500,000 $SAW</p>
+                        <div class="Daily-meta">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="Dailyaew">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="daily-itemm" id="ad">
+                        <i class="fa-solid fa-play"></i>
+                        <p class="Daily-title">Watch the ads</p>
+                        <p class="Daily-titlee">+1,000 $SAW</p>
+                        <div class="Daily-meta">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="Dailyaew">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="daily-itemm" id="promocodeBtu">
+                        <i class="fa-solid fa-receipt"></i>
+                        <p class="Daily-title"> Treasure Codes </p>
+                        <p class="Daily-titlee">+1,000 $SAW</p>
+                        <div class="Daily-meta">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="Dailyaew">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <section id="taskcontainer" class="task-container">
+                    <p id="t"> Daily Tasks </p>
+                </section>
+            </div>
+        </div>
+
+        <!-- Boosts Page -->
+        <div id="boostsPage" class="screen-content scrollable">
+            <img src="i/rocket.png" alt="Boost Image" class="bos-image">
+            <p id="boos-txt">BOOSTS</p>
+            <section class="boosts-container">
+                <!-- Boost 1: Hand Clicks -->
+                <div class="boost-item animated-element" id="bost1">
+                    <!-- Boost Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-boosts">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5" />
+                        <path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5" />
+                        <path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5" />
+                        <path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47" />
+                        <path d="M5 3l-1 -1" />
+                        <path d="M4 7h-1" />
+                        <path d="M14 3l1 -1" />
+                        <path d="M15 6h1" />
+                    </svg>
+
+                    <!-- Boost Description -->
+                    <div class="description">
+                        <p class="boost-title">Hand clicks</p>
+                        <div class="boost-meta">
+                            <p><span id="boostUpgradeCost">10,000</span> $SAW</p>
+                            <div class="separatorrrr"></div>
+                            <p>lvl : ×<span id="clickMultiplier">0</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Arrow Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </div>
+
+                <!-- Boost 2: Energy Limits -->
+                <div class="boost-item animated-element" id="bost2">
+                    <!-- Boost Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-boosts">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                    </svg>
+
+                    <!-- Boost Description -->
+                    <div class="description">
+                        <p class="boost-title">Energy limits</p>
+                        <div class="boost-meta">
+                            <p><span id="coinUpgradeCost">10,000</span> $SAW</p>
+                            <div class="separatorrrr"></div>
+                            <p>lvl : <span id="coinBoostLevel">0</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Arrow Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </div>
+            </section>
+        </div>
+
+        <div id="levelPage" class="screen-content scrollable">
+            <div id="globalNavbar">
+                <div id="balanceContainer">
+                    <span id="lvlnavbarBalanceDisplay">0.00</span>
+                </div>
+            </div>
+            <div class="levels-info">
+                <div class="level-texxt">
+                    <p id="levelPageCurrentLevelName">Level Name <span id="displayedLevel">1</span>
+                    </p>
+                    <div id="currentLevelCoins"></div>
+                    <div id="remainingAmount"></div>
+                    <div class="energy-barrr-container">
+                        <div id="levelPageEnergyFill" class="level-energy-fiill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="level-container">
+                <div class="level-item" id="level1">
+                    <div class="level-text">
+                        <p class="level-phase">Lvl 1</p>
+                        <p class="level-name">( Platinum Legend )</p>
+                        <p class="coin-name">0 - 500K</p>
+                    </div>
+                </div>
+                <div class="level-item" id="level2">
+                    <div class="level-text">
+                        <p class="level-phase">Lvl 2</p>
+                        <p class="level-name">( Silver Champion )</p>
+                        <p class="coin-name">500K - 2M</p>
+                    </div>
+                </div>
+                <div class="level-item" id="level3">
+                    <div class="level-text">
+                        <p class="level-phase">Lvl 3</p>
+                        <p class="level-name">( Golden Elite )</p>
+                        <p class="coin-name">2M - 8M</p>
+                    </div>
+                </div>
+                <div class="level-item" id="level4">
+                    <div class="level-text">
+                        <p class="level-phase">Lvl 4</p>
+                        <p class="level-name">( Diamond Master )</p>
+                        <p class="coin-name">8M - 20M</p>
+                    </div>
+                </div>
+                <div class="level-item" id="level5">
+                    <div class="level-text">
+                        <p class="level-phase">Lvl 5</p>
+                        <p class="level-name">( Supreme Leader )</p>
+                        <p class="coin-name">20M - 50M</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Notifications -->
+        <div id="copyInviteNotification" class="notification top-notification">Invite link copied!</div>
+        <div id="purchaseNotification" class="notification top-notification"></div>
+
+        <div id="promocodeoverlay" class="overlay" style="display: none;"></div>
+        <div id="promoContainer" class="hidden">
+            <div class="promo-content">
+                <i id="promocloseModal" class="fa-solid fa-xmark close"></i>
+                <p id="task"> Daily Treasure Codes </p>
+                <div class="promo-labl">
+                    <div class="modal-labl"></div>
+                </div>
+                <div id="promoContainer" class="promo-container">
+                    <div class="promo-input-container">
+                        <div class="promo-box">
+                            <input type="text" id="promoCodeInput" placeholder="Enter Treasure code" class="promo-input">
+                            <button id="applyPromoCode" class="apply_PromoCode"> Apply </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay" class="overlay" style="display: none;"></div>
+        <div id="upgradeConfirmation" class="confirmation-modal" style="display: none;">
+            <i id="closeModal" class="fa-solid fa-xmark close"></i>
+            <div class="modal-header">
+                <h2 id="upgradeTitle">Upgrade</h2>
+                <div class="promo-labl">
+                    <div class="modal-labl"></div>
+                </div>
+                <div id="upgradeIconContainer">
+                </div>
+            </div>
+            <div id="upgradeContainer">
+                <p id="upgradeCost"></p>
+                <div class="separ"></div>
+                <p id="currentLevel"></p>
+            </div>
+            <div class="confirmation-buttons">
+                <button id="confirmUpgradeBtn" class="game-button">Upgrade</button>
+            </div>
+        </div>
+
+
+        <!-- صفحه المتصدرين  -->
+        <div id="leaderboardPage" class="screen-content hidden">
+            <p id="Leaders-txt">LEADERBOARD</p>
+            <div id="topThreeLeaders" class="top-three-leaders">
+                <div class="leader second-leader">
+                    <img src="" alt="Second Place" id="secondPlaceImg" class="leader-image small" />
+                    <div class="leader-rank" id="secondPlaceRank"></div>
+                    <p class="leader-name" id="secondPlaceName"></p>
+                    <p class="leader-balance" id="secondPlaceBalance"></p>
+                </div>
+
+                <div class="leader first-leader">
+                    <img src="" alt="First Place" id="firstPlaceImg" class="leader-image large" />
+                    <i class="fa-solid fa-web-awesome"></i>
+                    <div class="leader-rank" id="firstPlaceRank"></div>
+                    <p class="leader-name" id="firstPlaceName"></p>
+                    <p class="leader-balance" id="firstPlaceBalance"></p>
+                </div>
+
+                <div class="leader third-leader">
+                    <img src="" alt="Third Place" id="thirdPlaceImg" class="leader-image small" />
+                    <div class="leader-rank" id="thirdPlaceRank"></div>
+                    <p class="leader-name" id="thirdPlaceName"></p>
+                    <p class="leader-balance" id="thirdPlaceBalance"></p>
+                </div>
+            </div>
+
+            <div id="fourthFifthLeaders" class="horizontal-leaders">
+                <div class="leader fourth-leader">
+                    <img src="" alt="Fourth Place" class="leader-image" id="fourthPlaceImg" />
+                    <div class="leaderseven-rank" id="fourthPlaceRank"></div>
+                    <p class="leader-name" id="fourthPlaceName"></p>
+                    <p class="leader-balance" id="fourthPlaceBalance"></p>
+                </div>
+
+                <div class="leader fifth-leader">
+                    <img src="" alt="Fifth Place" class="leader-image" id="fifthPlaceImg" />
+                    <div class="leaderseven-rank" id="fifthPlaceRank"></div>
+                    <p class="leader-name" id="fifthPlaceName"></p>
+                    <p class="leader-balance" id="fifthPlaceBalance"></p>
+                </div>
+
+                <div class="leader sixth-leader">
+                    <img src="" alt="Sixth Place" class="leader-image" id="sixthPlaceImg" />
+                    <div class="leaderseven-rank" id="sixthPlaceRank"></div>
+                    <p class="leader-name" id="sixthPlaceName"></p>
+                    <p class="leader-balance" id="sixthPlaceBalance"></p>
+                </div>
+
+                <div class="leader seventh-leader">
+                    <img src="" alt="Seventh Place" class="leader-image" id="seventhPlaceImg" />
+                    <div class="leaderseven-rank" id="seventhPlaceRank"></div>
+                    <p class="leader-name" id="seventhPlaceName"></p>
+                    <p class="leader-balance" id="seventhPlaceBalance"></p>
+                </div>
+            </div>
+
+            <div id="leaderboardWrapper">
+                <p class="leaderboard-item right">#Rank</p>
+                <p id="Leaders-txxt">TOP 50</p>
+                <p class="leaderboard-item left"> Total Coins</p>
+            </div>
+            <div id="leaderboardContainer" class="leaderboard-container"></div>
+            <div id="userRankContainer" class="user-ranking">
+                <img src="https://sawcoin.vercel.app/i/users.jpg" alt="User Avatar" class="leaderboard-avatar" id="userAvatar" />
+                <span class="leaderboard-rank" id="userRank"></span>
+                <span class="leaderboard-username" id="userUsername"></span>
+                <span class="leaderboard-balance" id="userBalance"></span>
+            </div>
+        </div>
+
+
+        <nav class="menu">
+            <div class="menu-list">
+                <div class="menu-item-container">
+                    <button data-target="boostsPage" class="menu-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                    </button>
+                    <span class="menu-label"> </span>
+                </div>
+
+                <div class="menu-item-container">
+                    <button data-target="accountPage" class="menu-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-user-friends"></i>
+                        </div>
+                    </button>
+                    <span class="menu-label"> </span>
+                </div>
+
+                <div class="menu-item-container">
+                    <button data-target="mainPage" class="menu-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                    </button>
+                    <span class="menu-label"> </span>
+                </div>
+
+                <div class="menu-item-container">
+                    <button data-target="leaderboardPage" class="menu-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-ranking-star"></i>
+                        </div>
+                    </button>
+                    <span class="menu-label"> </span>
+                </div>
+
+                <div class="menu-item-container">
+                    <button data-target="tasksPage" class="menu-item">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+                    </button>
+                    <span class="menu-label"> </span>
+                </div>
+
+
+            </div>
+        </nav>
+
+        <script type="module" src="experience.js"></script>
+        <script type="module" src="Scripts/script.js"></script>
+
+</body>
+</html>
