@@ -2014,7 +2014,7 @@ async function updateLeaderboardDisplay(leaderboard) {
                 user.username,
                 user.balance,
                 badge,
-                '#ccc' // لون افتراضي
+                '#181818' // لون افتراضي
             );
         } else {
             // باقي المتصدرين
