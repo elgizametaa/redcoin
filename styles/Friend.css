@@ -1,3 +1,12 @@
+#invi {
+    text-shadow: 3px 3px #181818;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
+    font-weight: bold;
+    font-size: 22px; 
+}
+
 .invite-list {
     list-style: none;
     padding: 0;
