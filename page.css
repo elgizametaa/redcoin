@@ -119,8 +119,8 @@
   font-family: 'Archivo Black', sans-serif; 
 }*/
 
-#clickDisplay {
-  font-size: 15px;
+#clickCountDisplay {
+  font-size: 18px;
   font-weight: 300; 
   font-style: normal;
   font-family: 'Archivo Black', sans-serif; 
@@ -293,7 +293,7 @@
     min-width: 30px; /* عرض أدنى للعنصر */
     white-space: nowrap; /* لمنع النص من الانتقال إلى سطر جديد */
 } 
-
+#clickCountDisplay::before, 
 #leaderboardnavbarBalanceDisplay::before,
 #gnavbarBalanceDisplay::before,  
 #navbarBalanceDisplay::before,  
