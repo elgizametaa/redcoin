@@ -493,7 +493,6 @@ function showNotification(notificationElement, message) {
 }
 
 function showNotificationWithStatus(notificationElement, message, status = '') {
-function showNotificationWithStatus(notificationElement, message, status = '') {
     if (!notificationElement) return;
 
     // مسح الفئات السابقة للفوز أو الخسارة أو الخطأ أو الرسالة
