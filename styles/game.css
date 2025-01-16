@@ -39,7 +39,7 @@
 
 .competition-title {
   margin: 50px 10px 0 10px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
 }
 
@@ -52,8 +52,8 @@
 }
 
 .competition-saw {
-  font-size: 16px;
-  color: #2D83EC;
+  font-size: 14px;
+  color: #808080;
 }
 
 .action-icon {
