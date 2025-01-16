@@ -493,6 +493,7 @@ function showNotification(notificationElement, message) {
 }
 
 function showNotificationWithStatus(notificationElement, message, status = '') {
+function showNotificationWithStatus(notificationElement, message, status = '') {
     if (!notificationElement) return;
 
     // مسح الفئات السابقة للفوز أو الخسارة أو الخطأ أو الرسالة
@@ -505,7 +506,7 @@ function showNotificationWithStatus(notificationElement, message, status = '') {
         imageUrl = 'i/done.png'; // رابط الصورة لحالة الفوز
 
         // إضافة تأثير القصاصات الورقية للاحتفال
-        startConfettiEffect();
+        showConfettiEffect();
     } else if (status === 'lose') {
         notificationElement.classList.add('lose');
         imageUrl = 'i/mistake.png'; // رابط الصورة لحالة الخسارة
@@ -526,22 +527,17 @@ function showNotificationWithStatus(notificationElement, message, status = '') {
     // إخفاء الإشعار بعد 4 ثوانٍ
     setTimeout(() => {
         notificationElement.classList.remove('show');
-        stopConfettiEffect(); // إيقاف القصاصات الورقية عند انتهاء الإشعار
     }, 4000);
 }
 
-// متغير لتخزين إطار الحركة
-let confettiInterval;
-
-// دالة لبدء تأثير القصاصات الورقية
-function startConfettiEffect() {
-    const duration = 2 * 1000; // مدة التأثير تتوافق مع مدة الإشعار
+// دالة لإظهار تأثير القصاصات الورقية
+function showConfettiEffect() {
+    const duration = 2 * 1000; // مدة التأثير (2 ثانية)
     const end = Date.now() + duration;
 
-    // تشغيل تأثير القصاصات الورقية
-    confettiInterval = setInterval(() => {
+    (function frame() {
         confetti({
-            particleCount: 30, // عدد الجزيئات في كل دفعة
+            particleCount: 8, // عدد الجزيئات في كل دفعة
             angle: 90,        // زاوية التساقط (عمودية)
             spread: 160,      // زاوية الانتشار
             startVelocity: 40, // سرعة البداية
@@ -552,13 +548,13 @@ function startConfettiEffect() {
             },
             colors: ['#1F1F1F', '#3A3A3A', '#2D83EC', '#A6B1E1', '#6272A4']
         });
-    }, 100); // تكرار التأثير كل 200 مللي ثانية
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    })();
 }
 
-// دالة لإيقاف تأثير القصاصات الورقية
-function stopConfettiEffect() {
-    clearInterval(confettiInterval); // إيقاف التأثير
-}
 
 
 /////////////////////////////////////////
