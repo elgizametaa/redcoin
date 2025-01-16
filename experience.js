@@ -1584,7 +1584,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginNotification = document.getElementById('login');
     const dayElements = document.querySelectorAll('.daily-item');
     const rewardImages = document.querySelectorAll('.reward-image'); // صور المكافآت
-    const dailyRewards = [100, 500, 2000, 5000, 8000, 15000, 30000, 50000, 100000];
+    const dailyRewards = [100, 500, 2000, 5000, 8000, 15000, 30000, 50000, 100000, 200000, 300000, 500000];
 
     // الدالة الرئيسية لتسجيل الدخول اليومي
     function handleDailyLogin() {
@@ -1677,7 +1677,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // تحديث الرصيد
     function updateBalance(amount) {
         gameState.balance += amount;
-        updateUI(); // تحديث واجهة المستخ
+        updateUI(); 
     }
 
     // فتح نافذة تسجيل الدخول اليومي
@@ -1716,9 +1716,6 @@ document.addEventListener('DOMContentLoaded', () => {
         openDailyLoginModal();
     });
 });
-
-
-
 
 
 ///////////////////////////////////////
