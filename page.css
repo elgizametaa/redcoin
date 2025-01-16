@@ -58,7 +58,7 @@
   transform: translateX(-50%);
   width: 92%;
   height: 55px;
-  border: 0.5px solid #1c1c1c;
+/*  border: 0.5px solid #1c1c1c;*/
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
