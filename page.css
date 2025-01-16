@@ -418,6 +418,7 @@
 }   
 
 #Leaders-txt {
+    text-shadow: 3px 3px #181818;
     text-align: center;
     margin-top: 0;
     margin-bottom: 60px; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
