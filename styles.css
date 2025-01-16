@@ -951,26 +951,26 @@ img {
 }
 
 #userName {
-    font-size: 13px;
+    font-size: 14px;
     color: #fff; /* لون أفتح قليلاً لتمييز الاسم */
     margin-right: 5px;
     margin-left: 5px;
 }
 
 .userrr-image {
-    width: 28px; /* عرض الصورة */
-    height: 28px; /* ارتفاع الصورة */
+    width: 35px; /* عرض الصورة */
+    height: 35px; /* ارتفاع الصورة */
     border-radius: 50%; /* جعل الصورة دائرية */
     object-fit: cover; /* تأكد من احتواء الصورة داخل الدائرة */
-    border: 0.2px solid #161616;
+    border: 0.5px solid #181818;
 }
 
 .userrr-imagee {
-    width: 32px; /* عرض الصورة */
-    height: 32px; /* ارتفاع الصورة */
+    width: 37px; /* عرض الصورة */
+    height: 37px; /* ارتفاع الصورة */
     border-radius: 50%; /* جعل الصورة دائرية */
     object-fit: cover; /* تأكد من احتواء الصورة داخل الدائرة */
-    border: 0.2px solid #161616;
+    border: 0.5px solid #181818;
 } 
 
 
