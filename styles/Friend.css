@@ -153,10 +153,10 @@
     gap: 8px; /* مسافة بين الصورة والنص */
     width: 85%; 
     height: 50px;
-    background: #181818;
+    background: #F7F9FB;
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;*/
-    color: #fff;
+    color: #000;
     padding: 20px;
     font-size: 15px;
     font-weight: bold;
@@ -174,8 +174,8 @@
 } 
 
 .invite-more:hover {
-    background-color: #F7F9FB;
-    color: #000;
+    background-color: #2D83EC;
+    color: #fff;
 } 
 
 .invite-copy {
@@ -185,8 +185,8 @@
     gap: 8px; /* مسافة بين الصورة والنص */
     width: 25%; 
     height: 50px;
-    background: #181818;
-    color: #fff;
+    background: #F7F9FB;
+    color: #000;
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;*/
     padding: 7px;
@@ -207,8 +207,8 @@
 }   
  
 .invite-copy:hover {
-   background-color: #F7F9FB;
-   color: #000;
+   background-color: #2D83EC;
+   color: #fff;
 } 
 
 /* إضافة تأثير دوران عند النقر */
