@@ -61,15 +61,10 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    background: 
-        linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 20, 0.7) 35%, rgba(30, 30, 30, 0.3) 75%, rgba(0, 0, 0, 0) 100%),
-        radial-gradient(circle at 20% 40%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1) 50%),
-        radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.2) 80%),
-        radial-gradient(circle at center, rgba(20, 20, 20, 1), rgba(10, 10, 10, 0.9) 50%, rgba(5, 5, 5, 0.8) 80%);
-    background-blend-mode: overlay, multiply;
+    background-image: linear-gradient(to bottom, #000000, #060606, #0b0b0b, #101010, #141414, #141414, #141414, #141414, #101010, #0b0b0b, #060606, #000000);
     background-size: cover;
     background-position: center;
-}
+} 
 
  @media only screen and (max-width: 768px) {
   .container {
@@ -344,20 +339,21 @@ img {
     }
 }
 
+
 .menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 63px;
+    height: 60px;
     position: fixed;
     bottom: 0;
-    border-radius: 25px 25px 0 0;
+    border-radius: 15px 15px 000;
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
 }
 
@@ -369,7 +365,9 @@ img {
     margin: 10px auto; 
    /* border-top: 1px solid #1c1c1c;*/
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+   /* background-color: rgba(255, 255, 255, 0.00009);
+    backdrop-filter: blur(5px);*/
+    border-radius: 25px;
     width: 95%;
     z-index: 100;
 }
@@ -401,21 +399,20 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 38px;
-    height: 38px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background-color: transparent;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .menu-item i {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #808080;
     transition: color 0.3s ease;
 }
 
 .menu-item.active .icon-wrapper {
-   /* background: linear-gradient(45deg, #2D83EC, #1AC9FF);*/
     background-color: #2D83EC;
     box-shadow: 0 0 2px rgba(45, 131, 236, 0.7), 
                 inset 0 0 2px rgba(255, 255, 255, 0.5), 
