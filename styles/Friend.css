@@ -75,10 +75,9 @@
     padding: 5px; 
     height: auto;
     border-radius: 25px;
-    border: 0.5px solid #1c1c1c;
+    border: 0.5px solid #181818;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.0000003);
     margin-bottom: 5px;
     margin-top: 15px;
 }
