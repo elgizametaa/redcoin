@@ -759,7 +759,8 @@
 }
 
 #energyInfo {
-    margin-left: 8px; /* مسافة بين دائرة الطاقة والنص */
+    margin-left: 5px;
+    margin-right: 10px;
     color: white;
     font-size: 13.5px;
     font-weight: 400; 
