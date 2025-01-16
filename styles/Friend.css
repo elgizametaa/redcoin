@@ -33,14 +33,13 @@
     border-radius: 50%;
 }
 
-
 #WrapperFriends {
   border-radius: 25px;
   margin: 10px auto;
   width: 97%;
   height: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.000003);
   backdrop-filter: blur(5px);
   font-weight: 500; 
   display: flex;
@@ -84,7 +83,6 @@
     padding: 5px; 
     height: auto;
     border-radius: 25px;
-    border: 0.5px solid #181818;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.0000003);
     margin-bottom: 5px;
@@ -156,8 +154,8 @@
     justify-content: center; /* توسيط أفقي */
     gap: 8px; /* مسافة بين الصورة والنص */
     width: 85%; 
-    height: 48px;
-    background: #101010;
+    height: 50px;
+    background: #181818;
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;*/
     color: #fff;
@@ -188,8 +186,8 @@
     justify-content: center; /* توسيط أفقي */
     gap: 8px; /* مسافة بين الصورة والنص */
     width: 25%; 
-    height: 48px;
-    background: #101010;
+    height: 50px;
+    background: #181818;
     color: #fff;
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;*/
