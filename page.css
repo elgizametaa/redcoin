@@ -704,30 +704,31 @@
     align-items: center;
     position: fixed;
     top: 15px;
-    right: 25px;
+    right: 25px; 
     width: auto;
-    height: 40px; /* ارتفاع الحاوية */
+    height: 30px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
     border: 0.5px solid #181818;
-    border-radius: 25px; /* زوايا مستديرة */
+    border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
 }
 
 .energy-bar-container {
-    position: absolute; /* وضعها خارج التدفق */
-    top: -25px; /* رفع الدائرة للأعلى */
-    right: 35px; /* ضبط الموضع الأيمن */
-    width: 40px; /* عرض دائرة الطاقة */
-    height: 40px; /* ارتفاع دائرة الطاقة */
-    z-index: 600; /* لضمان ظهورها فوق الحاوية */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* توسيط دائرة الطاقة */
+    width: 35.8px; /* نفس حجم الصورة الأصلية */
+    height: 35.8px; /* نفس حجم الصورة الأصلية */
+    border-radius: 50%; /* لضمان أن الحاوية تبقى دائرية */
+    overflow: hidden; /* لضمان عدم خروج أي محتوى خارج الدائرة */
 }
 
 .circular-energy-bar {
     position: relative;
-    width: 100%; /* ملء الحاوية */
-    height: 100%; /* ملء الحاوية */
+    width: 100%; /* ملء كامل مساحة الحاوية */
+    height: 100%; /* ملء كامل مساحة الحاوية */
 }
 
 .progress-ring {
@@ -735,13 +736,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* ملء الحاوية */
-    height: 100%; /* ملء الحاوية */
+    width: 100%; /* ملء كامل الحاوية */
+    height: 100%; /* ملء كامل الحاوية */
 }
 
 .progress-ring__circle {
     stroke: #2D83EC;
-    stroke-dasharray: 100;
+    stroke-dasharray: 100; /* يمكنك ضبط القيم حسب النسبة */
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 0.5s ease;
 }
@@ -751,7 +752,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 16px; /* حجم الأيقونة */
+    font-size: 16px; /* يمكنك ضبط الحجم ليناسب التصميم */
     color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 
                  0 -1px 2px rgba(255, 255, 255, 0.5);
