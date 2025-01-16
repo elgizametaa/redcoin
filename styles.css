@@ -971,6 +971,7 @@ img {
     border-radius: 50%; /* جعل الصورة دائرية */
     object-fit: cover; /* تأكد من احتواء الصورة داخل الدائرة */
     border: 0.5px solid #181818;
+    background-color: #000;
 } 
 
 
