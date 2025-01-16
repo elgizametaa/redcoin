@@ -1700,7 +1700,7 @@ async function showUpgradeModal(upgradeType) {
 
     const upgrades = {
         boost: {
-            cost: gameState.boostLevel * 10000 + 10000,
+            cost: gameState.boostLevel * 50000 + 50000,
             icon: `
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-boosts">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -1718,7 +1718,7 @@ async function showUpgradeModal(upgradeType) {
             current: `Multiplier : ×${gameState.clickMultiplier}`,
         },
         coin: {
-            cost: gameState.coinBoostLevel * 10000 + 10000,
+            cost: gameState.coinBoostLevel * 50000 + 50000,
             icon: `
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-boosts">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -1752,7 +1752,7 @@ function confirmUpgradeAction() {
     let cost;
 
     if (upgradeType === 'boost') {
-        cost = gameState.boostLevel * 10000 + 10000;
+        cost = gameState.boostLevel * 50000 + 50000;
         if (gameState.balance >= cost) {
             gameState.balance -= cost;
             gameState.boostLevel++;
@@ -1767,7 +1767,7 @@ function confirmUpgradeAction() {
             showNotification(purchaseNotification, 'You don’t have enough coins to upgrade.');
         }
     } else if (upgradeType === 'coin') {
-        cost = gameState.coinBoostLevel * 10000 + 10000;
+        cost = gameState.coinBoostLevel * 50000 + 50000;
         if (gameState.balance >= cost) {
             gameState.balance -= cost;
             gameState.coinBoostLevel++;
@@ -1789,8 +1789,8 @@ function confirmUpgradeAction() {
 function updateBoostsDisplay() {
     if (!uiElements) return;
 
-    const boostUpgradeCost = gameState.boostLevel * 10000 + 10000;
-    const coinUpgradeCost = gameState.coinBoostLevel * 10000 + 10000;
+    const boostUpgradeCost = gameState.boostLevel * 50000 + 50000;
+    const coinUpgradeCost = gameState.coinBoostLevel * 50000 + 50000;
 
     document.getElementById('boostUpgradeCost').innerText = formatNumber(boostUpgradeCost);
     document.getElementById('clickMultiplier').innerText = gameState.boostLevel;
