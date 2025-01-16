@@ -20,7 +20,7 @@ const createTreasurePopup = () => {
     // Treasure code
     const treasureCode = '5-million';
     const copyMessage = 'Treasure code copied to clipboard!';
-    const errorMessage = 'Clipboard not supported in this browser.';
+    const errorMessage = 'Unable to copy the treasure code. Please try again.';
 
     // Define buttons for the popup
     const buttons = [
@@ -28,15 +28,32 @@ const createTreasurePopup = () => {
             text: 'Copy Code',
             type: 'default',
             onClick: () => {
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(treasureCode)
-                        .then(() => {
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(treasureCode)
+                            .then(() => {
+                                showTelegramPopup('Success', copyMessage, [{ text: 'OK', type: 'close' }]);
+                            })
+                            .catch(() => {
+                                showTelegramPopup('Error', errorMessage, [{ text: 'OK', type: 'close' }]);
+                            });
+                    } else {
+                        // Fallback for unsupported clipboard API
+                        const textarea = document.createElement('textarea');
+                        textarea.value = treasureCode;
+                        textarea.style.position = 'absolute';
+                        textarea.style.left = '-9999px';
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        try {
+                            document.execCommand('copy');
                             showTelegramPopup('Success', copyMessage, [{ text: 'OK', type: 'close' }]);
-                        })
-                        .catch(() => {
+                        } catch (err) {
                             showTelegramPopup('Error', errorMessage, [{ text: 'OK', type: 'close' }]);
-                        });
-                } else {
+                        }
+                        document.body.removeChild(textarea);
+                    }
+                } catch (err) {
                     showTelegramPopup('Error', errorMessage, [{ text: 'OK', type: 'close' }]);
                 }
             }
