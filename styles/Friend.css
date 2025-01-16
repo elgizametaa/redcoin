@@ -1,3 +1,10 @@
+#noFriendsMessage {
+    text-align: center;
+    font-size: 14px;
+    color: #808080;
+    margin-top: 50px;
+}
+
 #invi {
     text-shadow: 3px 3px #181818;
     text-align: center;
