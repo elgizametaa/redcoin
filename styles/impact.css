@@ -14,10 +14,6 @@
     animation: slideInRight 0.4s ease forwards;
 }
 
-.invite {
-    animation: slideInRight 0.4s ease forwards;
-}
-
 #invitedCount {
     animation: slideInLeft 0.4s ease forwards;
 }
