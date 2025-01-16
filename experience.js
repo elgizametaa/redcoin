@@ -615,7 +615,7 @@ function loadLocalData() {
 function updateClickBalanceUI() {
     const clickCountDisplay = document.getElementById('clickCountDisplay');
     if (clickCountDisplay) {
-        clickCountDisplay.innerText = `${localClickBalance.toLocaleString()} $SAW`;
+        clickCountDisplay.innerText = `${localClickBalance.toLocaleString()}`;
     }
 }
 
