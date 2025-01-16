@@ -1,3 +1,21 @@
+.competition-item {
+  border: 0.5px solid #1c1c1c;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-image: url('i/Lucky.png'); /* استبدل path-to-your-image.jpg بمسار الصورة */
+  background-size: cover; /* لجعل الصورة تغطي العنصر بالكامل */
+  background-position: center; /* لتوسيط الصورة */
+  backdrop-filter: blur(1px); /* للحفاظ على التأثير الضبابي */
+  width: 90%;
+  height: 120px;
+  flex: 0 0 auto;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
 #competition-wrapper {
   position: relative;
   display: flex;
@@ -13,7 +31,7 @@
   direction: ltr;
 }
 
-.competition-item {
+/*.competition-item {
   border: 0.5px solid #1c1c1c;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.3);
@@ -27,7 +45,7 @@
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-}
+}*/
 
 .competition-item i {
   font-size: 30px;
