@@ -2139,43 +2139,6 @@ function showBanScreen() {
 
 ////////////////////////////////////
 
-const competition = document.getElementById("competition");
-const leftArrow = document.getElementById("left-arrow");
-const rightArrow = document.getElementById("right-arrow");
-
-// إضافة أحداث للنقر على الأسهم
-rightArrow.addEventListener("click", () => {
-  competition.scrollBy({ left: 300, behavior: "smooth" });
-  updateArrows();
-});
-
-leftArrow.addEventListener("click", () => {
-  competition.scrollBy({ left: -300, behavior: "smooth" });
-  updateArrows();
-});
-
-// تحديث حالة الأسهم بناءً على التمرير
-function updateArrows() {
-  const scrollLeft = competition.scrollLeft;
-  const scrollWidth = competition.scrollWidth - competition.clientWidth;
-
-  // السهم الأيسر يظهر فقط إذا كان هناك إمكانية للتمرير للخلف
-  leftArrow.style.display = scrollLeft > 0 ? "flex" : "none";
-
-  // السهم الأيمن يظهر دائمًا لأنك تريد إعلام المستخدم بوجود محتوى إضافي
-  rightArrow.style.display = "flex";
-}
-
-// تحديث حالة الأسهم عند التمرير
-competition.addEventListener("scroll", updateArrows);
-
-// تهيئة الأسهم عند تحميل الصفحة
-updateArrows();
-
-
-///////////////////////
-
-
 
 const overlay = document.getElementById('UsersettingsOverlay');
 const settingsContainer = document.getElementById('UsersettingsContainer');
@@ -2264,8 +2227,7 @@ competitionItems.forEach((item) => {
 // استدعاء التحقق عند تحميل الصفحة
 document.addEventListener("DOMContentLoaded", checkUserParticipation);
 
-
-
+/////////////////////////////
 
 
 // تفعيل التطبيق
