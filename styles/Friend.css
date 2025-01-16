@@ -87,13 +87,13 @@
     display: flex;
     justify-content: center; /* يضع الزرين في المنتصف أفقياً */
     gap: 10px; /* يضبط المسافة بين الزرين */
-    position: relative; /* يتيح التحكم بالموقع داخل الحاوية */
+    position: absolute; /* يتيح التحكم بالموقع داخل الحاوية */
     margin-left: auto; /* يدفع العنصر إلى أقصى اليمين */
     margin-right: auto; /* يدفع العنصر إلى أقصى اليسار */
     width: calc(100% - 40px); /* لضبط العرض لتجنب حدود الشاشة */
     padding: 10px; /* مساحة داخلية حول الأزرار */
     z-index: 100;
-    margin-top: 10px;
+    bottom: 80px; 
 }
 
 .invite-image {
