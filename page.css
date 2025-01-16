@@ -1,4 +1,3 @@
-/* التصميم الأساسي */
 .toggle-container {
     display: flex;
     margin-top: 0;
@@ -337,7 +336,7 @@
 }
 
 #tasksPage {
-    padding-top: 35px; /* يمكنك تغيير القيمة حسب الحاجة */
+    padding-top: 25px; /* يمكنك تغيير القيمة حسب الحاجة */
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 100px; /* مسافة سفلية */
@@ -366,7 +365,7 @@
 
 
 #leaderboardPage {
-    padding-top: 40px;
+    padding-top: 25px;
     padding-bottom: 130px;
     overflow-y: auto;
     background-clip: padding-box;
