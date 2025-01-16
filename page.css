@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     margin-left: 0;
-    gap: 160px; /* مسافة بين النص والزر */
+    gap: 130px; /* مسافة بين النص والزر */
 }
 
 #vibrationText {
