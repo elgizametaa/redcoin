@@ -505,7 +505,7 @@ function showNotificationWithStatus(notificationElement, message, status = '') {
         imageUrl = 'i/done.png'; // رابط الصورة لحالة الفوز
 
         // إضافة تأثير القصاصات الورقية للاحتفال
-        showConfettiEffect();
+        startConfettiEffect();
     } else if (status === 'lose') {
         notificationElement.classList.add('lose');
         imageUrl = 'i/mistake.png'; // رابط الصورة لحالة الخسارة
@@ -526,15 +526,20 @@ function showNotificationWithStatus(notificationElement, message, status = '') {
     // إخفاء الإشعار بعد 4 ثوانٍ
     setTimeout(() => {
         notificationElement.classList.remove('show');
+        stopConfettiEffect(); // إيقاف القصاصات الورقية عند انتهاء الإشعار
     }, 4000);
 }
 
-// دالة لإظهار تأثير القصاصات الورقية
-function showConfettiEffect() {
-    const duration = 2 * 1000; // مدة التأثير (2 ثانية)
+// متغير لتخزين إطار الحركة
+let confettiInterval;
+
+// دالة لبدء تأثير القصاصات الورقية
+function startConfettiEffect() {
+    const duration = 4 * 1000; // مدة التأثير تتوافق مع مدة الإشعار
     const end = Date.now() + duration;
 
-    (function frame() {
+    // تشغيل تأثير القصاصات الورقية
+    confettiInterval = setInterval(() => {
         confetti({
             particleCount: 8, // عدد الجزيئات في كل دفعة
             angle: 90,        // زاوية التساقط (عمودية)
@@ -547,11 +552,12 @@ function showConfettiEffect() {
             },
             colors: ['#1F1F1F', '#3A3A3A', '#2D83EC', '#A6B1E1', '#6272A4']
         });
+    }, 200); // تكرار التأثير كل 200 مللي ثانية
+}
 
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
-    })();
+// دالة لإيقاف تأثير القصاصات الورقية
+function stopConfettiEffect() {
+    clearInterval(confettiInterval); // إيقاف التأثير
 }
 
 
