@@ -7,8 +7,6 @@
     border: 0.2px solid #181818;
     border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(3px);
 }
 
 .toggle-container {
@@ -73,8 +71,8 @@
   height: 55px;
   border: 0.2px solid #181818;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -139,7 +137,8 @@
   font-family: 'Archivo Black', sans-serif; 
   text-align: left;
   flex: 1;
-  margin: 10px auto;
+  margin-left: 5px;
+  margin-right: 10px;
 }
 
 #claimButton {
@@ -318,8 +317,8 @@
 #miningnavbarBalanceDisplay::before {
     content: ""; /* لا نحتاج نصًا هنا */
     display: inline-block;
-    width: 33px; /* تحديد عرض الصورة */
-    height: 33px; /* تحديد ارتفاع الصورة */
+    width: 35px; /* تحديد عرض الصورة */
+    height: 35px; /* تحديد ارتفاع الصورة */
     background-image: url('https://image-six-tawny.vercel.app/Jsl.png'); /* مسار الصورة */
     background-size: cover; /* لتغطية العنصر بالصورة بشكل جيد */
     margin-right: 2px; /* مسافة بين الصورة والنص */
