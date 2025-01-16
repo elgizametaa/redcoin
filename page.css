@@ -1,84 +1,3 @@
-.user-ranking {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%; 
-    margin: 0 auto;
-    margin-bottom: 13px;
-    height: 59px;
-    border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-} 
-
-
-.competition-link {
-  display: block;
-  text-decoration: none; /* لإزالة الخط السفلي من الرابط */
-}
-
-.competition-container {
-  width: 98%;
-  height: 65px;
-  background-color: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  border-radius: 25px;
-  text-align: center;
-  margin: 18px auto;
-  cursor: pointer; /* لإظهار مؤشر يد عند التمرير */
-}
-
-.competition-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-  object-fit: cover;
-}
-
-#leaderboardWrapper {
-  border-radius: 25px;
-  margin: 10px auto;
-  width: 100%;
-  height: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
-  font-weight: 500; 
-  display: flex;
-  font-size: 12px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#Leaders-txxt {
-  background: linear-gradient(45deg, #2D83EC, #1AC9FF);
-  background-color: transparent;
-  -webkit-background-clip: text; 
-  background-clip: text;
-  color: transparent;
-  margin: 0;
-  text-align: center;
-  flex: 1;
-}
-
-.leaderboard-item {
-  margin-left: 18px;
-  margin-right: 18px;
-} 
-
-.right {
-  margin-right: 10px;
-  text-align: right;
-}
-
-.left {
-  margin-left: 10px;
-  text-align: left;
-}
-
-
 /* التصميم الأساسي */
 .toggle-container {
     display: flex;
@@ -139,36 +58,16 @@
     align-items: center;
     position: fixed;
     top: 15px;
-    left: 125px; 
+    right: 25px; 
     width: auto;
     height: 30px;
     z-index: 500;
-  /*  border: 1px solid #1c1c1c;*/
     border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
 } 
 
-/*#clickSection {
-  position: fixed;
-  bottom: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 89%;
-  height: 55px;
-  background-color: #101010;
-  border-right: 1px solid #1c1c1c;
-  border-top: 1px solid #1c1c1c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 20px;
-  padding-left: 10px ;
-  padding-right: 5px; 
-  box-sizing: border-box;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}*/
 
 #clickSection {
   position: fixed;
@@ -247,18 +146,6 @@
   margin: 10px auto;
 }
 
-/*#clickCountDisplay::before {
-    content: "";
-    display: inline-block;
-    width: 30px; 
-    height: 30px; 
-    background-image: url('i/coinss.png'); 
-    background-size: cover; 
-    margin-right: 3px; 
-    margin-left: 0;
-    vertical-align: middle; 
-}*/
-
 #claimButton {
   background-color: #2D83EC;
   color: #fff;
@@ -281,7 +168,6 @@
 
 
 
-
 .confetti-effect {
     position: fixed;
     top: 40px; /* تحت الإشعار مباشرة */
@@ -300,72 +186,6 @@
     100% { opacity: 0; }
 }
 
-
-
-/* تصميم رصيد المحفظة */
-#balanceuser {
-  display: flex;
-  justify-content: center; /* لمحاذاة الرصيد أفقيًا */
-  align-items: center; /* لمحاذاة الرصيد رأسيًا */
-  position: absolute;
-  top: 18%; /* تحديد الجزء العلوي */
-  width: 100%; /* تغطية عرض الشاشة بالكامل */
-}
-
-#WalletBalanceuser {
-  font-size: 35px;
-  color: #fff;
-  text-align: center;
-}
-
-/* تصميم الأزرار */
-.button-container {
-  display: flex;
-  justify-content: space-around; /* توزيع الأزرار بشكل متساوٍ */
-  align-items: center;
-  position: absolute;
-  top: 30%; /* وضع الأزرار في منتصف الشاشة رأسيًا */
-  width: 95%; /* تقليل العرض لإضافة مسافة من الجوانب */
-  margin: 0 auto; /* محاذاة الحاوية بالمنتصف */
-}
-
-.wallet-buttonn {
-  display: flex;
-  flex-direction: column; /* ترتيب الأيقونة فوق النص */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.wallet-buttonn i {
-  background-color: #101010; /* لون الزر */
-  color: white;
-  border-radius: 50%; /* جعل الزر دائري */
-  width: 50px; /* عرض الزر */
-  height: 50px; /* ارتفاع الزر */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px; /* حجم الأيقونة */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.wallet-buttonn i:hover {
-  transform: scale(1.1); /* تأثير التكبير عند التمرير */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-.wallet-buttonn p {
-  margin-top: 8px; /* مسافة بين الأيقونة والنص */
-  font-size: 14px;
-  color: #808080; /* لون النص */
-  font-weight: bold;
-}
-
-
-
 #stingContainer {
     display: flex;
     justify-content: space-between;
@@ -383,80 +203,6 @@
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
 } 
-
-
-#leaderboardPage {
-    padding-top: 50px;
-    padding-bottom: 135px;
-    overflow-y: auto;
-    background-clip: padding-box;
-    position: relative;
-    background-color: #1A1A1A;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
-} 
-
-.Leaders-image { 
-    width: 150px;
-    margin: 10px auto;
-    height: auto;
-    display: block;
-}   
-
-#Leaders-txt {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 25px; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
-    font-weight: bold;
-    font-size: 20px; 
-}
-
-.leaderboard-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%; 
-    margin: 0 auto;
-    margin-bottom: 10px;
-    height: 60px;
-    border-radius: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-} 
-
-.leaderboard-avatar {
-    width: 35px;
-    height: auto;
-    border-radius: 50%;
-    margin-left: 10px;
-   /* border: 1px solid #161616;*/
-    padding: 2px;
-    object-fit: cover;
-}
-
-.leaderboard-username {
-    flex: 1;
-    font-size: 13px;
-    margin-left: 10px;
-} 
-
-.leaderboard-balance {
-    font-size: 12px;
-    color: #fff;
-    text-align: center;
-    margin-right: 10px;
-}
-
-.leaderboard-rank {
-    font-size: 12px;
-    font-weight: bold;
-    margin-right: 10px;
-    background: linear-gradient(45deg, #2D83EC, #1AC9FF);
-    background-color: transparent;
-    -webkit-background-clip: text; 
-    background-clip: text;
-    color: transparent;
-}
 
 .overlay {
     position: fixed;
@@ -561,7 +307,6 @@
     }
 }
 
-
 #mainPage {
     backdrop-filter: blur(3px); 
     padding-top: 50px; 
@@ -627,7 +372,7 @@
 }
 
 #tasksPage {
-    padding-top: 80px; /* يمكنك تغيير القيمة حسب الحاجة */
+    padding-top: 35px; /* يمكنك تغيير القيمة حسب الحاجة */
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 100px; /* مسافة سفلية */
@@ -636,36 +381,16 @@
 
 
 #accountPage {
-    padding-top: 50px; /* يمكنك تغيير القيمة حسب الحاجة */
+    padding-top: 25px; /* يمكنك تغيير القيمة حسب الحاجة */
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 180px; /* مسافة سفلية */
     box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
-
-#Puzzlespage  {
-    padding-bottom: 100px;
-    overflow-y: auto;
-    padding-top: 50px; /* يمكنك تغيير القيمة حسب الحاجة */
-    background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
-    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
-}
-
-#gamePage {
-    padding-top: 60px;
-    padding-bottom: 100px;
-    overflow-y: auto;
-    background-clip: padding-box;
-    position: relative;
-    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
-}
-
-
-
 #boostsPage {
     background-size: cover;
-    padding-top: 50px; /* يمكنك تغيير القيمة حسب الحاجة */
+    padding-top: 25px; /* يمكنك تغيير القيمة حسب الحاجة */
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 120px; /* مسافة سفلية */
@@ -674,45 +399,316 @@
 
 
 
-#levelPage {
-    padding-top: 80px; /* يمكنك تغيير القيمة حسب الحاجة */
-    background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
-    overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
-    padding-bottom: 40px; /* مسافة سفلية */
-    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
-}
 
-
-#walletPage {
-    padding-top: 0; /* يمكنك تغيير القيمة حسب الحاجة */
-    background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
-    overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
-    padding-bottom: 0; /* مسافة سفلية */
-    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
-}
-
-#DailyPage {
-    padding-top: 50px; /* يمكنك تغيير القيمة حسب الحاجة */
-    background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
-    overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
-    padding-bottom: 180px; /* مسافة سفلية */
-    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
-}
-
-#SettingsPage {
-    padding-top: 40px; /* يمكنك تغيير القيمة حسب الحاجة */
-    background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
-    overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
-    padding-bottom: 50px; /* مسافة سفلية */
-    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
-}
-
-#miningPage {
+#leaderboardPage {
     padding-top: 40px;
-    padding-bottom: 150px;
+    padding-bottom: 130px;
     overflow-y: auto;
     background-clip: padding-box;
     position: relative;
-    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
+    background-color: #1A1A1A;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9); /* ظل داخلي لإضافة عمق للحواف */
+} 
+
+.Leaders-image { 
+    width: 150px;
+    margin: 10px auto;
+    height: auto;
+    display: block;
+}   
+
+#Leaders-txt {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 50px; /* يمكنك تغيير القيمة حسب المسافة التي تريدها */
+    font-weight: bold;
+    font-size: 20px; 
+}
+
+.leaderboard-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; 
+    margin: 0 auto;
+    margin-bottom: 10px;
+    height: 60px;
+    border-radius: 25px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+} 
+
+.leaderboard-avatar {
+    width: 42px;
+    height: auto;
+    border-radius: 50%;
+    margin-left: 10px;
+   /* border: 1px solid #161616;*/
+    padding: 2px;
+    object-fit: cover;
+}
+
+.leaderboard-username {
+    flex: 1;
+    font-size: 13px;
+    margin-left: 22px;
+} 
+
+.leaderboard-balance {
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    margin-right: 10px;
+}
+
+#leaderboardWrapper {
+  border-radius: 25px;
+  margin: 10px auto;
+  width: 100%;
+  height: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  font-weight: 500; 
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#Leaders-txxt {
+  background: linear-gradient(45deg, #2D83EC, #1AC9FF);
+  background-color: transparent;
+  -webkit-background-clip: text; 
+  background-clip: text;
+  color: transparent;
+  margin-left: 20px;
+  text-align: center;
+  flex: 1;
+}
+
+.leaderboard-item {
+  margin-left: 18px;
+  margin-right: 18px;
+} 
+
+.right {
+  margin-right: 10px;
+  text-align: right;
+}
+
+.left {
+  margin-left: 10px;
+  text-align: left;
+}
+
+
+.user-ranking {
+    bottom: 70px;
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%; /* بدلاً من 98% */
+    /*left: 50%;
+    transform: translateX(-50%);*/
+    height: 55px;
+   /* box-sizing: border-box;*/
+    margin: 5px auto;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.top-three-leaders {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+    margin: 25px auto;
+    width: 100%;
+    position: relative;
+}
+
+.leader-rank {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px; /* العرض + البادينج */
+    height: 25px; /* الطول + البادينج */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    color: #2D83EC;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+} 
+
+.leader {
+    text-align: center;
+}
+
+.first-leader {
+    position: relative;
+    top: -20px;
+}
+
+.second-leader {
+    position: relative;
+    top: 10px;
+}
+
+.third-leader {
+    position: relative;
+    top: 15px;
+}
+
+.leader-image {
+    border-radius: 50%;
+    border: 3px solid transparent;
+}
+
+.leader-image.large {
+    width: 90px;
+    height: 90px;
+    border-color: gold;
+}
+
+.leader-image.small {
+    width: 70px;
+    height: 70px;
+}
+
+.leader-name {
+    margin-top: 15px;
+    font-size: 14px;
+    color: white;
+}
+
+.leader-balance {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: white;
+} 
+
+.first-leader .leader-image {
+    border-color: gold;
+}
+
+.second-leader .leader-image {
+    border-color: silver;
+}
+
+.third-leader .leader-image {
+    border-color: #808080;
+}
+
+.leader i {
+    position: absolute;
+    bottom: 137px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px; /* العرض + البادينج */
+    height: 50px; /* الطول + البادينج */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; 
+    font-size: 25px;
+    color: gold;
+    font-weight: bold;
+}
+
+.leaderboard-rank {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    width: 20px; /* العرض + البادينج */
+    height: 20px; /* الطول + البادينج */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; 
+    font-size: 11px;
+    font-weight: bold;
+} 
+
+.horizontal-leaders {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    box-sizing: border-box;
+    width: 98%;
+    gap: 5px; 
+    position: relative;
+}
+
+.leaderseven-rank {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px; 
+    height: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    color: #2D83EC;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+} 
+
+.horizontal-leaders .leader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.horizontal-leaders .leader-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.horizontal-leaders .leader-rank {
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+}
+
+.horizontal-leaders .leader-name {
+    font-size: 11px;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.horizontal-leaders .leader-balance {
+    font-size: 10px;
+    color: #fff;
+    margin-top: 5px;
 }
 
