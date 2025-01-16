@@ -535,7 +535,7 @@ let confettiInterval;
 
 // دالة لبدء تأثير القصاصات الورقية
 function startConfettiEffect() {
-    const duration = 4 * 1000; // مدة التأثير تتوافق مع مدة الإشعار
+    const duration = 3 * 1000; // مدة التأثير تتوافق مع مدة الإشعار
     const end = Date.now() + duration;
 
     // تشغيل تأثير القصاصات الورقية
