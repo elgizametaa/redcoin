@@ -93,7 +93,7 @@
     width: calc(100% - 40px); /* لضبط العرض لتجنب حدود الشاشة */
     padding: 10px; /* مساحة داخلية حول الأزرار */
     z-index: 100;
-    bottom: 80px; 
+    bottom: 70px; 
 }
 
 .invite-image {
@@ -147,8 +147,8 @@
     align-items: center; /* توسيط عمودي للصورة والنص */
     justify-content: center; /* توسيط أفقي */
     gap: 8px; /* مسافة بين الصورة والنص */
-    width: 90%; 
-    height: 50px;
+    width: 85%; 
+    height: 48px;
     background: #2D83EC;
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;*/
@@ -180,7 +180,7 @@
     justify-content: center; /* توسيط أفقي */
     gap: 8px; /* مسافة بين الصورة والنص */
     width: 25%; 
-    height: 50px;
+    height: 48px;
     background: #2D83EC;
     color: #fff;
     /*border-bottom: 1px solid #1c1c1c;
