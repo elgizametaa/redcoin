@@ -42,10 +42,11 @@
 
 #WrapperFriends {
   border-radius: 25px;
-  margin: 13px auto;
+  margin-top: 15px;
+  margin-bottom: 5px;
   width: 97%;
   height: 30px;
-  border: 0.5px solid #181818;
+  border: 0.3px solid #181818;
   font-weight: 500; 
   display: flex;
   justify-content: space-between;
