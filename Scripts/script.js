@@ -22,41 +22,35 @@ const createTreasurePopup = () => {
     const copyMessage = 'Treasure code copied to clipboard!';
     const errorMessage = 'Unable to copy the treasure code. Please try again.';
 
+    // Function to copy text to clipboard
+    const copyToClipboard = async (text) => {
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(text);
+                showTelegramPopup('Success', copyMessage, [{ text: 'OK', type: 'close' }]);
+            } else {
+                // Fallback for unsupported clipboard API
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'absolute';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showTelegramPopup('Success', copyMessage, [{ text: 'OK', type: 'close' }]);
+            }
+        } catch (err) {
+            showTelegramPopup('Error', errorMessage, [{ text: 'OK', type: 'close' }]);
+        }
+    };
+
     // Define buttons for the popup
     const buttons = [
         {
             text: 'Copy Code',
             type: 'default',
-            onClick: () => {
-                try {
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(treasureCode)
-                            .then(() => {
-                                showTelegramPopup('Success', copyMessage, [{ text: 'OK', type: 'close' }]);
-                            })
-                            .catch(() => {
-                                showTelegramPopup('Error', errorMessage, [{ text: 'OK', type: 'close' }]);
-                            });
-                    } else {
-                        // Fallback for unsupported clipboard API
-                        const textarea = document.createElement('textarea');
-                        textarea.value = treasureCode;
-                        textarea.style.position = 'absolute';
-                        textarea.style.left = '-9999px';
-                        document.body.appendChild(textarea);
-                        textarea.select();
-                        try {
-                            document.execCommand('copy');
-                            showTelegramPopup('Success', copyMessage, [{ text: 'OK', type: 'close' }]);
-                        } catch (err) {
-                            showTelegramPopup('Error', errorMessage, [{ text: 'OK', type: 'close' }]);
-                        }
-                        document.body.removeChild(textarea);
-                    }
-                } catch (err) {
-                    showTelegramPopup('Error', errorMessage, [{ text: 'OK', type: 'close' }]);
-                }
-            }
+            onClick: () => copyToClipboard(treasureCode)
         },
         { text: 'Close', type: 'close' }
     ];
@@ -64,7 +58,7 @@ const createTreasurePopup = () => {
     // Title and message of the popup
     const title = 'Treasure Code';
     const message = 'Go to the earn page, enter the treasure code, check your balance, and enjoy 5 million $SAW!';
-    
+
     // Display the popup
     showTelegramPopup(title, message, buttons);
 };
