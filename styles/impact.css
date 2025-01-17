@@ -6,7 +6,7 @@
     animation: slideInRight 0.4s ease forwards;
 }
 
-#taskcontainer, #daily2, .friend-item, #promocodeBtu, #leaderboardContainer {
+#taskcontainer, #daily2, #promocodeBtu, #leaderboardContainer {
     animation: slideInLeft 0.4s ease forwards;
 }
 
