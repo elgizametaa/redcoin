@@ -1,6 +1,6 @@
 .button-container {
   display: flex;
-  width: 95%;
+  width: 97%;
   height: 38px;
   border-radius: 20px;
   overflow: hidden;
@@ -39,22 +39,23 @@
   background-color: #ccc;
 }
 
-
-
-
-
-
-
 .description-taskk {
     width: 100%;
-    text-align: left;
+    text-align: center;
     padding-top: 3px;
     z-index: 50;
-    margin-left: 10px;
     margin-top: 0;
     margin-bottom: 10px;
     position: relative; /* لإبقاء النص في موضعه فوق الصورة */
 }
+
+.description-taskk li {
+    text-align: center;
+    padding-top: 5px;
+    color: #808080; 
+    margin-bottom: 10px;
+}
+ 
 
 .taskk-title {
     text-shadow: 3px 3px #181818;
