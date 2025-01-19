@@ -59,7 +59,7 @@ body {
     position: relative;
     overflow: hidden;
     background-color: #030202;
-    background-image: linear-gradient(326deg, #030202 0%, #91221e 74%);
+    background-image: linear-gradient(326deg, #030202 0%, #91221e 74%, #030202 0% );
     filter: brightness(0.9);
     background-position: center;
 } 
