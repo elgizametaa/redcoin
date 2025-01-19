@@ -1819,7 +1819,6 @@ async function updatePremiumStatus() {
 
 // ربط الأزرار بالأحداث
 document.getElementById("subscribeButton").addEventListener("click", makePremiumPayment);
-document.getElementById("ton-connect").addEventListener("click", connectToWallet);
 
 ///////////////////////////
 
