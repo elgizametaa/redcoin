@@ -94,20 +94,30 @@
 /* Premium Confirmation Box Styling */
 .premium-confirmation {
     width: 100%;
-    weight: 800px;
+    max-width: 500px; /* الحد الأقصى للعرض */
     padding: 20px;
     border-radius: 15px;
     background-color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    margin: 50px auto;
+    margin: 50px auto; /* لضمان تمركز الحاوية في الصفحة */
     color: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.premium-confirmation .premium-content {
+/* Content Styling */
+.premium-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Image Styling */
 .premium-image {
     width: 120px;
     height: 120px;
@@ -116,36 +126,40 @@
     object-fit: cover;
 }
 
+/* Heading Styling */
 .premium-confirmation h2 {
     font-size: 22px;
     margin-bottom: 10px;
     color: #f0d678;
 }
 
+/* Description Styling */
 .premium-confirmation p {
     font-size: 16px;
     color: #ccc;
     margin-bottom: 20px;
 }
 
+/* Premium Benefits List Styling */
 .premium-benefits {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .premium-benefits li {
     font-size: 14px;
     color: #fff;
     background-color: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    weight: 50px;
+    padding: 15px;
     margin-bottom: 10px;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    width: 100%;
 }
 
 .premium-benefits li strong {
