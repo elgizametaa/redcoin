@@ -1498,7 +1498,7 @@ function updateUserRankDisplay(rank, username, balance) {
 
 async function updateLeaderboardDisplay(leaderboard) {
     // تفريغ الحاوية الرئيسية للمتصدرين الآخرين
-    document.getElementById('leaderboardContainer').innerHTML = '';
+//   document.getElementById('leaderboardContainer').innerHTML = '';
 
     for (let index = 0; index < leaderboard.length; index++) {
         const user = leaderboard[index];
