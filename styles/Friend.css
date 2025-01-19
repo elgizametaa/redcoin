@@ -233,17 +233,17 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.003);
+    background-color: rgba(0, 0, 0, 0.5);
     /*padding: 10px;*
    /* margin-bottom: 10px;*/
-    width: 98%;
+    width: 99%;
     height: 53px;
     border-radius: 25px;
     transition: background-color 0.3s ease;
 }
 
 .friend-item:hover {
-    background-color: #101010;
+    background-color: red;
 }
 
 .friend-info {
