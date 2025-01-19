@@ -607,6 +607,7 @@ async function handleSingleTouch(event) {
 
     // تحديث واجهة المستخدم
     updateUI();
+    debounceSave(); 
     updateEnergyUI();
 
     // تأثير النقرة
@@ -615,17 +616,6 @@ async function handleSingleTouch(event) {
     // تنفيذ الاهتزاز عند التفعيل
     if (isVibrationEnabled && navigator.vibrate) {
         navigator.vibrate(80);
-    }
-
-    // تحديث قاعدة البيانات مباشرة
-    try {
-        await updateGameStateInDatabase({
-            balance: gameState.balance,
-            energy: gameState.energy,
-        });
-        console.log('Balance and energy updated in database.');
-    } catch (error) {
-        console.error('Error updating balance and energy in database:', error);
     }
 }
 
