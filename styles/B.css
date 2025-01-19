@@ -118,27 +118,6 @@
     vertical-align: middle;
 }
 
-.boosts-button {
-    display: flex; /* يتيح ترتيب الأيقونة والنص بجانب بعض */
-    align-items: center; /* يجعل الأيقونة والنص متوسطي المحاذاة عموديًا */
-    margin-left: 40px;
-    font-size: 16.5px;
-    color: #fff;
-    font-weight: bold;
-    background-color: #000;
-    border-radius: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    padding: 8px 12px; /* مسافات داخلية لتجميل الزر */
-    gap: 6px; /* مسافة ثابتة بين الأيقونة والنص */
-}
-
-.size-Boosts {
-    width: 20px; /* عرض الأيقونة */
-    height: 20px; /* ارتفاع الأيقونة */
-    flex-shrink: 0; /* يمنع تصغير الأيقونة */
-} 
-
-
 .boost-item button {
     margin-right: 0; 
    /* background-color: rgba(0, 0, 0, 0.7);*/
