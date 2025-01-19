@@ -16,13 +16,14 @@
 /* Premium Features Container */
 .premium-features {
     width: 95%;
+    
     max-width: 400px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(6px);
-    margin: 20px auto;
+    margin: 0 auto;
 }
 
 /* Individual Feature Styling */
@@ -46,6 +47,7 @@
 
 .premium-features li strong {
     margin-left: 10px;
+    font-size: 15px;
     color: #f0d678;
 }
 
@@ -53,13 +55,14 @@
     content: '✔';
     color: #e6b800;
     font-weight: bold;
+    font-size: 14px;
     margin-right: 10px;
 }
 
 /* Fixed Subscribe Button */
 .fixed-subscribe-container {
     position: fixed;
-    bottom: 60px;
+    bottom: 80px;
     left: 0;
     right: 0;
     display: flex;
@@ -70,10 +73,10 @@
 .subscribe-btn {
     background-color: #fff;
     color: #000;
-    padding: 15px 50px;
+    padding: 15px 70px;
     border: none;
     border-radius: 30px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -81,5 +84,6 @@
 }
 
 .subscribe-btn:hover {
-    background-color: #e6b800;
+    background-color: #000;
+    color: #fff;
 }
