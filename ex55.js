@@ -1755,6 +1755,74 @@ overlay.addEventListener('click', () => {
 });
 
 /////////////////////////////
+let walletAddress = null; // لتخزين عنوان المحفظة
+
+// الاتصال بالمحفظة
+async function connectToWallet() {
+    try {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        walletAddress = connectedWallet.account.address;
+        localStorage.setItem("walletAddress", walletAddress);
+        showNotification("Wallet connected successfully!", "success");
+    } catch (error) {
+        console.error("Error connecting to wallet:", error.message);
+        showNotification("Failed to connect wallet: " + error.message, "error");
+    }
+}
+
+// إجراء الدفع
+async function makePremiumPayment() {
+    try {
+        const amount = "1000000000"; // 1 TON (بالنانوتون)
+        const recipientAddress = "UQCpMg6TV_zE34ao-Ii2iz5M6s5Qp8OIVWa3YbsB9KwxzwCJ";
+
+        const transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 600, // صالح لمدة 10 دقائق
+            messages: [{ address: recipientAddress, amount }],
+        };
+
+        await tonConnectUI.sendTransaction(transaction);
+
+        // تحديث حالة المستخدم في قاعدة البيانات
+        await updatePremiumStatus();
+
+        // إخفاء زر الدفع وإظهار حالة الاشتراك
+        document.getElementById("subscribeButton").classList.add("hidden");
+        document.querySelector(".premium-features").classList.add("hidden");
+        document.getElementById("premiumStatus").classList.remove("hidden");
+
+        showNotification("Subscription successful!", "success");
+    } catch (error) {
+        console.error("Error making payment:", error.message);
+        showNotification(`Payment failed: ${error.message}`, "error");
+    }
+}
+
+// تحديث حالة الاشتراك في قاعدة البيانات
+async function updatePremiumStatus() {
+    const telegramApp = window.Telegram.WebApp;
+    const telegramId = telegramApp.initDataUnsafe.user?.id;
+
+    try {
+        const { error } = await supabase
+            .from("users")
+            .update({ premium_status: true })
+            .eq("telegram_id", telegramId);
+
+        if (error) throw new Error(error.message);
+        console.log("Premium status updated in database.");
+    } catch (error) {
+        console.error("Error updating premium status:", error.message);
+        showNotification("Failed to update premium status.", "error");
+    }
+}
+
+// ربط الأزرار بالأحداث
+document.getElementById("subscribeButton").addEventListener("click", makePremiumPayment);
+document.getElementById("ton-connect").addEventListener("click", connectToWallet);
+
+///////////////////////////
+
 
 
 
