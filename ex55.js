@@ -570,7 +570,8 @@ function updateVibrationButton() {
 
 
 
-        // استدعاء الصورة القابلة للنقر
+
+// استدعاء الصورة القابلة للنقر
 const img = document.getElementById('clickableImg');
 
 // دالة التعامل مع النقر
@@ -670,26 +671,25 @@ function createDiamondCoinEffect(x, y) {
     }, 50);
 }
 
-
+// استعادة الطاقة بشكل دوري
 function startEnergyRecovery() {
     setInterval(() => {
-        // حساب الطاقة الحالية بناءً على الطاقة المستهلكة
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+        const currentEnergy = gameState.maxEnergy - gameState.energy;
 
         // التحقق إذا كانت الطاقة أقل من الحد الأقصى
         if (currentEnergy < gameState.maxEnergy) {
-            // زيادة الطاقة بمقدار 5 إذا لم يتم تجاوز الحد الأقصى
-            localEnergyConsumed = Math.max(localEnergyConsumed - 20, 0);
+            // استعادة الطاقة بمقدار 20 نقطة إذا لم يتم تجاوز الحد الأقصى
+            gameState.energy = Math.max(gameState.energy - 20, 0);
 
             // تحديث واجهة المستخدم
             updateEnergyUI();
 
-            // تحديث البيانات المحلية
-            localStorage.setItem('energyConsumed', localEnergyConsumed);
+            console.log('Energy recovered successfully.');
         }
     }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
 }
 
+// استعادة الطاقة عند بدء التطبيق
 async function restoreEnergy() {
     try {
         const lastFillTime = parseInt(localStorage.getItem('lastFillTime'), 10) || Date.now();
@@ -701,7 +701,7 @@ async function restoreEnergy() {
         const recoveredEnergy = recoverableTimes * 5;
 
         // استعادة الطاقة بدون تجاوز الحد الأقصى
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+        const currentEnergy = gameState.maxEnergy - gameState.energy;
         gameState.energy = Math.min(gameState.maxEnergy, currentEnergy + recoveredEnergy);
 
         // تحديث وقت آخر استعادة
@@ -721,7 +721,6 @@ async function restoreEnergy() {
         );
     }
 }
-
 
 //////////////////////////////////////////////////
 
