@@ -571,50 +571,51 @@ function updateVibrationButton() {
 
 // استدعاء الصورة القابلة للنقر
 const img = document.getElementById('clickableImg');
-let localClickBalance = 0; // رصيد النقرات المحلي
-let localEnergyConsumed = 0; // الطاقة المستهلكة محليًا
-let lastDatabaseUpdateTime = Date.now(); // وقت آخر تحديث لقاعدة البيانات
-const updateInterval = 30000; // الفاصل الزمني للتحديث (30 ثانية)
-let isUpdatingDatabase = false; // منع التحديث المتكرر للبيانات
-
 
 img.addEventListener('pointerdown', async (event) => {
     event.preventDefault();
-    
+
+    // تطبيق تأثير الإمالة عند النقر
     const rect = img.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     const rotateX = ((y / rect.height) - 0.5) * -14;
     const rotateY = ((x / rect.width) - 0.5) * 14;
+
     img.style.transition = 'transform 0.1s ease-out';
     img.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     setTimeout(() => {
         img.style.transform = 'perspective(700px) rotateX(0) rotateY(0)';
     }, 300);
-});
 
+    // حساب قيمة النقرة والطاقة المطلوبة
     const clickValue = gameState.clickMultiplier || 0;
     const requiredEnergy = clickValue;
     const currentEnergy = gameState.maxEnergy - gameState.energy;
 
+    // التحقق من توفر الطاقة الكافية
     if (currentEnergy < requiredEnergy) {
         showNotification(uiElements.purchaseNotification, 'Not enough energy!');
         return;
     }
 
+    // تحديث الرصيد والطاقة
     gameState.balance += clickValue;
     gameState.energy += requiredEnergy;
 
+    // تحديث واجهة المستخدم
     updateUI();
     updateEnergyUI();
 
+    // إنشاء تأثير النقرة
     createDiamondCoinEffect(event.pageX, event.pageY);
 
+    // تنفيذ الاهتزاز عند التفعيل
     if (isVibrationEnabled && navigator.vibrate) {
         navigator.vibrate(80);
     }
 
-    // تحديث الرصيد والطاقة في قاعدة البيانات مباشرة
+    // تحديث قاعدة البيانات مباشرة
     try {
         await updateGameStateInDatabase({
             balance: gameState.balance,
@@ -626,7 +627,7 @@ img.addEventListener('pointerdown', async (event) => {
     }
 });
 
-
+// تحديث واجهة المستخدم لشريط الطاقة الدائري
 function updateEnergyUI() {
     const energyBar = document.getElementById('energyBar');
     const energyInfo = document.getElementById('energyInfo');
@@ -634,8 +635,8 @@ function updateEnergyUI() {
     const currentEnergy = gameState.maxEnergy - gameState.energy;
 
     if (energyBar) {
-        const radius = energyBar.r.baseVal.value;
-        const circumference = 2 * Math.PI * radius;
+        const radius = energyBar.r.baseVal.value; // نصف قطر الدائرة
+        const circumference = 2 * Math.PI * radius; // محيط الدائرة
         const progress = (currentEnergy / gameState.maxEnergy) * circumference;
 
         energyBar.style.strokeDasharray = `${circumference}`;
@@ -647,6 +648,7 @@ function updateEnergyUI() {
     }
 }
 
+// إنشاء تأثير النقرة
 function createDiamondCoinEffect(x, y) {
     const diamondText = document.createElement('div');
     diamondText.classList.add('diamond-text');
