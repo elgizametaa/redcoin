@@ -378,6 +378,13 @@
     box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
+#premiumPage {
+    padding-top: 25px; /* يمكنك تغيير القيمة حسب الحاجة */
+    background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
+    overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
+    padding-bottom: 100px; /* مسافة سفلية */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
+}
 
 #accountPage {
     padding-top: 25px; /* يمكنك تغيير القيمة حسب الحاجة */
