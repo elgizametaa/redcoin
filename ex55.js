@@ -334,7 +334,17 @@ function updateUI() {
         element.innerText = formatNumber(gameState.balance);
       }
    });
+    
+    // تحديث شريط الطاقة
+    const energyPercent = (gameState.energy / gameState.maxEnergy) * 100;
+    if (uiElements.energyBar) {
+        uiElements.energyBar.style.width = `${energyPercent}%`;
+    }
 
+    // تحديث معلومات الطاقة
+    if (uiElements.energyInfo) {
+        uiElements.energyInfo.innerText = `${formatNumber(gameState.energy)}/${formatNumber(gameState.maxEnergy)}⚡`;
+    }
 
     // تحديث مضاعف النقرة
     if (uiElements.clickMultiplierDisplay) {
