@@ -342,7 +342,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 65px;
     position: fixed;
     bottom: 0;
     padding-bottom: 4px;
@@ -407,7 +407,7 @@ img {
 }
 
 .menu-item i {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #808080;
     transition: color 0.3s ease;
 }
