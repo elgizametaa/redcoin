@@ -728,6 +728,9 @@
 }
 
 .boosts-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     bottom: 80px;
     right: 30px; 
     width: 80px;
