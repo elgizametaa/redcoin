@@ -119,7 +119,7 @@ function debounceSave() {
     clearTimeout(saveTimeout);
     saveTimeout = setTimeout(() => {
         saveGameState();
-    }, 5000); // حفظ بعد 5 ثوانٍ
+    }, 4000); // حفظ بعد 5 ثوانٍ
 }
 
 
@@ -584,11 +584,11 @@ function handleClick(event) {
         gameState.balance += gameState.clickMultiplier * touchPoints.length;
         gameState.energy -= requiredEnergy;
         updateUI();
+        debounceSave(); 
     } else {
         showNotification(uiElements.purchaseNotification, 'Not enough energy!');
     }
 }
-
 
 
 const img = document.getElementById('clickableImg');
