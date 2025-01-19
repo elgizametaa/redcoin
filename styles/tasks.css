@@ -1,3 +1,46 @@
+.button-container {
+  display: flex;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-container button {
+  flex: 1;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:first-child {
+  border-radius: 16px 0 0 16px;
+}
+
+.button-container button:last-child {
+  border-radius: 0 16px 16px 0;
+}
+
+.button-container button.middle {
+  border-radius: 0;
+}
+
+.button-container button:hover {
+  background-color: #ddd;
+}
+
+.button-container button:active {
+  background-color: #ccc;
+}
+
+
+
+
+
+
+
 .description-taskk {
     width: 100%;
     text-align: left;
