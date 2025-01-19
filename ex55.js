@@ -569,13 +569,15 @@ function updateVibrationButton() {
 /////////////////////////////////////////
 
 
-// استدعاء الصورة القابلة للنقر
+
+        // استدعاء الصورة القابلة للنقر
 const img = document.getElementById('clickableImg');
 
-img.addEventListener('pointerdown', async (event) => {
+// دالة التعامل مع النقر
+async function handleSingleTouch(event) {
     event.preventDefault();
 
-    // تطبيق تأثير الإمالة عند النقر
+    // تأثير الإمالة
     const rect = img.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
@@ -588,12 +590,11 @@ img.addEventListener('pointerdown', async (event) => {
         img.style.transform = 'perspective(700px) rotateX(0) rotateY(0)';
     }, 300);
 
-    // حساب قيمة النقرة والطاقة المطلوبة
+    // معالجة النقرة
     const clickValue = gameState.clickMultiplier || 0;
     const requiredEnergy = clickValue;
     const currentEnergy = gameState.maxEnergy - gameState.energy;
 
-    // التحقق من توفر الطاقة الكافية
     if (currentEnergy < requiredEnergy) {
         showNotification(uiElements.purchaseNotification, 'Not enough energy!');
         return;
@@ -607,7 +608,7 @@ img.addEventListener('pointerdown', async (event) => {
     updateUI();
     updateEnergyUI();
 
-    // إنشاء تأثير النقرة
+    // تأثير النقرة
     createDiamondCoinEffect(event.pageX, event.pageY);
 
     // تنفيذ الاهتزاز عند التفعيل
@@ -625,7 +626,7 @@ img.addEventListener('pointerdown', async (event) => {
     } catch (error) {
         console.error('Error updating balance and energy in database:', error);
     }
-});
+}
 
 // تحديث واجهة المستخدم لشريط الطاقة الدائري
 function updateEnergyUI() {
@@ -635,8 +636,8 @@ function updateEnergyUI() {
     const currentEnergy = gameState.maxEnergy - gameState.energy;
 
     if (energyBar) {
-        const radius = energyBar.r.baseVal.value; // نصف قطر الدائرة
-        const circumference = 2 * Math.PI * radius; // محيط الدائرة
+        const radius = energyBar.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
         const progress = (currentEnergy / gameState.maxEnergy) * circumference;
 
         energyBar.style.strokeDasharray = `${circumference}`;
