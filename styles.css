@@ -58,9 +58,14 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    background-color: #030202;
-    background-image: linear-gradient(326deg, #030202 0%, #91221e 74%, #030202 0% );
-    filter: brightness(0.9);
+    background-color: #951607;
+    background: linear-gradient(
+      to bottom, 
+      rgba(0, 0, 0, 0.1), /* الأسود الشفاف من الأعلى */
+      #951607,            /* اللون الأحمر الداكن */
+      rgba(0, 0, 0, 0.1)  /* الأسود الشفاف من الأسفل */
+    );
+    background-blend-mode: overlay;    filter: brightness(0.9);
     background-position: center;
 } 
 
