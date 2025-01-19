@@ -1008,26 +1008,32 @@ function createTaskElement(task, completedTasks) {
     return taskElement;
 }
 
-// التعامل مع الزر
 function handleTaskButtonClick(task, button, completedTasks) {
-    let taskProgress = 0;
+    // الحصول على حالة المهمة الحالية من الزر
+    let taskProgress = button.getAttribute('data-progress') || "0";
 
-    if (taskProgress === 0) {
+    if (taskProgress === "0") {
+        // الخطوة الأولى: الدخول إلى رابط المهمة
         showLoading(button);
         openTaskLink(task.url, () => {
-            taskProgress = 1;
+            taskProgress = "1";
+            button.setAttribute('data-progress', taskProgress);
             hideLoading(button, 'Verify');
         });
-    } else if (taskProgress === 1) {
+    } else if (taskProgress === "1") {
+        // الخطوة الثانية: التحقق من المهمة
         showLoading(button);
         setTimeout(() => {
-            taskProgress = 2;
+            taskProgress = "2";
+            button.setAttribute('data-progress', taskProgress);
             hideLoading(button, 'Claim');
-        }, 5000);
-    } else if (taskProgress === 2) {
+        }, 5000); // محاكاة التحقق لمدة 5 ثوانٍ
+    } else if (taskProgress === "2") {
+        // الخطوة الثالثة: استلام المكافأة
         claimTaskReward(task.id, task.reward, button, completedTasks);
     }
 }
+
 
 // استلام المكافأة وتحديث المهام المكتملة فقط
 async function claimTaskReward(taskId, reward, button, completedTasks) {
