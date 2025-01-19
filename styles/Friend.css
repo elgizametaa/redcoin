@@ -24,7 +24,7 @@
     position: relative;
     margin-bottom: 10px;
     padding-left: 20px;
-    color: #fff;
+    color: #000;
     font-size: 12px;
     font-weight: 450;
 }
@@ -278,7 +278,7 @@
 
 .invite-card {
   background-color: rgba(0, 0, 0,0.00001);
-  color: #fff;
+  color: #000;
   border-radius: 10px;
   width: 90%;
   height: auto;
@@ -291,11 +291,7 @@
 .invite-header h3 {
   font-size: 18px;
   margin-bottom: 12px;
-  background: #000;
-  background-color: transparent;
-  -webkit-background-clip: text; 
-  background-clip: text;
-  color: transparent;
+  color: #000;
 }
 
 .invite-content p {
