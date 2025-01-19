@@ -908,15 +908,15 @@ window.addEventListener('DOMContentLoaded', () => {
 ///////////////////////////////////////////
 
 
-// المهام 
-document.addEventListener('DOMContentLoaded', async () => {
-    const taskContainer = document.querySelector('#taskcontainer');
-    if (!taskContainer) {
-        console.error('Task container element not found.');
+                document.addEventListener('DOMContentLoaded', async () => {
+    const mainTaskContainer = document.querySelector('#main-task-container');
+    const partnersTaskContainer = document.querySelector('#partners-task-container');
+
+    if (!mainTaskContainer || !partnersTaskContainer) {
+        console.error('Task container elements not found.');
         return;
     }
 
-    // جلب المهام المكتملة من قاعدة البيانات
     const userId = uiElements.userTelegramIdDisplay.innerText;
     let completedTasks = [];
 
@@ -941,137 +941,123 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(response => response.json())
         .then(tasks => {
             tasks.forEach(task => {
-                const taskElement = document.createElement('div');
-                taskElement.classList.add('task-item');
+                const taskElement = createTaskElement(task, completedTasks);
 
-                // صورة المهمة
-                const img = document.createElement('img');
-                img.src = task.image;
-                img.alt = 'Task Image';
-                img.classList.add('task-img');
-                taskElement.appendChild(img);
-
-                 // Create a container for description and reward
-                const infoContainer = document.createElement('div');
-                infoContainer.classList.add('info-task'); // This will hold both description and reward
-
-                // Task Description
-                const description = document.createElement('p');
-                description.textContent = task.description;
-                infoContainer.appendChild(description);
-
-                 // Task Reward without Coin Image
-                const rewardContainer = document.createElement('div');
-                rewardContainer.classList.add('task-reward-container');
-            
-                const rewardText = document.createElement('span');
-                rewardText.textContent = `+ ${task.reward} $RED`;
-                rewardText.classList.add('task-reward');
-                rewardContainer.appendChild(rewardText);
-
-                infoContainer.appendChild(rewardContainer); // Append reward below description
-
-                taskElement.appendChild(infoContainer); // Append the info container to the task element
-
-           
-                // زر المهمة
-                const button = document.createElement('button');
-                 button.classList.add('task-button');
-                 button.setAttribute('data-task-id', task.id);
-                 button.setAttribute('data-reward', task.reward);
-
-                 // تعيين نص الزر بناءً على حالة المهمة
-                 if (completedTasks.includes(task.id)) {
-                 // علامة الصح
-                 button.innerHTML = `
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                 </svg>
-                `;
-                 button.disabled = true;
-             } else {
-                // السهم
-                 button.innerHTML = `
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                   </svg>
-                 `;
+                // تحديد الحاوية المناسبة بناءً على الفئة
+                if (task.category === 'Main') {
+                    mainTaskContainer.appendChild(taskElement);
+                } else if (task.category === 'Partners') {
+                    partnersTaskContainer.appendChild(taskElement);
                 }
-
-               taskElement.appendChild(button);
-               taskContainer.appendChild(taskElement);
-
-                // التعامل مع النقر على الزر
-                let taskProgress = 0;
-
-                button.addEventListener('click', () => {
-                    if (taskProgress === 0) {
-                        showLoading(button);
-                        openTaskLink(task.url, () => {
-                            taskProgress = 1;
-                            hideLoading(button, 'Verify');
-                        });
-                    } else if (taskProgress === 1) {
-                        showLoading(button);
-                        setTimeout(() => {
-                            taskProgress = 2;
-                            hideLoading(button, 'Claim');
-                        }, 5000);
-                    } else if (taskProgress === 2) {
-                        claimTaskReward(task.id, task.reward, button);
-                    }
-                });
             });
         })
         .catch(error => console.error('Error fetching tasks:', error));
 });
 
-// استلام المكافأة وتحديث قاعدة البيانات
-async function claimTaskReward(taskId, reward, button) {
+// إنشاء عنصر المهمة
+function createTaskElement(task, completedTasks) {
+    const taskElement = document.createElement('div');
+    taskElement.classList.add('task-item');
+
+    // صورة المهمة
+    const img = document.createElement('img');
+    img.src = task.image;
+    img.alt = 'Task Image';
+    img.classList.add('task-img');
+    taskElement.appendChild(img);
+
+    // وصف ومكافأة المهمة
+    const infoContainer = document.createElement('div');
+    infoContainer.classList.add('info-task');
+    const description = document.createElement('p');
+    description.textContent = task.description;
+    infoContainer.appendChild(description);
+
+    const rewardContainer = document.createElement('div');
+    rewardContainer.classList.add('task-reward-container');
+    const rewardText = document.createElement('span');
+    rewardText.textContent = `+ ${task.reward} $SAW`;
+    rewardText.classList.add('task-reward');
+    rewardContainer.appendChild(rewardText);
+    infoContainer.appendChild(rewardContainer);
+
+    taskElement.appendChild(infoContainer);
+
+    // زر المهمة
+    const button = document.createElement('button');
+    button.classList.add('task-button');
+    button.setAttribute('data-task-id', task.id);
+    button.setAttribute('data-reward', task.reward);
+
+    if (completedTasks.includes(task.id)) {
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+            </svg>`;
+        button.disabled = true;
+    } else {
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>`;
+    }
+
+    button.addEventListener('click', () => handleTaskButtonClick(task, button, completedTasks));
+    taskElement.appendChild(button);
+
+    return taskElement;
+}
+
+// التعامل مع الزر
+function handleTaskButtonClick(task, button, completedTasks) {
+    let taskProgress = 0;
+
+    if (taskProgress === 0) {
+        showLoading(button);
+        openTaskLink(task.url, () => {
+            taskProgress = 1;
+            hideLoading(button, 'Verify');
+        });
+    } else if (taskProgress === 1) {
+        showLoading(button);
+        setTimeout(() => {
+            taskProgress = 2;
+            hideLoading(button, 'Claim');
+        }, 5000);
+    } else if (taskProgress === 2) {
+        claimTaskReward(task.id, task.reward, button, completedTasks);
+    }
+}
+
+// استلام المكافأة وتحديث المهام المكتملة فقط
+async function claimTaskReward(taskId, reward, button, completedTasks) {
     try {
-        // التحقق إذا كانت المهمة مكتملة مسبقًا
-        const userId = uiElements.userTelegramIdDisplay.innerText;
-        const { data, error } = await supabase
-            .from('users')
-            .select('completed_tasks')
-            .eq('telegram_id', userId)
-            .single();
-
-        if (error) {
-            console.error('Error fetching completed tasks:', error);
-            return;
-        }
-
-        const completedTasks = data?.completed_tasks || [];
         if (completedTasks.includes(taskId)) {
             showNotification(uiElements.purchaseNotification, 'You have already claimed this reward.');
             return;
         }
 
-        // إضافة المكافأة إلى الرصيد
-        gameState.balance += reward;
+        // تحديث المهام المكتملة
         completedTasks.push(taskId);
-
-        // تحديث واجهة المستخدم
         button.textContent = '✓';
         button.disabled = true;
-        updateUI();
         showNotificationWithStatus(uiElements.purchaseNotification, `Successfully claimed ${reward} coins!`, 'win');
 
-        // تحديث قاعدة البيانات
-        const updatedData = {
-            balance: gameState.balance,
-            completed_tasks: completedTasks,
-        };
-
-        const { updateError } = await supabase
+        // تحديث قاعدة البيانات للمهام فقط
+        const userId = uiElements.userTelegramIdDisplay.innerText;
+        const { error } = await supabase
             .from('users')
-            .update(updatedData)
+            .update({ completed_tasks: completedTasks })
             .eq('telegram_id', userId);
 
-        if (updateError) {
-            console.error('Error updating completed tasks:', updateError);
+        if (error) {
+            console.error('Error updating completed tasks:', error);
         }
+
+        // تحديث الرصيد بشكل منفصل
+        gameState.balance += reward;
+        updateUI();
+        debounceSave();
     } catch (error) {
         console.error('Error claiming task reward:', error);
     }
