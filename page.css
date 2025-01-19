@@ -19,7 +19,6 @@
 }
  
 
-
 #clickDisplay  {
     display: flex;
     justify-content: space-between;
@@ -72,7 +71,7 @@
 
 /* زر بحالة التشغيل */
 .toggle-btn.active {
-    background-color: #2D83EC;
+    background-color: green;
 }
 
 .toggle-btn.active .toggle-ball {
@@ -327,6 +326,7 @@
     min-width: 30px; /* عرض أدنى للعنصر */
     white-space: nowrap; /* لمنع النص من الانتقال إلى سطر جديد */
 } 
+
 #clickCountDisplay::before, 
 #leaderboardnavbarBalanceDisplay::before,
 #gnavbarBalanceDisplay::before,  
@@ -545,7 +545,7 @@
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     border-radius: 50%;
-    color: #2D83EC;
+    color: red;
     font-size: 15px;
     display: flex;
     justify-content: center;
@@ -809,7 +809,7 @@
 }
 
 .progress-ring__circle {
-    stroke: #2D83EC;
+    stroke: green;
     stroke-dasharray: 100; /* يمكنك ضبط القيم حسب النسبة */
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 0.5s ease;
