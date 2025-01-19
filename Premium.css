@@ -1,17 +1,11 @@
- /* Premium Page Styling */
-#premiumPage {
-    padding: 20px;
-    text-align: center;
-}
-
 .premium-header h1 {
-    font-size: 2em;
+    font-size: 20px;
     margin-bottom: 10px;
     color: #fff;
 }
 
 .premium-header p {
-    font-size: 1.2em;
+    font-size: 15px;
     color: #ccc;
 }
 
@@ -21,17 +15,26 @@
     margin: 20px 0;
 }
 
+.premium-features  {
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    padding: 0;
+    margin: 10px auto;
+}
+ 
 .premium-features li {
-    font-size: 1.1em;
+    font-size: 15px;
     margin: 10px 0;
     color: #fff;
-    text-align: left;
+    text-align: left ;
 }
 
 /* Fixed Subscribe Button */
 .fixed-subscribe-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     left: 0;
     right: 0;
     display: flex;
@@ -40,8 +43,8 @@
 }
 
 .subscribe-btn {
-    background-color: #ffcc00;
-    color: #181818;
+    background-color:white;
+    color: #000;
     padding: 15px 30px;
     border: none;
     border-radius: 25px;
