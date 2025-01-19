@@ -4,6 +4,7 @@
   height: 38px;
   border-radius: 20px;
   overflow: hidden;
+  margin: 10px auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
