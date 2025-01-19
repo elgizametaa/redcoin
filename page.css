@@ -835,8 +835,8 @@
     justify-content: space-between;
     align-items: center;
     top: 10px;
-    left: 20px; 
-    width: 110px;
+    right: 20px; 
+    width: 140px;
     position: fixed;
     height: 40px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
