@@ -1,0 +1,57 @@
+ /* Premium Page Styling */
+#premiumPage {
+    padding: 20px;
+    text-align: center;
+}
+
+.premium-header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.premium-header p {
+    font-size: 1.2em;
+    color: #ccc;
+}
+
+.premium-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.premium-features li {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: #fff;
+    text-align: left;
+}
+
+/* Fixed Subscribe Button */
+.fixed-subscribe-container {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.subscribe-btn {
+    background-color: #ffcc00;
+    color: #181818;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.subscribe-btn:hover {
+    background-color: #e6b800;
+ }
