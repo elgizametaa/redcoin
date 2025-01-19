@@ -24,7 +24,7 @@
     position: relative;
     margin-bottom: 10px;
     padding-left: 20px;
-    color: #808080;
+    color: #fff;
     font-size: 12px;
     font-weight: 450;
 }
@@ -48,6 +48,7 @@
   margin-right: auto;
   width: 97%;
   height: 30px;
+  color: #000;
   border: 0.3px solid #181818;
   font-weight: 500; 
   display: flex;
@@ -290,7 +291,7 @@
 .invite-header h3 {
   font-size: 18px;
   margin-bottom: 12px;
-  background: linear-gradient(45deg, #2D83EC, #1AC9FF);
+  background: #000;
   background-color: transparent;
   -webkit-background-clip: text; 
   background-clip: text;
