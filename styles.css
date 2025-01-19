@@ -399,21 +399,21 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background-color: transparent;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .menu-item i {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #808080;
     transition: color 0.3s ease;
 }
 
 .menu-item.active .icon-wrapper {
-    background-color: #2D83EC;
+    background-color: red;
     box-shadow: 0 0 2px rgba(45, 131, 236, 0.7), 
                 inset 0 0 2px rgba(255, 255, 255, 0.5), 
                 inset 0 0 3px rgba(45, 131, 236, 0.8); /* تأثير الإضاءة الداخلية */
