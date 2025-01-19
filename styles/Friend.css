@@ -36,7 +36,7 @@
     top: 5px;
     width: 8px;
     height: 8px;
-    background-color: #2D83EC;
+    background-color: green;
     border-radius: 50%;
 }
 
@@ -92,7 +92,8 @@
     height: auto;
     border-radius: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.0000003);
+    background-color: white;
+    color: #000;
     margin-bottom: 5px;
     margin-top: 15px;
 }
