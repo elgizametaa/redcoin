@@ -66,9 +66,6 @@ body {
         #951607 60%,       /* اللون الأحمر الداكن يغطي المنطقة الأكبر */
         rgba(0, 0, 0, 0.8) /* الأسود الداكن يمتزج في الحواف */
     );
-    
-    /* تأثير الإبداعية */
-    filter: brightness(0.95) contrast(1.1);
     background-blend-mode: soft-light; /* الدمج الناعم */
     background-position: center;
     background-size: cover; /* التأكد من تغطية الخلفية بالكامل */
