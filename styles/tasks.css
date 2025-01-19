@@ -1,7 +1,7 @@
 .button-container {
   display: flex;
-  width: 99%;
-  height: 40px;
+  width: 95%;
+  height: 38px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -13,7 +13,8 @@
   border: none;
   cursor: pointer;
   outline: none;
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 500; 
   transition: background-color 0.3s ease;
 }
 
@@ -79,7 +80,7 @@
 .size-6 {
     width: 18px;
     height: 18px;
-    color: #2D83EC;  /* اللون الأخضر لعلامة الصح */
+    color: #fff;  /* اللون الأخضر لعلامة الصح */
 }
 
 .size-6 path {
@@ -94,7 +95,7 @@
 
 
 .loading-spinner {
-    border: 2.5px solid #3592e7;
+    border: 2.5px solid red;
     border-top: 3px solid transparent;
     border-radius: 50%;
     width: 12px;
