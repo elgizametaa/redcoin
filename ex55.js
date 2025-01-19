@@ -170,7 +170,7 @@ async function restoreEnergy() {
         gameState.lastFillTime = currentTime - (timeDiff % (5 * 1000)); // الاحتفاظ بالوقت المتبقي
         localStorage.setItem('lastFillTime', gameState.lastFillTime);
 
-        updateEnergyUI();
+       // updateEnergyUI();
 
         console.log('Energy restored successfully.');
     } catch (err) {
@@ -403,7 +403,8 @@ function formatNumber(value) {
 // تسجيل الأحداث للمستخدم
 function registerEventHandlers() {
     if (uiElements.clickableImg) {
-        uiElements.clickableImg.addEventListener('pointerdown', handleSingleTouch);
+        uiElements.clickableImg.addEventListener('click', handleClick);
+        uiElements.clickableImg.addEventListener('touchstart', handleClick);
     }
 
     if (uiElements.navButtons) {
@@ -592,193 +593,76 @@ function updateVibrationButton() {
 
 /////////////////////////////////////////
 
+function handleClick(event) {
+    event.preventDefault(); // منع الأحداث المكررة
+    const touchPoints = event.touches ? event.touches : [event]; // التعامل مع اللمس أو النقر الواحد
 
-// استدعاء الصورة القابلة للنقر
+    for (let i = 0; i < touchPoints.length; i++) {
+        const touch = touchPoints[i];
+        createDiamondCoinEffect(touch.pageX, touch.pageY);
+    }
+
+    // التحقق من توافر الطاقة اللازمة لكل نقرة
+    const requiredEnergy = gameState.clickMultiplier * touchPoints.length;
+    if (gameState.energy >= requiredEnergy) {
+        gameState.balance += gameState.clickMultiplier * touchPoints.length;
+        gameState.energy -= requiredEnergy;
+        updateUI();
+    } else {
+        showNotification(uiElements.purchaseNotification, 'Not enough energy!');
+    }
+}
+
+
+
 const img = document.getElementById('clickableImg');
-let localClickBalance = 0; // رصيد النقرات المحلي
-let localEnergyConsumed = 0; // الطاقة المستهلكة محليًا
-let lastDatabaseUpdateTime = Date.now(); // وقت آخر تحديث لقاعدة البيانات
-const updateInterval = 30000; // الفاصل الزمني للتحديث (30 ثانية)
-let isUpdatingDatabase = false; // منع التحديث المتكرر للبيانات
 
-// تحميل البيانات المحلية عند بدء التطبيق
-function loadLocalData() {
-    const storedClicks = localStorage.getItem('clickBalance');
-    const storedEnergy = localStorage.getItem('energyConsumed');
-    localClickBalance = storedClicks ? parseInt(storedClicks, 10) : 0;
-    localEnergyConsumed = storedEnergy ? parseInt(storedEnergy, 10) : 0;
-
-    updateClickBalanceUI();
-    updateEnergyUI();
-}
-
-// تحديث واجهة المستخدم لعرض رصيد النقرات
-function updateClickBalanceUI() {
-    const clickCountDisplay = document.getElementById('clickCountDisplay');
-    if (clickCountDisplay) {
-        clickCountDisplay.innerText = `${localClickBalance.toLocaleString()}`;
-    }
-}
-
-// تحديث واجهة المستخدم لشريط الطاقة الدائري
-function updateEnergyUI() {
-    const energyBar = document.getElementById('energyBar'); // دائرة شريط الطاقة
-    const energyInfo = document.getElementById('energyInfo'); // معلومات الطاقة
-
-    const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-
-    if (energyBar) {
-        const radius = energyBar.r.baseVal.value; // نصف قطر الدائرة
-        const circumference = 2 * Math.PI * radius; // محيط الدائرة
-        const progress = (currentEnergy / gameState.maxEnergy) * circumference;
-
-        energyBar.style.strokeDasharray = `${circumference}`; // إعداد المحيط الكلي
-        energyBar.style.strokeDashoffset = `${circumference - progress}`; // الإزاحة حسب الطاقة المتبقية
-    }
-
-     if (energyInfo) {
-      energyInfo.innerText = `${formatNumber(currentEnergy)}/${formatNumber(gameState.maxEnergy)}`;
-   }
-}
-
-// التعامل مع النقر
-img.addEventListener('pointerdown', (event) => {
-   // event.preventDefault();
-    handleSingleTouch(event);
-
-    // تطبيق تأثير الإمالة
+img.addEventListener('click', (event) => {
+    // --- تأثير الإمالة ---
     const rect = img.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    const rotateX = ((y / rect.height) - 0.5) * -14;
-    const rotateY = ((x / rect.width) - 0.5) * 14;
-    img.style.transition = 'transform 0.1s ease-out';
-    img.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    const rotateX = ((y / rect.height) - 0.6) * -20;
+    const rotateY = ((x / rect.width) - 0.6) * 20;
+
+    img.style.transform = `translateY(-5px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    // إعادة الوضع الطبيعي
     setTimeout(() => {
-        img.style.transform = 'perspective(700px) rotateX(0) rotateY(0)';
+        img.style.transform = 'translateY(-5px)';
     }, 300);
+
+    // --- تأثير الألماس ---
+    const diamondX = event.pageX;
+    const diamondY = event.pageY;
+
+    createDiamondCoinEffect(diamondX, diamondY);
 });
 
-
-function handleSingleTouch(event) {
-    event.preventDefault();
-
-    if (event.touches && event.touches.length > 1) {
-        console.warn('Multiple touch points detected. Ignoring extra touches.');
-        return;
-    }
-
-    const clickValue = gameState.clickMultiplier || 0;
-    const requiredEnergy = clickValue;
-    const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-
-    if (currentEnergy < requiredEnergy) {
-        showNotification(uiElements.purchaseNotification, 'Not enough energy!');
-        return;
-    }
-
-    localClickBalance += clickValue;
-    localEnergyConsumed += requiredEnergy;
-
-    localStorage.setItem('clickBalance', localClickBalance);
-    localStorage.setItem('energyConsumed', localEnergyConsumed);
-
-    updateClickBalanceUI();
-    updateEnergyUI();
-    createDiamondCoinEffect(event.pageX, event.pageY);
-
-    if (isVibrationEnabled && navigator.vibrate) {
-        navigator.vibrate(80);
-    }
-
-    // تحديث قاعدة البيانات بناءً على الوقت
-    const currentTime = Date.now();
-    if (currentTime - lastDatabaseUpdateTime >= updateInterval && !isUpdatingDatabase) {
-        updateEnergyInDatabase();
-        lastDatabaseUpdateTime = currentTime; // تحديث وقت آخر تحديث
-    }
-}
-
-
+// وظيفة إنشاء تأثير الألماس
 function createDiamondCoinEffect(x, y) {
-    const diamondText = document.createElement('div');
-    diamondText.classList.add('diamond-text');
-    diamondText.textContent = `+${gameState.clickMultiplier}`;
-    document.body.appendChild(diamondText);
+    const diamond = document.createElement('div');
+    diamond.classList.add('diamond-coin');
+    const multiplierText = document.createElement('span');
+    multiplierText.textContent = `+${gameState.clickMultiplier}`;
+    diamond.appendChild(multiplierText);
+    document.body.appendChild(diamond);
 
-    // وضع التأثير في مكان النقرة
-    diamondText.style.left = `${x}px`;
-    diamondText.style.top = `${y}px`;
+    // تحديد موقع الألماس بشكل دقيق
+    diamond.style.left = `${x}px`;
+    diamond.style.top = `${y}px`;
 
-    // تحريك النص نحو عرض الرصيد
     const balanceRect = uiElements.balanceDisplay.getBoundingClientRect();
+
+    // تحريك الألماس نحو الرصيد
     setTimeout(() => {
-        diamondText.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
-        diamondText.style.transform = `translate(${balanceRect.left - x}px, ${balanceRect.top - y}px) scale(0.5)`;
-        diamondText.style.opacity = '0';
-        setTimeout(() => diamondText.remove(), 800);
+        diamond.style.transform = `translate(${balanceRect.left - x}px, ${balanceRect.top - y}px) scale(0.5)`;
+        setTimeout(() => {
+            diamond.remove();
+        }, 1000);
     }, 50);
 }
-
-
-async function updateEnergyInDatabase() {
-    isUpdatingDatabase = true;
-
-    try {
-        // حساب الطاقة الحالية
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-        gameState.energy = currentEnergy;
-
-        // تحديث الطاقة في LocalStorage
-        localEnergyConsumed = 0; // إعادة تعيين الطاقة المستهلكة
-        localStorage.setItem('energyConsumed', localEnergyConsumed);
-
-        debounceSave(); 
-
-        console.log('Energy updated in database successfully.');
-    } catch (error) {
-        console.error('Error updating energy in database:', error);
-    } finally {
-        isUpdatingDatabase = false;
-    }
-}
-
-// التعامل مع زر المطالبة
-async function handleClaim() {
-    if (localClickBalance === 0) {
-        showNotification(uiElements.purchaseNotification, 'No clicks to claim.');
-        return;
-    }
-
-    const totalReward = localClickBalance;
-
-    try {
-        // تحديث الرصيد في gameState
-        gameState.balance += totalReward;
-
-        // إعادة تعيين الرصيد المحلي للنقرات
-        localClickBalance = 0;
-        localStorage.setItem('clickBalance', localClickBalance);
-        
-        updateUI();
-        updateClickBalanceUI();
-
-        showNotificationWithStatus(uiElements.purchaseNotification, `You claimed ${totalReward} coins!`, 'win');
-    } catch (error) {
-        console.error('Error claiming clicks:', error);
-        showNotification(uiElements.purchaseNotification, 'Failed to claim clicks. Try again later.');
-    }
-}
-
-// تهيئة التطبيق
-document.addEventListener('DOMContentLoaded', () => {
-    loadLocalData();
-
-    const claimButton = document.getElementById('claimButton');
-    if (claimButton) {
-        claimButton.addEventListener('click', handleClaim);
-    }
-});
 
 
 function startEnergyRecovery() {
@@ -792,7 +676,7 @@ function startEnergyRecovery() {
             localEnergyConsumed = Math.max(localEnergyConsumed - 20, 0);
 
             // تحديث واجهة المستخدم
-            updateEnergyUI();
+          //  updateEnergyUI();
 
             // تحديث البيانات المحلية
             localStorage.setItem('energyConsumed', localEnergyConsumed);
