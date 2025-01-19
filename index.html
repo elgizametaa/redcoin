@@ -63,7 +63,7 @@
                     <span class="boosts-label"> Boosts </span>
                 </button>
                 
-                <button data-target="distinctPage" class="distinct-button">
+                <button data-target="premiumPage" class="distinct-button">
                     <i class="fa-solid fa-web-awesome"></i>
                     <span class="distinct-label"> Premium Red </span>
                 </button>
@@ -522,6 +522,40 @@
                 <span class="leaderboard-balance" id="userBalance"></span>
             </div>
         </div>
+
+
+        <!-- Premium Page -->
+<div id="premiumPage" class="screen-content hidden">
+    <div class="premium-header">
+        <h1>Premium Subscription</h1>
+        <p>Enjoy exclusive lifetime benefits!</p>
+    </div>
+
+    <div class="premium-features">
+        <ul>
+            <li>🌟 <strong>Lifetime Access:</strong> No renewals needed, your subscription is permanent.</li>
+            <li>🚫 <strong>No Ads:</strong> A completely ad-free experience.</li>
+            <li>🔥 <strong>Advanced Progress:</strong> Stay 50% ahead of all other users.</li>
+            <li>🎁 <strong>Airdrop Eligibility:</strong> Automatically qualified for all airdrops.</li>
+            <li>💎 <strong>Triple Earnings:</strong> Collect 3x the coins you gather.</li>
+        </ul>
+    </div>
+
+    <!-- Fixed Subscribe Button -->
+    <div class="fixed-subscribe-container">
+        <button id="subscribeButton" class="subscribe-btn">Subscribe Now</button>
+    </div>
+</div>
+
+<!-- Add Premium Page to Menu -->
+<div class="menu-item-container">
+    <button data-target="premiumPage" class="menu-item">
+        <div class="icon-wrapper">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+    </button>
+    <span class="menu-label">Premium</span>
+</div>
 
 
         <nav class="menu">
