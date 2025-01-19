@@ -568,56 +568,70 @@ function updateVibrationButton() {
 
 /////////////////////////////////////////
 
-// التعامل مع النقرات
+
+// استدعاء الصورة القابلة للنقر
+const img = document.getElementById('clickableImg');
+let localClickBalance = 0; // رصيد النقرات المحلي
+let localEnergyConsumed = 0; // الطاقة المستهلكة محليًا
+let lastDatabaseUpdateTime = Date.now(); // وقت آخر تحديث لقاعدة البيانات
+const updateInterval = 30000; // الفاصل الزمني للتحديث (30 ثانية)
+let isUpdatingDatabase = false; // منع التحديث المتكرر للبيانات
+
+
 img.addEventListener('pointerdown', async (event) => {
     event.preventDefault();
+    
+    const rect = img.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const rotateX = ((y / rect.height) - 0.5) * -14;
+    const rotateY = ((x / rect.width) - 0.5) * 14;
+    img.style.transition = 'transform 0.1s ease-out';
+    img.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    setTimeout(() => {
+        img.style.transform = 'perspective(700px) rotateX(0) rotateY(0)';
+    }, 300);
+});
 
-    const clickValue = gameState.clickMultiplier || 1;
+    const clickValue = gameState.clickMultiplier || 0;
     const requiredEnergy = clickValue;
-    const currentEnergy = gameState.energy;
+    const currentEnergy = gameState.maxEnergy - gameState.energy;
 
-    // التحقق من الطاقة المتاحة
     if (currentEnergy < requiredEnergy) {
         showNotification(uiElements.purchaseNotification, 'Not enough energy!');
         return;
     }
 
+    gameState.balance += clickValue;
+    gameState.energy += requiredEnergy;
+
+    updateUI();
+    updateEnergyUI();
+
+    createDiamondCoinEffect(event.pageX, event.pageY);
+
+    if (isVibrationEnabled && navigator.vibrate) {
+        navigator.vibrate(80);
+    }
+
+    // تحديث الرصيد والطاقة في قاعدة البيانات مباشرة
     try {
-        // تحديث الرصيد والطاقة مباشرة في قاعدة البيانات
-        const { data, error } = await supabase
-            .from('users')
-            .update({
-                balance: gameState.balance + clickValue,
-                energy: currentEnergy - requiredEnergy,
-            })
-            .eq('telegram_id', uiElements.userTelegramIdDisplay.innerText)
-            .select();
-
-        if (error) {
-            throw new Error('Failed to update database.');
-        }
-
-        // تحديث الحالة العامة
-        gameState.balance = data[0].balance;
-        gameState.energy = data[0].energy;
-
-        // تحديث واجهة المستخدم
-        updateUI();
-        createDiamondCoinEffect(event.pageX, event.pageY);
-
-        console.log('Balance and energy updated successfully in the database.');
+        await updateGameStateInDatabase({
+            balance: gameState.balance,
+            energy: gameState.energy,
+        });
+        console.log('Balance and energy updated in database.');
     } catch (error) {
-        console.error('Error updating balance and energy:', error);
-        showNotification(uiElements.purchaseNotification, 'Failed to update balance. Try again later.');
+        console.error('Error updating balance and energy in database:', error);
     }
 });
 
 
-// تحديث واجهة المستخدم لشريط الطاقة
 function updateEnergyUI() {
-    const energyBar = uiElements.energyBar;
-    const energyInfo = uiElements.energyInfo;
-    const currentEnergy = gameState.energy;
+    const energyBar = document.getElementById('energyBar');
+    const energyInfo = document.getElementById('energyInfo');
+
+    const currentEnergy = gameState.maxEnergy - gameState.energy;
 
     if (energyBar) {
         const radius = energyBar.r.baseVal.value;
@@ -629,20 +643,21 @@ function updateEnergyUI() {
     }
 
     if (energyInfo) {
-        energyInfo.innerText = `${formatNumber(currentEnergy)}/${formatNumber(gameState.maxEnergy)}`;
+        energyInfo.innerText = `${currentEnergy}/${gameState.maxEnergy}`;
     }
 }
 
-// تأثير النقرة
 function createDiamondCoinEffect(x, y) {
     const diamondText = document.createElement('div');
     diamondText.classList.add('diamond-text');
     diamondText.textContent = `+${gameState.clickMultiplier}`;
     document.body.appendChild(diamondText);
 
+    // وضع التأثير في مكان النقرة
     diamondText.style.left = `${x}px`;
     diamondText.style.top = `${y}px`;
 
+    // تحريك النص نحو عرض الرصيد
     const balanceRect = uiElements.balanceDisplay.getBoundingClientRect();
     setTimeout(() => {
         diamondText.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
