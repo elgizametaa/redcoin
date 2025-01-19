@@ -731,6 +731,7 @@
     bottom: 100px;
     right: 25px; 
     width: auto;
+    position: fixed;
     height: 30px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
     border: 0.5px solid #181818;
