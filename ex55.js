@@ -379,9 +379,8 @@ function formatNumber(value) {
 // تسجيل الأحداث للمستخدم
 function registerEventHandlers() {
     if (uiElements.clickableImg) {
-        uiElements.clickableImg.addEventListener('click', handleClick);
-        uiElements.clickableImg.addEventListener('touchstart', handleClick);
-    }
+        uiElements.clickableImg.addEventListener('pointerdown', handleSingleTouch);
+     }
 
     if (uiElements.navButtons) {
         uiElements.navButtons.forEach(button => {
