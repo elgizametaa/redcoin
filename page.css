@@ -733,7 +733,7 @@
     align-items: center;
     bottom: 80px;
     right: 30px; 
-    width: 120px;
+    width: 100px;
     position: fixed;
     height: 45px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
@@ -748,7 +748,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
- .boosts-button p {
+ .boosts-button span {
     margin-left: 5px;
     margin-right: 10px;
     font-weight: 400; 
@@ -758,7 +758,7 @@
  .boosts-button i {
     font-size: 17px;
     margin-left: 2px;
-    margin-right: 10px;
+    margin-right: 5px;
  }
 
 
