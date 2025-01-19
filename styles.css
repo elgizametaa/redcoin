@@ -63,7 +63,8 @@ body {
       to bottom, 
       rgba(0, 0, 0, 0.1), /* الأسود الشفاف من الأعلى */
       #951607,            /* اللون الأحمر الداكن */
-      rgba(0, 0, 0, 0.1)  /* الأسود الشفاف من الأسفل */
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.4)  
     );
     background-blend-mode: overlay;    filter: brightness(0.9);
     background-position: center;
