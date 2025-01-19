@@ -89,10 +89,12 @@
 
 
 
+
+
 /* Premium Confirmation Box Styling */
 .premium-confirmation {
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
+    weight: 800px;
     padding: 20px;
     border-radius: 15px;
     background-color: rgba(0, 0, 0, 0.7);
