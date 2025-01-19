@@ -86,3 +86,73 @@
     background-color: #000;
     color: #fff;
 }
+
+
+
+/* Premium Confirmation Box Styling */
+.premium-confirmation {
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 50px auto;
+    color: #fff;
+    text-align: center;
+}
+
+.premium-confirmation .premium-content {
+    padding: 20px;
+}
+
+.premium-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.premium-confirmation h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #f0d678;
+}
+
+.premium-confirmation p {
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.premium-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.premium-benefits li {
+    font-size: 14px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.premium-benefits li strong {
+    margin-left: 10px;
+    color: #e6b800;
+}
+
+.premium-benefits li::before {
+    content: '✔';
+    color: #e6b800;
+    font-weight: bold;
+    margin-right: 10px;
+}
