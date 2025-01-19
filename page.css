@@ -713,7 +713,7 @@
     align-items: center;
     position: fixed;
     top: 10px;
-    left: 20px; 
+    left: 15px; 
     padding-right: 2px;
     width: auto;
     height: 40px;
@@ -835,7 +835,7 @@
     justify-content: space-between;
     align-items: center;
     top: 10px;
-    right: 20px; 
+    right: 15px; 
     width: 172px;
     position: fixed;
     height: 40px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
