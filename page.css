@@ -716,7 +716,7 @@
     align-items: center;
     position: fixed;
     bottom: 100px;
-    left: 50px; 
+    left: 30px; 
     width: auto;
     height: 30px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
@@ -729,8 +729,8 @@
 
 .boosts-button {
     bottom: 100px;
-    right: 50px; 
-    width: 40px;
+    right: 30px; 
+    width: 80px;
     position: fixed;
     height: 35px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
