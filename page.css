@@ -1,5 +1,5 @@
 .task-earn {
-    position: relative;
+    position: absolute;
     width: 100%; /* ملء كامل مساحة الحاوية */
     height: 500px;
     margin: 0 auto;
@@ -9,7 +9,7 @@
 }
 
 .lodr {
-    position: relative;
+    position: absolute;
     width: 100%; /* ملء كامل مساحة الحاوية */
     height: 500px;
     margin: 0 auto;
