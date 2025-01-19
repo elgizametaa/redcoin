@@ -755,6 +755,12 @@
     font-family: 'Archivo Black', sans-serif; 
 }
 
+ .boosts-button i {
+    font-size: 17px;
+    margin-left: 2px;
+    margin-right: 10px;
+ }
+
 
 .energy-bar-container {
     display: flex;
