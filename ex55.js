@@ -1798,6 +1798,44 @@ document.getElementById("subscribeButton").addEventListener("click", makePremium
 
 ///////////////////////////
 
+document.addEventListener('DOMContentLoaded', () => {
+    // الحصول على العناصر
+    const mainButton = document.getElementById('main-button');
+    const partnersButton = document.getElementById('partners-button');
+    const dailyButton = document.getElementById('daily-button');
+    
+    const mainTaskContainer = document.getElementById('main-task-container');
+    const partnersTaskContainer = document.getElementById('partners-task-container');
+    const dailyTaskContainer = document.getElementById('daily-task-container');
+
+    // دالة لإظهار الحاوية المخفية
+    function showContainer(containerToShow) {
+        // إخفاء جميع الحاويات
+        mainTaskContainer.style.display = 'none';
+        partnersTaskContainer.style.display = 'none';
+        dailyTaskContainer.style.display = 'none';
+
+        // عرض الحاوية المحددة
+        containerToShow.style.display = 'block';
+
+        // تحديث الحالة النشطة للأزرار
+        mainButton.classList.toggle('active', containerToShow === mainTaskContainer);
+        partnersButton.classList.toggle('active', containerToShow === partnersTaskContainer);
+        dailyButton.classList.toggle('active', containerToShow === dailyTaskContainer);
+    }
+
+    // إضافة مستمعات الأحداث للأزرار
+    mainButton.addEventListener('click', () => showContainer(mainTaskContainer));
+    partnersButton.addEventListener('click', () => showContainer(partnersTaskContainer));
+    dailyButton.addEventListener('click', () => showContainer(dailyTaskContainer));
+
+    // إظهار الحاوية الرئيسية بشكل افتراضي عند تحميل الصفحة
+    showContainer(mainTaskContainer);
+});
+
+/////////////////////////
+
+
 
 
 
