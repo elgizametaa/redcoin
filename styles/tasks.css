@@ -1,6 +1,8 @@
 .button-container {
   display: flex;
-  border-radius: 16px;
+  width: 99%;
+  height: 40px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -11,16 +13,16 @@
   border: none;
   cursor: pointer;
   outline: none;
-  font-size: 16px;
+  font-size: 18px;
   transition: background-color 0.3s ease;
 }
 
 .button-container button:first-child {
-  border-radius: 16px 0 0 16px;
+  border-radius: 20px 0 0 20px;
 }
 
 .button-container button:last-child {
-  border-radius: 0 16px 16px 0;
+  border-radius: 0 20px 20px 0;
 }
 
 .button-container button.middle {
