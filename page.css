@@ -715,10 +715,10 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    bottom: 100px;
+    bottom: 80px;
     left: 30px; 
     width: auto;
-    height: 30px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
+    height: 40px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
     border: 0.5px solid #181818;
     border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
@@ -728,15 +728,15 @@
 }
 
 .boosts-button {
-    bottom: 100px;
+    bottom: 80px;
     right: 30px; 
     width: 80px;
     position: fixed;
-    height: 35px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
+    height: 45px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
     border: 0.5px solid #181818;
     border-radius: 25px;
-    font-size: 15px;
+    font-size: 17px;
     color: #fff;
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -744,7 +744,14 @@
     backdrop-filter: blur(5px);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
- 
+
+ .boosts-button p {
+    margin-left: 5px;
+    margin-right: 10px;
+    font-weight: 400; 
+    font-family: 'Archivo Black', sans-serif; 
+}
+
 
 .energy-bar-container {
     display: flex;
@@ -793,7 +800,7 @@
     margin-left: 5px;
     margin-right: 10px;
     color: white;
-    font-size: 13.5px;
+    font-size: 16px;
     font-weight: 400; 
     font-family: 'Archivo Black', sans-serif; 
 }
