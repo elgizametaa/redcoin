@@ -151,40 +151,6 @@ async function saveGameState() {
     }
 }
 
-
-async function restoreEnergy() {
-    try {
-        const lastFillTime = parseInt(localStorage.getItem('lastFillTime'), 10) || Date.now();
-        const currentTime = Date.now();
-        const timeDiff = currentTime - lastFillTime;
-
-        // حساب عدد المرات التي يجب استعادة الطاقة فيها
-        const recoverableTimes = Math.floor(timeDiff / (5 * 1000)); // كل 5 ثوانٍ
-        const recoveredEnergy = recoverableTimes * 5;
-
-        // استعادة الطاقة بدون تجاوز الحد الأقصى
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
-        gameState.energy = Math.min(gameState.maxEnergy, currentEnergy + recoveredEnergy);
-
-        // تحديث وقت آخر استعادة
-        gameState.lastFillTime = currentTime - (timeDiff % (5 * 1000)); // الاحتفاظ بالوقت المتبقي
-        localStorage.setItem('lastFillTime', gameState.lastFillTime);
-
-       // updateEnergyUI();
-
-        console.log('Energy restored successfully.');
-    } catch (err) {
-        console.error('Error restoring energy:', err.message);
-
-        showNotificationWithStatus(
-            uiElements.purchaseNotification,
-            `Failed to restore energy. Please reload.`,
-            'lose'
-        );
-    }
-}
-
-
 // تهيئة التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', async () => {
     const isBanned = await checkAndHandleBan();
@@ -616,7 +582,6 @@ function handleClick(event) {
 
 
 const img = document.getElementById('clickableImg');
-
 img.addEventListener('click', (event) => {
     // --- تأثير الإمالة ---
     const rect = img.getBoundingClientRect();
@@ -667,23 +632,42 @@ function createDiamondCoinEffect(x, y) {
 
 function startEnergyRecovery() {
     setInterval(() => {
-        // حساب الطاقة الحالية بناءً على الطاقة المستهلكة
-        const currentEnergy = gameState.maxEnergy - localEnergyConsumed;
+        // التأكد من وجود طاقة أقل من الحد الأقصى
+        if (gameState.energy < gameState.maxEnergy) {
+            // إذا كانت الطاقة صفر أو أقل من الحد الأقصى، يتم زيادتها بمقدار 10
+            gameState.energy = Math.min(gameState.maxEnergy, gameState.energy + 5);
 
-        // التحقق إذا كانت الطاقة أقل من الحد الأقصى
-        if (currentEnergy < gameState.maxEnergy) {
-            // زيادة الطاقة بمقدار 5 إذا لم يتم تجاوز الحد الأقصى
-            localEnergyConsumed = Math.max(localEnergyConsumed - 20, 0);
+            // تحديث الوقت الأخير لملء الطاقة
+            gameState.lastFillTime = Date.now();
 
-            // تحديث واجهة المستخدم
-          //  updateEnergyUI();
-
-            // تحديث البيانات المحلية
-            localStorage.setItem('energyConsumed', localEnergyConsumed);
+            // تحديث واجهة المستخدم وحفظ البيانات
+            updateUI();
         }
-    }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
+    }, 3000); // تنفيذ الدالة كل 5 ثوانٍ
 }
 
+
+//تحديث الطاقه 
+async function restoreEnergy() {
+    try {
+        const currentTime = Date.now();
+        const timeDiff = currentTime - gameState.lastFillTime;
+
+        // حساب الطاقة المستعادة
+        const recoveredEnergy = Math.floor(timeDiff / (4 * 60 * 1000)); // استعادة الطاقة كل 4 دقائق
+        gameState.energy = Math.min(gameState.maxEnergy, gameState.energy + recoveredEnergy);
+        gameState.lastFillTime = currentTime; // تحديث وقت آخر استعادة
+        // تحديث واجهة المستخدم
+        updateUI(); 
+        
+        console.log('Energy restored successfully.');
+    } catch (err) {
+        console.error('Error restoring energy:', err.message);
+
+        // إشعار بفشل الاستعادة
+        showNotificationWithStatus(uiElements.purchaseNotification, `Failed to restore energy. Please reload.`, 'lose');
+    }
+}
 
 
 //////////////////////////////////////////////////
