@@ -1,3 +1,25 @@
+.task-earn {
+    position: relative;
+    width: 100%; /* ملء كامل مساحة الحاوية */
+    height: 500px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 15px; 
+    overflow-y: auto; 
+}
+
+.lodr {
+    position: relative;
+    width: 100%; /* ملء كامل مساحة الحاوية */
+    height: 500px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 15px; 
+    overflow-y: auto; 
+}
+ 
+
+
 #clickDisplay  {
     display: flex;
     justify-content: space-between;
