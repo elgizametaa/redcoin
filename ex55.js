@@ -802,7 +802,7 @@ async function loadFriendsList() {
 
                     const balanceSpan = document.createElement('span');
                     balanceSpan.classList.add('friend-balance');
-                    balanceSpan.textContent = `${formatNumber(friend.balance)} $SAW`;
+                    balanceSpan.textContent = `${formatNumber(friend.balance)} $RED`;
 
                     const friendInfoDiv = document.createElement('div');
                     friendInfoDiv.classList.add('friend-info');
@@ -965,7 +965,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 rewardContainer.classList.add('task-reward-container');
             
                 const rewardText = document.createElement('span');
-                rewardText.textContent = `+ ${task.reward} $SAW`;
+                rewardText.textContent = `+ ${task.reward} $RED`;
                 rewardText.classList.add('task-reward');
                 rewardContainer.appendChild(rewardText);
 
@@ -1323,7 +1323,7 @@ async function showUpgradeModal(upgradeType) {
     document.getElementById('upgradeIconContainer').innerHTML = upgrade.icon;
     document.getElementById('upgradeTitle').innerText = upgrade.title;
     document.getElementById('currentLevel').innerText = upgrade.current;
-    document.getElementById('upgradeCost').innerText = ` ${formatNumber(upgrade.cost)} $SAW`;
+    document.getElementById('upgradeCost').innerText = ` ${formatNumber(upgrade.cost)} $RED`;
 }
 
 // إغلاق النافذة المنبثقة
@@ -1487,7 +1487,7 @@ function updateUserRankDisplay(rank, username, balance) {
     if (rank !== undefined && username !== undefined && balance !== undefined) {
         userRankDisplay.innerText = `#${rank}`;
         userUsernameDisplay.innerText = truncateUsername(username);
-        userBalanceDisplay.innerText = `${formatNumber(balance)} $SAW`;
+        userBalanceDisplay.innerText = `${formatNumber(balance)} $RED`;
 
         // تحديث صورة الملف الشخصي
         updateUserImage("userAvatar");
@@ -1578,7 +1578,7 @@ async function updateLeaderboardDisplay(leaderboard) {
                     onerror="this.src='https://sawcoin.vercel.app/i/users.jpg';" />
                 <span class="leaderboard-rank">${badge}</span>
                 <span class="leaderboard-username">${truncateUsername(user.username)}</span>
-                <span class="leaderboard-balance">${formatNumber(user.balance)} $SAW</span>
+                <span class="leaderboard-balance">${formatNumber(user.balance)} $RED</span>
             `;
 
             document.getElementById('leaderboardContainer').appendChild(userRow);
@@ -1595,7 +1595,7 @@ function renderTopLeader(imageId, nameId, balanceId, rankId, avatar, username, b
 
     if (imageElement) imageElement.src = avatar;
     if (nameElement) nameElement.innerText = truncateUsername(username);
-    if (balanceElement) balanceElement.innerText = `${formatNumber(balance)} $SAW`;
+    if (balanceElement) balanceElement.innerText = `${formatNumber(balance)} $RED`;
     if (rankElement) rankElement.innerText = rank;
 
     // تغيير لون الحدود (إذا كان هناك حاجة لتخصيص ألوان)
