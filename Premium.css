@@ -17,10 +17,10 @@
 .premium-features {
     width: 95%;
     max-width: 400px;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 15px;
+    border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(6px);
     margin: 0 auto;
 }
@@ -33,8 +33,8 @@
 }
 
 .premium-features li {
-    font-size: 14px;
-    color: #fff;
+    font-size: 12px;
+    color: #808080;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 15px;
     margin-bottom: 10px;
@@ -49,7 +49,7 @@
 
 .premium-features li strong {
     margin-left: 10px;
-    font-size: 15px;
+    font-size: 14px;
     color: #f0d678;
 }
 
@@ -57,7 +57,7 @@
     content: '✔';
     color: #e6b800;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     margin-right: 10px;
 }
 
@@ -75,7 +75,7 @@
 .subscribe-btn {
     background-color: #fff;
     color: #000;
-    padding: 15px 70px;
+    padding: 15px 80px;
     border: none;
     border-radius: 30px;
     font-size: 15px;
