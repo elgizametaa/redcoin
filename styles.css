@@ -58,16 +58,20 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    background-color: #951607;
-    background: linear-gradient(
-      to bottom, 
-      rgba(0, 0, 0, 0.1), /* الأسود الشفاف من الأعلى */
-      #951607,            /* اللون الأحمر الداكن */
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.4)  
+
+    /* الخلفية */
+    background: radial-gradient(
+        circle at center, /* تدرج دائري يبدأ من المنتصف */
+        rgba(0, 0, 0, 0.1), /* الأسود الشفاف في المنتصف */
+        #951607 60%,       /* اللون الأحمر الداكن يغطي المنطقة الأكبر */
+        rgba(0, 0, 0, 0.8) /* الأسود الداكن يمتزج في الحواف */
     );
-    background-blend-mode: overlay;    filter: brightness(0.9);
+    
+    /* تأثير الإبداعية */
+    filter: brightness(0.95) contrast(1.1);
+    background-blend-mode: soft-light; /* الدمج الناعم */
     background-position: center;
+    background-size: cover; /* التأكد من تغطية الخلفية بالكامل */
 } 
 
  @media only screen and (max-width: 768px) {
