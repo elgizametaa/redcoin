@@ -1209,23 +1209,6 @@ window.Telegram.WebApp.setHeaderColor('#000000');
 
 
 /////////////////////////////////////////////////
-
-
-const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-    manifestUrl: 'https://sawcoin.vercel.app/json/tonconnect-manifest.json',
-    buttonRootId: 'ton-connect'
-});
-
-async function connectToWallet() {
-    const connectedWallet = await tonConnectUI.connectWallet();
-    // يمكنك تنفيذ بعض العمليات باستخدام connectedWallet إذا لزم الأمر
-    console.log(connectedWallet);
-}
-
-tonConnectUI.uiOptions = {
-    twaReturnUrl: 'https://t.me/SAWCOIN_BOT/GAME'
-};
-
 /////////////////////////////////////////
 
 
@@ -1755,9 +1738,16 @@ overlay.addEventListener('click', () => {
 });
 
 /////////////////////////////
-let walletAddress = null; // لتخزين عنوان المحفظة
+const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    manifestUrl: 'https://sawcoin.vercel.app/json/tonconnect-manifest.json',
+    buttonRootId: 'ton-connect'
+});
 
-// الاتصال بالمحفظة
+tonConnectUI.uiOptions = {
+    twaReturnUrl: 'https://t.me/SAWCOIN_BOT/GAME'
+};
+
+let walletAddress = null; // لتخزين عنوان المحفظة
 async function connectToWallet() {
     try {
         const connectedWallet = await tonConnectUI.connectWallet();
