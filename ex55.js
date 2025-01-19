@@ -336,15 +336,15 @@ function updateUI() {
    });
     
     // تحديث شريط الطاقة
-    const energyPercent = (gameState.energy / gameState.maxEnergy) * 100;
-    if (uiElements.energyBar) {
-        uiElements.energyBar.style.width = `${energyPercent}%`;
-    }
+  //  const energyPercent = (gameState.energy / gameState.maxEnergy) * 100;
+   // if (uiElements.energyBar) {
+     //   uiElements.energyBar.style.width = `${energyPercent}%`;
+  //  }
 
     // تحديث معلومات الطاقة
-    if (uiElements.energyInfo) {
-        uiElements.energyInfo.innerText = `${formatNumber(gameState.energy)}/${formatNumber(gameState.maxEnergy)}⚡`;
-    }
+  //  if (uiElements.energyInfo) {
+     //   uiElements.energyInfo.innerText = `${formatNumber(gameState.energy)}/${formatNumber(gameState.maxEnergy)}⚡`;
+  //  }
 
     // تحديث مضاعف النقرة
     if (uiElements.clickMultiplierDisplay) {
@@ -569,73 +569,87 @@ function updateVibrationButton() {
 
 /////////////////////////////////////////
 
-function handleClick(event) {
-    event.preventDefault(); // منع الأحداث المكررة
-    const touchPoints = event.touches ? event.touches : [event]; // التعامل مع اللمس أو النقر الواحد
+// التعامل مع النقرات
+img.addEventListener('pointerdown', async (event) => {
+    event.preventDefault();
 
-    for (let i = 0; i < touchPoints.length; i++) {
-        const touch = touchPoints[i];
-        createDiamondCoinEffect(touch.pageX, touch.pageY);
+    const clickValue = gameState.clickMultiplier || 1;
+    const requiredEnergy = clickValue;
+    const currentEnergy = gameState.energy;
+
+    // التحقق من الطاقة المتاحة
+    if (currentEnergy < requiredEnergy) {
+        showNotification(uiElements.purchaseNotification, 'Not enough energy!');
+        return;
     }
 
-    // التحقق من توافر الطاقة اللازمة لكل نقرة
-    const requiredEnergy = gameState.clickMultiplier * touchPoints.length;
-    if (gameState.energy >= requiredEnergy) {
-        gameState.balance += gameState.clickMultiplier * touchPoints.length;
-        gameState.energy -= requiredEnergy;
+    try {
+        // تحديث الرصيد والطاقة مباشرة في قاعدة البيانات
+        const { data, error } = await supabase
+            .from('users')
+            .update({
+                balance: gameState.balance + clickValue,
+                energy: currentEnergy - requiredEnergy,
+            })
+            .eq('telegram_id', uiElements.userTelegramIdDisplay.innerText)
+            .select();
+
+        if (error) {
+            throw new Error('Failed to update database.');
+        }
+
+        // تحديث الحالة العامة
+        gameState.balance = data[0].balance;
+        gameState.energy = data[0].energy;
+
+        // تحديث واجهة المستخدم
         updateUI();
-        debounceSave(); 
-    } else {
-        showNotification(uiElements.purchaseNotification, 'Not enough energy!');
+        createDiamondCoinEffect(event.pageX, event.pageY);
+
+        console.log('Balance and energy updated successfully in the database.');
+    } catch (error) {
+        console.error('Error updating balance and energy:', error);
+        showNotification(uiElements.purchaseNotification, 'Failed to update balance. Try again later.');
+    }
+});
+
+
+// تحديث واجهة المستخدم لشريط الطاقة
+function updateEnergyUI() {
+    const energyBar = uiElements.energyBar;
+    const energyInfo = uiElements.energyInfo;
+    const currentEnergy = gameState.energy;
+
+    if (energyBar) {
+        const radius = energyBar.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+        const progress = (currentEnergy / gameState.maxEnergy) * circumference;
+
+        energyBar.style.strokeDasharray = `${circumference}`;
+        energyBar.style.strokeDashoffset = `${circumference - progress}`;
+    }
+
+    if (energyInfo) {
+        energyInfo.innerText = `${formatNumber(currentEnergy)}/${formatNumber(gameState.maxEnergy)}`;
     }
 }
 
-
-const img = document.getElementById('clickableImg');
-img.addEventListener('click', (event) => {
-    // --- تأثير الإمالة ---
-    const rect = img.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-
-    const rotateX = ((y / rect.height) - 0.6) * -20;
-    const rotateY = ((x / rect.width) - 0.6) * 20;
-
-    img.style.transform = `translateY(-5px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-    // إعادة الوضع الطبيعي
-    setTimeout(() => {
-        img.style.transform = 'translateY(-5px)';
-    }, 300);
-
-    // --- تأثير الألماس ---
-    const diamondX = event.pageX;
-    const diamondY = event.pageY;
-
-    createDiamondCoinEffect(diamondX, diamondY);
-});
-
-// وظيفة إنشاء تأثير الألماس
+// تأثير النقرة
 function createDiamondCoinEffect(x, y) {
-    const diamond = document.createElement('div');
-    diamond.classList.add('diamond-coin');
-    const multiplierText = document.createElement('span');
-    multiplierText.textContent = `+${gameState.clickMultiplier}`;
-    diamond.appendChild(multiplierText);
-    document.body.appendChild(diamond);
+    const diamondText = document.createElement('div');
+    diamondText.classList.add('diamond-text');
+    diamondText.textContent = `+${gameState.clickMultiplier}`;
+    document.body.appendChild(diamondText);
 
-    // تحديد موقع الألماس بشكل دقيق
-    diamond.style.left = `${x}px`;
-    diamond.style.top = `${y}px`;
+    diamondText.style.left = `${x}px`;
+    diamondText.style.top = `${y}px`;
 
     const balanceRect = uiElements.balanceDisplay.getBoundingClientRect();
-
-    // تحريك الألماس نحو الرصيد
     setTimeout(() => {
-        diamond.style.transform = `translate(${balanceRect.left - x}px, ${balanceRect.top - y}px) scale(0.5)`;
-        setTimeout(() => {
-            diamond.remove();
-        }, 1000);
+        diamondText.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
+        diamondText.style.transform = `translate(${balanceRect.left - x}px, ${balanceRect.top - y}px) scale(0.5)`;
+        diamondText.style.opacity = '0';
+        setTimeout(() => diamondText.remove(), 800);
     }, 50);
 }
 
@@ -651,7 +665,7 @@ function startEnergyRecovery() {
             gameState.lastFillTime = Date.now();
 
             // تحديث واجهة المستخدم وحفظ البيانات
-            updateUI();
+            updateEnergyUI();
         }
     }, 3000); // تنفيذ الدالة كل 5 ثوانٍ
 }
@@ -668,7 +682,7 @@ async function restoreEnergy() {
         gameState.energy = Math.min(gameState.maxEnergy, gameState.energy + recoveredEnergy);
         gameState.lastFillTime = currentTime; // تحديث وقت آخر استعادة
         // تحديث واجهة المستخدم
-        updateUI(); 
+        updateEnergyUI(); 
         
         console.log('Energy restored successfully.');
     } catch (err) {
