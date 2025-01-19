@@ -854,45 +854,6 @@ function openTelegramChat() {
 ////////////////////////////////////////////////
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    // تهيئة الإعلانات بعد تحميل الصفحة
-    const AdController = window.Adsgram.init({ blockId: "int-5511" });
-    const button = document.getElementById('ad');
-    const purchaseNotification = uiElements.purchaseNotification; // تأكد من وجود هذا العنصر
-
-    // تحقق من وجود العناصر
-    if (!button || !purchaseNotification) {
-        console.error('Elements not found');
-        return;
-    }
-
-    // تعريف المكافأة (مثل 1000 عملة)
-    const rewardAmount = 1000;
-
-    button.addEventListener('click', () => {
-        AdController.show().then((result) => {
-            // المستخدم شاهد الإعلان حتى النهاية أو تفاعل معه
-            // مكافأة المستخدم
-            rewardUser(rewardAmount);
-            showNotificationWithStatus(purchaseNotification, `You got me ${rewardAmount} $SAW for watching the ad`, 'win');
-        }).catch((result) => {
-            // معالجة الحالة إذا حدثت مشكلة في عرض الإعلان
-            console.error('mistake ', result);
-            showNotification(purchaseNotification, 'Sorry, an error occurred while viewing');
-        });
-    });
-
-    // دالة مكافأة المستخدم
-    function rewardUser(amount) {
-        // إضافة المكافأة إلى رصيد المستخدم (تأكد من دمج هذا مع منطق اللعبة الحالي)
-        gameState.balance += amount;
-        updateUI();
-    }
-});
-
-
-
-
 //////////////////////////////////////
 
 
