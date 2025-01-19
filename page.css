@@ -545,7 +545,7 @@
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     border-radius: 50%;
-    color: red;
+    color: green;
     font-size: 15px;
     display: flex;
     justify-content: center;
@@ -670,7 +670,7 @@
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     border-radius: 50%;
-    color: #2D83EC;
+    color: #fff;
     font-size: 13px;
     display: flex;
     justify-content: center;
