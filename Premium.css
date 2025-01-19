@@ -19,7 +19,8 @@
 
 .premium-features  {
     width: 98%; /* ملء كامل مساحة الحاوية */
-    height: 200px;
+    height: 300px;
+    padding: 10px;
     border-radius: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
