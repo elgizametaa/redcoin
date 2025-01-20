@@ -68,14 +68,15 @@
     text-align: center;
     padding-top: 5px;
     color: #808080; 
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 10px;
 }
  
 
 .taskk-title {
-    text-shadow: 3px 3px #181818;
+    text-shadow: 1px 1px #181818;
     font-size: 19px;
+    margin-bottom: 10px;
     color: #fff; /* تأكد من أن النص يظهر بوضوح على الصورة */
     z-index: 100; /* تأكد من أن النص فوق الصورة */
 }
