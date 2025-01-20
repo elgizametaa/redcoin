@@ -3,10 +3,9 @@
     white-space: nowrap;       /* منع النص من الالتفاف */
     overflow: hidden;          /* إخفاء النص الزائد */
     text-overflow: ellipsis;   /* إضافة النقاط الثلاث (...) عند الاختصار */
-    max-width: 100px;          /* تحديد أقصى عرض للنص */
+    max-width: 150px;          /* تحديد أقصى عرض للنص */
     display: inline-block;     /* ضمان عمل الخصائص بشكل صحيح */
 }
-
 
 /* تأثير الضباب والتوهج عند عدم التفعيل */
 .daily-itemm.inactive {
@@ -22,10 +21,6 @@
     box-shadow: none; /* إزالة التوهج */
     pointer-events: auto; /* تمكين التفاعل مع العنصر */
 } 
-
-.daily-itemm:hover {
-    background: #1a1a1a; /* حدود العنصر */
-}
 
 .reward-img {
     display: block;
