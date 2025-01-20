@@ -114,16 +114,16 @@
 
 .wheel-arrow {
     position: absolute;
-    top: 8px;
+    top: 8px; /* تغيير الموضع ليكون في الأسفل */
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-bottom: 30px solid #f0d678;
+    border-top: 30px solid #f0d678; /* تغيير border-bottom إلى border-top */
 }
-
+ 
 /* Floating Button */
 .floating-button {
     background-color: #f0d678;
