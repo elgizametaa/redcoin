@@ -764,7 +764,7 @@
     align-items: center;
     position: fixed;
     bottom: 80px;
-    left: 30px; 
+    left: 20px; 
     width: auto;
     height: 40px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
