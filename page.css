@@ -352,7 +352,6 @@
     min-width: 30px; /* عرض أدنى للعنصر */
     white-space: nowrap; /* لمنع النص من الانتقال إلى سطر جديد */
 } 
-
 #clickCountDisplay::before, 
 #leaderboardnavbarBalanceDisplay::before,
 #gnavbarBalanceDisplay::before,  
@@ -404,11 +403,16 @@
     box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
-#premiumPage, #wheelPage {
+#premiumPage {
     padding-top: 25px; /* يمكنك تغيير القيمة حسب الحاجة */
     background-clip: padding-box; /* تأكد من أن الخلفية لا تؤثر على المسافة */
     overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     padding-bottom: 100px; /* مسافة سفلية */
+    box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
+}
+
+#wheelPage {
+    overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
     box-shadow: inset 0 0 32px rgba(0, 0, 0, 1); /* ظل داخلي لإضافة عمق للحواف */
 }
 
