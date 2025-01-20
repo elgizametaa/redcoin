@@ -1,3 +1,11 @@
+.Premium-image {
+    width: 150px;
+    height: auto;
+    margin: 10px auto;
+    display: block;
+    margin-bottom: 10px;
+} 
+
 .premium-header h1 {
     font-size: 24px;
     text-align: center;
