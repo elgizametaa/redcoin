@@ -10,7 +10,7 @@
     background-color: #000;
     color: white;
     font-weight: bold;
-    
+    transform: scale(1.1); 
 }
 
 .button-container {
