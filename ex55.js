@@ -661,15 +661,15 @@ function createDiamondCoinEffect(x, y) {
     }, 50);
 }
 
-// استعادة الطاقة عند بدء التطبيق
+
 async function restoreEnergy() {
     try {
         const lastFillTime = parseInt(localStorage.getItem('lastFillTime'), 10) || Date.now();
         const currentTime = Date.now();
         const timeDiff = currentTime - lastFillTime;
 
-        // حساب عدد المرات التي يجب استعادة الطاقة فيها (كل 5 ثوانٍ)
-        const recoverableTimes = Math.floor(timeDiff / (5 * 1000));
+        // حساب عدد المرات التي يمكن استعادة الطاقة فيها
+        const recoverableTimes = Math.floor(timeDiff / (5 * 1000)); // كل 5 ثوانٍ استعادة 5 نقاط
         const recoveredEnergy = recoverableTimes * 5;
 
         // تحديث الطاقة الحالية بدون تجاوز الحد الأقصى
@@ -677,18 +677,20 @@ async function restoreEnergy() {
         gameState.energy = Math.min(gameState.maxEnergy, currentEnergy + recoveredEnergy);
 
         // تحديث وقت آخر تعبئة
-        const newFillTime = currentTime - (timeDiff % (5 * 1000));
-        localStorage.setItem('lastFillTime', newFillTime);
+        if (recoverableTimes > 0) {
+            const newFillTime = currentTime - (timeDiff % (5 * 1000));
+            localStorage.setItem('lastFillTime', newFillTime);
+        }
 
         updateEnergyUI();
 
-        console.log('Energy restored successfully.');
+        console.log(`Energy restored: ${recoveredEnergy} points.`);
     } catch (err) {
         console.error('Error restoring energy:', err.message);
     }
 }
 
-// استعادة الطاقة بشكل دوري أثناء تشغيل التطبيق
+
 function startEnergyRecovery() {
     setInterval(() => {
         const currentEnergy = gameState.energy;
@@ -705,10 +707,11 @@ function startEnergyRecovery() {
             // تحديث واجهة المستخدم
             updateEnergyUI();
 
-            console.log('Energy recovered successfully.');
+            console.log(`Energy recovered: 5 points. Current energy: ${gameState.energy}`);
         }
     }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
 }
+
 
 
 //////////////////////////////////////////////////
