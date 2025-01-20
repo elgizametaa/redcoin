@@ -156,8 +156,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const isBanned = await checkAndHandleBan();
     if (isBanned) return; 
     await loadGameState();   
-    //await restoreEnergy();
-   // startEnergyRecovery(); 
+    await restoreEnergy();
+    startEnergyRecovery(); 
     updateUI();  
     loadFriendsList(); 
     await fetchLeaderboard();
@@ -662,15 +662,22 @@ function createDiamondCoinEffect(x, y) {
 }
 
 
-// استعادة الطاقة بشكل دوري أثناء تشغيل التطبيق
+// استعادة الطاقة بشكل دوري
 function startEnergyRecovery() {
     setInterval(() => {
-        if (gameState.energy < gameState.maxEnergy) {
-            gameState.energy = Math.min(gameState.maxEnergy, gameState.energy + 5); // استعادة 5 نقاط
+        const currentEnergy = gameState.maxEnergy - gameState.energy;
+
+        // التحقق إذا كانت الطاقة أقل من الحد الأقصى
+        if (currentEnergy < gameState.maxEnergy) {
+            // استعادة الطاقة بمقدار 20 نقطة إذا لم يتم تجاوز الحد الأقصى
+            gameState.energy = Math.max(gameState.energy - 20, 0);
+
+            // تحديث واجهة المستخدم
             updateEnergyUI();
+
             console.log('Energy recovered successfully.');
         }
-    }, 5000); // تنفيذ كل 5 ثوانٍ
+    }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
 }
 
 // استعادة الطاقة عند بدء التطبيق
@@ -680,36 +687,31 @@ async function restoreEnergy() {
         const currentTime = Date.now();
         const timeDiff = currentTime - lastFillTime;
 
-        // حساب الطاقة المستعادة
+        // حساب عدد المرات التي يجب استعادة الطاقة فيها
         const recoverableTimes = Math.floor(timeDiff / (5 * 1000)); // كل 5 ثوانٍ
         const recoveredEnergy = recoverableTimes * 5;
 
-        // تحديث الطاقة بناءً على الوقت المنقضي
-        gameState.energy = Math.min(gameState.maxEnergy, gameState.energy + recoveredEnergy);
+        // استعادة الطاقة بدون تجاوز الحد الأقصى
+        const currentEnergy = gameState.maxEnergy - gameState.energy;
+        gameState.energy = Math.min(gameState.maxEnergy, currentEnergy + recoveredEnergy);
 
-        // تحديث وقت آخر ملء للطاقة
-        const newFillTime = currentTime - (timeDiff % (5 * 1000)); // الاحتفاظ بالوقت المتبقي
-        localStorage.setItem('lastFillTime', newFillTime);
+        // تحديث وقت آخر استعادة
+        gameState.lastFillTime = currentTime - (timeDiff % (5 * 1000)); // الاحتفاظ بالوقت المتبقي
+        localStorage.setItem('lastFillTime', gameState.lastFillTime);
 
         updateEnergyUI();
+
         console.log('Energy restored successfully.');
     } catch (err) {
         console.error('Error restoring energy:', err.message);
+
+        showNotificationWithStatus(
+            uiElements.purchaseNotification,
+            `Failed to restore energy. Please reload.`,
+            'lose'
+        );
     }
 }
-
-// حفظ حالة اللعبة عند الخروج
-window.addEventListener('beforeunload', () => {
-    localStorage.setItem('lastFillTime', Date.now());
-    localStorage.setItem('currentEnergy', gameState.energy);
-});
-
-// تحميل حالة اللعبة عند الدخول
-window.addEventListener('load', () => {
-    gameState.energy = parseInt(localStorage.getItem('currentEnergy'), 10) || gameState.maxEnergy;
-    restoreEnergy();
-    startEnergyRecovery();
-});
 
 
 //////////////////////////////////////////////////
