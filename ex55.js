@@ -1744,29 +1744,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const partnersTaskContainer = document.getElementById('partners-task-container');
     const dailyTaskContainer = document.getElementById('daily-task-container');
 
-    // دالة لإظهار الحاوية المخفية
-    function showContainer(containerToShow) {
-        // إخفاء جميع الحاويات
-        mainTaskContainer.style.display = 'none';
-        partnersTaskContainer.style.display = 'none';
-        dailyTaskContainer.style.display = 'none';
+    function showContainer(containerToShow, activeButton) {
+    // إخفاء جميع الحاويات
+    mainTaskContainer.style.display = 'none';
+    partnersTaskContainer.style.display = 'none';
+    dailyTaskContainer.style.display = 'none';
 
-        // عرض الحاوية المحددة
-        containerToShow.style.display = 'block';
+    // عرض الحاوية المحددة
+    containerToShow.style.display = 'block';
 
-        // تحديث الحالة النشطة للأزرار
-        mainButton.classList.toggle('active', containerToShow === mainTaskContainer);
-        partnersButton.classList.toggle('active', containerToShow === partnersTaskContainer);
-        dailyButton.classList.toggle('active', containerToShow === dailyTaskContainer);
-    }
+    // إزالة الحالة النشطة عن جميع الأزرار
+    mainButton.classList.remove('active');
+    partnersButton.classList.remove('active');
+    dailyButton.classList.remove('active');
 
-    // إضافة مستمعات الأحداث للأزرار
-    mainButton.addEventListener('click', () => showContainer(mainTaskContainer));
-    partnersButton.addEventListener('click', () => showContainer(partnersTaskContainer));
-    dailyButton.addEventListener('click', () => showContainer(dailyTaskContainer));
+    // تعيين الحالة النشطة للزر الحالي
+    activeButton.classList.add('active');
+}
 
-    // إظهار الحاوية الرئيسية بشكل افتراضي عند تحميل الصفحة
-    showContainer(mainTaskContainer);
+// إضافة مستمعات الأحداث للأزرار
+mainButton.addEventListener('click', () => showContainer(mainTaskContainer, mainButton));
+partnersButton.addEventListener('click', () => showContainer(partnersTaskContainer, partnersButton));
+dailyButton.addEventListener('click', () => showContainer(dailyTaskContainer, dailyButton));
+
+// إظهار الحاوية الرئيسية بشكل افتراضي عند تحميل الصفحة
+showContainer(mainTaskContainer, mainButton);
 });
 
 /////////////////////////
