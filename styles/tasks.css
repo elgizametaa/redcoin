@@ -1,7 +1,16 @@
+.t-image {
+    width: 150px;
+    height: auto;
+    margin: 10px auto;
+    display: block;
+    margin-bottom: 10px;
+} 
+
 .button-container button.active {
     background-color: #000;
     color: white;
     font-weight: bold;
+    
 }
 
 .button-container {
