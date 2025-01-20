@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadFriendsList(); 
     await fetchLeaderboard();
     await fetchUserRank();
+    await checkSubscriptionStatus();
     await initializeApp();  
 });
 
@@ -1856,10 +1857,6 @@ document.getElementById("subscribeButton").addEventListener("click", async () =>
     await makePremiumPayment(); // استدعاء منطق الدفع بعد ربط المحفظة
 });
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await checkSubscriptionStatus(); // تحقق من حالة الاشتراك عند تحميل الصفحة
-});
-
 async function checkSubscriptionStatus() {
     const telegramApp = window.Telegram.WebApp;
     const telegramId = telegramApp.initDataUnsafe.user?.id;
@@ -1886,8 +1883,158 @@ async function checkSubscriptionStatus() {
     }
 }
 
+/////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', () => {
+    // عناصر DOM الضرورية
+    const dailyButton = document.getElementById('daily2');
+    const dailyCloseModal = document.getElementById('logindailycloseModal');
+    const logindailyContainer = document.getElementById('logindailyContainer');
+    const logindailyContent = document.querySelector('.logindaily-content');
+    const logindailyOverlay = document.getElementById('logindailyOverlay'); 
+    const loginClaimBtn = document.getElementById('loginclaimBtn');
+    const loginNotification = document.getElementById('login');
+    const dayElements = document.querySelectorAll('.daily-item');
+    const rewardImages = document.querySelectorAll('.reward-image'); // صور المكافآت
+    const dailyRewards = [100, 500, 2000, 5000, 8000, 15000, 30000, 50000, 100000, 200000, 300000, 500000];
+
+    // الدالة الرئيسية لتسجيل الدخول اليومي
+    function handleDailyLogin() {
+        try {
+            // جلب بيانات المستخدم من LocalStorage
+            let localData = JSON.parse(localStorage.getItem('dailyLoginData')) || {};
+            let { last_login_date, consecutive_days } = localData;
+
+            consecutive_days = consecutive_days || 0; // تعيين قيمة افتراضية إذا كانت غير موجودة
+            const today = new Date().toISOString().split('T')[0];
+
+            // التحقق من حالة تسجيل الدخول اليومي
+            if (last_login_date === today) {
+                loginNotification.innerText = 'You have already claimed today\'s reward.';
+                disableClaimButton();
+                highlightRewardedDays(consecutive_days);
+                showRewardImage(consecutive_days);
+                return;
+            }
+
+            // التحقق من استمرارية الأيام المتتالية
+            const lastLoginDateObj = new Date(last_login_date);
+            const isConsecutive = (new Date(today).getDate() - lastLoginDateObj.getDate()) === 1 &&
+                                  new Date(today).getMonth() === lastLoginDateObj.getMonth() &&
+                                  new Date(today).getFullYear() === lastLoginDateObj.getFullYear();
+
+            if (isConsecutive) {
+                consecutive_days++;
+                if (consecutive_days > dailyRewards.length) consecutive_days = dailyRewards.length;
+            } else {
+                consecutive_days = 1; // إعادة تعيين إلى اليوم الأول
+            }
+
+            // إضافة المكافأة
+            const reward = dailyRewards[consecutive_days - 1];
+            updateBalance(reward);
+
+            // تحديث واجهة المستخدم
+            loginNotification.innerText = `Day ${consecutive_days}: You've earned ${reward} $SAW!`;
+            updateClaimButton(consecutive_days, reward);
+            highlightRewardedDays(consecutive_days);
+
+            // تحديث البيانات في LocalStorage
+            localData = { last_login_date: today, consecutive_days };
+            localStorage.setItem('dailyLoginData', JSON.stringify(localData));
+        } catch (error) {
+            console.error('Unexpected error in daily login:', error);
+            loginNotification.innerText = 'Error processing your daily login. Please try again later.';
+        }
+    }
+
+    // تحديث زر المطالبة بالمكافأة
+    function updateClaimButton(day, reward) {
+        loginClaimBtn.innerText = `day ${day} : ${reward} $SAW`;
+        loginClaimBtn.disabled = false;
+        loginClaimBtn.classList.remove('disabled');
+    }
+
+    // تعطيل الزر بعد المطالبة بالمكافأة
+    function disableClaimButton() {
+        loginClaimBtn.disabled = true;
+        loginClaimBtn.classList.add('disabled');
+    }
+
+    // تحديث واجهة الأيام المتتالية
+    function highlightRewardedDays(dayCount) {
+        dayElements.forEach((el, index) => {
+            if (index < dayCount) {
+                el.classList.add('claimed');
+                el.style.filter = 'blur(2px)';
+            } else {
+                el.classList.remove('claimed');
+                el.style.filter = 'none';
+            }
+        });
+    }
+    
+    // عرض الصورة الخاصة بكل يوم بعد المطالبة
+    function showRewardImage(day) {
+        rewardImages.forEach((img, index) => {
+            if (index === day - 1) {
+                img.src = 'i/done.png'; // تحديث مصدر الصورة
+                img.classList.remove('hidden'); // إظهار الصورة
+            } else {
+                img.classList.add('hidden'); // إخفاء الصور الأخرى
+            }
+        });
+    }
+
+    // تحديث الرصيد
+    function updateBalance(amount) {
+        gameState.balance += amount;
+        updateUI(); 
+    }
+
+    // فتح نافذة تسجيل الدخول اليومي
+    function openDailyLoginModal() {
+        logindailyContainer.classList.remove('hidden');
+        logindailyContent.classList.remove('hidden');
+        logindailyOverlay.style.display = 'block'; // تأكد من إظهار الشفافية
+        handleDailyLogin();
+    }
+
+    // إغلاق نافذة تسجيل الدخول اليومي عند النقر على زر الإغلاق
+    dailyCloseModal.addEventListener('click', function () {
+        closeDailyLoginModal();
+    });
+
+    // إغلاق النافذة عند النقر على الشفافية (overlay)
+    logindailyOverlay.addEventListener('click', function () {
+        closeDailyLoginModal();
+    });
+
+    // الدالة لإغلاق نافذة تسجيل الدخول اليومي
+    function closeDailyLoginModal() {
+        logindailyContainer.classList.add('hidden');
+        logindailyContent.classList.add('hidden');
+        logindailyOverlay.style.display = 'none'; // إخفاء الشفافية
+    }
+
+    // عند الضغط على زر المطالبة بالمكافأة
+    loginClaimBtn.addEventListener('click', function () {
+        handleDailyLogin();
+        disableClaimButton();
+    });
+
+    // فتح النافذة عند دخول المستخدم
+    dailyButton.addEventListener('click', function () {
+        openDailyLoginModal();
+    });
+});
+
 
 /////////////////////////////////
+
+
+
+
 
 
 
