@@ -1,16 +1,10 @@
-.Balances {
-    display: flex;
-    justify-content: space-between;
-    width: 95%;
-    position: fixed;
-    top: 5px;
-    margin: 10px auto; 
-}
-
-.balance-key, .balance-usdt, .balance-ton, .redcoin {
+.balance-usdt {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 10px;
+    left: 15px; 
     padding-right: 2px;
     width: auto;
     height: 35px;
@@ -23,6 +17,72 @@
     backdrop-filter: blur(5px);
 } 
 
+.balance-ton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    right: 15px; 
+    padding-right: 2px;
+    width: auto;
+    height: 35px;
+    margin: 10px;
+    z-index: 500;
+    border: 0.5px solid #181818;
+    border-radius: 15px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}  
+
+.redcoin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    left: 40px; 
+    padding-right: 2px;
+    width: auto;
+    height: 35px;
+    margin: 10px;
+    z-index: 500;
+    border: 0.5px solid #181818;
+    border-radius: 15px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}  
+
+.balance-key {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    right: 40px; 
+    padding-right: 2px;
+    width: auto;
+    height: 35px;
+    margin: 10px;
+    z-index: 500;
+    border: 0.5px solid #181818;
+    border-radius: 15px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+} 
+
+.Balances {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    position: fixed;
+    top: 5px;
+    margin: 10px auto; 
+}
+ 
 .balance-icon {
     width: 25px;
     height: 25px;
