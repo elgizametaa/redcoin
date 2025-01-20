@@ -970,7 +970,7 @@ function createTaskElement(task, completedTasks) {
     const rewardContainer = document.createElement('div');
     rewardContainer.classList.add('task-reward-container');
     const rewardText = document.createElement('span');
-    rewardText.textContent = `+ ${task.reward} $SAW`;
+    rewardText.textContent = `+ ${task.reward} $RED`;
     rewardText.classList.add('task-reward');
     rewardContainer.appendChild(rewardText);
     infoContainer.appendChild(rewardContainer);
