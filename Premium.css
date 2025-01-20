@@ -1,65 +1,37 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #181818;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.hidden {
-    display: none;
-}
-
-.screen-content {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-
-/* Premium Image Styling */
 .Premium-image {
     width: 150px;
     height: auto;
     margin: 10px auto;
     display: block;
     margin-bottom: 10px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+} 
 
-/* Premium Header Styling */
 .premium-header h1 {
     font-size: 24px;
+    text-align: center;
     margin-bottom: 10px;
-    color: #f0d678;
+    color: #fff;
 }
 
 .premium-header p {
+    text-align: center;
     font-size: 14px;
     color: #ccc;
     margin-bottom: 20px;
 }
 
-/* Premium Features Styling */
 .premium-features {
     width: 100%;
+    weight: 500px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.00005);
+    backdrop-filter: blur(1px);
     margin: 15px auto;
-    padding: 15px;
+    margin-bottom: 100px;
 }
 
+/* Individual Feature Styling */
 .premium-features ul {
     list-style: none;
     padding: 0;
@@ -67,10 +39,10 @@ body {
 }
 
 .premium-features li {
-    font-size: 14px;
+    font-size: 12px;
     color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     padding: 15px;
     margin-bottom: 10px;
@@ -78,6 +50,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: left;
     word-wrap: break-word;
 }
 
@@ -91,10 +64,11 @@ body {
     content: '✔';
     color: #e6b800;
     font-weight: bold;
+    font-size: 13px;
     margin-right: 10px;
 }
 
-/* Fixed Subscribe Button Styling */
+/* Fixed Subscribe Button */
 .fixed-subscribe-container {
     position: fixed;
     bottom: 80px;
@@ -106,8 +80,8 @@ body {
 }
 
 .subscribe-btn {
-    background-color: #f0d678;
-    color: #181818;
+    background-color: #fff;
+    color: #000;
     padding: 15px 120px;
     border: none;
     border-radius: 15px;
@@ -115,32 +89,36 @@ body {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s;
+    transition: background-color 0.3s;
 }
 
 .subscribe-btn:hover {
-    background-color: #181818;
-    color: #f0d678;
-    border: 1px solid #f0d678;
+    background-color: #000;
+    color: #fff;
 }
+
+
+
+
 
 /* Premium Confirmation Box Styling */
 .premium-confirmation {
     width: 100%;
-    max-width: 500px;
+    max-width: 500px; /* الحد الأقصى للعرض */
     padding: 20px;
     border-radius: 15px;
     background-color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    margin: 50px auto;
+    margin: 50px auto; /* لضمان تمركز الحاوية في الصفحة */
     color: #fff;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-/* Confirmation Content Styling */
+/* Content Styling */
 .premium-content {
     padding: 20px;
     display: flex;
@@ -149,6 +127,7 @@ body {
     justify-content: center;
 }
 
+/* Image Styling */
 .premium-image {
     width: 120px;
     height: 120px;
@@ -157,19 +136,21 @@ body {
     object-fit: cover;
 }
 
+/* Heading Styling */
 .premium-confirmation h2 {
     font-size: 22px;
     margin-bottom: 10px;
     color: #f0d678;
 }
 
+/* Description Styling */
 .premium-confirmation p {
     font-size: 16px;
     color: #ccc;
     margin-bottom: 20px;
 }
 
-/* Benefits List Styling */
+/* Premium Benefits List Styling */
 .premium-benefits {
     list-style: none;
     padding: 0;
@@ -188,6 +169,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    width: 100%;
 }
 
 .premium-benefits li strong {
@@ -201,3 +183,31 @@ body {
     font-weight: bold;
     margin-right: 10px;
 }
+
+#premiumStatus li {
+    font-size: 12px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    word-wrap: break-word;
+} 
+
+#premiumStatus {
+    width: 100%;
+    weight: 500px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.00005);
+    backdrop-filter: blur(1px);
+    margin: 15px auto;
+    margin-bottom: 100px;
+}
+ 
