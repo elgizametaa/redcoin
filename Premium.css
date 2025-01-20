@@ -114,7 +114,7 @@
 
 .wheel-arrow {
     position: absolute;
-    top: 8px; /* تغيير الموضع ليكون في الأسفل */
+    top: 5px; /* تغيير الموضع ليكون في الأسفل */
     left: 50%;
     transform: translateX(-50%);
     width: 0;
