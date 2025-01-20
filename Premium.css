@@ -1,8 +1,9 @@
 .Balances {
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 95%;
     position: fixed;
+    margin: 10px auto;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
