@@ -1856,7 +1856,43 @@ document.getElementById("subscribeButton").addEventListener("click", async () =>
     await makePremiumPayment(); // استدعاء منطق الدفع بعد ربط المحفظة
 });
 
+document.addEventListener("DOMContentLoaded", async () => {
+    await checkSubscriptionStatus(); // تحقق من حالة الاشتراك عند تحميل الصفحة
+});
+
+async function checkSubscriptionStatus() {
+    const telegramApp = window.Telegram.WebApp;
+    const telegramId = telegramApp.initDataUnsafe.user?.id;
+
+    try {
+        // استعلام عن حالة الاشتراك
+        const { data, error } = await supabase
+            .from("users")
+            .select("premium_status")
+            .eq("telegram_id", telegramId)
+            .single();
+
+        if (error) throw new Error(error.message);
+
+        // إذا كان المستخدم مشتركًا، قم بتحديث الواجهة
+        if (data.premium_status) {
+            document.getElementById("subscribeButton").classList.add("hidden");
+            document.querySelector(".premium-features").classList.add("hidden");
+            document.getElementById("premiumStatus").classList.remove("hidden");
+        }
+    } catch (error) {
+        console.error("Error checking subscription status:", error.message);
+        showNotification(purchaseNotification, 'Failed to check subscription status.');
+    }
+}
+
+
 /////////////////////////////////
+
+
+
+
+
 
 // تفعيل التطبيق
 initializeApp();
