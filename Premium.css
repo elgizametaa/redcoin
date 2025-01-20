@@ -7,7 +7,7 @@
     left: 15px; 
     padding-right: 2px;
     width: auto;
-    height: 30px;
+    height: 25px;
     margin: 10px;
     z-index: 500;
     border: 0.5px solid #181818;
@@ -26,7 +26,7 @@
     right: 15px; 
     padding-right: 2px;
     width: auto;
-    height: 30px;
+    height: 25px;
     margin: 10px;
     z-index: 500;
     border: 0.5px solid #181818;
@@ -42,10 +42,10 @@
     align-items: center;
     position: fixed;
     top: 10px;
-    left: 80px; 
+    left: 90px; 
     padding-right: 2px;
     width: auto;
-    height: 30px;
+    height: 25px;
     margin: 10px;
     z-index: 500;
     border: 0.5px solid #181818;
@@ -61,10 +61,10 @@
     align-items: center;
     position: fixed;
     top: 10px;
-    right: 80px; 
+    right: 90px; 
     padding-right: 2px;
     width: auto;
-    height: 30px;
+    height: 25px;
     margin: 10px;
     z-index: 500;
     border: 0.5px solid #181818;
@@ -91,12 +91,12 @@
 .balance-value {
     font-size: 14px;
     color: #fff;
+    padding-right: 4px;
     font-weight: bold;
 }
 
 .wheel-container {
     position: relative;
-   /* flex-grow: 1;*/
     display: flex;
     justify-content: center;
     align-items: center;
