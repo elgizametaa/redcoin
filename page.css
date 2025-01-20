@@ -447,7 +447,7 @@
 .leaderboard-avatar {
     width: 42px;
     height: auto;
-    border-radius: 50%;
+    border-radius: 15px;
     margin-left: 10px;
    /* border: 1px solid #161616;*/
     padding: 2px;
