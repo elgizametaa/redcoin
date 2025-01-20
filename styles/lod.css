@@ -1,0 +1,131 @@
+.peeek-loading {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.peeek-loading ul {
+  position: absolute;
+  /* تعديل الموازاة الأفقيّة بحيث تكون الدوائر في المنتصف */
+  left: calc(50% - 0.5em); /* تقليل القيمة من 0.6em إلى 0.5em لتناسب الحجم الأصغر */
+  top: calc(50% - 3em);  /* تقليل المسافة هنا لتناسب الحجم الأصغر */
+  display: inline-block;
+  text-indent: 2em; /* تقليل المسافة بين العناصر داخل القائمة */
+}
+
+.peeek-loading ul li:after,
+.peeek-loading ul:after {
+  /* تغيير الحجم لتصغير الدوائر بشكل أكبر */
+  width: 1em;  /* أصغر من 1.2em إلى 1em */
+  height: 1em; /* أصغر من 1.2em إلى 1em */
+  background: #fff;
+  border-radius: 100%; /* دائرة كاملة */
+  content: "";
+  display: block;
+}
+
+.peeek-loading ul:after {
+  position: absolute;
+  /* تعديل المسافة بين الدائرة الأولى وبقية العناصر بناءً على الحجم الجديد */
+  top: 2em; /* 2em بدلاً من 2.4em لتناسب الحجم الأصغر */
+}
+
+.peeek-loading li {
+  position: absolute;
+  /* المسافة بين الدوائر هنا تم تعديلها لتتناسب مع الحجم الجديد */
+  padding-bottom: 4em;  /* تقليل المسافة بين الدوائر لتناسب الحجم الأصغر */
+  top: 0;
+  left: 0;
+}
+
+/* كل عنصر من عناصر li مع الأنيميشين */
+.peeek-loading li:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: 0.125s;
+}
+
+.peeek-loading li:nth-child(1):after {
+  animation-delay: 0.125s;
+}
+
+/* نفس الأمر ينطبق على باقي العناصر مع تغييرات بسيطة في التوقيت */
+.peeek-loading li:nth-child(2) {
+  transform: rotate(36deg);
+  animation-delay: 0.25s;
+}
+
+.peeek-loading li:nth-child(3) {
+  transform: rotate(72deg);
+  animation-delay: 0.375s;
+}
+
+.peeek-loading li:nth-child(4) {
+  transform: rotate(108deg);
+  animation-delay: 0.5s;
+}
+
+.peeek-loading li:nth-child(5) {
+  transform: rotate(144deg);
+  animation-delay: 0.625s;
+}
+
+.peeek-loading li:nth-child(6) {
+  transform: rotate(180deg);
+  animation-delay: 0.75s;
+}
+
+.peeek-loading li:nth-child(7) {
+  transform: rotate(216deg);
+  animation-delay: 0.875s;
+}
+
+.peeek-loading li:nth-child(8) {
+  transform: rotate(252deg);
+  animation-delay: 1s;
+}
+
+.peeek-loading li:nth-child(9) {
+  transform: rotate(288deg);
+  animation-delay: 1.125s;
+}
+
+.peeek-loading li:nth-child(10) {
+  transform: rotate(324deg);
+  animation-delay: 1.25s;
+}
+
+/* الأنيميشين الأساسية لتحريك الدوائر */
+.peeek-loading li {
+  animation: dotAnimation 2.5s infinite;
+}
+
+@keyframes dotAnimation {
+  0%, 55%, 100% {
+    padding: 0 0 4em 0; /* تقليل المسافة بين الدوائر لتناسب الحجم الأصغر */
+  }
+  5%, 50% {
+    padding: 2em 0; /* تقليل المسافة بين الدوائر لتناسب الحجم الأصغر */
+  }
+}
+
+/* الأنيميشين التي تؤثر في الشكل والشفافية */
+.peeek-loading li:after {
+  animation: dotAnimationTwo 2.5s infinite;
+}
+
+@-webkit-keyframes dotAnimationTwo {
+  0%, 55%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  5%, 50% {
+    opacity: 0.5;
+    transform: scale(0.5); /* تأثير التصغير */
+  }
+}
