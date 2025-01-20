@@ -2036,6 +2036,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+let lastTaskTime = localStorage.getItem('lastTaskTime') || 0;
+
+document.getElementById('ton').addEventListener('click', async () => {
+    const currentTime = Date.now();
+
+    // تحقق إذا مر 12 ساعة
+    if (currentTime - lastTaskTime < 12 * 60 * 60 * 1000) {
+        const remainingTime = 12 * 60 * 60 * 1000 - (currentTime - lastTaskTime);
+        const hours = Math.floor(remainingTime / (60 * 60 * 1000));
+        const minutes = Math.floor((remainingTime % (60 * 60 * 1000)) / (60 * 1000));
+        showNotification(purchaseNotification, `You can complete this task again in ${hours}h ${minutes}m.`);
+        return;
+    }
+
+    // تحقق من ربط المحفظة
+    if (!walletAddress) {
+        showNotification(purchaseNotification, 'Please connect your wallet first!');
+        await connectToWallet();
+        return;
+    }
+
+    // إجراء الدفع
+    try {
+        const amount = "50000"; // 0.5 TON بالنانو TON
+        const recipientAddress = "UQCpMg6TV_zE34ao-Ii2iz5M6s5Qp8OIVWa3YbsB9KwxzwCJ";
+
+        const transaction = {
+            validUntil: Math.floor(currentTime / 1000) + 600, // صالح لمدة 10 دقائق
+            messages: [{ address: recipientAddress, amount }],
+        };
+
+        await tonConnectUI.sendTransaction(transaction);
+
+        // تحديث وقت التنفيذ في التخزين المحلي
+        lastTaskTime = currentTime;
+        localStorage.setItem('lastTaskTime', lastTaskTime);
+
+        // تحديث الواجهة
+        showNotification(purchaseNotification, 'Thank you for your contribution! Task completed successfully.');
+    } catch (error) {
+        console.error("Error completing task:", error.message);
+        showNotification(purchaseNotification, `Payment failed: ${error.message}`);
+    }
+});
+
+
+/////////////////////////////////////
+
+
 
 
 
