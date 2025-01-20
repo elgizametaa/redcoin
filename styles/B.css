@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 35px; /* زوايا مستديرة */
+    border-radius: 15px; /* زوايا مستديرة */
     border: 0.7px solid #101010;
     width: 80%;
     height: 25px;
@@ -168,7 +168,7 @@
     /*border-bottom: 1px solid #1c1c1c;
     border-right: 1px solid #1c1c1c;
     background: #101010;*/
-    border-radius: 25px; /* زوايا مستديرة */
+    border-radius: 15px; /* زوايا مستديرة */
     box-sizing: border-box; /* لحساب الحواف ضمن الأبعاد */
     overflow: hidden;
     white-space: nowrap;

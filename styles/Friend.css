@@ -41,7 +41,7 @@
 }
 
 #WrapperFriends {
-  border-radius: 25px;
+  border-radius: 15px;
   margin-top: 20px;
   margin-bottom: 5px;
   margin-left: auto;
@@ -91,7 +91,7 @@
     width: 95%; /* لضبط العرض لتجنب حدود الشاشة */
     padding: 5px; 
     height: auto;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: white;
     color: #000;
@@ -172,7 +172,7 @@
     padding: 20px;
     font-size: 15px;
     font-weight: bold;
-    border-radius: 25px;
+    border-radius: 15px;
     margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -186,7 +186,7 @@
 } 
 
 .invite-more:hover {
-    background-color: #2D83EC;
+    background-color: #000;
     color: #fff;
 } 
 
@@ -204,7 +204,7 @@
     padding: 7px;
     font-size: 15px;
     font-weight: bold;
-    border-radius: 25px;
+    border-radius: 15px;
     margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -219,7 +219,7 @@
 }   
  
 .invite-copy:hover {
-   background-color: #2D83EC;
+   background-color: #000;
    color: #fff;
 } 
 
@@ -238,7 +238,7 @@
    /* margin-bottom: 10px;*/
     width: 99%;
     height: 53px;
-    border-radius: 25px;
+    border-radius: 15px;
     transition: background-color 0.3s ease;
 }
 
@@ -252,9 +252,9 @@
 }
 
 .friend-avatar {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
     margin-right: 5px;
     margin-left: 15px; 
     border: 0.2px solid #161616;

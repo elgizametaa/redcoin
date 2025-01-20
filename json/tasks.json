@@ -4,28 +4,32 @@
     "url": "https://t.me/blum/app?startapp=ref_0sujj2lXST",
     "reward": 1000,
     "description": "Join our Blum ",
-    "image": "i/Blum.jpg"
+    "image": "i/Blum.jpg", 
+    "category": "Main"
   },
   {
     "id": 43,
     "url": "https://t.me/TimeFarmCryptoBot?start=aI3HY978VnqVQgSk",
     "reward": 1000,
     "description": "Join our TimeFarm ",
-    "image": "i/IMG_form.jpg"
+    "image": "i/IMG_form.jpg", 
+    "category": "Main" 
   },
   {
     "id": 41,
     "url": "https://t.me/gamee/start?startapp=ref_6793556284",
     "reward": 10000,
     "description": "Join our Gamee ",
-    "image": "i/IMG_20241210_142658_175.jpg"
+    "image": "i/IMG_20241210_142658_175.jpg", 
+    "category": "Partners" 
   },
   {
     "id": 40,
     "url": "https://t.me/realyescoinbot/something?startapp=1444389",
     "reward": 10000,
     "description": "Join our Yescoin ",
-    "image": "i/IMG_20241208_100106_929.jpg"
+    "image": "i/IMG_20241208_100106_929.jpg", 
+    "category": "Partners" 
   },
   {
     "id": 39,

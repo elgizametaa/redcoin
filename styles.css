@@ -58,18 +58,16 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-
-    /* الخلفية */
-    background: radial-gradient(
-        circle at center, /* تدرج دائري يبدأ من المنتصف */
-        rgba(0, 0, 0, 0.1), /* الأسود الشفاف في المنتصف */
-        #951607 60%,       /* اللون الأحمر الداكن يغطي المنطقة الأكبر */
-        rgba(0, 0, 0, 0.8) /* الأسود الداكن يمتزج في الحواف */
+    background: linear-gradient(
+        to bottom, /* يبدأ التدرج من الأعلى إلى الأسفل */
+        rgba(0, 0, 0, 0.5) 0%,  /* الأسود الخفيف في الأعلى */
+        rgba(149, 22, 7, 1) 20%, /* الأحمر الداكن يبدأ هنا */
+        rgba(149, 22, 7, 1) 80%, /* الأحمر الداكن يغطي الجزء الأكبر */
+        rgba(0, 0, 0, 0.5) 100% /* الأسود الخفيف في الأسفل */
     );
-    background-blend-mode: soft-light; /* الدمج الناعم */
     background-position: center;
-    background-size: cover; /* التأكد من تغطية الخلفية بالكامل */
-} 
+    background-size: cover; /* تغطية العنصر بالكامل */
+}
 
  @media only screen and (max-width: 768px) {
   .container {
@@ -247,7 +245,7 @@ img {
 .Title {
     margin-bottom: 5px;
     margin-top: 0;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500; 
     padding-bottom: 1px;
     color: #808080;
@@ -271,7 +269,7 @@ img {
     display: inline-block;
     width: 45px; /* عرض الصورة */
     height: 45px; /* ارتفاع الصورة */
-    background-image: url('https://image-six-tawny.vercel.app/Jsl.png'); /* رابط الصورة */
+    background-image: url('i/redcoin.png'); /* رابط الصورة */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; /* تمركز الصورة */
@@ -354,7 +352,7 @@ img {
     bottom: 0;
     padding-bottom: 4px;
     border-top: 0.5px solid #181818;
-    border-radius: 20px 20px 0 0;
+    border-radius: 0;
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
@@ -465,10 +463,10 @@ img {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
     backdrop-filter: blur(3px);
     border: 1px solid rgba(255, 255, 255, 0.05);*/
-    background-color: #101010;
+    background-color: #000;
     padding: 20px;
     font-weight: 500;
-    border-radius: 30px 30px 0 0; 
+    border-radius: 15px 15px 0 0; 
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -490,7 +488,7 @@ img {
 }
 
 .promo-content {
-    background-color: #101010; 
+    background-color: #000; 
     padding: 20px;
     border-radius: 30px 30px 0 0; 
     text-align: center;
@@ -528,15 +526,14 @@ img {
 
 
 .game-button {
-    border-radius: 25px;
+    border-radius: 15px;
     width: 90%; /* التأكد من أن الأزرار تأخذ عرض الحاوية */
     height: 40px;
-    color: #fff;
+    color: #000;
     font-size: 15px; 
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    background-color: #fff;
     margin: 10px auto; /* المسافة بين الأزرار */
 }
 
@@ -596,11 +593,12 @@ img {
     top: -70px; /* البداية من فوق الشاشة */
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(9px); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
     color: #fff;
     padding: 12px 20px; /* زيادة padding لجعل الإشعار طويل */
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 13px;
     z-index: 1000;
     opacity: 0; /* البداية غير مرئية */

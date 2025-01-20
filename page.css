@@ -1,3 +1,36 @@
+.wheel-button {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 150px;
+    right: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px); /* خلفية شفافة */
+    border-radius:15px;
+    border: 0.5px solid #181818;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.wheel-button .wheel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* لجعل الصورة تتناسب مع حجم الزر */
+    border-radius: 50%; /* إذا كنت تريد أن يكون الزر دائريًا */
+}
+
+.wheel-button .wheel-label {
+    font-size: 12px;
+    color: #808080; /* اختر لون النص المناسب */
+    text-align: center;
+    margin-top: 5px;
+}
+
+
 .task-earn {
     position: absolute;
     width: 100%; /* ملء كامل مساحة الحاوية */
@@ -341,7 +374,7 @@
     display: inline-block;
     width: 35px; /* تحديد عرض الصورة */
     height: 35px; /* تحديد ارتفاع الصورة */
-    background-image: url('https://image-six-tawny.vercel.app/Jsl.png'); /* مسار الصورة */
+    background-image: url('i/redcoin.png'); /* مسار الصورة */
     background-size: cover; /* لتغطية العنصر بالصورة بشكل جيد */
     margin-right: 2px; /* مسافة بين الصورة والنص */
     margin-left: 0;
@@ -437,7 +470,7 @@
     margin: 0 auto;
     margin-bottom: 10px;
     height: 60px;
-    border-radius: 25px;
+    border-radius: 15px;
     position: relative;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
@@ -447,7 +480,7 @@
 .leaderboard-avatar {
     width: 42px;
     height: auto;
-    border-radius: 50%;
+    border-radius: 15px;
     margin-left: 10px;
    /* border: 1px solid #161616;*/
     padding: 2px;
@@ -468,7 +501,7 @@
 }
 
 #leaderboardWrapper {
-  border-radius: 25px;
+  border-radius: 15px;
   margin: 10px auto;
   width: 100%;
   height: 30px;
@@ -518,7 +551,7 @@
     height: 55px;
    /* box-sizing: border-box;*/
     margin: 5px auto;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
@@ -726,7 +759,7 @@
     height: 40px;
     z-index: 500;
     border: 0.5px solid #181818;
-    border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
+    border-radius: 15px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
@@ -743,7 +776,7 @@
     height: 40px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
     border: 0.5px solid #181818;
-    border-radius: 25px; /* زوايا مستديرة في الأسفل فقط */
+    border-radius: 15px; /* زوايا مستديرة في الأسفل فقط */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
@@ -760,7 +793,7 @@
     height: 40px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
     border: 0.5px solid #181818;
-    border-radius: 25px;
+    border-radius: 15px;
     font-size: 15px;
     color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -848,7 +881,7 @@
     height: 40px; /* تكبير الطول قليلاً لتناسب دائرة الطاقة */
     z-index: 500;
     border: 0.5px solid #181818;
-    border-radius: 25px;
+    border-radius:15px;
     font-size: 15px;
     color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

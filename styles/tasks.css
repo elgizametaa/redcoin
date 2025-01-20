@@ -1,8 +1,23 @@
+.t-image {
+    width: 150px;
+    height: auto;
+    margin: 10px auto;
+    display: block;
+    margin-bottom: 10px;
+} 
+
+.button-container button.active {
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    transform: scale(1.1); 
+}
+
 .button-container {
   display: flex;
   width: 97%;
   height: 38px;
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
   margin: 10px auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -20,11 +35,11 @@
 }
 
 .button-container button:first-child {
-  border-radius: 20px 0 0 20px;
+  border-radius: 15px 0 0 15px;
 }
 
 .button-container button:last-child {
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 15px 15px 0;
 }
 
 .button-container button.middle {
@@ -152,7 +167,7 @@
     height: 60px;
     max-width: 400px;
     margin: 5px 0;
-    border-radius: 25px; 
+    border-radius: 15px; 
     /*background-color: #101010;
     border-bottom: 1px solid #1a1a1a;
     border-left: 1px solid #1a1a1a; 
@@ -169,21 +184,15 @@
 }  
 
 .task-item img {
-    object-fit: cover; /* لتغطية المساحة بالكامل */
-    border-radius: 50%; /* جعل الصورة تتبع نفس الحواف الدائرية */
-} 
-
-.task-img {
-    width: 38px;
+    width: 40px;
     height: auto;
     margin-bottom: 3px; /* إضافة مسافة أسفل الصورة */
-    border-radius: 50%;
+    border-radius: 15px;
     margin-left: 10px;
     padding: 2px;
-    object-fit: cover;
-}
- 
- 
+    object-fit: cover;/* جعل الصورة تتبع نفس الحواف الدائرية */
+} 
+
 
 .task-item button {
     background-color: rgba(255, 255, 255, 0.001);

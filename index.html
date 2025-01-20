@@ -22,12 +22,33 @@
     <script> eruda.init(); </script>
 </head>
 <body>
-    <div class="splash-screen">
+   <!-- <div class="splash-screen">
         <p class="splash-subtitle"></p>
         <div class="loading-container">
             <div class="loading-spinnerr"></div>
         </div>
+    </div>-->
+<div class="splash-screen">
+    <h1 class="splash-title"></h1>
+     <p class="splash-subtitle"></p>
+      <div class="splash-loading">
+    <!-- استبدال شريط الطاقة بعلامة التحميل -->
+ <div class='peeek-loading'>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
+  </div>
+</div>
 
     <div class="container" style="display: none;">
         <div id="mainPage" class="screen-content active">
@@ -68,6 +89,11 @@
                     <span class="distinct-label"> Premium Red </span>
                 </button>
                 
+                <button data-target="wheelPage" class="wheel-button">
+                    <img src="i/wheel.png" alt="Wheel Image" class="wheel-image">
+                    <span class="wheel-label">Wheel of Fortune</span>
+                </button>
+                
                 <div id="balanceC" class="balance-c">
                     <div class="Title">Total Coins</div>
                     <div id="balanceAmount">
@@ -77,15 +103,8 @@
                 </div>
 
                 <div class="clickable-image">
-                    <img id="clickableImg" src="https://image-six-tawny.vercel.app/Jsl.png" alt="Clickable Image">
+                    <img id="clickableImg" src="i/dd.png" alt="Clickable Image">
                 </div>
-
-               <!-- <div id="clickSection">
-                    <div id="clickDisplay">
-                        <span id="clickCountDisplay">0</span>
-                    </div>
-                    <button id="claimButton">Claim</button>
-                </div>-->
             </main>
         </div>
 
@@ -179,51 +198,51 @@
                 <div class="daily-rewards">
                     <div class="daily-item" id="day1">
                         <p id="text-day">Day 1</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon">100</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon">100</p>
                     </div>
                     <div class="daily-item" id="day2">
                         <p id="text-day">Day 2</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 500 </p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 500 </p>
                     </div>
                     <div class="daily-item" id="day3">
                         <p id="text-day">Day 3</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 2k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 2k</p>
                     </div>
                     <div class="daily-item" id="day4">
                         <p id="text-day">Day 4</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 5k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 5k</p>
                     </div>
                     <div class="daily-item" id="day5">
                         <p id="text-day">Day 5</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 8k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 8k</p>
                     </div>
                     <div class="daily-item" id="day6">
                         <p id="text-day">Day 6</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 15k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 15k</p>
                     </div>
                     <div class="daily-item" id="day7">
                         <p id="text-day">Day 7</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 30k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 30k</p>
                     </div>
                     <div class="daily-item" id="day8">
                         <p id="text-day">Day 8</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 50k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 50k</p>
                     </div>
                     <div class="daily-item" id="day9">
                         <p id="text-day">Day 9</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 100k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 100k</p>
                     </div>
                     <div class="daily-item" id="day10">
                         <p id="text-day">Day 10</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 200k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 200k</p>
                     </div>
                     <div class="daily-item" id="day11">
                         <p id="text-day">Day 11</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 300k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 300k</p>
                     </div>
                     <div class="daily-item" id="day12">
                         <p id="text-day">Day 12</p>
-                        <p id="reward-day"><img src="https://image-six-tawny.vercel.app/m.png" alt="logindaily" class="logindaily-icon"> 500k</p>
+                        <p id="reward-day"><img src="i/redcoin.png" alt="logindaily" class="logindaily-icon"> 500k</p>
                     </div>
                 </div>
                 <button id="loginclaimBtn" class="loginclaim-btn">Claim Rewards</button>
@@ -270,6 +289,7 @@
 
         <!-- Tasks Page -->
         <div id="tasksPage" class="screen-content scrollable">
+          <img src="i/star.BjMyq5OS.gif" alt="Boost Image" class="t-image">
             <div class="description-taskk">
                 <p class="taskk-title">Complete the mission, earn the commission!</p>
                 <lii>But hey, only qualified actions unlock the RED galaxy! </lii>
@@ -280,13 +300,36 @@
               <button id="daily-button">Daily</button>
             </div>
              <div id="task-earn"> 
-                <section id="taskcontainer" class="task-container">
+                <section id="main-task-container" class="task-container">
                 </section>
+                 <div id="partners-task-container"> </div>
+                  <div id="daily-task-container">
+                    <div class="daily-itemm" id="daily2">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <p class="Daily-title">Daily reward</p>
+                        <p class="Daily-titlee">+500,000 $SAW</p>
+                        <div class="Daily-meta">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="Dailyaew">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                      <div class="daily-itemm" id="ton">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <p class="Daily-title">Support the ton ecosystem 0.5 TON</p>
+                        <p class="Daily-titlee">+100,000 $SAW</p>
+                        <div class="Daily-meta">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="Dailyaew">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </div>
+                     </div>
+                 </div>
               </div>
             </div>
         <!-- Boosts Page -->
         <div id="boostsPage" class="screen-content scrollable">
-            <img src="i/rocket.png" alt="Boost Image" class="bos-image">
+            <img src="i/boostsx.gif" alt="Boost Image" class="bos-image">
             <p id="boos-txt">BOOSTS</p>
             <section class="boosts-container">
                 <!-- Boost 1: Hand Clicks -->
@@ -508,11 +551,11 @@
             </div>
           <div id="lodr"> 
             <div id="leaderboardContainer" class="leaderboard-container">
-              <div id="leaderboardWrapper">
+             <!-- <div id="leaderboardWrapper">
                  <p class="leaderboard-item right">#Rank</p>
                  <p id="Leaders-txxt">TOP 50</p>
                  <p class="leaderboard-item left"> Total Coins</p>
-             </div>    
+             </div>    -->
             </div>
           </div>
             <div id="userRankContainer" class="user-ranking">
@@ -525,13 +568,13 @@
 
 
         <!-- Premium Page -->
-<div id="premiumPage" class="screen-content hidden">
-    <div class="premium-header">
+   <div id="premiumPage" class="screen-content hidden">
+    <img src="i/star.BjMyq5OS.gif" alt="Boost Image" class="Premium-image">
+     <div class="premium-features">
+     <div class="premium-header">
         <h1>Premium Subscription</h1>
         <p>Enjoy exclusive lifetime benefits!</p>
     </div>
-
-    <div class="premium-features">
         <ul>
             <li>🌟 <strong>Lifetime Access:</strong> No renewals needed, your subscription is permanent.</li>
             <li>🚫 <strong>No Ads:</strong> A completely ad-free experience.</li>
@@ -545,6 +588,17 @@
     <div class="fixed-subscribe-container">
         <button id="subscribeButton" class="subscribe-btn">Subscribe Now</button>
     </div>
+    <div id="premiumStatus" class="hidden">
+    <h2>You're a Premium Member!</h2>
+    <p>Enjoy these exclusive benefits:</p>
+    <ul>
+        <li>🌟 Lifetime Access</li>
+        <li>🚫 No Ads</li>
+        <li>🔥 Advanced Progress</li>
+        <li>🎁 Airdrop Eligibility</li>
+        <li>💎 Triple Earnings</li>
+    </ul>
+</div>
 </div>
 
         <nav class="menu">

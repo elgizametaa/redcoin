@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadFriendsList(); 
     await fetchLeaderboard();
     await fetchUserRank();
+    await checkSubscriptionStatus();
     await initializeApp();  
 });
 
@@ -661,6 +662,7 @@ function createDiamondCoinEffect(x, y) {
     }, 50);
 }
 
+
 // استعادة الطاقة بشكل دوري
 function startEnergyRecovery() {
     setInterval(() => {
@@ -669,14 +671,14 @@ function startEnergyRecovery() {
         // التحقق إذا كانت الطاقة أقل من الحد الأقصى
         if (currentEnergy < gameState.maxEnergy) {
             // استعادة الطاقة بمقدار 20 نقطة إذا لم يتم تجاوز الحد الأقصى
-            gameState.energy = Math.max(gameState.energy - 20, 0);
+            gameState.energy = Math.max(gameState.energy - 50, 0);
 
             // تحديث واجهة المستخدم
             updateEnergyUI();
 
             console.log('Energy recovered successfully.');
         }
-    }, 5000); // تنفيذ الدالة كل 5 ثوانٍ
+    }, 2000); // تنفيذ الدالة كل 5 ثوانٍ
 }
 
 // استعادة الطاقة عند بدء التطبيق
@@ -687,15 +689,15 @@ async function restoreEnergy() {
         const timeDiff = currentTime - lastFillTime;
 
         // حساب عدد المرات التي يجب استعادة الطاقة فيها
-        const recoverableTimes = Math.floor(timeDiff / (5 * 1000)); // كل 5 ثوانٍ
-        const recoveredEnergy = recoverableTimes * 5;
+        const recoverableTimes = Math.floor(timeDiff / (2 * 1000)); // كل 5 ثوانٍ
+        const recoveredEnergy = recoverableTimes * 2;
 
         // استعادة الطاقة بدون تجاوز الحد الأقصى
         const currentEnergy = gameState.maxEnergy - gameState.energy;
         gameState.energy = Math.min(gameState.maxEnergy, currentEnergy + recoveredEnergy);
 
         // تحديث وقت آخر استعادة
-        gameState.lastFillTime = currentTime - (timeDiff % (5 * 1000)); // الاحتفاظ بالوقت المتبقي
+        gameState.lastFillTime = currentTime - (timeDiff % (2 * 1000)); // الاحتفاظ بالوقت المتبقي
         localStorage.setItem('lastFillTime', gameState.lastFillTime);
 
         updateEnergyUI();
@@ -711,6 +713,7 @@ async function restoreEnergy() {
         );
     }
 }
+
 
 //////////////////////////////////////////////////
 
@@ -908,15 +911,15 @@ window.addEventListener('DOMContentLoaded', () => {
 ///////////////////////////////////////////
 
 
-// المهام 
-document.addEventListener('DOMContentLoaded', async () => {
-    const taskContainer = document.querySelector('#taskcontainer');
-    if (!taskContainer) {
-        console.error('Task container element not found.');
+                document.addEventListener('DOMContentLoaded', async () => {
+    const mainTaskContainer = document.querySelector('#main-task-container');
+    const partnersTaskContainer = document.querySelector('#partners-task-container');
+
+    if (!mainTaskContainer || !partnersTaskContainer) {
+        console.error('Task container elements not found.');
         return;
     }
 
-    // جلب المهام المكتملة من قاعدة البيانات
     const userId = uiElements.userTelegramIdDisplay.innerText;
     let completedTasks = [];
 
@@ -941,137 +944,129 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(response => response.json())
         .then(tasks => {
             tasks.forEach(task => {
-                const taskElement = document.createElement('div');
-                taskElement.classList.add('task-item');
+                const taskElement = createTaskElement(task, completedTasks);
 
-                // صورة المهمة
-                const img = document.createElement('img');
-                img.src = task.image;
-                img.alt = 'Task Image';
-                img.classList.add('task-img');
-                taskElement.appendChild(img);
-
-                 // Create a container for description and reward
-                const infoContainer = document.createElement('div');
-                infoContainer.classList.add('info-task'); // This will hold both description and reward
-
-                // Task Description
-                const description = document.createElement('p');
-                description.textContent = task.description;
-                infoContainer.appendChild(description);
-
-                 // Task Reward without Coin Image
-                const rewardContainer = document.createElement('div');
-                rewardContainer.classList.add('task-reward-container');
-            
-                const rewardText = document.createElement('span');
-                rewardText.textContent = `+ ${task.reward} $RED`;
-                rewardText.classList.add('task-reward');
-                rewardContainer.appendChild(rewardText);
-
-                infoContainer.appendChild(rewardContainer); // Append reward below description
-
-                taskElement.appendChild(infoContainer); // Append the info container to the task element
-
-           
-                // زر المهمة
-                const button = document.createElement('button');
-                 button.classList.add('task-button');
-                 button.setAttribute('data-task-id', task.id);
-                 button.setAttribute('data-reward', task.reward);
-
-                 // تعيين نص الزر بناءً على حالة المهمة
-                 if (completedTasks.includes(task.id)) {
-                 // علامة الصح
-                 button.innerHTML = `
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                 </svg>
-                `;
-                 button.disabled = true;
-             } else {
-                // السهم
-                 button.innerHTML = `
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                   </svg>
-                 `;
+                // تحديد الحاوية المناسبة بناءً على الفئة
+                if (task.category === 'Main') {
+                    mainTaskContainer.appendChild(taskElement);
+                } else if (task.category === 'Partners') {
+                    partnersTaskContainer.appendChild(taskElement);
                 }
-
-               taskElement.appendChild(button);
-               taskContainer.appendChild(taskElement);
-
-                // التعامل مع النقر على الزر
-                let taskProgress = 0;
-
-                button.addEventListener('click', () => {
-                    if (taskProgress === 0) {
-                        showLoading(button);
-                        openTaskLink(task.url, () => {
-                            taskProgress = 1;
-                            hideLoading(button, 'Verify');
-                        });
-                    } else if (taskProgress === 1) {
-                        showLoading(button);
-                        setTimeout(() => {
-                            taskProgress = 2;
-                            hideLoading(button, 'Claim');
-                        }, 5000);
-                    } else if (taskProgress === 2) {
-                        claimTaskReward(task.id, task.reward, button);
-                    }
-                });
             });
         })
         .catch(error => console.error('Error fetching tasks:', error));
 });
 
-// استلام المكافأة وتحديث قاعدة البيانات
-async function claimTaskReward(taskId, reward, button) {
+// إنشاء عنصر المهمة
+function createTaskElement(task, completedTasks) {
+    const taskElement = document.createElement('div');
+    taskElement.classList.add('task-item');
+
+    // صورة المهمة
+    const img = document.createElement('img');
+    img.src = task.image;
+    img.alt = 'Task Image';
+    img.classList.add('task-img');
+    taskElement.appendChild(img);
+
+    // وصف ومكافأة المهمة
+    const infoContainer = document.createElement('div');
+    infoContainer.classList.add('info-task');
+    const description = document.createElement('p');
+    description.textContent = task.description;
+    infoContainer.appendChild(description);
+
+    const rewardContainer = document.createElement('div');
+    rewardContainer.classList.add('task-reward-container');
+    const rewardText = document.createElement('span');
+    rewardText.textContent = `+ ${task.reward} $SAW`;
+    rewardText.classList.add('task-reward');
+    rewardContainer.appendChild(rewardText);
+    infoContainer.appendChild(rewardContainer);
+
+    taskElement.appendChild(infoContainer);
+
+    // زر المهمة
+    const button = document.createElement('button');
+    button.classList.add('task-button');
+    button.setAttribute('data-task-id', task.id);
+    button.setAttribute('data-reward', task.reward);
+
+    if (completedTasks.includes(task.id)) {
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+            </svg>`;
+        button.disabled = true;
+    } else {
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>`;
+    }
+
+    button.addEventListener('click', () => handleTaskButtonClick(task, button, completedTasks));
+    taskElement.appendChild(button);
+
+    return taskElement;
+}
+
+function handleTaskButtonClick(task, button, completedTasks) {
+    // الحصول على حالة المهمة الحالية من الزر
+    let taskProgress = button.getAttribute('data-progress') || "0";
+
+    if (taskProgress === "0") {
+        // الخطوة الأولى: الدخول إلى رابط المهمة
+        showLoading(button);
+        openTaskLink(task.url, () => {
+            taskProgress = "1";
+            button.setAttribute('data-progress', taskProgress);
+            hideLoading(button, 'Verify');
+        });
+    } else if (taskProgress === "1") {
+        // الخطوة الثانية: التحقق من المهمة
+        showLoading(button);
+        setTimeout(() => {
+            taskProgress = "2";
+            button.setAttribute('data-progress', taskProgress);
+            hideLoading(button, 'Claim');
+        }, 5000); // محاكاة التحقق لمدة 5 ثوانٍ
+    } else if (taskProgress === "2") {
+        // الخطوة الثالثة: استلام المكافأة
+        claimTaskReward(task.id, task.reward, button, completedTasks);
+    }
+}
+
+
+// استلام المكافأة وتحديث المهام المكتملة فقط
+async function claimTaskReward(taskId, reward, button, completedTasks) {
     try {
-        // التحقق إذا كانت المهمة مكتملة مسبقًا
-        const userId = uiElements.userTelegramIdDisplay.innerText;
-        const { data, error } = await supabase
-            .from('users')
-            .select('completed_tasks')
-            .eq('telegram_id', userId)
-            .single();
-
-        if (error) {
-            console.error('Error fetching completed tasks:', error);
-            return;
-        }
-
-        const completedTasks = data?.completed_tasks || [];
         if (completedTasks.includes(taskId)) {
             showNotification(uiElements.purchaseNotification, 'You have already claimed this reward.');
             return;
         }
 
-        // إضافة المكافأة إلى الرصيد
-        gameState.balance += reward;
+        // تحديث المهام المكتملة
         completedTasks.push(taskId);
-
-        // تحديث واجهة المستخدم
         button.textContent = '✓';
         button.disabled = true;
-        updateUI();
         showNotificationWithStatus(uiElements.purchaseNotification, `Successfully claimed ${reward} coins!`, 'win');
 
-        // تحديث قاعدة البيانات
-        const updatedData = {
-            balance: gameState.balance,
-            completed_tasks: completedTasks,
-        };
-
-        const { updateError } = await supabase
+        // تحديث قاعدة البيانات للمهام فقط
+        const userId = uiElements.userTelegramIdDisplay.innerText;
+        const { error } = await supabase
             .from('users')
-            .update(updatedData)
+            .update({ completed_tasks: completedTasks })
             .eq('telegram_id', userId);
 
-        if (updateError) {
-            console.error('Error updating completed tasks:', updateError);
+        if (error) {
+            console.error('Error updating completed tasks:', error);
         }
+
+        // تحديث الرصيد بشكل منفصل
+        gameState.balance += reward;
+        updateUI();
+        debounceSave();
     } catch (error) {
         console.error('Error claiming task reward:', error);
     }
@@ -1209,23 +1204,6 @@ window.Telegram.WebApp.setHeaderColor('#000000');
 
 
 /////////////////////////////////////////////////
-
-
-const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-    manifestUrl: 'https://sawcoin.vercel.app/json/tonconnect-manifest.json',
-    buttonRootId: 'ton-connect'
-});
-
-async function connectToWallet() {
-    const connectedWallet = await tonConnectUI.connectWallet();
-    // يمكنك تنفيذ بعض العمليات باستخدام connectedWallet إذا لزم الأمر
-    console.log(connectedWallet);
-}
-
-tonConnectUI.uiOptions = {
-    twaReturnUrl: 'https://t.me/SAWCOIN_BOT/GAME'
-};
-
 /////////////////////////////////////////
 
 
@@ -1755,6 +1733,313 @@ overlay.addEventListener('click', () => {
 });
 
 /////////////////////////////
+
+document.addEventListener('DOMContentLoaded', () => {
+    // الحصول على العناصر
+    const mainButton = document.getElementById('main-button');
+    const partnersButton = document.getElementById('partners-button');
+    const dailyButton = document.getElementById('daily-button');
+    
+    const mainTaskContainer = document.getElementById('main-task-container');
+    const partnersTaskContainer = document.getElementById('partners-task-container');
+    const dailyTaskContainer = document.getElementById('daily-task-container');
+
+    function showContainer(containerToShow, activeButton) {
+    // إخفاء جميع الحاويات
+    mainTaskContainer.style.display = 'none';
+    partnersTaskContainer.style.display = 'none';
+    dailyTaskContainer.style.display = 'none';
+
+    // عرض الحاوية المحددة
+    containerToShow.style.display = 'block';
+
+    // إزالة الحالة النشطة عن جميع الأزرار
+    mainButton.classList.remove('active');
+    partnersButton.classList.remove('active');
+    dailyButton.classList.remove('active');
+
+    // تعيين الحالة النشطة للزر الحالي
+    activeButton.classList.add('active');
+}
+
+// إضافة مستمعات الأحداث للأزرار
+mainButton.addEventListener('click', () => showContainer(mainTaskContainer, mainButton));
+partnersButton.addEventListener('click', () => showContainer(partnersTaskContainer, partnersButton));
+dailyButton.addEventListener('click', () => showContainer(dailyTaskContainer, dailyButton));
+
+// إظهار الحاوية الرئيسية بشكل افتراضي عند تحميل الصفحة
+showContainer(mainTaskContainer, mainButton);
+});
+
+/////////////////////////
+
+const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    manifestUrl: 'https://sawcoin.vercel.app/json/tonconnect-manifest.json',
+    buttonRootId: 'ton-connect'
+});
+
+tonConnectUI.uiOptions = {
+    twaReturnUrl: 'https://t.me/SAWCOIN_BOT/GAME'
+};
+
+let walletAddress = localStorage.getItem("walletAddress") || null; // لتخزين عنوان المحفظة
+
+async function connectToWallet() {
+    try {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        walletAddress = connectedWallet.account.address;
+        localStorage.setItem("walletAddress", walletAddress);
+        showNotification(purchaseNotification, 'Wallet connected successfully!');
+    } catch (error) {
+        console.error("Error connecting to wallet:", error.message);
+        showNotification(purchaseNotification, 'Failed to connect wallet:' + error.message);
+    }
+}
+
+// وظيفة الاشتراك (منطق الدفع)
+async function makePremiumPayment() {
+    // تحقق أولاً إذا كان المستخدم قد ربط محفظته
+    if (!walletAddress) {
+        showNotification(purchaseNotification, 'Please connect your wallet first!');
+        await connectToWallet(); // عرض واجهة ربط المحفظة
+        return;
+    }
+
+    // إذا كانت المحفظة مرتبطة، ابدأ الدفع
+    try {
+        const amount = "10000"; // 1 TON (بالنانوتون)
+        const recipientAddress = "UQAAPaYVPAR3-pWt6tTUfjyVvzjS2PiEOpgA4eJGMAcHVV_Z";
+
+        const transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 600, // صالح لمدة 10 دقائق
+            messages: [{ address: recipientAddress, amount }],
+        };
+
+        await tonConnectUI.sendTransaction(transaction);
+
+        // تحديث حالة المستخدم في قاعدة البيانات
+        await updatePremiumStatus();
+
+        // إخفاء زر الدفع وإظهار حالة الاشتراك
+        document.getElementById("subscribeButton").classList.add("hidden");
+        document.querySelector(".premium-features").classList.add("hidden");
+        document.getElementById("premiumStatus").classList.remove("hidden");
+
+        showNotification(purchaseNotification, 'Subscription successful!');
+    } catch (error) {
+        console.error("Error making payment:", error.message);
+        showNotification(purchaseNotification, `Payment failed: ${error.message}`);
+    }
+}
+
+// تحديث حالة الاشتراك في قاعدة البيانات
+async function updatePremiumStatus() {
+    const telegramApp = window.Telegram.WebApp;
+    const telegramId = telegramApp.initDataUnsafe.user?.id;
+
+    try {
+        const { error } = await supabase
+            .from("users")
+            .update({ premium_status: true })
+            .eq("telegram_id", telegramId);
+
+        if (error) throw new Error(error.message);
+        console.log("Premium status updated in database.");
+    } catch (error) {
+        console.error("Error updating premium status:", error.message);
+        showNotification(purchaseNotification, 'Failed to update premium status.');
+    }
+}
+
+// ربط الأزرار بالأحداث
+document.getElementById("subscribeButton").addEventListener("click", async () => {
+    if (!walletAddress) {
+        await connectToWallet(); // عرض واجهة ربط المحفظة إذا لم تكن المحفظة مرتبطة
+    }
+    await makePremiumPayment(); // استدعاء منطق الدفع بعد ربط المحفظة
+});
+
+async function checkSubscriptionStatus() {
+    const telegramApp = window.Telegram.WebApp;
+    const telegramId = telegramApp.initDataUnsafe.user?.id;
+
+    try {
+        // استعلام عن حالة الاشتراك
+        const { data, error } = await supabase
+            .from("users")
+            .select("premium_status")
+            .eq("telegram_id", telegramId)
+            .single();
+
+        if (error) throw new Error(error.message);
+
+        // إذا كان المستخدم مشتركًا، قم بتحديث الواجهة
+        if (data.premium_status) {
+            document.getElementById("subscribeButton").classList.add("hidden");
+            document.querySelector(".premium-features").classList.add("hidden");
+            document.getElementById("premiumStatus").classList.remove("hidden");
+        }
+    } catch (error) {
+        console.error("Error checking subscription status:", error.message);
+        showNotification(purchaseNotification, 'Failed to check subscription status.');
+    }
+}
+
+/////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', () => {
+    // عناصر DOM الضرورية
+    const dailyButton = document.getElementById('daily2');
+    const dailyCloseModal = document.getElementById('logindailycloseModal');
+    const logindailyContainer = document.getElementById('logindailyContainer');
+    const logindailyContent = document.querySelector('.logindaily-content');
+    const logindailyOverlay = document.getElementById('logindailyOverlay'); 
+    const loginClaimBtn = document.getElementById('loginclaimBtn');
+    const loginNotification = document.getElementById('login');
+    const dayElements = document.querySelectorAll('.daily-item');
+    const rewardImages = document.querySelectorAll('.reward-image'); // صور المكافآت
+    const dailyRewards = [100, 500, 2000, 5000, 8000, 15000, 30000, 50000, 100000, 200000, 300000, 500000];
+
+    // الدالة الرئيسية لتسجيل الدخول اليومي
+    function handleDailyLogin() {
+        try {
+            // جلب بيانات المستخدم من LocalStorage
+            let localData = JSON.parse(localStorage.getItem('dailyLoginData')) || {};
+            let { last_login_date, consecutive_days } = localData;
+
+            consecutive_days = consecutive_days || 0; // تعيين قيمة افتراضية إذا كانت غير موجودة
+            const today = new Date().toISOString().split('T')[0];
+
+            // التحقق من حالة تسجيل الدخول اليومي
+            if (last_login_date === today) {
+                loginNotification.innerText = 'You have already claimed today\'s reward.';
+                disableClaimButton();
+                highlightRewardedDays(consecutive_days);
+                showRewardImage(consecutive_days);
+                return;
+            }
+
+            // التحقق من استمرارية الأيام المتتالية
+            const lastLoginDateObj = new Date(last_login_date);
+            const isConsecutive = (new Date(today).getDate() - lastLoginDateObj.getDate()) === 1 &&
+                                  new Date(today).getMonth() === lastLoginDateObj.getMonth() &&
+                                  new Date(today).getFullYear() === lastLoginDateObj.getFullYear();
+
+            if (isConsecutive) {
+                consecutive_days++;
+                if (consecutive_days > dailyRewards.length) consecutive_days = dailyRewards.length;
+            } else {
+                consecutive_days = 1; // إعادة تعيين إلى اليوم الأول
+            }
+
+            // إضافة المكافأة
+            const reward = dailyRewards[consecutive_days - 1];
+            updateBalance(reward);
+
+            // تحديث واجهة المستخدم
+            loginNotification.innerText = `Day ${consecutive_days}: You've earned ${reward} $SAW!`;
+            updateClaimButton(consecutive_days, reward);
+            highlightRewardedDays(consecutive_days);
+
+            // تحديث البيانات في LocalStorage
+            localData = { last_login_date: today, consecutive_days };
+            localStorage.setItem('dailyLoginData', JSON.stringify(localData));
+        } catch (error) {
+            console.error('Unexpected error in daily login:', error);
+            loginNotification.innerText = 'Error processing your daily login. Please try again later.';
+        }
+    }
+
+    // تحديث زر المطالبة بالمكافأة
+    function updateClaimButton(day, reward) {
+        loginClaimBtn.innerText = `day ${day} : ${reward} $SAW`;
+        loginClaimBtn.disabled = false;
+        loginClaimBtn.classList.remove('disabled');
+    }
+
+    // تعطيل الزر بعد المطالبة بالمكافأة
+    function disableClaimButton() {
+        loginClaimBtn.disabled = true;
+        loginClaimBtn.classList.add('disabled');
+    }
+
+    // تحديث واجهة الأيام المتتالية
+    function highlightRewardedDays(dayCount) {
+        dayElements.forEach((el, index) => {
+            if (index < dayCount) {
+                el.classList.add('claimed');
+                el.style.filter = 'blur(2px)';
+            } else {
+                el.classList.remove('claimed');
+                el.style.filter = 'none';
+            }
+        });
+    }
+    
+    // عرض الصورة الخاصة بكل يوم بعد المطالبة
+    function showRewardImage(day) {
+        rewardImages.forEach((img, index) => {
+            if (index === day - 1) {
+                img.src = 'i/done.png'; // تحديث مصدر الصورة
+                img.classList.remove('hidden'); // إظهار الصورة
+            } else {
+                img.classList.add('hidden'); // إخفاء الصور الأخرى
+            }
+        });
+    }
+
+    // تحديث الرصيد
+    function updateBalance(amount) {
+        gameState.balance += amount;
+        updateUI(); 
+    }
+
+    // فتح نافذة تسجيل الدخول اليومي
+    function openDailyLoginModal() {
+        logindailyContainer.classList.remove('hidden');
+        logindailyContent.classList.remove('hidden');
+        logindailyOverlay.style.display = 'block'; // تأكد من إظهار الشفافية
+        handleDailyLogin();
+    }
+
+    // إغلاق نافذة تسجيل الدخول اليومي عند النقر على زر الإغلاق
+    dailyCloseModal.addEventListener('click', function () {
+        closeDailyLoginModal();
+    });
+
+    // إغلاق النافذة عند النقر على الشفافية (overlay)
+    logindailyOverlay.addEventListener('click', function () {
+        closeDailyLoginModal();
+    });
+
+    // الدالة لإغلاق نافذة تسجيل الدخول اليومي
+    function closeDailyLoginModal() {
+        logindailyContainer.classList.add('hidden');
+        logindailyContent.classList.add('hidden');
+        logindailyOverlay.style.display = 'none'; // إخفاء الشفافية
+    }
+
+    // عند الضغط على زر المطالبة بالمكافأة
+    loginClaimBtn.addEventListener('click', function () {
+        handleDailyLogin();
+        disableClaimButton();
+    });
+
+    // فتح النافذة عند دخول المستخدم
+    dailyButton.addEventListener('click', function () {
+        openDailyLoginModal();
+    });
+});
+
+
+/////////////////////////////////
+
+
+
+
+
+
+
 
 
 
