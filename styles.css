@@ -58,18 +58,16 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-
-    /* الخلفية */
-    background: radial-gradient(
-        circle at center, /* تدرج دائري يبدأ من المنتصف */
-        rgba(0, 0, 0, 0.1), /* الأسود الشفاف في المنتصف */
-        #951607 60%,       /* اللون الأحمر الداكن يغطي المنطقة الأكبر */
-        rgba(0, 0, 0, 0.8) /* الأسود الداكن يمتزج في الحواف */
+    background: linear-gradient(
+        to bottom, /* يبدأ التدرج من الأعلى إلى الأسفل */
+        rgba(0, 0, 0, 0.5) 0%,  /* الأسود الخفيف في الأعلى */
+        rgba(149, 22, 7, 1) 20%, /* الأحمر الداكن يبدأ هنا */
+        rgba(149, 22, 7, 1) 80%, /* الأحمر الداكن يغطي الجزء الأكبر */
+        rgba(0, 0, 0, 0.5) 100% /* الأسود الخفيف في الأسفل */
     );
-    background-blend-mode: soft-light; /* الدمج الناعم */
     background-position: center;
-    background-size: cover; /* التأكد من تغطية الخلفية بالكامل */
-} 
+    background-size: cover; /* تغطية العنصر بالكامل */
+}
 
  @media only screen and (max-width: 768px) {
   .container {
