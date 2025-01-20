@@ -1,7 +1,7 @@
 .Balances {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     position: fixed;
     top: 10px;
     left: 50%;
@@ -14,10 +14,10 @@
     align-items: center;
     padding-right: 2px;
     width: auto;
-    height: 40px;
+    height: 35px;
     z-index: 500;
     border: 0.5px solid #181818;
-    border-radius: 15px; /* زوايا مستديرة في الأسفل فقط */
+    border-radius: 15px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
@@ -26,19 +26,17 @@
 .balance-icon {
     width: 30px;
     height: 30px;
-    margin-bottom: 5px;
 }
 
 .balance-value {
-    font-size: 15px;
+    font-size: 14px;
     color: #fff;
     font-weight: bold;
 }
 
-/* Wheel Section */
 .wheel-container {
     position: relative;
-    flex-grow: 1;
+   /* flex-grow: 1;*/
     display: flex;
     justify-content: center;
     align-items: center;
