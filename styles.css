@@ -269,7 +269,7 @@ img {
     display: inline-block;
     width: 45px; /* عرض الصورة */
     height: 45px; /* ارتفاع الصورة */
-    background-image: url('i/dd.png'); /* رابط الصورة */
+    background-image: url('i/redcoin.png'); /* رابط الصورة */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center; /* تمركز الصورة */
