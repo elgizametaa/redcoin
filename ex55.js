@@ -1732,6 +1732,44 @@ overlay.addEventListener('click', () => {
 });
 
 /////////////////////////////
+
+document.addEventListener('DOMContentLoaded', () => {
+    // الحصول على العناصر
+    const mainButton = document.getElementById('main-button');
+    const partnersButton = document.getElementById('partners-button');
+    const dailyButton = document.getElementById('daily-button');
+    
+    const mainTaskContainer = document.getElementById('main-task-container');
+    const partnersTaskContainer = document.getElementById('partners-task-container');
+    const dailyTaskContainer = document.getElementById('daily-task-container');
+
+    // دالة لإظهار الحاوية المخفية
+    function showContainer(containerToShow) {
+        // إخفاء جميع الحاويات
+        mainTaskContainer.style.display = 'none';
+        partnersTaskContainer.style.display = 'none';
+        dailyTaskContainer.style.display = 'none';
+
+        // عرض الحاوية المحددة
+        containerToShow.style.display = 'block';
+
+        // تحديث الحالة النشطة للأزرار
+        mainButton.classList.toggle('active', containerToShow === mainTaskContainer);
+        partnersButton.classList.toggle('active', containerToShow === partnersTaskContainer);
+        dailyButton.classList.toggle('active', containerToShow === dailyTaskContainer);
+    }
+
+    // إضافة مستمعات الأحداث للأزرار
+    mainButton.addEventListener('click', () => showContainer(mainTaskContainer));
+    partnersButton.addEventListener('click', () => showContainer(partnersTaskContainer));
+    dailyButton.addEventListener('click', () => showContainer(dailyTaskContainer));
+
+    // إظهار الحاوية الرئيسية بشكل افتراضي عند تحميل الصفحة
+    showContainer(mainTaskContainer);
+});
+
+/////////////////////////
+
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
     manifestUrl: 'https://sawcoin.vercel.app/json/tonconnect-manifest.json',
     buttonRootId: 'ton-connect'
@@ -1741,7 +1779,9 @@ tonConnectUI.uiOptions = {
     twaReturnUrl: 'https://t.me/SAWCOIN_BOT/GAME'
 };
 
-let walletAddress = null; // لتخزين عنوان المحفظة
+let walletAddress = localStorage.getItem("walletAddress") || null; // لتخزين عنوان المحفظة
+
+// وظيفة ربط المحفظة
 async function connectToWallet() {
     try {
         const connectedWallet = await tonConnectUI.connectWallet();
@@ -1754,8 +1794,16 @@ async function connectToWallet() {
     }
 }
 
-// إجراء الدفع
+// وظيفة الاشتراك (منطق الدفع)
 async function makePremiumPayment() {
+    // تحقق أولاً إذا كان المستخدم قد ربط محفظته
+    if (!walletAddress) {
+        showNotification("Please connect your wallet first!", "warning");
+        await connectToWallet(); // عرض واجهة ربط المحفظة
+        return;
+    }
+
+    // إذا كانت المحفظة مرتبطة، ابدأ الدفع
     try {
         const amount = "1000000000"; // 1 TON (بالنانوتون)
         const recipientAddress = "UQCpMg6TV_zE34ao-Ii2iz5M6s5Qp8OIVWa3YbsB9KwxzwCJ";
@@ -1802,50 +1850,14 @@ async function updatePremiumStatus() {
 }
 
 // ربط الأزرار بالأحداث
-document.getElementById("subscribeButton").addEventListener("click", makePremiumPayment);
-
-///////////////////////////
-
-document.addEventListener('DOMContentLoaded', () => {
-    // الحصول على العناصر
-    const mainButton = document.getElementById('main-button');
-    const partnersButton = document.getElementById('partners-button');
-    const dailyButton = document.getElementById('daily-button');
-    
-    const mainTaskContainer = document.getElementById('main-task-container');
-    const partnersTaskContainer = document.getElementById('partners-task-container');
-    const dailyTaskContainer = document.getElementById('daily-task-container');
-
-    // دالة لإظهار الحاوية المخفية
-    function showContainer(containerToShow) {
-        // إخفاء جميع الحاويات
-        mainTaskContainer.style.display = 'none';
-        partnersTaskContainer.style.display = 'none';
-        dailyTaskContainer.style.display = 'none';
-
-        // عرض الحاوية المحددة
-        containerToShow.style.display = 'block';
-
-        // تحديث الحالة النشطة للأزرار
-        mainButton.classList.toggle('active', containerToShow === mainTaskContainer);
-        partnersButton.classList.toggle('active', containerToShow === partnersTaskContainer);
-        dailyButton.classList.toggle('active', containerToShow === dailyTaskContainer);
+document.getElementById("subscribeButton").addEventListener("click", async () => {
+    if (!walletAddress) {
+        await connectToWallet(); // عرض واجهة ربط المحفظة إذا لم تكن المحفظة مرتبطة
     }
-
-    // إضافة مستمعات الأحداث للأزرار
-    mainButton.addEventListener('click', () => showContainer(mainTaskContainer));
-    partnersButton.addEventListener('click', () => showContainer(partnersTaskContainer));
-    dailyButton.addEventListener('click', () => showContainer(dailyTaskContainer));
-
-    // إظهار الحاوية الرئيسية بشكل افتراضي عند تحميل الصفحة
-    showContainer(mainTaskContainer);
+    await makePremiumPayment(); // استدعاء منطق الدفع بعد ربط المحفظة
 });
 
-/////////////////////////
-
-
-
-
+/////////////////////////////////
 
 // تفعيل التطبيق
 initializeApp();
