@@ -230,9 +230,8 @@
     width: 95%;  /* ليأخذ العرض الكامل */
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    color: #ffffff;
+    background-color: #fff;
+    color: #000;
     font-size: 16px;
     font-weight: bold;
     border-radius: 15px;
@@ -243,7 +242,7 @@
 }
 
 .loginclaim-btn:hover {
-    background-color: #161616;  /* تغيير اللون عند التمرير فوق الزر */
+    background-color: #101010;  /* تغيير اللون عند التمرير فوق الزر */
 } 
 
 #login1 {
