@@ -1,6 +1,7 @@
 const uiElements = {
     balanceDisplay: document.getElementById('balanceAmount'),
-    settingsBalanceDisplay: document.getElementById('settingsBalanceDisplay'),    
+    settingsBalanceDisplay: document.getElementById('settingsBalanceDisplay'),   
+    redBalance: document.getElementById('redBalance'),       
     energyBar: document.getElementById('energyBar'),
     energyInfo: document.getElementById('energyInfo'),
     languageBtn: document.getElementById('languageSwitchBtn'),
@@ -327,7 +328,8 @@ function updateUI() {
     }
     
     const balanceElements = [
-        uiElements.settingsBalanceDisplay
+        uiElements.settingsBalanceDisplay, 
+        uiElements.redBalance
     ];
 
      balanceElements.forEach(element => {
@@ -335,17 +337,6 @@ function updateUI() {
         element.innerText = formatNumber(gameState.balance);
       }
    });
-    
-    // تحديث شريط الطاقة
-  //  const energyPercent = (gameState.energy / gameState.maxEnergy) * 100;
-   // if (uiElements.energyBar) {
-     //   uiElements.energyBar.style.width = `${energyPercent}%`;
-  //  }
-
-    // تحديث معلومات الطاقة
-  //  if (uiElements.energyInfo) {
-     //   uiElements.energyInfo.innerText = `${formatNumber(gameState.energy)}/${formatNumber(gameState.maxEnergy)}⚡`;
-  //  }
 
     // تحديث مضاعف النقرة
     if (uiElements.clickMultiplierDisplay) {
