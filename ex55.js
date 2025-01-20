@@ -1805,7 +1805,7 @@ async function makePremiumPayment() {
 
     // إذا كانت المحفظة مرتبطة، ابدأ الدفع
     try {
-        const amount = "1000000000"; // 1 TON (بالنانوتون)
+        const amount = "10000"; // 1 TON (بالنانوتون)
         const recipientAddress = "UQCpMg6TV_zE34ao-Ii2iz5M6s5Qp8OIVWa3YbsB9KwxzwCJ";
 
         const transaction = {
