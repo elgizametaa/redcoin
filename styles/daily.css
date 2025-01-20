@@ -1,3 +1,13 @@
+.Daily-title {
+    font-size: 15px;
+    white-space: nowrap;       /* منع النص من الالتفاف */
+    overflow: hidden;          /* إخفاء النص الزائد */
+    text-overflow: ellipsis;   /* إضافة النقاط الثلاث (...) عند الاختصار */
+    max-width: 100px;          /* تحديد أقصى عرض للنص */
+    display: inline-block;     /* ضمان عمل الخصائص بشكل صحيح */
+}
+
+
 /* تأثير الضباب والتوهج عند عدم التفعيل */
 .daily-itemm.inactive {
     filter: blur(10px); /* يجعل العنصر ضبابيًا */
