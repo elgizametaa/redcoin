@@ -1781,16 +1781,15 @@ tonConnectUI.uiOptions = {
 
 let walletAddress = localStorage.getItem("walletAddress") || null; // لتخزين عنوان المحفظة
 
-// وظيفة ربط المحفظة
 async function connectToWallet() {
     try {
         const connectedWallet = await tonConnectUI.connectWallet();
         walletAddress = connectedWallet.account.address;
         localStorage.setItem("walletAddress", walletAddress);
-        showNotification("Wallet connected successfully!", "success");
+        showNotification(purchaseNotification, 'Wallet connected successfully!');
     } catch (error) {
         console.error("Error connecting to wallet:", error.message);
-        showNotification("Failed to connect wallet: " + error.message, "error");
+        showNotification(purchaseNotification, 'Failed to connect wallet:' + error.message);
     }
 }
 
@@ -1798,7 +1797,7 @@ async function connectToWallet() {
 async function makePremiumPayment() {
     // تحقق أولاً إذا كان المستخدم قد ربط محفظته
     if (!walletAddress) {
-        showNotification("Please connect your wallet first!", "warning");
+        showNotification(purchaseNotification, 'Please connect your wallet first!');
         await connectToWallet(); // عرض واجهة ربط المحفظة
         return;
     }
@@ -1823,10 +1822,10 @@ async function makePremiumPayment() {
         document.querySelector(".premium-features").classList.add("hidden");
         document.getElementById("premiumStatus").classList.remove("hidden");
 
-        showNotification("Subscription successful!", "success");
+        showNotification(purchaseNotification, 'Subscription successful!');
     } catch (error) {
         console.error("Error making payment:", error.message);
-        showNotification(`Payment failed: ${error.message}`, "error");
+        showNotification(purchaseNotification, `Payment failed: ${error.message}`);
     }
 }
 
@@ -1845,7 +1844,7 @@ async function updatePremiumStatus() {
         console.log("Premium status updated in database.");
     } catch (error) {
         console.error("Error updating premium status:", error.message);
-        showNotification("Failed to update premium status.", "error");
+        showNotification(purchaseNotification, 'Failed to update premium status.');
     }
 }
 
