@@ -1,37 +1,65 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #181818;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+.screen-content {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Premium Image Styling */
 .Premium-image {
     width: 150px;
     height: auto;
     margin: 10px auto;
     display: block;
     margin-bottom: 10px;
-} 
+    border-radius: 50%;
+    object-fit: cover;
+}
 
+/* Premium Header Styling */
 .premium-header h1 {
     font-size: 24px;
-    text-align: center;
     margin-bottom: 10px;
-    color: #fff;
+    color: #f0d678;
 }
 
 .premium-header p {
-    text-align: center;
     font-size: 14px;
     color: #ccc;
     margin-bottom: 20px;
 }
 
+/* Premium Features Styling */
 .premium-features {
     width: 100%;
-    weight: 500px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background: rgba(0, 0, 0, 0.00005);
-    backdrop-filter: blur(1px);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     margin: 15px auto;
-    margin-bottom: 100px;
+    padding: 15px;
 }
 
-/* Individual Feature Styling */
 .premium-features ul {
     list-style: none;
     padding: 0;
@@ -39,10 +67,10 @@
 }
 
 .premium-features li {
-    font-size: 12px;
+    font-size: 14px;
     color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     padding: 15px;
     margin-bottom: 10px;
@@ -50,7 +78,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    text-align: left;
     word-wrap: break-word;
 }
 
@@ -64,11 +91,10 @@
     content: '✔';
     color: #e6b800;
     font-weight: bold;
-    font-size: 13px;
     margin-right: 10px;
 }
 
-/* Fixed Subscribe Button */
+/* Fixed Subscribe Button Styling */
 .fixed-subscribe-container {
     position: fixed;
     bottom: 80px;
@@ -80,8 +106,8 @@
 }
 
 .subscribe-btn {
-    background-color: #fff;
-    color: #000;
+    background-color: #f0d678;
+    color: #181818;
     padding: 15px 120px;
     border: none;
     border-radius: 15px;
@@ -89,36 +115,32 @@
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
+    transition: all 0.3s;
 }
 
 .subscribe-btn:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: #181818;
+    color: #f0d678;
+    border: 1px solid #f0d678;
 }
-
-
-
-
 
 /* Premium Confirmation Box Styling */
 .premium-confirmation {
     width: 100%;
-    max-width: 500px; /* الحد الأقصى للعرض */
+    max-width: 500px;
     padding: 20px;
     border-radius: 15px;
     background-color: rgba(0, 0, 0, 0.7);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    margin: 50px auto; /* لضمان تمركز الحاوية في الصفحة */
+    margin: 50px auto;
     color: #fff;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-/* Content Styling */
+/* Confirmation Content Styling */
 .premium-content {
     padding: 20px;
     display: flex;
@@ -127,7 +149,6 @@
     justify-content: center;
 }
 
-/* Image Styling */
 .premium-image {
     width: 120px;
     height: 120px;
@@ -136,21 +157,19 @@
     object-fit: cover;
 }
 
-/* Heading Styling */
 .premium-confirmation h2 {
     font-size: 22px;
     margin-bottom: 10px;
     color: #f0d678;
 }
 
-/* Description Styling */
 .premium-confirmation p {
     font-size: 16px;
     color: #ccc;
     margin-bottom: 20px;
 }
 
-/* Premium Benefits List Styling */
+/* Benefits List Styling */
 .premium-benefits {
     list-style: none;
     padding: 0;
@@ -169,7 +188,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
 }
 
 .premium-benefits li strong {
