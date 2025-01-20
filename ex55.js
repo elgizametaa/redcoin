@@ -513,7 +513,7 @@ function showConfettiEffect() {
                 x: Math.random(), // انطلاق من أماكن عشوائية
                 y: 0              // البداية من أعلى الشاشة
             },
-            colors: ['#1F1F1F', '#3A3A3A', '#2D83EC', '#A6B1E1', '#6272A4']
+            colors: ['#FF0000', '#8B0000', '#FF4500', '#FFD700', '#FFFFFF'] // ألوان متوافقة مع الخلفية
         });
 
         if (Date.now() < end) {
