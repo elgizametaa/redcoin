@@ -3,7 +3,7 @@
    justify-content: space-between;
    align-items: center;
    position: fixed;
-   gap: 5px;
+   gap: 1px;
    top: 60px;
    right: 20px;
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,6 @@
 
 .withdrawal-btn i {
    padding-left: 5px;
-   padding-right: 5px;
    font-size: 18px;
 }
 
