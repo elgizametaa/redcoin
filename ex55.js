@@ -2097,7 +2097,7 @@ function drawWheel() {
         };
         
         ctx.save();
-        ctx.translate(textX, textY + 10); // ضبط النص تحت الصورة
+        ctx.translate(textX, textY + 50); // ضبط النص تحت الصورة
         ctx.rotate(midAngle + Math.PI / 50); // تدوير النص
         ctx.textAlign = "center";
         ctx.fillStyle = "#FFFFFF"; // لون النص
