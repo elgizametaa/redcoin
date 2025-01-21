@@ -61,12 +61,12 @@
 .key-package p {
     display: flex;
     align-items: center; /* محاذاة النص والأيقونة عموديًا */
-    gap: 8px; /* مسافة بين الأيقونة والنص */
+    gap: 2px; /* مسافة بين الأيقونة والنص */
 }
 
 .key-package .fa-key {
     color: #ffc107; /* لون الأيقونة */
-    font-size: 18px; /* حجم الأيقونة */
+    font-size: 20px; /* حجم الأيقونة */
 }
  
 .buy-button {
@@ -208,7 +208,7 @@
 
 .key { 
     font-size: 20px;
-    color: #fff;
+    color: #ffc107;
     transform: rotate(-45deg); 
     padding-left: 3px;
 } 
