@@ -328,15 +328,14 @@ function updateUI() {
     }
     
     const balanceElements = [
-        uiElements.settingsBalanceDisplay, 
-        uiElements.redBalance
+        uiElements.settingsBalanceDisplay
     ];
 
      balanceElements.forEach(element => {
     if (element) {
         element.innerText = formatNumber(gameState.balance);
       }
-   });
+    });
 
     // تحديث مضاعف النقرة
     if (uiElements.clickMultiplierDisplay) {
@@ -2074,14 +2073,9 @@ document.getElementById('ton').addEventListener('click', async () => {
 
 /////////////////////////////////////
 
-
-
-
-
-// تعريف المتغيرات
 let isSpinning = false;
 
-// تعريف المكافآت وزوايا العجلة
+// Define rewards and wheel segments
 const rewards = [
     { name: "10k $RED", type: "balance", value: 10000, weight: 35 },
     { name: "100k $RED", type: "balance", value: 100000, weight: 35 },
@@ -2096,12 +2090,12 @@ const rewards = [
 ];
 const segmentAngle = 360 / rewards.length;
 
-// عناصر DOM للعجلة
+// DOM elements
 const spinButton = document.getElementById("spinWheelButton");
 const fortuneWheel = document.getElementById("fortuneWheel");
 const ctx = fortuneWheel.getContext("2d");
 
-// رسم العجلة
+// Draw the wheel
 function drawWheel() {
     const centerX = fortuneWheel.width / 2;
     const centerY = fortuneWheel.height / 2;
@@ -2111,17 +2105,17 @@ function drawWheel() {
         const startAngle = (segmentAngle * index * Math.PI) / 180;
         const endAngle = (segmentAngle * (index + 1) * Math.PI) / 180;
 
-        // رسم القطعة
+        // Draw segment
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.arc(centerX, centerY, radius, startAngle, endAngle);
         ctx.closePath();
 
-        // استخدام ألوان متدرجة
-        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500"; // ألوان تتماشى مع الخلفية الحمراء
+        // Fill segment with alternating colors
+        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500"; // Colors matching a red background
         ctx.fill();
 
-        // رسم النص
+        // Draw text
         const midAngle = startAngle + (endAngle - startAngle) / 2;
         const textX = centerX + Math.cos(midAngle) * (radius - 50);
         const textY = centerY + Math.sin(midAngle) * (radius - 50);
@@ -2130,17 +2124,17 @@ function drawWheel() {
         ctx.translate(textX, textY);
         ctx.rotate(midAngle + Math.PI / 2);
         ctx.textAlign = "center";
-        ctx.fillStyle = "#FFFFFF"; // النص باللون الأبيض
+        ctx.fillStyle = "#FFFFFF"; // White text
         ctx.font = "bold 14px Arial";
         ctx.fillText(reward.name, 0, 0);
         ctx.restore();
     });
 }
 
-// استدعاء رسم العجلة عند تحميل الصفحة
+// Call drawWheel when the page loads
 drawWheel();
 
-// التحقق من وجود المفتاح اليومي
+// Check daily key availability
 async function checkDailyKey() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
     const { data, error } = await supabase
@@ -2151,19 +2145,19 @@ async function checkDailyKey() {
 
     if (error) {
         console.error("Error fetching keys balance:", error);
-        showNotification(uiElements.purchaseNotification, "حدث خطأ أثناء جلب رصيد المفاتيح.");
+        showNotification(uiElements.purchaseNotification, "An error occurred while fetching your keys balance.");
         return false;
     }
 
     if (data.keys_balance <= 0) {
-        showNotification(uiElements.purchaseNotification, "لقد استخدمت مفتاحك اليومي. حاول مرة أخرى غدًا!");
+        showNotification(uiElements.purchaseNotification, "You have used your daily key. Please try again tomorrow!");
         return false;
     }
 
     return true;
 }
 
-// خصم مفتاح من المستخدم
+// Deduct a key from the user
 async function useKey() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
 
@@ -2175,7 +2169,7 @@ async function useKey() {
 
     if (error) {
         console.error("Error fetching keys balance:", error);
-        showNotification(uiElements.purchaseNotification, "حدث خطأ أثناء جلب رصيد المفاتيح.");
+        showNotification(uiElements.purchaseNotification, "An error occurred while fetching your keys balance.");
         return false;
     }
 
@@ -2194,7 +2188,7 @@ async function useKey() {
     return true;
 }
 
-// تحديث الرصيد في قاعدة البيانات
+// Update balance in the database
 async function updateBalance(type, value) {
     const userId = uiElements.userTelegramIdDisplay.innerText;
 
@@ -2221,7 +2215,7 @@ async function updateBalance(type, value) {
     }
 }
 
-// اختيار مكافأة بناءً على الأوزان
+// Choose a reward based on weights
 function weightedRandomReward() {
     const totalWeight = rewards.reduce((sum, reward) => sum + reward.weight, 0);
     let random = Math.random() * totalWeight;
@@ -2233,27 +2227,52 @@ function weightedRandomReward() {
         random -= reward.weight;
     }
 
-    return rewards[0]; // الافتراضي
+    return rewards[0]; // Default reward
 }
 
-// تدوير العجلة
+// Fetch and display balances
+async function fetchAndDisplayBalances() {
+    const userId = uiElements.userTelegramIdDisplay.innerText;
+
+    try {
+        const { data, error } = await supabase
+            .from("users")
+            .select("balance, ton_balance, usdt_balance, keys_balance")
+            .eq("telegram_id", userId)
+            .single();
+
+        if (error) {
+            console.error("Error fetching balances:", error);
+            return;
+        }
+
+        document.getElementById("redBalance").textContent = data.balance || 0;
+        document.getElementById("tonBalance").textContent = data.ton_balance || 0;
+        document.getElementById("usdtBalance").textContent = data.usdt_balance || 0;
+        document.getElementById("keysBalance").textContent = data.keys_balance || 0;
+    } catch (err) {
+        console.error("Unexpected error fetching balances:", err);
+    }
+}
+
+// Spin the wheel
 function spinWheel() {
     if (isSpinning) return;
 
     checkDailyKey().then(hasKey => {
         if (!hasKey) return;
 
-        // خصم مفتاح
+        // Deduct a key
         useKey();
 
-        // اختيار مكافأة بناءً على الأوزان
+        // Choose a reward based on weights
         const reward = weightedRandomReward();
         const rewardIndex = rewards.indexOf(reward);
-        const stopAngle = 360 - rewardIndex * segmentAngle - segmentAngle / 2; // زاوية التوقف عند السهم
-        const spins = 5; // عدد الدورات الكاملة
+        const stopAngle = 360 - rewardIndex * segmentAngle - segmentAngle / 2; // Stop angle at the arrow
+        const spins = 5; // Number of full rotations
         const finalAngle = 360 * spins + stopAngle;
 
-        // بدء التدوير
+        // Start spinning
         isSpinning = true;
         fortuneWheel.style.transition = "transform 3s ease-out";
         fortuneWheel.style.transform = `rotate(${finalAngle}deg)`;
@@ -2264,43 +2283,21 @@ function spinWheel() {
             fortuneWheel.style.transform = `rotate(${stopAngle}deg)`;
 
             if (reward.type === "retry") {
-                showNotification(uiElements.purchaseNotification, "حظًا أوفر! أعد المحاولة.");
+                showNotification(uiElements.purchaseNotification, "Better luck next time! Try again.");
             } else if (reward.type === "none") {
-                showNotification(uiElements.purchaseNotification, "لم تفز بأي شيء! حاول مرة أخرى.");
+                showNotification(uiElements.purchaseNotification, "You didn't win anything! Please try again.");
             } else {
-                showNotification(uiElements.purchaseNotification, `تهانينا! ربحت ${reward.name}`);
-                updateBalance(reward.type, reward.value);
+                showNotification(uiElements.purchaseNotification, `Congratulations! You won ${reward.name}`);
+                updateBalance(reward.type, reward.value).then(() => fetchAndDisplayBalances());
             }
         }, 3000);
     });
 }
 
-// إضافة مستمع لزر التدوير
+// Add spin button event listener
 spinButton.addEventListener("click", spinWheel);
 document.addEventListener("DOMContentLoaded", fetchAndDisplayBalances);
 
-async function fetchAndDisplayBalances() {
-    const userId = uiElements.userTelegramIdDisplay.innerText;
-
-    try {
-        const { data, error } = await supabase
-            .from("users")
-            .select("ton_balance, usdt_balance, keys_balance")
-            .eq("telegram_id", userId)
-            .single();
-
-        if (error) {
-            console.error("Error fetching balances:", error);
-            return;
-        }
-
-        document.getElementById("tonBalance").textContent = data.ton_balance || 0;
-        document.getElementById("usdtBalance").textContent = data.usdt_balance || 0;
-        document.getElementById("keysBalance").textContent = data.keys_balance || 0;
-    } catch (err) {
-        console.error("Unexpected error fetching balances:", err);
-    }
-}
 
 ////////////////////////////////
 
