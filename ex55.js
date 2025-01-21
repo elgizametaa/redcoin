@@ -2044,15 +2044,15 @@ document.getElementById('ton').addEventListener('click', async () => {
 /////////////////////////////////////
 
 const rewards = [
-    { name: "10k RED", type: "balance", value: 10000, weight: 35, image: "i/redcoin.png" },
-    { name: "0.1 TON", type: "ton_balance", value: 0.1, weight: 5, image: "i/toncoi.png" },
-    { name: "100k RED", type: "balance", value: 100000, weight: 35, image: "i/redcoin.png" },
-    { name: "0.5 USDT", type: "usdt_balance", value: 0.5, weight: 5, image: "i/usdt.png" },
-    { name: "0.05 TON", type: "ton_balance", value: 0.05, weight: 5, image: "i/toncoi.png" },
-    { name: "1 USDT", type: "usdt_balance", value: 1, weight: 5, image: "i/usdt.png" },
-    { name: "1 Key", type: "keys_balance", value: 1, weight: 4, image: "i/key.png" },
+    { name: "10k", type: "balance", value: 10000, weight: 35, image: "i/redcoin.png" },
+    { name: "0.1", type: "ton_balance", value: 0.1, weight: 5, image: "i/toncoi.png" },
+    { name: "100k", type: "balance", value: 100000, weight: 35, image: "i/redcoin.png" },
+    { name: "0.5", type: "usdt_balance", value: 0.5, weight: 5, image: "i/usdt.png" },
+    { name: "0.05", type: "ton_balance", value: 0.05, weight: 5, image: "i/toncoi.png" },
+    { name: "1", type: "usdt_balance", value: 1, weight: 5, image: "i/usdt.png" },
+    { name: "1", type: "keys_balance", value: 1, weight: 4, image: "i/key.png" },
     { name: "Retry", type: "retry", value: 0, weight: 2, image: "i/retry.png" },
-    { name: "5 Keys", type: "keys_balance", value: 5, weight: 2, image: "i/key.png" },
+    { name: "5", type: "keys_balance", value: 5, weight: 2, image: "i/key.png" },
     { name: "Lose", type: "none", value: 0, weight: 2, image: "i/lose.png" },
 ];
 
@@ -2093,17 +2093,16 @@ function drawWheel() {
         const image = new Image();
         image.src = reward.image;
         image.onload = () => {
-            ctx.drawImage(image, textX - 15, textY - 15, 30, 30); // حجم الصورة
+            ctx.drawImage(image, textX - 15, textY - 15, 35, 35); // حجم الصورة
         };
-
-        // رسم النص
+        
         ctx.save();
-        ctx.translate(textX, textY + 30); // ضبط النص تحت الصورة
-        ctx.rotate(midAngle + Math.PI / 2); // تدوير النص
+        ctx.translate(textX, textY + 10); // ضبط النص تحت الصورة
+        ctx.rotate(midAngle + Math.PI / 50); // تدوير النص
         ctx.textAlign = "center";
         ctx.fillStyle = "#FFFFFF"; // لون النص
         ctx.font = "bold 14px Arial";
-        ctx.fillText(reward.name, 0, 0);
+        ctx.fillText(reward.name, 5, 5);
         ctx.restore();
     });
 }
