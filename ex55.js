@@ -1369,8 +1369,6 @@ document.getElementById('closeModal').addEventListener('click', closePopup);
 document.getElementById('overlay').addEventListener('click', closePopup);
 
 //////////////////////////////////////
-
-
 const leaderboardContainer = document.getElementById('leaderboardContainer');
 const userRankContainer = document.getElementById('userRankContainer');
 const userRankDisplay = document.getElementById('userRank');
@@ -1740,12 +1738,12 @@ showContainer(mainTaskContainer, mainButton);
 /////////////////////////
 
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-    manifestUrl: 'https://sawcoin.vercel.app/json/tonconnect-manifest.json',
+    manifestUrl: 'https://x-meta-hazel.vercel.app/json/tonconnect-manifest.json',
     buttonRootId: 'ton-connect'
 });
 
 tonConnectUI.uiOptions = {
-    twaReturnUrl: 'https://t.me/SAWCOIN_BOT/GAME'
+    twaReturnUrl: 'https://t.me/RedXiobot/Red'
 };
 
 let walletAddress = localStorage.getItem("walletAddress") || null; // لتخزين عنوان المحفظة
@@ -1762,7 +1760,6 @@ async function connectToWallet() {
     }
 }
 
-// وظيفة الاشتراك (منطق الدفع)
 async function makePremiumPayment() {
     // تحقق أولاً إذا كان المستخدم قد ربط محفظته
     if (!walletAddress) {
@@ -2000,10 +1997,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /////////////////////////////////
 
-
-
 let lastTaskTime = localStorage.getItem('lastTaskTime') || 0;
-
 document.getElementById('ton').addEventListener('click', async () => {
     const currentTime = Date.now();
 
@@ -2106,7 +2100,6 @@ function drawWheel() {
     });
 }
 
-// Call drawWheel when the page loads
 drawWheel();
 
 // Check daily key availability
