@@ -2230,7 +2230,7 @@ function weightedRandomReward() {
     return rewards[0]; // Default reward
 }
 
-// Fetch and display balances
+
 async function fetchAndDisplayBalances() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
 
@@ -2246,10 +2246,11 @@ async function fetchAndDisplayBalances() {
             return;
         }
 
-        document.getElementById("redBalance").textContent = data.balance || 0;
-        document.getElementById("tonBalance").textContent = data.ton_balance || 0;
-        document.getElementById("usdtBalance").textContent = data.usdt_balance || 0;
-        document.getElementById("keysBalance").textContent = data.keys_balance || 0;
+        // تنسيق الرصيد باستخدام formatNumber
+        document.getElementById("redBalance").textContent = formatNumber(data.balance || 0);
+        document.getElementById("tonBalance").textContent = formatNumber(data.ton_balance || 0);
+        document.getElementById("usdtBalance").textContent = formatNumber(data.usdt_balance || 0);
+        document.getElementById("keysBalance").textContent = formatNumber(data.keys_balance || 0);
     } catch (err) {
         console.error("Unexpected error fetching balances:", err);
     }
@@ -2289,7 +2290,6 @@ function spinWheel() {
             } else {
                 showNotification(uiElements.purchaseNotification, `Congratulations! You won ${reward.name}`);
                 updateBalance(reward.type, reward.value).then(() => fetchAndDisplayBalances());
-                updateUI(); 
             }
         }, 3000);
     });
