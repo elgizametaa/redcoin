@@ -2317,40 +2317,74 @@ async function makePayment(amount, keys) {
         const recipientAddress = "UQAAPaYVPAR3-pWt6tTUfjyVvzjS2PiEOpgA4eJGMAcHVV_Z";
         const nanoAmount = (amount * 1e9).toString(); // تحويل إلى NanoTON
 
+        // تحقق من ربط المحفظة
+        if (!tonConnectUI.wallet) {
+            showNotification(uiElements.purchaseNotification, "Please connect your wallet first!");
+            await connectToWallet();
+            if (!tonConnectUI.wallet) {
+                console.error("Wallet is not connected.");
+                return;
+            }
+        }
+
+        // بيانات المعاملة
         const transaction = {
             validUntil: Math.floor(Date.now() / 1000) + 600, // صالح لمدة 10 دقائق
             messages: [{ address: recipientAddress, amount: nanoAmount }],
         };
 
+        // إرسال المعاملة
         await tonConnectUI.sendTransaction(transaction);
 
         // تحديث رصيد المفاتيح في قاعدة البيانات
         await updateKeysInDatabase(keys);
 
         // تحديث واجهة المستخدم
-        const currentKeys = parseInt(document.getElementById("keysBalance").textContent);
+        const currentKeys = parseInt(document.getElementById("keysBalance").textContent) || 0;
         document.getElementById("keysBalance").textContent = currentKeys + keys;
 
+        // إشعار نجاح
         showNotification(uiElements.purchaseNotification, "Keys purchased successfully!");
         document.getElementById("purchaseKeysPopup").classList.add("hidden");
     } catch (error) {
         console.error("Payment failed:", error.message);
-        showNotification(uiElements.purchaseNotification,`Payment failed: " + error.message`);
+        showNotification(uiElements.purchaseNotification, `Payment failed: ${error.message}`);
     }
 }
 
 // تحديث رصيد المفاتيح في قاعدة البيانات
 async function updateKeysInDatabase(keys) {
-    const telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
+    try {
+        const telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
 
-    const { error } = await supabase
-        .from("users")
-        .update({ keys_balance: supabase.raw(`keys_balance + ${keys}`) })
-        .eq("telegram_id", telegramId);
+        // جلب الرصيد الحالي
+        const { data, error: fetchError } = await supabase
+            .from("users")
+            .select("keys_balance")
+            .eq("telegram_id", telegramId)
+            .single();
 
-    if (error) {
-        console.error("Failed to update keys in database:", error.message);
-        showNotification(uiElements.purchaseNotification,"Failed to update keys in database.");
+        if (fetchError) {
+            console.error("Failed to fetch keys balance:", fetchError.message);
+            showNotification(uiElements.purchaseNotification, "Failed to fetch keys balance.");
+            return;
+        }
+
+        const newBalance = (data.keys_balance || 0) + keys;
+
+        // تحديث الرصيد
+        const { error: updateError } = await supabase
+            .from("users")
+            .update({ keys_balance: newBalance })
+            .eq("telegram_id", telegramId);
+
+        if (updateError) {
+            console.error("Failed to update keys balance:", updateError.message);
+            showNotification(uiElements.purchaseNotification, "Failed to update keys balance.");
+        }
+    } catch (error) {
+        console.error("Error updating keys in database:", error.message);
+        showNotification(uiElements.purchaseNotification, "An error occurred while updating keys.");
     }
 }
 
@@ -2362,10 +2396,10 @@ document.querySelectorAll(".buy-button").forEach((button) => {
         const price = parseFloat(packageElement.dataset.price);
 
         // تحقق من ربط المحفظة
-        if (!walletAddress) {
+        if (!tonConnectUI.wallet) {
             showNotification(uiElements.purchaseNotification, "Please connect your wallet first!");
             await connectToWallet();
-            if (!walletAddress) return; // إذا لم يتم ربط المحفظة
+            if (!tonConnectUI.wallet) return; // إذا لم يتم ربط المحفظة
         }
 
         // إجراء الدفع
