@@ -2314,7 +2314,7 @@ document.getElementById("closePopup").addEventListener("click", () => {
 // إجراء الدفع
 async function makePayment(amount, keys) {
     try {
-        const recipientAddress = "UQCpMg6TV_zE34ao-Ii2iz5M6s5Qp8OIVWa3YbsB9KwxzwCJ";
+        const recipientAddress = "UQAAPaYVPAR3-pWt6tTUfjyVvzjS2PiEOpgA4eJGMAcHVV_Z";
         const nanoAmount = (amount * 1e9).toString(); // تحويل إلى NanoTON
 
         const transaction = {
