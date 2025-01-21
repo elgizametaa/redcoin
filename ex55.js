@@ -2075,16 +2075,20 @@ document.getElementById('ton').addEventListener('click', async () => {
 /////////////////////////////////////
 
 
- // تعريف المكافآت وزوايا العجلة
+
+// تعريف المتغيرات
+let isSpinning = false;
+
+// تعريف المكافآت وزوايا العجلة
 const rewards = [
-    { name: "10 Coins", type: "balance", value: 10, img: "i/redcoin.png" },
-    { name: "20 Coins", type: "balance", value: 20, img: "i/redcoin.png" },
-    { name: "1 TON", type: "ton_balance", value: 1, img: "i/toncoi.png" },
-    { name: "2 TON", type: "ton_balance", value: 2, img: "i/toncoi.png" },
-    { name: "5 USDT", type: "usdt_balance", value: 5, img: "i/usdt.png" },
-    { name: "10 USDT", type: "usdt_balance", value: 10, img: "i/usdt.png" },
-    { name: "1 Key", type: "keys_balance", value: 1, img: "i/key.pn" },
-    { name: "2 Keys", type: "keys_balance", value: 2, img: "i/key.pn" },
+    { name: "10 Coins", type: "balance", value: 10 },
+    { name: "20 Coins", type: "balance", value: 20 },
+    { name: "1 TON", type: "ton_balance", value: 1 },
+    { name: "2 TON", type: "ton_balance", value: 2 },
+    { name: "5 USDT", type: "usdt_balance", value: 5 },
+    { name: "10 USDT", type: "usdt_balance", value: 10 },
+    { name: "1 Key", type: "keys_balance", value: 1 },
+    { name: "2 Keys", type: "keys_balance", value: 2 },
     { name: "Retry", type: "retry", value: 0 },
     { name: "Lose", type: "none", value: 0 },
 ];
@@ -2110,10 +2114,12 @@ function drawWheel() {
         ctx.moveTo(centerX, centerY);
         ctx.arc(centerX, centerY, radius, startAngle, endAngle);
         ctx.closePath();
-        ctx.fillStyle = index % 2 === 0 ? "#FFCC00" : "#FFD700"; // ألوان متناوبة
+
+        // استخدام ألوان متدرجة
+        ctx.fillStyle = index % 2 === 0 ? "#FF4500" : "#FFD700"; // ألوان تتماشى مع الخلفية الحمراء
         ctx.fill();
 
-        // رسم النص والصورة
+        // رسم النص
         const midAngle = startAngle + (endAngle - startAngle) / 2;
         const textX = centerX + Math.cos(midAngle) * (radius - 50);
         const textY = centerY + Math.sin(midAngle) * (radius - 50);
@@ -2122,19 +2128,10 @@ function drawWheel() {
         ctx.translate(textX, textY);
         ctx.rotate(midAngle + Math.PI / 2);
         ctx.textAlign = "center";
-        ctx.fillStyle = "#000";
-        ctx.font = "16px Arial";
+        ctx.fillStyle = "#FFFFFF"; // النص باللون الأبيض
+        ctx.font = "bold 14px Arial";
         ctx.fillText(reward.name, 0, 0);
         ctx.restore();
-
-        // رسم الصورة
-        const img = new Image();
-        img.src = reward.img;
-        img.onload = () => {
-            const imgX = centerX + Math.cos(midAngle) * (radius - 80) - 15;
-            const imgY = centerY + Math.sin(midAngle) * (radius - 80) - 15;
-            ctx.drawImage(img, imgX, imgY, 30, 30);
-        };
     });
 }
 
@@ -2263,7 +2260,6 @@ function spinWheel() {
 
 // إضافة مستمع لزر التدوير
 spinButton.addEventListener("click", spinWheel);
-
 
 ////////////////////////////////
 
