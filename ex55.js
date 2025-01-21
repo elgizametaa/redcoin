@@ -2055,12 +2055,12 @@ let isSpinning = false;
 const rewards = [
     { name: "10k", type: "balance", value: 10000, weight: 35 },
     { name: "100k", type: "balance", value: 100000, weight: 35 },
-    { name: "0.1", type: "ton_balance", value: 0.1, weight: 5 },
-    { name: "0.05", type: "ton_balance", value: 0.05, weight: 5 },
-    { name: "0.5", type: "usdt_balance", value: 0.5, weight: 5 },
-    { name: "1", type: "usdt_balance", value: 1, weight: 5 },
-    { name: "1", type: "keys_balance", value: 1, weight: 4 },
-    { name: "5", type: "keys_balance", value: 5, weight: 2 },
+    { name: "0.1 TON", type: "ton_balance", value: 0.1, weight: 5 },
+    { name: "0.05 TON", type: "ton_balance", value: 0.05, weight: 5 },
+    { name: "0.5 USDT", type: "usdt_balance", value: 0.5, weight: 5 },
+    { name: "1 USDT", type: "usdt_balance", value: 1, weight: 5 },
+    { name: "1 Key", type: "keys_balance", value: 1, weight: 4 },
+    { name: "5 Keys", type: "keys_balance", value: 5, weight: 2 },
     { name: "Retry", type: "retry", value: 0, weight: 2 },
     { name: "Lose", type: "none", value: 0, weight: 2 },
 ];
@@ -2069,24 +2069,37 @@ const segmentAngle = 360 / rewards.length;
 const spinButton = document.getElementById("spinWheelButton");
 const fortuneWheel = document.getElementById("fortuneWheel");
 const ctx = fortuneWheel.getContext("2d");
+
+// Load images for rewards with unique keys
 const rewardImages = {
     "10k": "i/redcoin.png",
     "100k": "i/redcoin.png",
-    "0.1": "i/toncoi.png",
-    "0.05": "i/toncoi.png",
-    "0.5": "i/usdt.png",
-    "1": "i/usdt.png",
-    "1": "i/key.png",
-    "5": "i/key.png",
+    "0.1 TON": "i/toncoi.png",
+    "0.05 TON": "i/toncoi.png",
+    "0.5 USDT": "i/usdt.png",
+    "1 USDT": "i/usdt.png",
+    "1 Key": "i/key.png",
+    "5 Keys": "i/key.png",
 };
 
 // Define color palette
 const colors = ["#87CEEB", "#8A2BE2", "#000000", "#FF4500"]; // Sky blue, purple, black, orange-red
 
+// Adjust canvas resolution
+function adjustCanvasResolution(canvas, ctx) {
+    const ratio = window.devicePixelRatio || 1;
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    ctx.scale(ratio, ratio);
+}
+
+// Draw the wheel
 function drawWheel() {
-    const centerX = fortuneWheel.width / 2;
-    const centerY = fortuneWheel.height / 2;
-    const radius = fortuneWheel.width / 2;
+    adjustCanvasResolution(fortuneWheel, ctx);
+
+    const centerX = fortuneWheel.width / 2 / window.devicePixelRatio;
+    const centerY = fortuneWheel.height / 2 / window.devicePixelRatio;
+    const radius = centerX;
 
     rewards.forEach((reward, index) => {
         const startAngle = (segmentAngle * index * Math.PI) / 180;
@@ -2098,35 +2111,38 @@ function drawWheel() {
         ctx.arc(centerX, centerY, radius, startAngle, endAngle);
         ctx.closePath();
 
-        // Fill segment with alternating colors
         ctx.fillStyle = colors[index % colors.length];
         ctx.fill();
 
         // Draw text
         const midAngle = startAngle + (endAngle - startAngle) / 2;
-        const textX = centerX + Math.cos(midAngle) * (radius - 50);
-        const textY = centerY + Math.sin(midAngle) * (radius - 50);
+        const textX = centerX + Math.cos(midAngle) * (radius - 70);
+        const textY = centerY + Math.sin(midAngle) * (radius - 70);
 
         ctx.save();
         ctx.translate(textX, textY);
-        ctx.rotate(midAngle + Math.PI / 50);
+        ctx.rotate(midAngle);
         ctx.textAlign = "center";
-        ctx.fillStyle = "#FFFFFF"; // White text
-        ctx.font = "bold 18px Arial";
-        ctx.fillText(reward.name, 0, -10); // Offset text slightly above
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = "bold 16px Arial";
+        ctx.fillText(reward.name, 0, -10);
 
         // Draw image if available and not "Lose" or "Retry"
         if (rewardImages[reward.name] && reward.type !== "none" && reward.type !== "retry") {
             const img = new Image();
             img.src = rewardImages[reward.name];
-            img.onload = () => ctx.drawImage(img, -15, 5, 30, 30); // Position image below text
+            img.onload = () => ctx.drawImage(img, -15, 5, 30, 30); // Image dimensions
         }
+
         ctx.restore();
     });
 }
 
-// Call drawWheel when the page loads
-drawWheel();
+// Initialize canvas and draw the wheel
+document.addEventListener("DOMContentLoaded", () => {
+    adjustCanvasResolution(fortuneWheel, ctx);
+    drawWheel();
+});
 
 // Check daily key availability
 async function checkDailyKey() {
