@@ -1,11 +1,11 @@
 {
-  "name": "SAW-COIN App",  
-  "short_name": "Sawcoin Game ", 
-  "start_url": "https://app-sawcoin.vercel.app/",
+  "name": "RED",  
+  "short_name": "Red Game", 
+  "start_url": " ",
   "display": "standalone", 
   "background_color": "#000000",  
   "theme_color": "#000000",  
-  "description": "SAW-COIN",
+  "description": "Red Coin",
   "icons": [  
     {
       "src": "i/icon-192x192.png",  
