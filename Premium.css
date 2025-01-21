@@ -59,11 +59,16 @@
 }
 
 .key-package p {
-    margin: 0;
-    font-size: 13px;
-    color: #f0d678;
+    display: flex;
+    align-items: center; /* محاذاة النص والأيقونة عموديًا */
+    gap: 8px; /* مسافة بين الأيقونة والنص */
 }
 
+.key-package .fa-key {
+    color: #ffc107; /* لون الأيقونة */
+    font-size: 18px; /* حجم الأيقونة */
+}
+ 
 .buy-button {
     background-color: #fff;
     color: #000;
