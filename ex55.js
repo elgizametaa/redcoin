@@ -2076,21 +2076,23 @@ document.getElementById('ton').addEventListener('click', async () => {
 
 
 
+
+
 // تعريف المتغيرات
 let isSpinning = false;
 
 // تعريف المكافآت وزوايا العجلة
 const rewards = [
-    { name: "10 Coins", type: "balance", value: 10 },
-    { name: "20 Coins", type: "balance", value: 20 },
-    { name: "1 TON", type: "ton_balance", value: 1 },
-    { name: "2 TON", type: "ton_balance", value: 2 },
-    { name: "5 USDT", type: "usdt_balance", value: 5 },
-    { name: "10 USDT", type: "usdt_balance", value: 10 },
-    { name: "1 Key", type: "keys_balance", value: 1 },
-    { name: "2 Keys", type: "keys_balance", value: 2 },
-    { name: "Retry", type: "retry", value: 0 },
-    { name: "Lose", type: "none", value: 0 },
+    { name: "10 Coins", type: "balance", value: 10, weight: 35 },
+    { name: "20 Coins", type: "balance", value: 20, weight: 35 },
+    { name: "1 TON", type: "ton_balance", value: 1, weight: 10 },
+    { name: "2 TON", type: "ton_balance", value: 2, weight: 5 },
+    { name: "5 USDT", type: "usdt_balance", value: 5, weight: 5 },
+    { name: "10 USDT", type: "usdt_balance", value: 10, weight: 5 },
+    { name: "1 Key", type: "keys_balance", value: 1, weight: 3 },
+    { name: "2 Keys", type: "keys_balance", value: 2, weight: 2 },
+    { name: "Retry", type: "retry", value: 0, weight: 0 },
+    { name: "Lose", type: "none", value: 0, weight: 0 },
 ];
 const segmentAngle = 360 / rewards.length;
 
@@ -2116,7 +2118,7 @@ function drawWheel() {
         ctx.closePath();
 
         // استخدام ألوان متدرجة
-        ctx.fillStyle = index % 2 === 0 ? "#FF4500" : "#FFD700"; // ألوان تتماشى مع الخلفية الحمراء
+        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500"; // ألوان تتماشى مع الخلفية الحمراء
         ctx.fill();
 
         // رسم النص
@@ -2219,6 +2221,21 @@ async function updateBalance(type, value) {
     }
 }
 
+// اختيار مكافأة بناءً على الأوزان
+function weightedRandomReward() {
+    const totalWeight = rewards.reduce((sum, reward) => sum + reward.weight, 0);
+    let random = Math.random() * totalWeight;
+
+    for (const reward of rewards) {
+        if (random < reward.weight) {
+            return reward;
+        }
+        random -= reward.weight;
+    }
+
+    return rewards[0]; // الافتراضي
+}
+
 // تدوير العجلة
 function spinWheel() {
     if (isSpinning) return;
@@ -2229,10 +2246,10 @@ function spinWheel() {
         // خصم مفتاح
         useKey();
 
-        // اختيار مكافأة عشوائية
-        const randomIndex = Math.floor(Math.random() * rewards.length);
-        const reward = rewards[randomIndex];
-        const stopAngle = randomIndex * segmentAngle;
+        // اختيار مكافأة بناءً على الأوزان
+        const reward = weightedRandomReward();
+        const rewardIndex = rewards.indexOf(reward);
+        const stopAngle = 360 - rewardIndex * segmentAngle - segmentAngle / 2; // زاوية التوقف عند السهم
         const spins = 5; // عدد الدورات الكاملة
         const finalAngle = 360 * spins + stopAngle;
 
@@ -2260,6 +2277,31 @@ function spinWheel() {
 
 // إضافة مستمع لزر التدوير
 spinButton.addEventListener("click", spinWheel);
+document.addEventListener("DOMContentLoaded", fetchAndDisplayBalances);
+
+// دالة لجلب الأرصدة وتحديث العرض
+async function fetchAndDisplayBalances() {
+    const userId = uiElements.userTelegramIdDisplay.innerText;
+
+    try {
+        const { data, error } = await supabase
+            .from("users")
+            .select("ton_balance, usdt_balance, keys_balance")
+            .eq("telegram_id", userId)
+            .single();
+
+        if (error) {
+            console.error("Error fetching balances:", error);
+            return;
+        }
+
+        document.getElementById("tonBalance").textContent = data.ton_balance || 0;
+        document.getElementById("usdtBalance").textContent = data.usdt_balance || 0;
+        document.getElementById("keysBalance").textContent = data.keys_balance || 0;
+    } catch (err) {
+        console.error("Unexpected error fetching balances:", err);
+    }
+}
 
 ////////////////////////////////
 
