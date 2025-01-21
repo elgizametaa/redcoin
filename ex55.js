@@ -2119,6 +2119,7 @@ async function checkDailyKey() {
 
     if (data.keys_balance <= 0) {
         showNotification(uiElements.purchaseNotification, "You have used your daily key. Please try again tomorrow!");
+        document.getElementById("purchaseKeysPopup").classList.remove("hidden");
         return false;
     }
 
