@@ -2098,11 +2098,11 @@ function drawWheel() {
 
         ctx.save();
         ctx.translate(textX, textY);
-        ctx.rotate(midAngle + Math.PI / 2);
+        ctx.rotate(midAngle + Math.PI / 50);
         ctx.textAlign = "center";
         ctx.fillStyle = "#FFFFFF"; // White text
-        ctx.font = "bold 14px Arial";
-        ctx.fillText(reward.name, 0, 0);
+        ctx.font = "bold 17px Arial";
+        ctx.fillText(reward.name, 0, 5);
         ctx.restore();
     });
 }
