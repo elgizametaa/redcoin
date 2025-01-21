@@ -2099,12 +2099,12 @@ function drawWheel() {
             ctx.rotate(midAngle); // تدوير النص والصورة للتمركز بشكل مثالي
 
             // رسم الصورة
-            ctx.drawImage(image, -imageSize - 10, -imageSize / 2, imageSize, imageSize); // الصورة على يسار النص
+            ctx.drawImage(image, -imageSize - 3, -imageSize / 2, imageSize, imageSize); // الصورة على يسار النص
 
             // رسم النص
             ctx.textAlign = "left"; // النص بجانب الصورة
             ctx.fillStyle = "#FFFFFF"; // لون النص
-            ctx.font = "bold 16px Arial";
+            ctx.font = "bold 20px Arial";
             ctx.fillText(reward.name, 5, 5); // النص بجانب الصورة
 
             ctx.restore();
