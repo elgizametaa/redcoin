@@ -2044,16 +2044,16 @@ document.getElementById('ton').addEventListener('click', async () => {
 /////////////////////////////////////
 
 const rewards = [
-    { name: "10k RED", type: "balance", value: 10000, weight: 35 },
-    { name: "0.1 TON", type: "ton_balance", value: 0.1, weight: 5 },
-    { name: "100k RED", type: "balance", value: 100000, weight: 35 },
-    { name: "0.5 USDT", type: "usdt_balance", value: 0.5, weight: 5 },
-    { name: "0.05 TON", type: "ton_balance", value: 0.05, weight: 5 },
-    { name: "1 USDT", type: "usdt_balance", value: 1, weight: 5 },
-    { name: "1 Key", type: "keys_balance", value: 1, weight: 4 },
-    { name: "Retry", type: "retry", value: 0, weight: 2 },
-    { name: "5 Keys", type: "keys_balance", value: 5, weight: 2 },
-    { name: "Lose", type: "none", value: 0, weight: 2 },
+    { name: "10k RED", type: "balance", value: 10000, weight: 35, image: "i/redcoin.png" },
+    { name: "0.1 TON", type: "ton_balance", value: 0.1, weight: 5, image: "i/toncoi.png" },
+    { name: "100k RED", type: "balance", value: 100000, weight: 35, image: "i/redcoin.png" },
+    { name: "0.5 USDT", type: "usdt_balance", value: 0.5, weight: 5, image: "i/usdt.png" },
+    { name: "0.05 TON", type: "ton_balance", value: 0.05, weight: 5, image: "i/toncoi.png" },
+    { name: "1 USDT", type: "usdt_balance", value: 1, weight: 5, image: "i/usdt.png" },
+    { name: "1 Key", type: "keys_balance", value: 1, weight: 4, image: "i/key.png" },
+    { name: "Retry", type: "retry", value: 0, weight: 2, image: "i/retry.png" },
+    { name: "5 Keys", type: "keys_balance", value: 5, weight: 2, image: "i/key.png" },
+    { name: "Lose", type: "none", value: 0, weight: 2, image: "i/lose.png" },
 ];
 
 const segmentAngle = 360 / rewards.length;
@@ -2064,7 +2064,7 @@ const fortuneWheel = document.getElementById("fortuneWheel");
 const ctx = fortuneWheel.getContext("2d");
 let isSpinning = false;
 
-// Draw the wheel
+
 function drawWheel() {
     const centerX = fortuneWheel.width / 2;
     const centerY = fortuneWheel.height / 2;
@@ -2074,28 +2074,36 @@ function drawWheel() {
         const startAngle = (segmentAngle * index * Math.PI) / 180;
         const endAngle = (segmentAngle * (index + 1) * Math.PI) / 180;
 
-        // Draw segment
+        // رسم الشريحة
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.arc(centerX, centerY, radius, startAngle, endAngle);
         ctx.closePath();
 
-        // Fill segment with alternating colors
-        ctx.fillStyle = index % 2 === 0 ? "#000" : "#202020"; // Colors matching a red background
+        // ألوان الشريحة
+        ctx.fillStyle = index % 2 === 0 ? "#000" : "#202020";
         ctx.fill();
 
-        // Draw text
+        // إعداد النص والصورة
         const midAngle = startAngle + (endAngle - startAngle) / 2;
-        const textX = centerX + Math.cos(midAngle) * (radius - 50);
-        const textY = centerY + Math.sin(midAngle) * (radius - 50);
+        const textX = centerX + Math.cos(midAngle) * (radius - 70);
+        const textY = centerY + Math.sin(midAngle) * (radius - 70);
 
+        // رسم الصورة
+        const image = new Image();
+        image.src = reward.image;
+        image.onload = () => {
+            ctx.drawImage(image, textX - 15, textY - 15, 30, 30); // حجم الصورة
+        };
+
+        // رسم النص
         ctx.save();
-        ctx.translate(textX, textY);
-        ctx.rotate(midAngle + Math.PI / 50);
+        ctx.translate(textX, textY + 30); // ضبط النص تحت الصورة
+        ctx.rotate(midAngle + Math.PI / 2); // تدوير النص
         ctx.textAlign = "center";
-        ctx.fillStyle = "#FFFFFF"; // White text
-        ctx.font = "bold 18px Arial";
-        ctx.fillText(reward.name, 5, 5);
+        ctx.fillStyle = "#FFFFFF"; // لون النص
+        ctx.font = "bold 14px Arial";
+        ctx.fillText(reward.name, 0, 0);
         ctx.restore();
     });
 }
