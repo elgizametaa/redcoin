@@ -2311,18 +2311,6 @@ document.getElementById("closePopup").addEventListener("click", () => {
     document.getElementById("purchaseKeysPopup").classList.add("hidden");
 });
 
-// التحقق من ربط المحفظة
-async function connectToWallet() {
-    try {
-        const connectedWallet = await tonConnectUI.connectWallet();
-        walletAddress = connectedWallet.account.address;
-        showNotification("Wallet connected successfully!", "success");
-    } catch (error) {
-        console.error("Error connecting to wallet:", error.message);
-        showNotification("Failed to connect wallet: " + error.message, "error");
-    }
-}
-
 // إجراء الدفع
 async function makePayment(amount, keys) {
     try {
