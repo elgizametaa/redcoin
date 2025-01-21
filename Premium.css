@@ -61,7 +61,7 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    bottom: 150px;
+    bottom: 160px;
     left: 50%;
     transform: translateX(-50%);
     width: auto;
@@ -73,14 +73,6 @@
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
 } 
-
-.Balances {
-    display: flex;
-    justify-content: space-between;
-    width: 95%;
-    position: fixed;
-    top: 5px;
-}
  
 .balance-icon {
     width: 28px;
