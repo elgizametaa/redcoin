@@ -2070,17 +2070,40 @@ const spinButton = document.getElementById("spinWheelButton");
 const fortuneWheel = document.getElementById("fortuneWheel");
 const ctx = fortuneWheel.getContext("2d");
 
-// Load images for rewards with unique keys
 const rewardImages = {
-    "10k": "i/redcoin.png",
-    "100k": "i/redcoin.png",
-    "0.1 TON": "i/toncoi.png",
-    "0.05 TON": "i/toncoi.png",
+    "10k RED": "i/redcoin.png",
+    "100k RED": "i/redcoin.png",
+    "0.1 TON": "i/toncoin.png",
+    "0.05 TON": "i/toncoin.png",
     "0.5 USDT": "i/usdt.png",
     "1 USDT": "i/usdt.png",
     "1 Key": "i/key.png",
     "5 Keys": "i/key.png",
 };
+
+const loadImages = async () => {
+    const imagePromises = Object.entries(rewardImages).map(([key, src]) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => resolve({ key, img });
+            img.onerror = reject;
+        });
+    });
+
+    const loadedImages = await Promise.all(imagePromises);
+    return loadedImages.reduce((acc, { key, img }) => {
+        acc[key] = img;
+        return acc;
+    }, {});
+};
+
+let images = {};
+
+document.addEventListener("DOMContentLoaded", async () => {
+    images = await loadImages();
+    drawWheel();
+});
 
 // Define color palette
 const colors = ["#87CEEB", "#8A2BE2", "#000000", "#FF4500"]; // Sky blue, purple, black, orange-red
@@ -2093,13 +2116,10 @@ function adjustCanvasResolution(canvas, ctx) {
     ctx.scale(ratio, ratio);
 }
 
-// Draw the wheel
 function drawWheel() {
-    adjustCanvasResolution(fortuneWheel, ctx);
-
-    const centerX = fortuneWheel.width / 2 / window.devicePixelRatio;
-    const centerY = fortuneWheel.height / 2 / window.devicePixelRatio;
-    const radius = centerX;
+    const centerX = fortuneWheel.width / 2;
+    const centerY = fortuneWheel.height / 2;
+    const radius = fortuneWheel.width / 2;
 
     rewards.forEach((reward, index) => {
         const startAngle = (segmentAngle * index * Math.PI) / 180;
@@ -2111,38 +2131,34 @@ function drawWheel() {
         ctx.arc(centerX, centerY, radius, startAngle, endAngle);
         ctx.closePath();
 
-        ctx.fillStyle = colors[index % colors.length];
+        // Fill segment with alternating colors
+        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500"; // Colors matching a red background
         ctx.fill();
 
         // Draw text
         const midAngle = startAngle + (endAngle - startAngle) / 2;
-        const textX = centerX + Math.cos(midAngle) * (radius - 70);
-        const textY = centerY + Math.sin(midAngle) * (radius - 70);
+        const textX = centerX + Math.cos(midAngle) * (radius - 50);
+        const textY = centerY + Math.sin(midAngle) * (radius - 50);
 
         ctx.save();
         ctx.translate(textX, textY);
-        ctx.rotate(midAngle);
+        ctx.rotate(midAngle + Math.PI / 50);
         ctx.textAlign = "center";
-        ctx.fillStyle = "#FFFFFF";
-        ctx.font = "bold 16px Arial";
-        ctx.fillText(reward.name, 0, -10);
+        ctx.fillStyle = "#FFFFFF"; // White text
+        ctx.font = "bold 18px Arial";
+        ctx.fillText(reward.name, 0, 5);
 
-        // Draw image if available and not "Lose" or "Retry"
-        if (rewardImages[reward.name] && reward.type !== "none" && reward.type !== "retry") {
-            const img = new Image();
-            img.src = rewardImages[reward.name];
-            img.onload = () => ctx.drawImage(img, -15, 5, 30, 30); // Image dimensions
+        // Draw image if available
+        if (images[reward.name]) {
+            const img = images[reward.name];
+            const imgSize = 30; // Adjust image size as needed
+            ctx.drawImage(img, -imgSize / 2, 20, imgSize, imgSize);
         }
 
         ctx.restore();
     });
 }
 
-// Initialize canvas and draw the wheel
-document.addEventListener("DOMContentLoaded", () => {
-    adjustCanvasResolution(fortuneWheel, ctx);
-    drawWheel();
-});
 
 // Check daily key availability
 async function checkDailyKey() {
