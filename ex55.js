@@ -2299,8 +2299,98 @@ function spinWheel() {
 spinButton.addEventListener("click", spinWheel);
 document.addEventListener("DOMContentLoaded", fetchAndDisplayBalances);
 
-
 ////////////////////////////////
+
+// فتح نافذة شراء المفاتيح
+document.getElementById("addKey").addEventListener("click", () => {
+    document.getElementById("purchaseKeysPopup").classList.remove("hidden");
+});
+
+// إغلاق نافذة الشراء
+document.getElementById("closePopup").addEventListener("click", () => {
+    document.getElementById("purchaseKeysPopup").classList.add("hidden");
+});
+
+// التحقق من ربط المحفظة
+async function connectToWallet() {
+    try {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        walletAddress = connectedWallet.account.address;
+        showNotification("Wallet connected successfully!", "success");
+    } catch (error) {
+        console.error("Error connecting to wallet:", error.message);
+        showNotification("Failed to connect wallet: " + error.message, "error");
+    }
+}
+
+// إجراء الدفع
+async function makePayment(amount, keys) {
+    try {
+        const recipientAddress = "UQCpMg6TV_zE34ao-Ii2iz5M6s5Qp8OIVWa3YbsB9KwxzwCJ";
+        const nanoAmount = (amount * 1e9).toString(); // تحويل إلى NanoTON
+
+        const transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 600, // صالح لمدة 10 دقائق
+            messages: [{ address: recipientAddress, amount: nanoAmount }],
+        };
+
+        await tonConnectUI.sendTransaction(transaction);
+
+        // تحديث رصيد المفاتيح في قاعدة البيانات
+        await updateKeysInDatabase(keys);
+
+        // تحديث واجهة المستخدم
+        const currentKeys = parseInt(document.getElementById("keysBalance").textContent);
+        document.getElementById("keysBalance").textContent = currentKeys + keys;
+
+        showNotification("Keys purchased successfully!", "success");
+        document.getElementById("purchaseKeysPopup").classList.add("hidden");
+    } catch (error) {
+        console.error("Payment failed:", error.message);
+        showNotification("Payment failed: " + error.message, "error");
+    }
+}
+
+// تحديث رصيد المفاتيح في قاعدة البيانات
+async function updateKeysInDatabase(keys) {
+    const telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
+
+    const { error } = await supabase
+        .from("users")
+        .update({ keys_balance: supabase.raw(`keys_balance + ${keys}`) })
+        .eq("telegram_id", telegramId);
+
+    if (error) {
+        console.error("Failed to update keys in database:", error.message);
+        showNotification("Failed to update keys in database.", "error");
+    }
+}
+
+// منطق زر الشراء
+document.querySelectorAll(".buy-button").forEach((button) => {
+    button.addEventListener("click", async (event) => {
+        const packageElement = event.target.closest(".key-package");
+        const keys = parseInt(packageElement.dataset.keys);
+        const price = parseFloat(packageElement.dataset.price);
+
+        // تحقق من ربط المحفظة
+        if (!walletAddress) {
+            showNotification("Please connect your wallet first!");
+            await connectToWallet();
+            if (!walletAddress) return; // إذا لم يتم ربط المحفظة
+        }
+
+        // إجراء الدفع
+        await makePayment(price, keys);
+    });
+});
+
+
+//////////////////////////////////
+
+
+
+
 
 
 
