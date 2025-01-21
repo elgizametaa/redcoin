@@ -2065,6 +2065,7 @@ const ctx = fortuneWheel.getContext("2d");
 let isSpinning = false;
 
 
+
 function drawWheel() {
     const centerX = fortuneWheel.width / 2;
     const centerY = fortuneWheel.height / 2;
@@ -2089,21 +2090,20 @@ function drawWheel() {
         const textX = centerX + Math.cos(midAngle) * (radius - 70);
         const textY = centerY + Math.sin(midAngle) * (radius - 70);
 
-        // رسم الصورة
+        // رسم الصورة بجانب النص
         const image = new Image();
         image.src = reward.image;
+
         image.onload = () => {
-            ctx.drawImage(image, textX - 15, textY - 15, 35, 35); // حجم الصورة
+            // تمركز الصورة والنص معًا
+            const imageSize = 30; // حجم الصورة
+            ctx.drawImage(image, textX - imageSize / 2, textY - 20, imageSize, imageSize); // رسم الصورة
+
+            ctx.textAlign = "center";
+            ctx.fillStyle = "#FFFFFF"; // لون النص
+            ctx.font = "bold 14px Arial";
+            ctx.fillText(reward.name, textX, textY + 25); // النص أسفل الصورة
         };
-        
-        ctx.save();
-        ctx.translate(textX, textY + 50); // ضبط النص تحت الصورة
-        ctx.rotate(midAngle + Math.PI / 50); // تدوير النص
-        ctx.textAlign = "center";
-        ctx.fillStyle = "#FFFFFF"; // لون النص
-        ctx.font = "bold 14px Arial";
-        ctx.fillText(reward.name, 5, 5);
-        ctx.restore();
     });
 }
 
