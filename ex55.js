@@ -2051,7 +2051,7 @@ const rewards = [
     { name: "0.05", type: "ton_balance", value: 0.05, weight: 5, image: "i/toncoi.png" },
     { name: "1", type: "usdt_balance", value: 1, weight: 5, image: "i/usdt.png" },
     { name: "1", type: "keys_balance", value: 1, weight: 4, image: "i/key.png" },
-    { name: "Retry", type: "retry", value: 0, weight: 2, image: "i/retry.png" },
+    { name: "Retry", type: "retry", value: 0, weight: 2, image: "i/Retry.png" },
     { name: "5", type: "keys_balance", value: 5, weight: 2, image: "i/key.png" },
     { name: "Lose", type: "none", value: 0, weight: 2, image: "i/lose.png" },
 ];
@@ -2101,8 +2101,8 @@ function drawWheel() {
 
             ctx.textAlign = "center";
             ctx.fillStyle = "#FFFFFF"; // لون النص
-            ctx.font = "bold 14px Arial";
-            ctx.fillText(reward.name, textX, textY + 25); // النص أسفل الصورة
+            ctx.font = "bold 18px Arial";
+            ctx.fillText(reward.name, textX, textY + 50); // النص أسفل الصورة
         };
     });
 }
