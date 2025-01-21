@@ -7,8 +7,8 @@
 } 
 
 .button-container button.active {
-    background-color: #000;
-    color: white;
+    background-color: #fff;
+    color:black;
     font-weight: bold;
     transform: scale(1.1); 
 }
@@ -44,14 +44,6 @@
 
 .button-container button.middle {
   border-radius: 0;
-}
-
-.button-container button:hover {
-  background-color: #ddd;
-}
-
-.button-container button:active {
-  background-color: #ccc;
 }
 
 .description-taskk {
