@@ -2102,7 +2102,6 @@ function drawWheel() {
 
 drawWheel();
 
-// Check daily key availability
 async function checkDailyKey() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
     const { data, error } = await supabase
@@ -2119,7 +2118,10 @@ async function checkDailyKey() {
 
     if (data.keys_balance <= 0) {
         showNotification(uiElements.purchaseNotification, "You have used your daily key. Please try again tomorrow!");
-        document.getElementById("purchaseKeysPopup").classList.remove("hidden");
+        const popup = document.getElementById("purchaseKeysPopup");
+        popup.classList.remove("hidden");
+        popup.classList.add("visible");
+        
         return false;
     }
 
