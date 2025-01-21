@@ -101,11 +101,17 @@
     height: 28px;
 }
 
-.balance-key { 
+.balance-key i { 
     font-size: 20px;
     color: #fff;
     padding-right: 5px;
 }
+
+.key i { 
+    font-size: 20px;
+    color: #fff;
+    padding-left: 8px;
+} 
 
 .balance-value {
     font-size: 14px;
