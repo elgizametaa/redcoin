@@ -213,7 +213,7 @@
 #fortuneWheel {
     border-radius: 50%;
     background: #202020;
-    border: 5px solid #f0d678; /* حدود العجلة */
+    border: 10px solid #fff; /* حدود العجلة */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -226,7 +226,7 @@
     transform: rotate(0deg); 
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-right: 30px solid #f0d678; /* تغيير border-left إلى border-right */
+    border-right: 30px solid #fff; /* تغيير border-left إلى border-right */
 } 
  
 /* Floating Button */
