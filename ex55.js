@@ -2049,12 +2049,10 @@ document.getElementById('ton').addEventListener('click', async () => {
 
 /////////////////////////////////////
 
-let isSpinning = false;
-
-// Define rewards and wheel segments
+// الإعدادات العامة
 const rewards = [
-    { name: "10k", type: "balance", value: 10000, weight: 35 },
-    { name: "100k", type: "balance", value: 100000, weight: 35 },
+    { name: "10k RED", type: "balance", value: 10000, weight: 35 },
+    { name: "100k RED", type: "balance", value: 100000, weight: 35 },
     { name: "0.1 TON", type: "ton_balance", value: 0.1, weight: 5 },
     { name: "0.05 TON", type: "ton_balance", value: 0.05, weight: 5 },
     { name: "0.5 USDT", type: "usdt_balance", value: 0.5, weight: 5 },
@@ -2064,58 +2062,16 @@ const rewards = [
     { name: "Retry", type: "retry", value: 0, weight: 2 },
     { name: "Lose", type: "none", value: 0, weight: 2 },
 ];
-
 const segmentAngle = 360 / rewards.length;
-const spinButton = document.getElementById("spinWheelButton");
+
+// العجلة وعناصرها
 const fortuneWheel = document.getElementById("fortuneWheel");
 const ctx = fortuneWheel.getContext("2d");
+const spinButton = document.getElementById("spinWheelButton");
+const wheelRewards = document.getElementById("wheelRewards");
+let isSpinning = false;
 
-const rewardImages = {
-    "10k RED": "i/redcoin.png",
-    "100k RED": "i/redcoin.png",
-    "0.1 TON": "i/toncoin.png",
-    "0.05 TON": "i/toncoin.png",
-    "0.5 USDT": "i/usdt.png",
-    "1 USDT": "i/usdt.png",
-    "1 Key": "i/key.png",
-    "5 Keys": "i/key.png",
-};
-
-const loadImages = async () => {
-    const imagePromises = Object.entries(rewardImages).map(([key, src]) => {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = src;
-            img.onload = () => resolve({ key, img });
-            img.onerror = reject;
-        });
-    });
-
-    const loadedImages = await Promise.all(imagePromises);
-    return loadedImages.reduce((acc, { key, img }) => {
-        acc[key] = img;
-        return acc;
-    }, {});
-};
-
-let images = {};
-
-document.addEventListener("DOMContentLoaded", async () => {
-    images = await loadImages();
-    drawWheel();
-});
-
-// Define color palette
-const colors = ["#87CEEB", "#8A2BE2", "#000000", "#FF4500"]; // Sky blue, purple, black, orange-red
-
-// Adjust canvas resolution
-function adjustCanvasResolution(canvas, ctx) {
-    const ratio = window.devicePixelRatio || 1;
-    canvas.width = canvas.offsetWidth * ratio;
-    canvas.height = canvas.offsetHeight * ratio;
-    ctx.scale(ratio, ratio);
-}
-
+// رسم العجلة
 function drawWheel() {
     const centerX = fortuneWheel.width / 2;
     const centerY = fortuneWheel.height / 2;
@@ -2125,40 +2081,32 @@ function drawWheel() {
         const startAngle = (segmentAngle * index * Math.PI) / 180;
         const endAngle = (segmentAngle * (index + 1) * Math.PI) / 180;
 
-        // Draw segment
+        // رسم القطاع
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.arc(centerX, centerY, radius, startAngle, endAngle);
         ctx.closePath();
-
-        // Fill segment with alternating colors
-        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500"; // Colors matching a red background
+        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500";
         ctx.fill();
 
-        // Draw text
+        // تحديد موقع النصوص
         const midAngle = startAngle + (endAngle - startAngle) / 2;
         const textX = centerX + Math.cos(midAngle) * (radius - 50);
         const textY = centerY + Math.sin(midAngle) * (radius - 50);
 
-        ctx.save();
-        ctx.translate(textX, textY);
-        ctx.rotate(midAngle + Math.PI / 50);
-        ctx.textAlign = "center";
-        ctx.fillStyle = "#FFFFFF"; // White text
-        ctx.font = "bold 18px Arial";
-        ctx.fillText(reward.name, 0, 5);
+        // إضافة النص مع الصورة بجانب النص
+        const rewardText = document.createElement("span");
+        rewardText.className = "reward-text";
+        rewardText.setAttribute("data-reward", reward.name);
+        rewardText.textContent = reward.name;
+        rewardText.style.left = `${textX}px`;
+        rewardText.style.top = `${textY}px`;
 
-        // Draw image if available
-        if (images[reward.name]) {
-            const img = images[reward.name];
-            const imgSize = 30; // Adjust image size as needed
-            ctx.drawImage(img, -imgSize / 2, 20, imgSize, imgSize);
-        }
-
-        ctx.restore();
+        wheelRewards.appendChild(rewardText);
     });
 }
 
+drawWheel(); 
 
 // Check daily key availability
 async function checkDailyKey() {
