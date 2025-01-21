@@ -2072,13 +2072,133 @@ document.getElementById('ton').addEventListener('click', async () => {
     }
 });
 
-
 /////////////////////////////////////
 
 
+// خيارات عجلة الحظ
+const wheelOptions = [
+    { label: "+0.01 TON", value: { ton: 0.01, usdt: 0, red: 0, keys: 0 }, color: "#f94144" },
+    { label: "+1 USDT", value: { ton: 0, usdt: 1, red: 0, keys: 0 }, color: "#f3722c" },
+    { label: "+50,000 Coins", value: { ton: 0, usdt: 0, red: 50000, keys: 0 }, color: "#f8961e" },
+    { label: "+1 Key", value: { ton: 0, usdt: 0, red: 0, keys: 1 }, color: "#90be6d" },
+    { label: "Try Again", value: { ton: 0, usdt: 0, red: 0, keys: 0 }, color: "#577590" },
+];
+
+// رسم العجلة
+function drawWheel() {
+    const canvas = document.getElementById("fortuneWheel");
+    const ctx = canvas.getContext("2d");
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = canvas.width / 2;
+    const sliceAngle = (2 * Math.PI) / wheelOptions.length;
+
+    wheelOptions.forEach((option, index) => {
+        const startAngle = index * sliceAngle;
+        const endAngle = startAngle + sliceAngle;
+
+        // رسم الشرائح
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctx.fillStyle = option.color;
+        ctx.fill();
+        ctx.closePath();
+
+        // النص
+        const textAngle = startAngle + sliceAngle / 2;
+        const textX = centerX + (radius / 1.5) * Math.cos(textAngle);
+        const textY = centerY + (radius / 1.5) * Math.sin(textAngle);
+
+        ctx.save();
+        ctx.translate(textX, textY);
+        ctx.rotate(textAngle + Math.PI / 50);
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 12px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(option.label, 20, 5);
+        ctx.restore();
+    });
+}
+
+// التحقق من المفاتيح وتدوير العجلة
+async function spinWheel() {
+    const keysBalance = parseInt(document.getElementById("keysBalance").textContent);
+
+    // تحقق من وجود المفاتيح
+    if (keysBalance <= 0) {
+        alert("You don't have enough keys to spin the wheel.");
+        return;
+    }
+
+    // خصم مفتاح واحد
+    const updatedKeys = keysBalance - 1;
+    document.getElementById("keysBalance").textContent = updatedKeys;
+
+    // تحديث قاعدة البيانات لخصم المفتاح
+    await updateBalanceInDatabase({ keys: -1 });
+
+    // تدوير العجلة
+    const randomSpin = Math.random() * 2000 + 3000; // مدة التدوير
+    const finalAngle = randomSpin % 360; // زاوية التوقف
+    const sliceAngle = 360 / wheelOptions.length;
+    const resultIndex = Math.floor((360 - finalAngle + sliceAngle / 2) % 360 / sliceAngle);
+
+    let spinInterval = setInterval(() => {
+        currentAngle += 0.1;
+        drawWheel();
+    }, 10);
+
+    setTimeout(async () => {
+        clearInterval(spinInterval);
+        const reward = wheelOptions[resultIndex].value;
+        await updateUserBalance(reward);
+        alert(`You won: ${wheelOptions[resultIndex].label}`);
+    }, randomSpin);
+}
+
+// تحديث الرصيد في قاعدة البيانات
+async function updateUserBalance(reward) {
+    const tonBalance = parseInt(document.getElementById("tonBalance").textContent) + reward.ton;
+    const usdtBalance = parseInt(document.getElementById("usdtBalance").textContent) + reward.usdt;
+    const redBalance = parseInt(document.getElementById("redBalance").textContent) + reward.red;
+    const keysBalance = parseInt(document.getElementById("keysBalance").textContent) + reward.keys;
+
+    // تحديث الأرصدة في الواجهة
+    document.getElementById("tonBalance").textContent = tonBalance;
+    document.getElementById("usdtBalance").textContent = usdtBalance;
+    document.getElementById("redBalance").textContent = redBalance;
+    document.getElementById("keysBalance").textContent = keysBalance;
+
+    // تحديث قاعدة البيانات
+    await updateBalanceInDatabase(reward);
+}
+
+// دالة لتحديث قاعدة البيانات
+async function updateBalanceInDatabase(reward) {
+    const telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
+
+    const { error } = await supabase
+        .from("users") // اسم جدول المستخدمين
+        .update({
+            ton_balance: reward.ton,
+            usdt_balance: reward.usdt,
+            keys_balance: reward.keys,
+        })
+        .eq("telegram_id", telegramId);
+
+    if (error) {
+        console.error("Failed to update balance:", error.message);
+        alert("Failed to update balance in the database.");
+    }
+}
+
+// رسم العجلة عند التحميل
+document.getElementById("spinWheelButton").addEventListener("click", spinWheel);
+drawWheel();
 
 
-
+////////////////////////////////
 
 
 
