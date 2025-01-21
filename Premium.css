@@ -107,9 +107,10 @@
     padding-right: 5px;
 }
 
-.key i { 
+.key { 
     font-size: 20px;
     color: #fff;
+    transform: rotate(-45deg); 
     padding-left: 8px;
 } 
 
