@@ -2075,26 +2075,71 @@ document.getElementById('ton').addEventListener('click', async () => {
 /////////////////////////////////////
 
 
-// تعريف المكافآت وزوايا العجلة
+ // تعريف المكافآت وزوايا العجلة
 const rewards = [
-    { name: "10 Coins", type: "balance", value: 10 },
-    { name: "20 Coins", type: "balance", value: 20 },
-    { name: "1 TON", type: "ton_balance", value: 1 },
-    { name: "2 TON", type: "ton_balance", value: 2 },
-    { name: "5 USDT", type: "usdt_balance", value: 5 },
-    { name: "10 USDT", type: "usdt_balance", value: 10 },
-    { name: "1 Key", type: "keys_balance", value: 1 },
-    { name: "2 Keys", type: "keys_balance", value: 2 },
+    { name: "10 Coins", type: "balance", value: 10, img: "i/redcoin.png" },
+    { name: "20 Coins", type: "balance", value: 20, img: "i/redcoin.png" },
+    { name: "1 TON", type: "ton_balance", value: 1, img: "i/toncoi.png" },
+    { name: "2 TON", type: "ton_balance", value: 2, img: "i/toncoi.png" },
+    { name: "5 USDT", type: "usdt_balance", value: 5, img: "i/usdt.png" },
+    { name: "10 USDT", type: "usdt_balance", value: 10, img: "i/usdt.png" },
+    { name: "1 Key", type: "keys_balance", value: 1, img: "i/key.pn" },
+    { name: "2 Keys", type: "keys_balance", value: 2, img: "i/key.pn" },
     { name: "Retry", type: "retry", value: 0 },
     { name: "Lose", type: "none", value: 0 },
 ];
 const segmentAngle = 360 / rewards.length;
-let isSpinning = false;
 
 // عناصر DOM للعجلة
 const spinButton = document.getElementById("spinWheelButton");
 const fortuneWheel = document.getElementById("fortuneWheel");
-const keysBalanceElem = document.getElementById("keysBalance"); // عرض رصيد المفاتيح
+const ctx = fortuneWheel.getContext("2d");
+
+// رسم العجلة
+function drawWheel() {
+    const centerX = fortuneWheel.width / 2;
+    const centerY = fortuneWheel.height / 2;
+    const radius = fortuneWheel.width / 2;
+
+    rewards.forEach((reward, index) => {
+        const startAngle = (segmentAngle * index * Math.PI) / 180;
+        const endAngle = (segmentAngle * (index + 1) * Math.PI) / 180;
+
+        // رسم القطعة
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctx.closePath();
+        ctx.fillStyle = index % 2 === 0 ? "#FFCC00" : "#FFD700"; // ألوان متناوبة
+        ctx.fill();
+
+        // رسم النص والصورة
+        const midAngle = startAngle + (endAngle - startAngle) / 2;
+        const textX = centerX + Math.cos(midAngle) * (radius - 50);
+        const textY = centerY + Math.sin(midAngle) * (radius - 50);
+
+        ctx.save();
+        ctx.translate(textX, textY);
+        ctx.rotate(midAngle + Math.PI / 2);
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#000";
+        ctx.font = "16px Arial";
+        ctx.fillText(reward.name, 0, 0);
+        ctx.restore();
+
+        // رسم الصورة
+        const img = new Image();
+        img.src = reward.img;
+        img.onload = () => {
+            const imgX = centerX + Math.cos(midAngle) * (radius - 80) - 15;
+            const imgY = centerY + Math.sin(midAngle) * (radius - 80) - 15;
+            ctx.drawImage(img, imgX, imgY, 30, 30);
+        };
+    });
+}
+
+// استدعاء رسم العجلة عند تحميل الصفحة
+drawWheel();
 
 // التحقق من وجود المفتاح اليومي
 async function checkDailyKey() {
@@ -2123,35 +2168,57 @@ async function checkDailyKey() {
 async function useKey() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
 
-    const { error } = await supabase
+    const { data, error } = await supabase
         .from("users")
-        .update({ keys_balance: supabase.raw("keys_balance - 1") }) // خصم مفتاح
-        .eq("telegram_id", userId);
+        .select("keys_balance")
+        .eq("telegram_id", userId)
+        .single();
 
     if (error) {
-        console.error("Error deducting key:", error);
-        showNotification(uiElements.purchaseNotification, "حدث خطأ أثناء خصم المفتاح.");
-    } else {
-        const keys = parseInt(keysBalanceElem.textContent);
-        keysBalanceElem.textContent = keys - 1; // تحديث الواجهة
+        console.error("Error fetching keys balance:", error);
+        showNotification(uiElements.purchaseNotification, "حدث خطأ أثناء جلب رصيد المفاتيح.");
+        return false;
     }
+
+    const newKeysBalance = data.keys_balance - 1;
+
+    const { error: updateError } = await supabase
+        .from("users")
+        .update({ keys_balance: newKeysBalance })
+        .eq("telegram_id", userId);
+
+    if (updateError) {
+        console.error("Error updating keys balance:", updateError);
+        return false;
+    }
+
+    return true;
 }
 
 // تحديث الرصيد في قاعدة البيانات
 async function updateBalance(type, value) {
     const userId = uiElements.userTelegramIdDisplay.innerText;
 
-    const { error } = await supabase
+    const { data, error } = await supabase
         .from("users")
-        .update({ [type]: supabase.raw(`${type} + ${value}`) })
-        .eq("telegram_id", userId);
+        .select(type)
+        .eq("telegram_id", userId)
+        .single();
 
     if (error) {
-        console.error(`Error updating ${type} in database:`, error);
-        showNotification(uiElements.purchaseNotification, "حدث خطأ أثناء تحديث الرصيد.");
-    } else {
-        showNotification(uiElements.purchaseNotification, `تم تحديث ${type} بمقدار ${value}.`);
-        updateUI();
+        console.error(`Error fetching ${type} balance:`, error);
+        return;
+    }
+
+    const newBalance = data[type] + value;
+
+    const { error: updateError } = await supabase
+        .from("users")
+        .update({ [type]: newBalance })
+        .eq("telegram_id", userId);
+
+    if (updateError) {
+        console.error(`Error updating ${type} balance:`, updateError);
     }
 }
 
