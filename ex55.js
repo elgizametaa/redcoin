@@ -2083,14 +2083,14 @@ let isSpinning = false;
 
 // تعريف المكافآت وزوايا العجلة
 const rewards = [
-    { name: "10 Coins", type: "balance", value: 10, weight: 35 },
-    { name: "20 Coins", type: "balance", value: 20, weight: 35 },
-    { name: "1 TON", type: "ton_balance", value: 1, weight: 10 },
-    { name: "2 TON", type: "ton_balance", value: 2, weight: 5 },
-    { name: "5 USDT", type: "usdt_balance", value: 5, weight: 5 },
-    { name: "10 USDT", type: "usdt_balance", value: 10, weight: 5 },
+    { name: "10k $RED", type: "balance", value: 10000, weight: 35 },
+    { name: "100k $RED", type: "balance", value: 100000, weight: 35 },
+    { name: "0.1 $TON", type: "ton_balance", value: 0.1, weight: 10 },
+    { name: "0.05 TON", type: "ton_balance", value: 0.05, weight: 5 },
+    { name: "0.5 USDT", type: "usdt_balance", value: 0.5, weight: 5 },
+    { name: "1 USDT", type: "usdt_balance", value: 1, weight: 5 },
     { name: "1 Key", type: "keys_balance", value: 1, weight: 3 },
-    { name: "2 Keys", type: "keys_balance", value: 2, weight: 2 },
+    { name: "5 Keys", type: "keys_balance", value: 5, weight: 2 },
     { name: "Retry", type: "retry", value: 0, weight: 0 },
     { name: "Lose", type: "none", value: 0, weight: 0 },
 ];
@@ -2279,7 +2279,6 @@ function spinWheel() {
 spinButton.addEventListener("click", spinWheel);
 document.addEventListener("DOMContentLoaded", fetchAndDisplayBalances);
 
-// دالة لجلب الأرصدة وتحديث العرض
 async function fetchAndDisplayBalances() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
 
