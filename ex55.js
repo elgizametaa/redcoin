@@ -2331,11 +2331,11 @@ async function makePayment(amount, keys) {
         const currentKeys = parseInt(document.getElementById("keysBalance").textContent);
         document.getElementById("keysBalance").textContent = currentKeys + keys;
 
-        showNotification("Keys purchased successfully!", "success");
+        showNotification(uiElements.purchaseNotification, "Keys purchased successfully!");
         document.getElementById("purchaseKeysPopup").classList.add("hidden");
     } catch (error) {
         console.error("Payment failed:", error.message);
-        showNotification("Payment failed: " + error.message, "error");
+        showNotification(uiElements.purchaseNotification,`Payment failed: " + error.message`);
     }
 }
 
@@ -2350,7 +2350,7 @@ async function updateKeysInDatabase(keys) {
 
     if (error) {
         console.error("Failed to update keys in database:", error.message);
-        showNotification("Failed to update keys in database.", "error");
+        showNotification(uiElements.purchaseNotification,"Failed to update keys in database.");
     }
 }
 
@@ -2363,7 +2363,7 @@ document.querySelectorAll(".buy-button").forEach((button) => {
 
         // تحقق من ربط المحفظة
         if (!walletAddress) {
-            showNotification("Please connect your wallet first!");
+            showNotification(uiElements.purchaseNotification, "Please connect your wallet first!");
             await connectToWallet();
             if (!walletAddress) return; // إذا لم يتم ربط المحفظة
         }
