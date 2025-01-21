@@ -18,7 +18,7 @@
     animation: slideInLeft 0.4s ease forwards;
 }
 
-.floating-button, .invite-section,  #topThreeLeaders, .bos-image, .Leaders-image, .Invitations-image {
+.invite-section,  #topThreeLeaders, .bos-image, .Leaders-image, .Invitations-image {
    animation: popIn 0.4s ease forwards;
 }
 
