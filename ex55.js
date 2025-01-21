@@ -2047,13 +2047,13 @@ const rewards = [
     { name: "10k", type: "balance", value: 10000, weight: 35, image: "i/redcoin.png" },
     { name: "0.1", type: "ton_balance", value: 0.1, weight: 5, image: "i/toncoi.png" },
     { name: "100k", type: "balance", value: 100000, weight: 35, image: "i/redcoin.png" },
+    { name: "Lose", type: "none", value: 0, weight: 2, image: "i/lose.png" },
     { name: "0.5", type: "usdt_balance", value: 0.5, weight: 5, image: "i/usdt.png" },
     { name: "0.05", type: "ton_balance", value: 0.05, weight: 5, image: "i/toncoi.png" },
     { name: "1", type: "usdt_balance", value: 1, weight: 5, image: "i/usdt.png" },
-    { name: "1", type: "keys_balance", value: 1, weight: 4, image: "i/key.png" },
+    { name: "1", type: "keys_balance", value: 1, weight: 4, image: "i/Kyes.png" },
     { name: "Retry", type: "retry", value: 0, weight: 2, image: "i/Retry.png" },
-    { name: "5", type: "keys_balance", value: 5, weight: 2, image: "i/key.png" },
-    { name: "Lose", type: "none", value: 0, weight: 2, image: "i/lose.png" },
+    { name: "5", type: "keys_balance", value: 5, weight: 2, image: "i/Kyes.png" },
 ];
 
 const segmentAngle = 360 / rewards.length;
