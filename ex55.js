@@ -2087,7 +2087,7 @@ function drawWheel() {
         ctx.closePath();
 
         // Fill segment with alternating colors
-        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500"; // Colors matching a red background
+        ctx.fillStyle = index % 2 === 0 ? "#000" : "#101010"; // Colors matching a red background
         ctx.fill();
 
         // Draw text
