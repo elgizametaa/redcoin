@@ -108,7 +108,7 @@
 #fortuneWheel {
     border-radius: 50%;
     background: #202020;
-    border: 5px solid #181818; /* حدود العجلة */
+    border: 5px solid #000; /* حدود العجلة */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -126,8 +126,8 @@
  
 /* Floating Button */
 .floating-button {
-    background-color: #f0d678;
-    color: #181818;
+    background-color: #fff;
+    color: #000;
     padding: 15px 120px;
     border: none;
     border-radius: 15px;
@@ -144,20 +144,9 @@
 
 .floating-button:hover {
     background-color: #181818;
-    color: #f0d678;
+    color: #fff;
     box-shadow: 0 4px 15px rgba(240, 214, 120, 0.7);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
