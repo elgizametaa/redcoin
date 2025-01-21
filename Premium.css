@@ -22,7 +22,7 @@
     align-items: center;
     position: fixed;
     top: 15px;
-    right: 15px; 
+    right: 20px; 
     width: auto;
     height: 25px;
     z-index: 500;
@@ -39,7 +39,7 @@
     align-items: center;
     position: fixed;
     top: 15px;
-    left: 15px; 
+    left: 20px; 
     width: auto;
     height: 25px;
     z-index: 500;
@@ -71,6 +71,12 @@
 .balance-icon {
     width: 28px;
     height: 28px;
+}
+
+.balance-key { 
+    font-size: 20px;
+    color: #fff;
+    padding-right: 5px;
 }
 
 .balance-value {
