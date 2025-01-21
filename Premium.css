@@ -140,15 +140,15 @@
 
 .wheel-arrow {
     position: fixed;
-    top: 250px; /* تغيير الموضع ليكون في الأسفل */
+    top: 250px; /* تغيير الموضع */
     right: 20px;
     width: 0;
     height: 0;
     transform: rotate(0deg); 
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 30px solid #f0d678; /* تغيير border-bottom إلى border-top */
-}
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 30px solid #f0d678; /* استبدال border-top بـ border-left */
+} 
  
 /* Floating Button */
 .floating-button {
