@@ -6,10 +6,8 @@
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    padding-right: 2px;
     width: auto;
     height: 25px;
-    margin: 10px;
     z-index: 500;
     border: 0.5px solid #181818;
     border-radius: 20px; 
