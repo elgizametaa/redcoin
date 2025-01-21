@@ -34,7 +34,7 @@
     top: 15px;
     right: 20px; 
     width: auto;
-    height: 25px;
+    height: 28px;
     z-index: 500;
     border: 0.5px solid #181818;
     border-radius: 20px; 
@@ -52,7 +52,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: auto;
-    height: 25px;
+    height: 28px;
     z-index: 500;
     border: 0.5px solid #181818;
     border-radius: 20px; 
@@ -69,7 +69,7 @@
     top: 15px;
     left: 20px; 
     width: auto;
-    height: 25px;
+    height: 28px;
     z-index: 500;
     border: 0.5px solid #181818;
     border-radius: 20px; 
@@ -110,7 +110,7 @@
 .balance-value {
     font-size: 14px;
     color: #fff;
-    padding-right: 5px;
+    padding-right: 8px;
     font-weight: bold;
 }
 
