@@ -33,9 +33,9 @@
   },
   {
     "id": 5,
-    "url": " ",
+    "url": "https://example.com",  // إضافة رابط صحيح هنا
     "reward": 15000,
-    "description": "Join  ",
-    "image": "i/ "
-  },
+    "description": "Join ", 
+    "image": "i/example.jpg"  // إضافة صورة صحيحة هنا
+  }
 ]
