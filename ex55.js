@@ -2049,7 +2049,7 @@ document.getElementById('ton').addEventListener('click', async () => {
 
 /////////////////////////////////////
 
-// الإعدادات العامة
+// Define rewards and wheel segments
 const rewards = [
     { name: "10k RED", type: "balance", value: 10000, weight: 35 },
     { name: "100k RED", type: "balance", value: 100000, weight: 35 },
@@ -2064,14 +2064,13 @@ const rewards = [
 ];
 const segmentAngle = 360 / rewards.length;
 
-// العجلة وعناصرها
+// DOM elements
+const spinButton = document.getElementById("spinWheelButton");
 const fortuneWheel = document.getElementById("fortuneWheel");
 const ctx = fortuneWheel.getContext("2d");
-const spinButton = document.getElementById("spinWheelButton");
-const wheelRewards = document.getElementById("wheelRewards");
 let isSpinning = false;
 
-// رسم العجلة
+// Draw the wheel
 function drawWheel() {
     const centerX = fortuneWheel.width / 2;
     const centerY = fortuneWheel.height / 2;
@@ -2081,32 +2080,34 @@ function drawWheel() {
         const startAngle = (segmentAngle * index * Math.PI) / 180;
         const endAngle = (segmentAngle * (index + 1) * Math.PI) / 180;
 
-        // رسم القطاع
+        // Draw segment
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.arc(centerX, centerY, radius, startAngle, endAngle);
         ctx.closePath();
-        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500";
+
+        // Fill segment with alternating colors
+        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500"; // Colors matching a red background
         ctx.fill();
 
-        // تحديد موقع النصوص
+        // Draw text
         const midAngle = startAngle + (endAngle - startAngle) / 2;
         const textX = centerX + Math.cos(midAngle) * (radius - 50);
         const textY = centerY + Math.sin(midAngle) * (radius - 50);
 
-        // إضافة النص مع الصورة بجانب النص
-        const rewardText = document.createElement("span");
-        rewardText.className = "reward-text";
-        rewardText.setAttribute("data-reward", reward.name);
-        rewardText.textContent = reward.name;
-        rewardText.style.left = `${textX}px`;
-        rewardText.style.top = `${textY}px`;
-
-        wheelRewards.appendChild(rewardText);
+        ctx.save();
+        ctx.translate(textX, textY);
+        ctx.rotate(midAngle + Math.PI / 50);
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#FFFFFF"; // White text
+        ctx.font = "bold 18px Arial";
+        ctx.fillText(reward.name, 0, 5);
+        ctx.restore();
     });
 }
 
-drawWheel(); 
+// Call drawWheel when the page loads
+drawWheel();
 
 // Check daily key availability
 async function checkDailyKey() {
