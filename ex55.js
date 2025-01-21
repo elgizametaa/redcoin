@@ -2053,25 +2053,36 @@ let isSpinning = false;
 
 // Define rewards and wheel segments
 const rewards = [
-    { name: "10k RED", type: "balance", value: 10000, weight: 35 },
-    { name: "100k RED", type: "balance", value: 100000, weight: 35 },
-    { name: "0.1 TON", type: "ton_balance", value: 0.1, weight: 5 },
-    { name: "0.05 TON", type: "ton_balance", value: 0.05, weight: 5 },
-    { name: "0.5 USDT", type: "usdt_balance", value: 0.5, weight: 5 },
-    { name: "1 USDT", type: "usdt_balance", value: 1, weight: 5 },
-    { name: "1 Key", type: "keys_balance", value: 1, weight: 4 },
-    { name: "5 Keys", type: "keys_balance", value: 5, weight: 2 },
+    { name: "10k", type: "balance", value: 10000, weight: 35 },
+    { name: "100k", type: "balance", value: 100000, weight: 35 },
+    { name: "0.1", type: "ton_balance", value: 0.1, weight: 5 },
+    { name: "0.05", type: "ton_balance", value: 0.05, weight: 5 },
+    { name: "0.5", type: "usdt_balance", value: 0.5, weight: 5 },
+    { name: "1", type: "usdt_balance", value: 1, weight: 5 },
+    { name: "1", type: "keys_balance", value: 1, weight: 4 },
+    { name: "5", type: "keys_balance", value: 5, weight: 2 },
     { name: "Retry", type: "retry", value: 0, weight: 2 },
     { name: "Lose", type: "none", value: 0, weight: 2 },
 ];
-const segmentAngle = 360 / rewards.length;
 
-// DOM elements
+const segmentAngle = 360 / rewards.length;
 const spinButton = document.getElementById("spinWheelButton");
 const fortuneWheel = document.getElementById("fortuneWheel");
 const ctx = fortuneWheel.getContext("2d");
+const rewardImages = {
+    "10k": "i/redcoin.png",
+    "100k": "i/redcoin.png",
+    "0.1": "i/toncoi.png",
+    "0.05": "i/toncoi.png",
+    "0.5": "i/usdt.png",
+    "1": "i/usdt.png",
+    "1": "i/key.png",
+    "5": "i/key.png",
+};
 
-// Draw the wheel
+// Define color palette
+const colors = ["#87CEEB", "#8A2BE2", "#000000", "#FF4500"]; // Sky blue, purple, black, orange-red
+
 function drawWheel() {
     const centerX = fortuneWheel.width / 2;
     const centerY = fortuneWheel.height / 2;
@@ -2088,7 +2099,7 @@ function drawWheel() {
         ctx.closePath();
 
         // Fill segment with alternating colors
-        ctx.fillStyle = index % 2 === 0 ? "#FF6347" : "#FF4500"; // Colors matching a red background
+        ctx.fillStyle = colors[index % colors.length];
         ctx.fill();
 
         // Draw text
@@ -2101,8 +2112,15 @@ function drawWheel() {
         ctx.rotate(midAngle + Math.PI / 50);
         ctx.textAlign = "center";
         ctx.fillStyle = "#FFFFFF"; // White text
-        ctx.font = "bold 17px Arial";
-        ctx.fillText(reward.name, 0, 5);
+        ctx.font = "bold 18px Arial";
+        ctx.fillText(reward.name, 0, -10); // Offset text slightly above
+
+        // Draw image if available and not "Lose" or "Retry"
+        if (rewardImages[reward.name] && reward.type !== "none" && reward.type !== "retry") {
+            const img = new Image();
+            img.src = rewardImages[reward.name];
+            img.onload = () => ctx.drawImage(img, -15, 5, 30, 30); // Position image below text
+        }
         ctx.restore();
     });
 }
