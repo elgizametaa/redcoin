@@ -140,11 +140,11 @@
 
 .wheel-arrow {
     position: fixed;
-    top: 150px; /* تغيير الموضع ليكون في الأسفل */
-    right: 30px;
+    top: 140px; /* تغيير الموضع ليكون في الأسفل */
+    right: 20px;
     width: 0;
     height: 0;
-    transform: rotate(-45deg); 
+    transform: rotate(-20deg); 
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-top: 30px solid #f0d678; /* تغيير border-bottom إلى border-top */
