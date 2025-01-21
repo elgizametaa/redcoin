@@ -2272,12 +2272,16 @@ document.addEventListener("DOMContentLoaded", fetchAndDisplayBalances);
 
 // فتح نافذة شراء المفاتيح
 document.getElementById("addKey").addEventListener("click", () => {
-    document.getElementById("purchaseKeysPopup").classList.remove("hidden");
+    const popup = document.getElementById("purchaseKeysPopup");
+    popup.classList.remove("hidden");
+    popup.classList.add("visible");
 });
 
 // إغلاق نافذة الشراء
 document.getElementById("closePopup").addEventListener("click", () => {
-    document.getElementById("purchaseKeysPopup").classList.add("hidden");
+    const popup = document.getElementById("purchaseKeysPopup");
+    popup.classList.remove("visible");
+    popup.classList.add("hidden");
 });
 
 // إجراء الدفع
