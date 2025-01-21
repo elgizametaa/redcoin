@@ -2077,16 +2077,16 @@ let isSpinning = false;
 
 // Define rewards and wheel segments
 const rewards = [
-    { name: "10k $RED", type: "balance", value: 10000, weight: 35 },
-    { name: "100k $RED", type: "balance", value: 100000, weight: 35 },
-    { name: "0.1 $TON", type: "ton_balance", value: 0.1, weight: 10 },
+    { name: "10k RED", type: "balance", value: 10000, weight: 35 },
+    { name: "100k RED", type: "balance", value: 100000, weight: 35 },
+    { name: "0.1 TON", type: "ton_balance", value: 0.1, weight: 5 },
     { name: "0.05 TON", type: "ton_balance", value: 0.05, weight: 5 },
     { name: "0.5 USDT", type: "usdt_balance", value: 0.5, weight: 5 },
     { name: "1 USDT", type: "usdt_balance", value: 1, weight: 5 },
-    { name: "1 Key", type: "keys_balance", value: 1, weight: 3 },
+    { name: "1 Key", type: "keys_balance", value: 1, weight: 4 },
     { name: "5 Keys", type: "keys_balance", value: 5, weight: 2 },
-    { name: "Retry", type: "retry", value: 0, weight: 0 },
-    { name: "Lose", type: "none", value: 0, weight: 0 },
+    { name: "Retry", type: "retry", value: 0, weight: 2 },
+    { name: "Lose", type: "none", value: 0, weight: 2 },
 ];
 const segmentAngle = 360 / rewards.length;
 
@@ -2289,6 +2289,7 @@ function spinWheel() {
             } else {
                 showNotification(uiElements.purchaseNotification, `Congratulations! You won ${reward.name}`);
                 updateBalance(reward.type, reward.value).then(() => fetchAndDisplayBalances());
+                updateUI(); 
             }
         }, 3000);
     });
