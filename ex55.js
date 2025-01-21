@@ -2075,132 +2075,127 @@ document.getElementById('ton').addEventListener('click', async () => {
 /////////////////////////////////////
 
 
-// خيارات عجلة الحظ
-const wheelOptions = [
-    { label: "+0.01 TON", value: { ton: 0.01, usdt: 0, red: 0, keys: 0 }, color: "black" },
-    { label: "+1 USDT", value: { ton: 0, usdt: 1, red: 0, keys: 0 }, color: "white" },
-    { label: "+50,000 Coins", value: { ton: 0, usdt: 0, red: 50000, keys: 0 }, color: "black" },
-    { label: "+1 Key", value: { ton: 0, usdt: 0, red: 0, keys: 1 }, color: "white" },
-    { label: "Try Again", value: { ton: 0, usdt: 0, red: 0, keys: 0 }, color: "red" },
-    { label: "+0.1 TON", value: { ton: 0.01, usdt: 0, red: 0, keys: 0 }, color: "white" },
-    { label: "+5 USDT", value: { ton: 0, usdt: 1, red: 0, keys: 0 }, color: "black" },
-    { label: "+500,000 Coins", value: { ton: 0, usdt: 0, red: 50000, keys: 0 }, color: "white" },
-    { label: "+1 Key", value: { ton: 0, usdt: 0, red: 0, keys: 1 }, color: "black" },
-    { label: "Try Again", value: { ton: 0, usdt: 0, red: 0, keys: 0 }, color: "red" },
+// تعريف المكافآت وزوايا العجلة
+const rewards = [
+    { name: "10 Coins", type: "balance", value: 10 },
+    { name: "20 Coins", type: "balance", value: 20 },
+    { name: "1 TON", type: "ton_balance", value: 1 },
+    { name: "2 TON", type: "ton_balance", value: 2 },
+    { name: "5 USDT", type: "usdt_balance", value: 5 },
+    { name: "10 USDT", type: "usdt_balance", value: 10 },
+    { name: "1 Key", type: "keys_balance", value: 1 },
+    { name: "2 Keys", type: "keys_balance", value: 2 },
+    { name: "Retry", type: "retry", value: 0 },
+    { name: "Lose", type: "none", value: 0 },
 ];
+const segmentAngle = 360 / rewards.length;
+let isSpinning = false;
 
-// رسم العجلة
-function drawWheel() {
-    const canvas = document.getElementById("fortuneWheel");
-    const ctx = canvas.getContext("2d");
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = canvas.width / 2;
-    const sliceAngle = (2 * Math.PI) / wheelOptions.length;
+// عناصر DOM للعجلة
+const spinButton = document.getElementById("spinWheelButton");
+const fortuneWheel = document.getElementById("fortuneWheel");
+const keysBalanceElem = document.getElementById("keysBalance"); // عرض رصيد المفاتيح
 
-    wheelOptions.forEach((option, index) => {
-        const startAngle = index * sliceAngle;
-        const endAngle = startAngle + sliceAngle;
+// التحقق من وجود المفتاح اليومي
+async function checkDailyKey() {
+    const userId = uiElements.userTelegramIdDisplay.innerText;
+    const { data, error } = await supabase
+        .from("users")
+        .select("keys_balance")
+        .eq("telegram_id", userId)
+        .single();
 
-        // رسم الشرائح
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-        ctx.fillStyle = option.color;
-        ctx.fill();
-        ctx.closePath();
-
-        // النص
-        const textAngle = startAngle + sliceAngle / 2;
-        const textX = centerX + (radius / 1.5) * Math.cos(textAngle);
-        const textY = centerY + (radius / 1.5) * Math.sin(textAngle);
-
-        ctx.save();
-        ctx.translate(textX, textY);
-        ctx.rotate(textAngle + Math.PI / 50);
-        ctx.fillStyle = "#fff";
-        ctx.font = "bold 12px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText(option.label, 20, 5);
-        ctx.restore();
-    });
-}
-
-// التحقق من المفاتيح وتدوير العجلة
-async function spinWheel() {
-    const keysBalance = parseInt(document.getElementById("keysBalance").textContent);
-
-    // تحقق من وجود المفاتيح
-    if (keysBalance <= 0) {
-        alert("You don't have enough keys to spin the wheel.");
-        return;
+    if (error) {
+        console.error("Error fetching keys balance:", error);
+        showNotification(uiElements.purchaseNotification, "حدث خطأ أثناء جلب رصيد المفاتيح.");
+        return false;
     }
 
-    // خصم مفتاح واحد
-    const updatedKeys = keysBalance - 1;
-    document.getElementById("keysBalance").textContent = updatedKeys;
+    if (data.keys_balance <= 0) {
+        showNotification(uiElements.purchaseNotification, "لقد استخدمت مفتاحك اليومي. حاول مرة أخرى غدًا!");
+        return false;
+    }
 
-    // تحديث قاعدة البيانات لخصم المفتاح
-    await updateBalanceInDatabase({ keys: -1 });
+    return true;
+}
 
-    // تدوير العجلة
-    const randomSpin = Math.random() * 2000 + 3000; // مدة التدوير
-    const finalAngle = randomSpin % 360; // زاوية التوقف
-    const sliceAngle = 360 / wheelOptions.length;
-    const resultIndex = Math.floor((360 - finalAngle + sliceAngle / 2) % 360 / sliceAngle);
+// خصم مفتاح من المستخدم
+async function useKey() {
+    const userId = uiElements.userTelegramIdDisplay.innerText;
 
-    let spinInterval = setInterval(() => {
-        currentAngle += 0.1;
-        drawWheel();
-    }, 10);
+    const { error } = await supabase
+        .from("users")
+        .update({ keys_balance: supabase.raw("keys_balance - 1") }) // خصم مفتاح
+        .eq("telegram_id", userId);
 
-    setTimeout(async () => {
-        clearInterval(spinInterval);
-        const reward = wheelOptions[resultIndex].value;
-        await updateUserBalance(reward);
-        alert(`You won: ${wheelOptions[resultIndex].label}`);
-    }, randomSpin);
+    if (error) {
+        console.error("Error deducting key:", error);
+        showNotification(uiElements.purchaseNotification, "حدث خطأ أثناء خصم المفتاح.");
+    } else {
+        const keys = parseInt(keysBalanceElem.textContent);
+        keysBalanceElem.textContent = keys - 1; // تحديث الواجهة
+    }
 }
 
 // تحديث الرصيد في قاعدة البيانات
-async function updateUserBalance(reward) {
-    const tonBalance = parseInt(document.getElementById("tonBalance").textContent) + reward.ton;
-    const usdtBalance = parseInt(document.getElementById("usdtBalance").textContent) + reward.usdt;
-    const redBalance = parseInt(document.getElementById("redBalance").textContent) + reward.red;
-    const keysBalance = parseInt(document.getElementById("keysBalance").textContent) + reward.keys;
-
-    // تحديث الأرصدة في الواجهة
-    document.getElementById("tonBalance").textContent = tonBalance;
-    document.getElementById("usdtBalance").textContent = usdtBalance;
-    document.getElementById("redBalance").textContent = redBalance;
-    document.getElementById("keysBalance").textContent = keysBalance;
-
-    // تحديث قاعدة البيانات
-    await updateBalanceInDatabase(reward);
-}
-
-// دالة لتحديث قاعدة البيانات
-async function updateBalanceInDatabase(reward) {
-    const telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
+async function updateBalance(type, value) {
+    const userId = uiElements.userTelegramIdDisplay.innerText;
 
     const { error } = await supabase
-        .from("users") // اسم جدول المستخدمين
-        .update({
-            ton_balance: reward.ton,
-            usdt_balance: reward.usdt,
-            keys_balance: reward.keys,
-        })
-        .eq("telegram_id", telegramId);
+        .from("users")
+        .update({ [type]: supabase.raw(`${type} + ${value}`) })
+        .eq("telegram_id", userId);
 
     if (error) {
-        console.error("Failed to update balance:", error.message);
-        alert("Failed to update balance in the database.");
+        console.error(`Error updating ${type} in database:`, error);
+        showNotification(uiElements.purchaseNotification, "حدث خطأ أثناء تحديث الرصيد.");
+    } else {
+        showNotification(uiElements.purchaseNotification, `تم تحديث ${type} بمقدار ${value}.`);
+        updateUI();
     }
 }
 
-// رسم العجلة عند التحميل
-document.getElementById("spinWheelButton").addEventListener("click", spinWheel);
-drawWheel();
+// تدوير العجلة
+function spinWheel() {
+    if (isSpinning) return;
+
+    checkDailyKey().then(hasKey => {
+        if (!hasKey) return;
+
+        // خصم مفتاح
+        useKey();
+
+        // اختيار مكافأة عشوائية
+        const randomIndex = Math.floor(Math.random() * rewards.length);
+        const reward = rewards[randomIndex];
+        const stopAngle = randomIndex * segmentAngle;
+        const spins = 5; // عدد الدورات الكاملة
+        const finalAngle = 360 * spins + stopAngle;
+
+        // بدء التدوير
+        isSpinning = true;
+        fortuneWheel.style.transition = "transform 3s ease-out";
+        fortuneWheel.style.transform = `rotate(${finalAngle}deg)`;
+
+        setTimeout(() => {
+            isSpinning = false;
+            fortuneWheel.style.transition = "none";
+            fortuneWheel.style.transform = `rotate(${stopAngle}deg)`;
+
+            if (reward.type === "retry") {
+                showNotification(uiElements.purchaseNotification, "حظًا أوفر! أعد المحاولة.");
+            } else if (reward.type === "none") {
+                showNotification(uiElements.purchaseNotification, "لم تفز بأي شيء! حاول مرة أخرى.");
+            } else {
+                showNotification(uiElements.purchaseNotification, `تهانينا! ربحت ${reward.name}`);
+                updateBalance(reward.type, reward.value);
+            }
+        }, 3000);
+    });
+}
+
+// إضافة مستمع لزر التدوير
+spinButton.addEventListener("click", spinWheel);
 
 
 ////////////////////////////////
