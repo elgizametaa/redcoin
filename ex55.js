@@ -2272,7 +2272,7 @@ function spinWheel() {
             } else if (reward.type === "none") {
                 showNotification(uiElements.purchaseNotification, "You didn't win anything! Please try again.");
             } else {
-                showNotification(uiElements.purchaseNotification, `Congratulations! You won ${reward.name}`);
+                showNotification(uiElements.purchaseNotification, `Congratulations! You won ${reward.name} coin`);
                 updateBalance(reward.type, reward.value).then(() => fetchAndDisplayBalances());
             }
         }, 3000);
