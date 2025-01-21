@@ -2087,7 +2087,7 @@ function drawWheel() {
         ctx.closePath();
 
         // Fill segment with alternating colors
-        ctx.fillStyle = index % 2 === 0 ? "#000" : "#101010"; // Colors matching a red background
+        ctx.fillStyle = index % 2 === 0 ? "#000" : "#202020"; // Colors matching a red background
         ctx.fill();
 
         // Draw text
@@ -2101,7 +2101,7 @@ function drawWheel() {
         ctx.textAlign = "center";
         ctx.fillStyle = "#FFFFFF"; // White text
         ctx.font = "bold 18px Arial";
-        ctx.fillText(reward.name, 0, 5);
+        ctx.fillText(reward.name, 5, 5);
         ctx.restore();
     });
 }
