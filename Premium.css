@@ -237,6 +237,7 @@
     border: none;
     border-radius: 15px;
     font-size: 18px;
+    white-space: nowrap;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
