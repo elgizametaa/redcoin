@@ -521,8 +521,6 @@ function showConfettiEffect() {
     })();
 }
 
-
-
 /////////////////////////////////////////
 
 
@@ -555,7 +553,6 @@ function updateVibrationButton() {
         vibrationToggle.classList.add('inactive');
     }
 }
-
 
 /////////////////////////////////////////
 
@@ -707,8 +704,6 @@ async function restoreEnergy() {
 
 //////////////////////////////////////////////////
 
-
-
 function navigateToScreen(screenId) {
     if (uiElements.contentScreens) {
         uiElements.contentScreens.forEach(screen => {
@@ -823,7 +818,7 @@ async function loadFriendsList() {
 
 // نسخ رابط الدعوة
 function copyInviteLink() {
-    const inviteLink = `https://t.me/SAWCOIN_BOT?start=${uiElements.userTelegramIdDisplay?.innerText || ''}`;
+    const inviteLink = `https://t.me/RedXiobot?start=${uiElements.userTelegramIdDisplay?.innerText || ''}`;
     navigator.clipboard.writeText(inviteLink).then(() => {
         showNotification(uiElements.copyInviteNotification, 'Invite link copied!');
     }).catch(err => {
@@ -839,7 +834,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // مشاركة الدعوة عبر Telegram
 function openTelegramChat() {
-    const inviteLink = `https://t.me/share/url?text=Join Saw Token Game and earn 5,000 $SAW!&url=https://t.me/SAWCOIN_BOT?start=${uiElements.userTelegramIdDisplay?.innerText || ''}`;
+    const inviteLink = `https://t.me/share/url?text=Join Red Coin Game and earn 5,000 $RED!&url=https://t.me/RedXiobot?start=${uiElements.userTelegramIdDisplay?.innerText || ''}`;
     window.open(inviteLink, '_blank');
 }
 
@@ -1085,8 +1080,6 @@ function openTaskLink(taskurl, callback) {
 }
 
 
-
-
 /////////////////////////////////////
 
 
@@ -1194,21 +1187,11 @@ window.Telegram.WebApp.setHeaderColor('#000000');
 
 
 /////////////////////////////////////////////////
-/////////////////////////////////////////
-
-
-// تحديثات الإعدادات
 
 function updateAccountSummary() {
-  // تحديث العناصر الأساسية
   const invitedCountElement = document.getElementById('invitedCount');
-
-  // تحديث النسخ داخل لوحة الإعدادات
   const settingsInvitedCount = document.getElementById('settingsInvitedCount');
-
   if (invitedCountElement) invitedCountElement.innerText = gameState.invites.length;
-
-  // تحديث النسخ في لوحة الإعدادات
   if (settingsInvitedCount) settingsInvitedCount.innerText = gameState.invites.length;
 }
 
@@ -1236,10 +1219,6 @@ function showContent(contentId) {
         document.getElementById('gamesContentButton').classList.add('active');
     }
 }
-
-///////////////////////////////////////
-
-/////////////////////////////////////////
 
 ///////////////////////////////////////
 
@@ -1465,9 +1444,6 @@ function updateUserRankDisplay(rank, username, balance) {
 }
 
 async function updateLeaderboardDisplay(leaderboard) {
-    // تفريغ الحاوية الرئيسية للمتصدرين الآخرين
-//   document.getElementById('leaderboardContainer').innerHTML = '';
-
     for (let index = 0; index < leaderboard.length; index++) {
         const user = leaderboard[index];
         const avatar = user.username
@@ -1679,7 +1655,7 @@ function showBanScreen() {
         cursor: pointer;
     `;
     contactSupport.onclick = () => {
-        window.location.href = 'https://t.me/X7X_FLASH'; // استبدل بعنوان بريد الدعم
+        window.location.href = 'https://t.me/'; // استبدل بعنوان بريد الدعم
     };
 
     content.appendChild(banImage);
