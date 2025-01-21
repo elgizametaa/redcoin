@@ -61,12 +61,11 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    bottom: 110px;
+    bottom: 130px;
     left: 50%;
     transform: translateX(-50%);
-    padding-right: 4px;
     width: auto;
-    height: 30px;
+    height: 35px;
     margin: 10px;
     z-index: 500;
     border: 0.5px solid #181818;
@@ -86,14 +85,14 @@
 }
  
 .balance-icon {
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
 }
 
 .balance-value {
     font-size: 14px;
     color: #fff;
-    padding-right: 4px;
+    padding-right: 5px;
     font-weight: bold;
 }
 
