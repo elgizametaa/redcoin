@@ -2064,8 +2064,6 @@ const fortuneWheel = document.getElementById("fortuneWheel");
 const ctx = fortuneWheel.getContext("2d");
 let isSpinning = false;
 
-
-
 function drawWheel() {
     const centerX = fortuneWheel.width / 2;
     const centerY = fortuneWheel.height / 2;
@@ -2087,27 +2085,36 @@ function drawWheel() {
 
         // إعداد النص والصورة
         const midAngle = startAngle + (endAngle - startAngle) / 2;
-        const textX = centerX + Math.cos(midAngle) * (radius - 70);
-        const textY = centerY + Math.sin(midAngle) * (radius - 70);
+        const textX = centerX + Math.cos(midAngle) * (radius - 90);
+        const textY = centerY + Math.sin(midAngle) * (radius - 90);
 
-        // رسم الصورة بجانب النص
+        // تحميل الصورة ورسمها بجانب النص
         const image = new Image();
         image.src = reward.image;
 
         image.onload = () => {
-            // تمركز الصورة والنص معًا
             const imageSize = 30; // حجم الصورة
-            ctx.drawImage(image, textX - imageSize / 2, textY - 20, imageSize, imageSize); // رسم الصورة
+            ctx.save();
+            ctx.translate(textX, textY);
+            ctx.rotate(midAngle); // تدوير النص والصورة للتمركز بشكل مثالي
 
-            ctx.textAlign = "center";
+            // رسم الصورة
+            ctx.drawImage(image, -imageSize - 10, -imageSize / 2, imageSize, imageSize); // الصورة على يسار النص
+
+            // رسم النص
+            ctx.textAlign = "left"; // النص بجانب الصورة
             ctx.fillStyle = "#FFFFFF"; // لون النص
-            ctx.font = "bold 18px Arial";
-            ctx.fillText(reward.name, textX, textY + 50); // النص أسفل الصورة
+            ctx.font = "bold 16px Arial";
+            ctx.fillText(reward.name, 5, 5); // النص بجانب الصورة
+
+            ctx.restore();
         };
     });
 }
 
+// استدعاء رسم العجلة
 drawWheel();
+
 
 async function checkDailyKey() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
