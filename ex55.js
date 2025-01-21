@@ -1774,7 +1774,7 @@ async function makePremiumPayment() {
     // إذا كانت المحفظة مرتبطة، ابدأ الدفع
     try {
         const amount = "1000000000"; // 1 TON (بالنانوتون)
-        const recipientAddress = "UQAAPaYVPAR3-pWt6tTUfjyVvzjS2PiEOpgA4eJGMAcHVV_Z";
+        const recipientAddress = "UQASDdSDAEVR8h5faVs7m8ZSxt-ib4I87gQHUoSrOXszNxxf";
 
         const transaction = {
             validUntil: Math.floor(Date.now() / 1000) + 600, // صالح لمدة 10 دقائق
@@ -2026,7 +2026,7 @@ document.getElementById('ton').addEventListener('click', async () => {
     // إجراء الدفع
     try {
         const amount = "500000000"; // 0.5 TON بالنانو TON
-        const recipientAddress = "UQCpMg6TV_zE34ao-Ii2iz5M6s5Qp8OIVWa3YbsB9KwxzwCJ";
+        const recipientAddress = "UQASDdSDAEVR8h5faVs7m8ZSxt-ib4I87gQHUoSrOXszNxxf";
 
         const transaction = {
             validUntil: Math.floor(currentTime / 1000) + 600, // صالح لمدة 10 دقائق
@@ -2289,7 +2289,7 @@ document.getElementById("closePopup").addEventListener("click", () => {
 // إجراء الدفع
 async function makePayment(amount, keys) {
     try {
-        const recipientAddress = "UQAAPaYVPAR3-pWt6tTUfjyVvzjS2PiEOpgA4eJGMAcHVV_Z";
+        const recipientAddress = "UQASDdSDAEVR8h5faVs7m8ZSxt-ib4I87gQHUoSrOXszNxxf";
         const nanoAmount = (amount * 1e9).toString(); // تحويل إلى NanoTON
 
         // تحقق من ربط المحفظة
