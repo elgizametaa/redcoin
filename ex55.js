@@ -2082,6 +2082,12 @@ const wheelOptions = [
     { label: "+50,000 Coins", value: { ton: 0, usdt: 0, red: 50000, keys: 0 }, color: "#f8961e" },
     { label: "+1 Key", value: { ton: 0, usdt: 0, red: 0, keys: 1 }, color: "#90be6d" },
     { label: "Try Again", value: { ton: 0, usdt: 0, red: 0, keys: 0 }, color: "#577590" },
+
+    { label: "+0.1 TON", value: { ton: 0.01, usdt: 0, red: 0, keys: 0 }, color: "#f94144" },
+    { label: "+5 USDT", value: { ton: 0, usdt: 1, red: 0, keys: 0 }, color: "#f3722c" },
+    { label: "+500,000 Coins", value: { ton: 0, usdt: 0, red: 50000, keys: 0 }, color: "#f8961e" },
+    { label: "+1 Key", value: { ton: 0, usdt: 0, red: 0, keys: 1 }, color: "#90be6d" },
+    { label: "Try Again", value: { ton: 0, usdt: 0, red: 0, keys: 0 }, color: "#577590" },
 ];
 
 // رسم العجلة
