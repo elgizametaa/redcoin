@@ -30,12 +30,5 @@
     "description": "Join Saw token Game ",
     "image": "i/500.png", 
     "category": "Partners" 
-  },
-  {
-    "id": 5,
-    "url": "https://example.com",  // إضافة رابط صحيح هنا
-    "reward": 15000,
-    "description": "Join ", 
-    "image": "i/example.jpg"  // إضافة صورة صحيحة هنا
   }
 ]
