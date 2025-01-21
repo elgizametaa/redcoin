@@ -139,10 +139,9 @@
 }
 
 .wheel-arrow {
-    position: absolute;
-    top: 5px; /* تغيير الموضع ليكون في الأسفل */
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed;
+    top: 300px; /* تغيير الموضع ليكون في الأسفل */
+    right: 30px;
     width: 0;
     height: 0;
     border-left: 15px solid transparent;
