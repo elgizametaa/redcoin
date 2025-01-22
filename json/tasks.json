@@ -2,7 +2,7 @@
   {
     "id": 1,
     "url": "https://t.me/Redcommunityio",
-    "reward": 1500,
+    "reward": 5000,
     "description": "Join red community ",
     "image": "i/red.jpg", 
     "category": "Main"
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "url": "https://x.com/Redcommunityio",
-    "reward": 1500,
+    "reward": 5000,
     "description": "Follow Red On X ",
     "image": "i/red.jpg", 
     "category": "Main" 
@@ -26,9 +26,17 @@
   {
     "id": 4,
     "url": "https://t.me/SAWCOIN_BOT/GAME",
-    "reward": 10000,
+    "reward": 5000,
     "description": "Join Saw token Game ",
     "image": "i/500.png", 
+    "category": "Partners" 
+  },
+  {
+    "id": 5,
+    "url": "https://t.me/Rex_CoinBot?start=ref_6657246146",
+    "reward": 5000,
+    "description": "Play Rex Coin ",
+    "image": "https://drive.google.com/uc?id=1drgIhdy8t6m8opYYWg5X7T2YJmGsTucu", 
     "category": "Partners" 
   }
 ]
