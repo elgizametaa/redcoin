@@ -38,5 +38,13 @@
     "description": "Play Rex Coin ",
     "image": "i/IMG_20250122_191923_975.jpg", 
     "category": "Partners" 
+  },
+  {
+    "id": 6,
+    "url": "https://t.me/RexCoinCommunity",
+    "reward": 5000,
+    "description": "Join Rex Community ",
+    "image": "i/IMG_20250122_191923_975.jpg", 
+    "category": "Partners" 
   }
 ]
