@@ -46,5 +46,13 @@
     "description": "Join Rex Community ",
     "image": "i/IMG_20250122_191923_975.jpg", 
     "category": "Partners" 
+  },
+  {
+    "id": 7,
+    "url": "https://t.me/elgizacrypto",
+    "reward": 5000,
+    "description": "Join Airdrop Channel",
+    "image": "i/IMG_20250122_191923_975.jpg", 
+    "category": "Partners" 
   }
 ]
