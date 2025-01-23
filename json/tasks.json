@@ -54,5 +54,13 @@
     "description": "Join Airdrop Channel",
     "image": "i/IMG_20250122_211629_679.jpg", 
     "category": "Partners" 
+  },
+  {
+    "id": 8,
+    "url": "https://t.me/oinkcoinbot/?start=6657246146",
+    "reward": 5000,
+    "description": "Play OinkCoin",
+    "image": "i/IMG_20250123_032815_599.jpg", 
+    "category": "Partners" 
   }
 ]
