@@ -70,5 +70,13 @@
     "description": "Follow Crypto Signals",
     "image": "i/IMG_20250123_033201_097.jpg", 
     "category": "Partners" 
+  },
+  {
+    "id": 9,
+    "url": "https://x.com/Redcommunityio/status/1882271979547607511?t=uHYCgrGsrtRMkYXhLCT08Q&s=19",
+    "reward": 5000,
+    "description": "Like - Retweet",
+    "image": "i/تنزيل.png", 
+    "category": "Main" 
   }
 ]
