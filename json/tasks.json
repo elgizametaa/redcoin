@@ -78,5 +78,13 @@
     "description": "Like - Retweet",
     "image": "i/تنزيل.png", 
     "category": "Main" 
+  },
+  {
+    "id": 10,
+    "url": "https://t.me/bearairdrops",
+    "reward": 5000,
+    "description": "Join Bear Community",
+    "image": "i/IMG_20250123_064622_635.jpg", 
+    "category": "Partners" 
   }
 ]
