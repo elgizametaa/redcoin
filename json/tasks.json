@@ -62,5 +62,13 @@
     "description": "Play OinkCoin",
     "image": "i/IMG_20250123_032815_599.jpg", 
     "category": "Partners" 
+  },
+  {
+    "id": 8,
+    "url": "https://x.com/cryptoBaelor",
+    "reward": 5000,
+    "description": "Follow Crypto Signals",
+    "image": "i/IMG_20250123_032815_599.jpg", 
+    "category": "Partners" 
   }
 ]
