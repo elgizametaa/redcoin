@@ -87,23 +87,7 @@
     "image": "i/IMG_20250123_064622_635.jpg", 
     "category": "Partners" 
   },
-  {
-    "id": 11,
-    "url": "https://t.me/TheVapeLabs_bot/TheVapLabs?startapp=50ccd26d-6ea3-49b2-8dff-b0786a58131b",
-    "reward": 5000,
-    "description": "play TheVapeLabs",
-    "image": "i/IMG_20250124_055024_375.jpg", 
-    "category": "Partners" 
-  },
-  {
-    "id": 12,
-    "url": "https://t.me/+pZeJLYIbZf8yMjBl",
-    "reward": 5000,
-    "description": "Join TheVapeLabs Community",
-    "image": "i/IMG_20250124_055024_375.jpg", 
-    "category": "Partners" 
-  },
-  {
+   {
     "id": 13,
     "url": "https://t.me/+1o7S2UomZLw2MDE1",
     "reward": 5000,
