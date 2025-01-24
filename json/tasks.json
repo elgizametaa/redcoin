@@ -86,5 +86,13 @@
     "description": "Join Bear Community",
     "image": "i/IMG_20250123_064622_635.jpg", 
     "category": "Partners" 
-  }
+  },
+  {
+    "id": 99,
+    "url": "https://t.me/boinker_bot/boinkapp?startapp=boink6657246146",
+    "reward": 10000,
+    "description": "Play Boinkers",
+    "image": "i/IMG_20250124_185905_542.jpg", 
+    "category": "Main" 
+  }
 ]
