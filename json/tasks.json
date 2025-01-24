@@ -102,5 +102,21 @@
     "description": "Join TheVapeLabs Community",
     "image": "i/IMG_20250124_055024_375.jpg", 
     "category": "Partners" 
+  },
+  {
+    "id": 13,
+    "url": "https://t.me/+1o7S2UomZLw2MDE1",
+    "reward": 5000,
+    "description": "Join Free Dogs Community",
+    "image": "i/IMG_20250124_062514_154.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 14,
+    "url": "https://t.me/theFreeDogs_bot/app?startapp=ref_TbekibKm",
+    "reward": 5000,
+    "description": "Play Free Dogs",
+    "image": "i/IMG_20250124_062514_154.jpg", 
+    "category": "Partners" 
   }
 ]
