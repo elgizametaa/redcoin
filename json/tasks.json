@@ -86,5 +86,13 @@
     "description": "Join Bear Community",
     "image": "i/IMG_20250123_064622_635.jpg", 
     "category": "Partners" 
+  },
+  {
+    "id": 20,
+    "url": "https://t.me/Trumpiobot",
+    "reward": 5000,
+    "description": "Join Trump Coin",
+    "image": "i/images (27).jpeg", 
+    "category": "Main" 
   }
 ]
