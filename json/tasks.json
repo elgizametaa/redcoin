@@ -56,14 +56,6 @@
     "category": "Partners" 
   },
   {
-    "id": 7,
-    "url": "https://t.me/elgizacrypto",
-    "reward": 5000,
-    "description": "Join Airdrop Channel",
-    "image": "i/IMG_20250122_211629_679.jpg", 
-    "category": "Partners" 
-  },
-  {
     "id": 8,
     "url": "https://t.me/oinkcoinbot/?start=6657246146",
     "reward": 5000,
@@ -77,22 +69,6 @@
     "reward": 5000,
     "description": "Like - Retweet",
     "image": "i/تنزيل.png", 
-    "category": "Main" 
-  },
-  {
-    "id": 11,
-    "url": "https://t.me/bearairdrops",
-    "reward": 5000,
-    "description": "Join Bear Community",
-    "image": "i/IMG_20250123_064622_635.jpg", 
-    "category": "Partners" 
-  },
-  {
-    "id": 20,
-    "url": "https://t.me/Trumpiobot",
-    "reward": 5000,
-    "description": "Join Trump Coin",
-    "image": "i/images (27).jpeg", 
     "category": "Main" 
   }
 ]
