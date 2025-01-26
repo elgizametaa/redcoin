@@ -94,5 +94,14 @@
     "description": "Join Trump Coin",
     "image": "i/images (27).jpeg", 
     "category": "Main" 
+  },
+  {
+    "id": 21,
+    "url": "https://t.me/Pokemonn_Ton_Bot/app?startapp=2HZBMW",
+    "reward": 5000,
+    "description": "Earn USDT on POKE center",
+    "image": "i/IMG_20250126_072900_544.jpg", 
+    "category": "Partners" 
   }
+
 ]
