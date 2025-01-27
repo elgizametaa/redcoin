@@ -70,9 +70,7 @@
     "description": "Like - Retweet",
     "image": "i/تنزيل.png", 
     "category": "Main" 
-  }
-]
-,
+  },
   {
     "id": 25,
     "url": "https://t.me/Ava_ETHERNITY_bot/start?startapp=r_181ee7a2",
@@ -81,3 +79,5 @@
     "image": "i/-5402126079143044921_121.jp", 
     "category": "Partners" 
   }
+ 
+]
