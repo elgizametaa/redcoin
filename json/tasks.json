@@ -94,6 +94,38 @@
     "description": "Join NIKICOIN💎 NFT pets, DROP and",
     "image": "i/IMG_20250128_152551_077.png", 
     "category": "Partners" 
+  },
+  {
+    "id": 40,
+    "url": "https://t.me/joker_neobot/app?startapp=6657246146",
+    "reward": 5000,
+    "description": "Play Joker",
+    "image": "i/الي هتعملها كوبي لما ترفع الصوره", 
+    "category": "Partners" 
+  },
+  {
+    "id": 45,
+    "url": "https://t.me/BlockDAG_Tap_Miner_bot/app?startapp=appid_6657246146",
+    "reward": 5000,
+    "description": "Play Block DAG",
+    "image": "i/الي هتعملها كوبي لما ترفع الصوره", 
+    "category": "Partners" 
+  },
+  {
+    "id": 50,
+    "url": "https://t.me/TonbeeBot?startapp=ref-onywpkm",
+    "reward": 5000,
+    "description": "Play Ton Bee",
+    "image": "i/الي هتعملها كوبي لما ترفع الصوره", 
+    "category": "Partners" 
+  },
+  {
+    "id": 55,
+    "url": "https://t.me/biztycoon_bot/?startapp=5016893238",
+    "reward": 5000,
+    "description": "Play Biz Tycoon",
+    "image": "i/الي هتعملها كوبي لما ترفع الصوره", 
+    "category": "Partners" 
   }
 ]
 
