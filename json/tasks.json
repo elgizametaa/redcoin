@@ -130,9 +130,25 @@
   {
     "id": 60,
     "url": "https://t.me/tonton_intract_bot?startapp=PlNuE6",
-    "reward":5000,
+    "reward": 5000,
     "description": "Play Ton Ton",
     "image": "i/IMG_20250128_233220_315.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 65,
+    "url": "https://t.me/Bee_CoinBot/app?startapp=15",
+    "reward": 5000,
+    "description": "Play Bee Coin",
+    "image": "i/الي هتعملها كوبي لما ترفع الصوره", 
+    "category": "Partners" 
+  },
+  {
+    "id": 70,
+    "url": "https://t.me/beecoin_official",
+    "reward": 5000,
+    "description": "Join Bee Coin Community",
+    "image": "i/الي هتعملها كوبي لما ترفع الصوره", 
     "category": "Partners" 
   }
 ]
