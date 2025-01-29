@@ -150,6 +150,14 @@
     "description": "Join red Apps community ",
     "image": "i/red.jpg", 
     "category": "Main"
+  },
+    {
+    "id": 65,
+    "url": "https://t.me/Real_WhiteDogsbot/?start=6657246146",
+    "reward": 5000,
+    "description": "Play White Dogs",
+    "image": "i/IMG_20250128_233632_941.jpg", 
+    "category": "Partners" 
   }
 ]
 
