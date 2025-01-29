@@ -150,6 +150,14 @@
     "description": "Join Bee Coin Community",
     "image": "i/IMG_20250128_233632_941.jpg", 
     "category": "Partners" 
+  },
+  {
+    "id": 35,
+    "url": "https://t.me/redappsio",
+    "reward": 10000,
+    "description": "Join red Apps community ",
+    "image": "i/red.jpg", 
+    "category": "Main"
   }
 ]
 
