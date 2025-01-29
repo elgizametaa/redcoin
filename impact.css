@@ -1,0 +1,24 @@
+#gameC-1, #bost2, #puzzle1 {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+.competition-container, #gameC-2, #bost1, .user-ranking {
+    animation: slideInRight 0.4s ease forwards;
+}
+
+#taskcontainer, #promocodeBtu, #The Best CriminalsContainer {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+#ad {
+    animation: slideInRight 0.4s ease forwards;
+}
+
+#invitedCount {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+.invite-section,  #topThreeLeaders, .bos-image, .Leaders-image, .Invitations-image {
+   animation: popIn 0.4s ease forwards;
+}
+

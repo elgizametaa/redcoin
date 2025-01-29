@@ -1,0 +1,171 @@
+[
+    {
+    "id": 12,
+    "url": "https://t.me/boinker_bot/boinkapp?startapp=boink6657246146campRedCoin",
+    "reward": 5000,
+    "description": "Play Boinkers",
+    "image": "i/IMG_20250124_185905_542.jpg", 
+    "category": "Main" 
+  },
+  {
+    "id": 1,
+    "url": "https://t.me/Redcommunityio",
+    "reward": 5000,
+    "description": "Join red community ",
+    "image": "i/red.jpg", 
+    "category": "Main"
+  },
+  {
+    "id": 2,
+    "url": "https://x.com/Redcommunityio",
+    "reward": 5000,
+    "description": "Follow Red On X ",
+    "image": "i/red.jpg", 
+    "category": "Main" 
+  },
+  {
+    "id": 3,
+    "url": "https://t.me/addlist/cZaAH6Y-nrljNDQ8",
+    "reward": 5000,
+    "description": "Join Saw community ",
+    "image": "i/500.png", 
+    "category": "Partners" 
+  },
+  {
+    "id": 4,
+    "url": "https://t.me/SAWCOIN_BOT/GAME",
+    "reward": 5000,
+    "description": "Join Saw token Game ",
+    "image": "i/500.png", 
+    "category": "Partners" 
+  },
+  {
+    "id": 5,
+    "url": "https://t.me/Rex_CoinBot?start=6657246146",
+    "reward": 5000,
+    "description": "Play Rex Coin ",
+    "image": "i/IMG_20250122_191923_975.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 6,
+    "url": "https://t.me/RexCoinCommunity",
+    "reward": 5000,
+    "description": "Join Rex Community ",
+    "image": "i/IMG_20250122_191923_975.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 8,
+    "url": "https://t.me/oinkcoinbot/?start=6657246146",
+    "reward": 5000,
+    "description": "Play OinkCoin",
+    "image": "i/IMG_20250123_032815_599.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 25,
+    "url": "https://t.me/Ava_ETHERNITY_bot/start?startapp=r_181ee7a2",
+    "reward": 5000,
+    "description": "play AVA",
+    "image": "i/-5402126079143044921_121.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 30,
+    "url": "https://t.me/RewardsHQ_bot/RewardsHQ?startapp=redcoinapp",
+    "reward": 5000,
+    "description": "Join Rewards HQ",
+    "image": "i/-6106887520441714034_121.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 35,
+    "url": "https://t.me/nikicoin_bot?start=5016893238",
+    "reward": 5000,
+    "description": "Join NIKICOIN💎 NFT pets, DROP and",
+    "image": "i/IMG_20250128_152551_077.png", 
+    "category": "Partners" 
+  },
+  {
+    "id": 40,
+    "url": "https://t.me/joker_neobot/app?startapp=6657246146",
+    "reward": 5000,
+    "description": "Play Joker",
+    "image": "i/IMG_20250128_215517_677.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 45,
+    "url": "https://t.me/BlockDAG_Tap_Miner_bot/app?startapp=appid_6657246146",
+    "reward": 5000,
+    "description": "Play Block DAG",
+    "image": "i/IMG_20250128_215719_250.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 50,
+    "url": "https://t.me/TonbeeBot?startapp=ref-onywpkm",
+    "reward": 5000,
+    "description": "Play Ton Bee",
+    "image": "i/IMG_20250128_215211_201.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 55,
+    "url": "https://t.me/biztycoon_bot/?startapp=5016893238",
+    "reward": 5000,
+    "description": "Play Biz Tycoon",
+    "image": "i/IMG_20250128_215005_285.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 60,
+    "url": "https://t.me/tonton_intract_bot?startapp=PlNuE6",
+    "reward": 5000,
+    "description": "Play Ton Ton",
+    "image": "i/IMG_20250128_233220_315.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 65,
+    "url": "https://t.me/Bee_CoinBot/app?startapp=15",
+    "reward": 5000,
+    "description": "Play Bee Coin",
+    "image": "i/IMG_20250128_233632_941.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 70,
+    "url": "https://t.me/beecoin_official",
+    "reward": 5000,
+    "description": "Join Bee Coin Community",
+    "image": "i/IMG_20250128_233632_941.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 35,
+    "url": "https://t.me/redappsio",
+    "reward": 10000,
+    "description": "Join red Apps community ",
+    "image": "i/red.jpg", 
+    "category": "Main"
+  },
+    {
+    "id": 65,
+    "url": "https://t.me/Real_WhiteDogsbot/?start=6657246146",
+    "reward": 5000,
+    "description": "Play White Dogs",
+    "image": "i/whitedogs.jpg", 
+    "category": "Partners" 
+  },
+  {
+    "id": 70,
+    "url": "https://t.me/masterversess_bot/Masterverses?startapp=633202364",
+    "reward": 5000,
+    "description": "Play Metavers",
+    "image": "i/IMG_20250129_130754_020.jpg", 
+    "category": "Partners" 
+  }
+]
+
