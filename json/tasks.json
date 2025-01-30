@@ -166,6 +166,13 @@
     "description": "Play Metavers",
     "image": "i/الي هتعملها كوبي لما ترفع الصوره", 
     "category": "Partners" 
-  }
+  },
+  {
+    "id": 8,
+    "url": "https://t.me/oinkcoinbot/?start=6657246146",
+    "reward": 5000,
+    "description": "Play OinkCoin",
+    "image": "i/IMG_20250123_032815_599.jpg", 
+    "category": "Partners" 
 ]
 
